@@ -22,6 +22,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ]
 
         setup(components)
+
+//        let library = try! ITLibrary.libraryWithAPIVersion("1.0")
+//        let items = library.allMediaItems
+//
+//        items?.forEach { item in
+//            let cucc = item as? ITLibMediaItem
+//            print("Location: \(cucc?.location)")
+//        }
+
+        print("Valami")
     }
 }
 
