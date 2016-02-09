@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */; };
+		319AC4561C67E7EA00871B4C /* iTunesMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */; };
+		319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4591C67ECF100871B4C /* iTunesApp.swift */; };
+		319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45D1C67FE5600871B4C /* AppKit.framework */; };
+		319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */; };
 		31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4685A1C651F51004858F5 /* AppDelegate.swift */; };
 		31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685C1C651F51004858F5 /* Assets.xcassets */; };
 		31A468601C651F51004858F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685E1C651F51004858F5 /* MainMenu.xib */; };
@@ -27,10 +32,14 @@
 		31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468931C6676B7004858F5 /* ChaptersViewModel.swift */; };
 		31A468971C6676D0004858F5 /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468951C6676D0004858F5 /* ChaptersViewController.swift */; };
 		31A468981C6676D0004858F5 /* ChaptersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A468961C6676D0004858F5 /* ChaptersViewController.xib */; };
-		31A4689A1C667AFD004858F5 /* iTunesMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468991C667AFD004858F5 /* iTunesMonitor.swift */; };
 		31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4689B1C67A47E004858F5 /* EventMonitor.swift */; };
 		31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4689D1C67A96E004858F5 /* StatusBarItem.swift */; };
 		31A468A01C67CCAB004858F5 /* NSPopover+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4689F1C67CCAB004858F5 /* NSPopover+PCH.swift */; };
+		31A468A41C67E32E004858F5 /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468A31C67E32E004858F5 /* iTunesLibrary.framework */; };
+		31C430601C695333000E77BA /* iTunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4305F1C695333000E77BA /* iTunes.swift */; };
+		31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */; };
+		31C430641C6A8101000E77BA /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430631C6A8101000E77BA /* Timer.swift */; };
+		31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430651C6A9447000E77BA /* NSTimer+PCH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +70,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SBApplication+PCH.swift"; sourceTree = "<group>"; };
+		319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMonitor.swift; sourceTree = "<group>"; };
+		319AC4591C67ECF100871B4C /* iTunesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesApp.swift; sourceTree = "<group>"; };
+		319AC45D1C67FE5600871B4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		31A468571C651F51004858F5 /* PodcastChapters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastChapters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A4685A1C651F51004858F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A4685C1C651F51004858F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,10 +95,15 @@
 		31A468931C6676B7004858F5 /* ChaptersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersViewModel.swift; sourceTree = "<group>"; };
 		31A468951C6676D0004858F5 /* ChaptersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersViewController.swift; sourceTree = "<group>"; };
 		31A468961C6676D0004858F5 /* ChaptersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChaptersViewController.xib; sourceTree = "<group>"; };
-		31A468991C667AFD004858F5 /* iTunesMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMonitor.swift; sourceTree = "<group>"; };
 		31A4689B1C67A47E004858F5 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		31A4689D1C67A96E004858F5 /* StatusBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarItem.swift; sourceTree = "<group>"; };
 		31A4689F1C67CCAB004858F5 /* NSPopover+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPopover+PCH.swift"; sourceTree = "<group>"; };
+		31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PodcastChapters-Bridging-Header.h"; sourceTree = "<group>"; };
+		31A468A31C67E32E004858F5 /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = ../../../../../../../../Library/Frameworks/iTunesLibrary.framework; sourceTree = "<group>"; };
+		31C4305F1C695333000E77BA /* iTunes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunes.swift; sourceTree = "<group>"; };
+		31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDistributedNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
+		31C430631C6A8101000E77BA /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		31C430651C6A9447000E77BA /* NSTimer+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimer+PCH.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +111,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */,
+				319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */,
+				31A468A41C67E32E004858F5 /* iTunesLibrary.framework in Frameworks */,
 				31A468881C665486004858F5 /* RxCocoa.framework in Frameworks */,
 				31A468841C665481004858F5 /* RxSwift.framework in Frameworks */,
 			);
@@ -100,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		319AC4531C67E7EA00871B4C /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				31C4305F1C695333000E77BA /* iTunes.swift */,
+				319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */,
+				319AC4591C67ECF100871B4C /* iTunesApp.swift */,
+			);
+			path = iTunes;
+			sourceTree = "<group>";
+		};
 		31A4684E1C651F51004858F5 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +160,7 @@
 				31A468681C654D8D004858F5 /* Utilities */,
 				31A468611C651F51004858F5 /* Info.plist */,
 				31A4687B1C664D8F004858F5 /* Cartfile */,
+				31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */,
 			);
 			path = PodcastChapters;
 			sourceTree = "<group>";
@@ -137,6 +170,7 @@
 			children = (
 				31A4686C1C655037004858F5 /* Bootstrapping */,
 				31A468761C6645AF004858F5 /* Extensions */,
+				319AC4531C67E7EA00871B4C /* iTunes */,
 				31A468771C6645AF004858F5 /* Misc */,
 			);
 			path = Utilities;
@@ -207,8 +241,11 @@
 		31A468761C6645AF004858F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */,
 				31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */,
 				31A4689F1C67CCAB004858F5 /* NSPopover+PCH.swift */,
+				31C430651C6A9447000E77BA /* NSTimer+PCH.swift */,
+				315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -216,9 +253,9 @@
 		31A468771C6645AF004858F5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				31A468991C667AFD004858F5 /* iTunesMonitor.swift */,
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
+				31C430631C6A8101000E77BA /* Timer.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -226,6 +263,9 @@
 		31A4688A1C66548E004858F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */,
+				319AC45D1C67FE5600871B4C /* AppKit.framework */,
+				31A468A31C67E32E004858F5 /* iTunesLibrary.framework */,
 				31A468871C665486004858F5 /* RxCocoa.framework */,
 				31A468811C66544D004858F5 /* RxCocoa.framework.dSYM */,
 				31A468831C665481004858F5 /* RxSwift.framework */,
@@ -309,10 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
+				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
+				31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */,
+				31C430601C695333000E77BA /* iTunes.swift in Sources */,
 				31A4688C1C666C95004858F5 /* Bootstrapping.swift in Sources */,
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */,
-				31A4689A1C667AFD004858F5 /* iTunesMonitor.swift in Sources */,
+				319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */,
 				31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */,
 				31A468A01C67CCAB004858F5 /* NSPopover+PCH.swift in Sources */,
 				31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */,
@@ -321,7 +364,10 @@
 				31A468791C6645FF004858F5 /* NSStatusItem+PCH.swift in Sources */,
 				31A468971C6676D0004858F5 /* ChaptersViewController.swift in Sources */,
 				31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */,
+				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
+				319AC4561C67E7EA00871B4C /* iTunesMonitor.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
+				31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,11 +473,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks/iTunesLibrary.framework,
 				);
 				INFOPLIST_FILE = PodcastChapters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.iszabi.PodcastChapters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PodcastChapters/PodcastChapters-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -443,11 +492,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					/Library/Frameworks/iTunesLibrary.framework,
 				);
 				INFOPLIST_FILE = PodcastChapters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.iszabi.PodcastChapters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PodcastChapters/PodcastChapters-Bridging-Header.h";
 			};
 			name = Release;
 		};
