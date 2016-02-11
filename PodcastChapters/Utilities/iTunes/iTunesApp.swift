@@ -44,9 +44,9 @@ enum iTunesNowPlaying {
 }
 
 struct iTunesMediaItem {
-    private let persistentID: String
-    private let artist: String
-    private let name: String
+    let persistentID: String
+    let artist: String
+    let name: String
 
     init(persistentID: NSString, artist: NSString, name: NSString) {
         self.persistentID = persistentID as String
@@ -85,7 +85,7 @@ class iTunesApp {
         self.iTunes = iTunes
         self.notificationCenter = notificationCenter
 
-        let notificationName = iTunesApp.BundleIdentifier + "playerInfo"
+        let notificationName = iTunesApp.BundleIdentifier + ".playerInfo"
         self.notificationCenter.addObserverForName(notificationName, object: nil, queue: nil) { [weak self] notification in
             self?.update()
         }

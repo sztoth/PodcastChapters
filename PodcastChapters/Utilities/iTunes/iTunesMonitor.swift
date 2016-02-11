@@ -31,7 +31,22 @@ class iTunesMonitor {
 
         self.iTunes.nowPlaying
             .subscribeNext { item in
-                print("Now playing: \(item)")
+                print("Item: \(item)")
+
+                if case .Podcast(let mediaItem) = item {
+                    iTunesLibrary.fetchURLForPesistentID(mediaItem.persistentID)
+                        .subscribe { event in
+                            switch event {
+                            case .Next(let URL):
+                                print("URL: \(URL)")
+                            case .Error(let error):
+                                print("Error: \(error)")
+                            default:
+                                print("Default")
+                            }
+                        }
+                        .addDisposableTo(self.disposeBag)
+                }
             }
             .addDisposableTo(disposeBag)
     }
