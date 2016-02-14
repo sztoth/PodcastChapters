@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314195211C6FD4A500268AFC /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195201C6FD4A500268AFC /* NotificationCenter.swift */; };
 		315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */; };
 		315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */; };
 		315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */; };
-		319AC4561C67E7EA00871B4C /* iTunesMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */; };
+		315E7E261C6D403F00C2A326 /* MNAVChapterReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */; };
+		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
+		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
+		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
+		319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */; };
 		319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4591C67ECF100871B4C /* iTunesApp.swift */; };
 		319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45D1C67FE5600871B4C /* AppKit.framework */; };
 		319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */; };
@@ -72,10 +77,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		314195201C6FD4A500268AFC /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SBApplication+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesLibrary.swift; sourceTree = "<group>"; };
 		315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+PCH.swift"; sourceTree = "<group>"; };
-		319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMonitor.swift; sourceTree = "<group>"; };
+		315E7E241C6D403F00C2A326 /* MNAVChapterReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNAVChapterReader.h; sourceTree = "<group>"; };
+		315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAVChapterReader.m; sourceTree = "<group>"; };
+		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
+		319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitor.swift; sourceTree = "<group>"; };
 		319AC4591C67ECF100871B4C /* iTunesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesApp.swift; sourceTree = "<group>"; };
 		319AC45D1C67FE5600871B4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -115,6 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */,
+				315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */,
 				319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */,
 				319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */,
 				31A468A41C67E32E004858F5 /* iTunesLibrary.framework in Frameworks */,
@@ -126,13 +139,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		315E7E231C6D403F00C2A326 /* MNAVChapters */ = {
+			isa = PBXGroup;
+			children = (
+				315E7E241C6D403F00C2A326 /* MNAVChapterReader.h */,
+				315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */,
+			);
+			path = MNAVChapters;
+			sourceTree = "<group>";
+		};
 		319AC4531C67E7EA00871B4C /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
 				31C4305F1C695333000E77BA /* iTunes.swift */,
 				319AC4591C67ECF100871B4C /* iTunesApp.swift */,
 				315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */,
-				319AC4551C67E7EA00871B4C /* iTunesMonitor.swift */,
+				319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */,
+				315E7E2B1C6D437300C2A326 /* Chapters.swift */,
 			);
 			path = iTunes;
 			sourceTree = "<group>";
@@ -177,6 +200,7 @@
 				31A468761C6645AF004858F5 /* Extensions */,
 				319AC4531C67E7EA00871B4C /* iTunes */,
 				31A468771C6645AF004858F5 /* Misc */,
+				315E7E231C6D403F00C2A326 /* MNAVChapters */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -260,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
+				314195201C6FD4A500268AFC /* NotificationCenter.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
 				31C430631C6A8101000E77BA /* Timer.swift */,
 			);
@@ -270,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				319AC45D1C67FE5600871B4C /* AppKit.framework */,
+				315E7E271C6D40A700C2A326 /* AVFoundation.framework */,
+				315E7E291C6D40BC00C2A326 /* CoreMedia.framework */,
 				31A468A31C67E32E004858F5 /* iTunesLibrary.framework */,
 				319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */,
 				31A468871C665486004858F5 /* RxCocoa.framework */,
@@ -354,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315E7E261C6D403F00C2A326 /* MNAVChapterReader.m in Sources */,
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
@@ -372,8 +400,10 @@
 				31A468971C6676D0004858F5 /* ChaptersViewController.swift in Sources */,
 				315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */,
 				31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */,
+				315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
-				319AC4561C67E7EA00871B4C /* iTunesMonitor.swift in Sources */,
+				319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */,
+				314195211C6FD4A500268AFC /* NotificationCenter.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
 				31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */,
 			);

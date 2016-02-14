@@ -11,11 +11,11 @@ import Cocoa
 class ContentCoordinator {
 
     private let popup: NSPopover
-    private let itunesMonitor: iTunesMonitor
+    private let podcastMonitor: PodcastMonitor
 
-    init(popup: NSPopover, itunesMonitor: iTunesMonitor) {
+    init(popup: NSPopover, podcastMonitor: PodcastMonitor) {
         self.popup = popup
-        self.itunesMonitor = itunesMonitor
+        self.podcastMonitor = podcastMonitor
 
         let chaptersViewModel = ChaptersViewModel()
         self.popup.contentViewController = ChaptersViewController(viewModel: chaptersViewModel)

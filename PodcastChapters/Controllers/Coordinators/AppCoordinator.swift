@@ -10,11 +10,11 @@ import Foundation
 
 class AppCoordinator {
 
-    private let itunesMonitor: iTunesMonitor
+    private let podcastMonitor: PodcastMonitor
     private let statusBarCoordinator: StatusBarCoordinator
 
-    init(itunesMonitor: iTunesMonitor, statusBarCoordinator: StatusBarCoordinator) {
-        self.itunesMonitor = itunesMonitor
+    init(podcastMonitor: PodcastMonitor, statusBarCoordinator: StatusBarCoordinator) {
+        self.podcastMonitor = podcastMonitor
         self.statusBarCoordinator = statusBarCoordinator
     }
 }

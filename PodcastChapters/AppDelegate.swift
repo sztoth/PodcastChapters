@@ -9,11 +9,14 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject {
 
     @IBOutlet weak var window: NSWindow!
 
     private var coordinator: AppCoordinator?
+}
+
+extension AppDelegate: NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let components: [Bootstrapping] = [
@@ -22,16 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ]
 
         setup(components)
+    }
+}
 
-//        let library = try! ITLibrary.libraryWithAPIVersion("1.0")
-//        let items = library.allMediaItems
-//
-//        items?.forEach { item in
-//            let cucc = item as? ITLibMediaItem
-//            print("Location: \(cucc?.location)")
-//        }
+extension AppDelegate: NSUserNotificationCenterDelegate {
 
-        print("Valami")
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
     }
 }
 
