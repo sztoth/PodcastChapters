@@ -13,12 +13,13 @@ class ApplicationBootstrapping: Bootstrapping {
     var coordinator: AppCoordinator?
 
     func bootstrap(bootstrapped: Bootstrapped) throws {
-        let popup = NSPopover()
+        let popover = Popover()
+
         let podcastMonitor = PodcastMonitor()
 
         let statusBarItem = StatusBarItem(eventMonitor: EventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]))
-        let contentCoordinator = ContentCoordinator(popup: popup, podcastMonitor: podcastMonitor)
-        let statusBarCoordinator = StatusBarCoordinator(popup: popup, statusBarItem: statusBarItem, contentCoordinator: contentCoordinator)
+        let contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
+        let statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, contentCoordinator: contentCoordinator)
 
         coordinator = AppCoordinator(podcastMonitor: podcastMonitor, statusBarCoordinator: statusBarCoordinator)
     }

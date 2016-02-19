@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		314195211C6FD4A500268AFC /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195201C6FD4A500268AFC /* NotificationCenter.swift */; };
+		314195231C71031000268AFC /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195221C71031000268AFC /* ChapterCell.swift */; };
+		314195251C71032100268AFC /* ChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 314195241C71032100268AFC /* ChapterCell.xib */; };
+		314195471C73AF0C00268AFC /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195461C73AF0C00268AFC /* Popover.swift */; };
+		314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195481C73AF1500268AFC /* PopoverWindow.swift */; };
+		3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */; };
+		3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954C1C73DB7300268AFC /* PopoverAnimator.swift */; };
+		3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */; };
+		314195531C766D5900268AFC /* ChapterHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195521C766D5900268AFC /* ChapterHeightCalculator.swift */; };
+		315D38271C77841D0012CA1A /* NSView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38261C77841D0012CA1A /* NSView+PCH.swift */; };
+		315D38291C778DD60012CA1A /* NSTableView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38281C778DD60012CA1A /* NSTableView+PCH.swift */; };
 		315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */; };
 		315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */; };
 		315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */; };
@@ -25,7 +35,6 @@
 		31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468721C66455C004858F5 /* AppCoordinator.swift */; };
 		31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468741C664568004858F5 /* StatusBarCoordinator.swift */; };
 		31A468791C6645FF004858F5 /* NSStatusItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */; };
-		31A4687C1C664D8F004858F5 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 31A4687B1C664D8F004858F5 /* Cartfile */; };
 		31A468801C665446004858F5 /* RxSwift.framework.dSYM in Carthage Copy dSYM Files */ = {isa = PBXBuildFile; fileRef = 31A4687F1C665446004858F5 /* RxSwift.framework.dSYM */; };
 		31A468821C66544D004858F5 /* RxCocoa.framework.dSYM in Carthage Copy dSYM Files */ = {isa = PBXBuildFile; fileRef = 31A468811C66544D004858F5 /* RxCocoa.framework.dSYM */; };
 		31A468841C665481004858F5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468831C665481004858F5 /* RxSwift.framework */; };
@@ -78,6 +87,16 @@
 
 /* Begin PBXFileReference section */
 		314195201C6FD4A500268AFC /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		314195221C71031000268AFC /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		314195241C71032100268AFC /* ChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCell.xib; sourceTree = "<group>"; };
+		314195461C73AF0C00268AFC /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
+		314195481C73AF1500268AFC /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
+		3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverBackgroundView.swift; sourceTree = "<group>"; };
+		3141954C1C73DB7300268AFC /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+PCH.swift"; sourceTree = "<group>"; };
+		314195521C766D5900268AFC /* ChapterHeightCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterHeightCalculator.swift; sourceTree = "<group>"; };
+		315D38261C77841D0012CA1A /* NSView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+PCH.swift"; sourceTree = "<group>"; };
+		315D38281C778DD60012CA1A /* NSTableView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SBApplication+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesLibrary.swift; sourceTree = "<group>"; };
 		315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+PCH.swift"; sourceTree = "<group>"; };
@@ -139,6 +158,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		314195451C73AEEE00268AFC /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				314195461C73AF0C00268AFC /* Popover.swift */,
+				3141954C1C73DB7300268AFC /* PopoverAnimator.swift */,
+				3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */,
+				314195481C73AF1500268AFC /* PopoverWindow.swift */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
 		315E7E231C6D403F00C2A326 /* MNAVChapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +231,7 @@
 				319AC4531C67E7EA00871B4C /* iTunes */,
 				31A468771C6645AF004858F5 /* Misc */,
 				315E7E231C6D403F00C2A326 /* MNAVChapters */,
+				314195451C73AEEE00268AFC /* Popover */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -263,6 +294,8 @@
 		31A468711C66451D004858F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				314195221C71031000268AFC /* ChapterCell.swift */,
+				314195241C71032100268AFC /* ChapterCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,11 +303,14 @@
 		31A468761C6645AF004858F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
 				31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */,
 				315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */,
 				31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */,
 				31A4689F1C67CCAB004858F5 /* NSPopover+PCH.swift */,
+				315D38281C778DD60012CA1A /* NSTableView+PCH.swift */,
 				31C430651C6A9447000E77BA /* NSTimer+PCH.swift */,
+				315D38261C77841D0012CA1A /* NSView+PCH.swift */,
 				315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */,
 			);
 			path = Extensions;
@@ -283,6 +319,7 @@
 		31A468771C6645AF004858F5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				314195521C766D5900268AFC /* ChapterHeightCalculator.swift */,
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
 				314195201C6FD4A500268AFC /* NotificationCenter.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
@@ -368,9 +405,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A468981C6676D0004858F5 /* ChaptersViewController.xib in Resources */,
-				31A4687C1C664D8F004858F5 /* Cartfile in Resources */,
 				31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */,
 				31A468601C651F51004858F5 /* MainMenu.xib in Resources */,
+				314195251C71032100268AFC /* ChapterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,18 +418,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315D38271C77841D0012CA1A /* NSView+PCH.swift in Sources */,
 				315E7E261C6D403F00C2A326 /* MNAVChapterReader.m in Sources */,
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
 				31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */,
+				3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */,
 				31C430601C695333000E77BA /* iTunes.swift in Sources */,
+				315D38291C778DD60012CA1A /* NSTableView+PCH.swift in Sources */,
 				31A4688C1C666C95004858F5 /* Bootstrapping.swift in Sources */,
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */,
 				319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */,
+				3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */,
+				314195471C73AF0C00268AFC /* Popover.swift in Sources */,
 				31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */,
 				31A468A01C67CCAB004858F5 /* NSPopover+PCH.swift in Sources */,
+				314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */,
 				31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */,
 				31A468901C667491004858F5 /* CrashReportBootstrapping.swift in Sources */,
 				31A4688E1C666FC5004858F5 /* ApplicationBootstrapping.swift in Sources */,
@@ -402,7 +445,10 @@
 				31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */,
 				315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
+				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
+				314195231C71031000268AFC /* ChapterCell.swift in Sources */,
 				319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */,
+				314195531C766D5900268AFC /* ChapterHeightCalculator.swift in Sources */,
 				314195211C6FD4A500268AFC /* NotificationCenter.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
 				31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */,

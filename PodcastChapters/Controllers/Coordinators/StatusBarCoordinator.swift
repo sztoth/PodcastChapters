@@ -11,13 +11,13 @@ import RxSwift
 
 class StatusBarCoordinator {
 
-    private let popup: NSPopover
+    private let popover: Popover
     private let statusBarItem: StatusBarItem
     private let contentCoordinator: ContentCoordinator
     private let disposeBag = DisposeBag()
 
-    init(popup: NSPopover, statusBarItem: StatusBarItem, contentCoordinator: ContentCoordinator) {
-        self.popup = popup
+    init(popover: Popover, statusBarItem: StatusBarItem, contentCoordinator: ContentCoordinator) {
+        self.popover = popover
         self.statusBarItem = statusBarItem
         self.contentCoordinator = contentCoordinator
 
@@ -25,9 +25,9 @@ class StatusBarCoordinator {
             .subscribeNext { event in
                 switch event {
                 case .Open(let button):
-                    self.popup.showFromView(button)
+                    self.popover.showFromView(button)
                 case .Close:
-                    self.popup.performClose(nil)
+                    self.popover.dismiss()
                 }
             }
             .addDisposableTo(disposeBag)
