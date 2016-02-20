@@ -28,7 +28,10 @@ class PodcastMonitor {
         didSet {
             if let index = currentChapterIndex, chapters = chapters {
                 let currentItem = chapters.list[index]
-                NotificationCenter.sharedInstance.showMessage(currentItem.title, image: currentItem.artwork)
+                let notification = Notification(description: currentItem.title, image: currentItem.artwork) {
+                    PasteBoard.copy(currentItem.title)
+                }
+                notificationCenter.deliverNotification(notification)
 
                 contentChanged()
             }
@@ -38,10 +41,12 @@ class PodcastMonitor {
     private let _isPodcast = PublishSubject<Bool>()
     private let _chapterChanged = PublishSubject<Void>()
     private let iTunes: iTunesApp
+    private let notificationCenter: NotificationCenter
     private let disposeBag = DisposeBag()
 
-    init(iTunes: iTunesApp = iTunesApp()) {
+    init(iTunes: iTunesApp = iTunesApp(), notificationCenter: NotificationCenter = NotificationCenter.sharedInstance) {
         self.iTunes = iTunes
+        self.notificationCenter = notificationCenter
 
         self.iTunes.playerState
             .subscribeNext { state in

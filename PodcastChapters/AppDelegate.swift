@@ -26,12 +26,9 @@ extension AppDelegate: NSApplicationDelegate {
 
         setup(components)
     }
-}
 
-extension AppDelegate: NSUserNotificationCenterDelegate {
-
-    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
-        return true
+    func applicationWillTerminate(notification: NSNotification) {
+        NotificationCenter.sharedInstance.clearAllNotifications()
     }
 }
 
