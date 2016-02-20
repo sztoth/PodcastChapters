@@ -24,7 +24,7 @@ class ChapterHeightCalculator {
     private let cache: NSCache
     private let prototypeCell: ChapterCell
 
-    init(cache: NSCache = NSCache(), prototypeCell: ChapterCell? = ChapterCell.loadFromNib()) {
+    init(cache: NSCache = NSCache(), prototypeCell: ChapterCell? = ChapterCell.pch_loadFromNib()) {
         self.cache = cache
 
         if let prototypeCell = prototypeCell {

@@ -20,7 +20,7 @@ class iTunesLibrary {
 
     static func fetchURLForPesistentID(identifier: String) -> Observable<NSURL> {
         return Observable.create { observer in
-            if let persistentNumber = NSNumber.numberFromHex(identifier) {
+            if let persistentNumber = NSNumber.pch_numberFromHex(identifier) {
                 do {
                     let library = try ITLibrary(APIVersion: "1.0")
                     let items = library.allMediaItems as NSArray

@@ -27,13 +27,13 @@ extension Reusable {
 
 extension NSTableView {
 
-    func registerReusableView<T: NSView where T: Reusable>(_: T.Type) {
+    func pch_registerReusableView<T: NSView where T: Reusable>(_: T.Type) {
         if let nib = T.nib {
             registerNib(nib, forIdentifier: T.reuseIdentifier)
         }
     }
 
-    func makeView<T: NSView where T: Reusable>(_: T.Type) -> T? {
+    func pch_makeView<T: NSView where T: Reusable>(_: T.Type) -> T? {
         return makeViewWithIdentifier(T.reuseIdentifier, owner: nil) as? T
     }
 }

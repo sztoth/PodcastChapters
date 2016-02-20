@@ -10,12 +10,12 @@ import Cocoa
 
 protocol NibLoadable: class {
 
-    static func loadFromNib<T>() -> T?
+    static func pch_loadFromNib<T>() -> T?
 }
 
 extension NSView: NibLoadable {
 
-    static func loadFromNib<T>() -> T? {
+    static func pch_loadFromNib<T>() -> T? {
         if let nib = NSNib(nibNamed: String(self), bundle: nil) {
             var topLevelObjects: NSArray?
             if nib.instantiateWithOwner(nil, topLevelObjects: &topLevelObjects) == true {

@@ -10,7 +10,7 @@ import Foundation
 
 extension NSNumber {
 
-    class func numberFromHex(hex: String) -> NSNumber? {
+    class func pch_numberFromHex(hex: String) -> NSNumber? {
         let scanner = NSScanner(string: hex)
 
         var value: UInt64 = 0

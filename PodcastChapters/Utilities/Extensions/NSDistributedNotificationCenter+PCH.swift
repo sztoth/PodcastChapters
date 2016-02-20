@@ -10,7 +10,7 @@ import Foundation
 
 extension NSDistributedNotificationCenter {
 
-    func addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?) {
+    func pch_addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?) {
         addObserver(observer, selector: aSelector, name: aName, object: nil)
     }
 }

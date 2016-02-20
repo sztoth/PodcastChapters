@@ -31,7 +31,7 @@ class ChaptersViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerReusableView(ChapterCell)
+        tableView.pch_registerReusableView(ChapterCell)
 
         self.viewModel.chapterChanged
             .subscribeNext { _ in
@@ -71,7 +71,7 @@ extension ChaptersViewController: NSTableViewDelegate {
     }
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.makeView(ChapterCell) else {
+        guard let cell = tableView.pch_makeView(ChapterCell) else {
             return nil
         }
 

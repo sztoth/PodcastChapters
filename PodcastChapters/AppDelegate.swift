@@ -19,6 +19,8 @@ class AppDelegate: NSObject {
 extension AppDelegate: NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        NSRunningApplication.pch_ensureThereIsOnlyOneRunnningInstance()
+
         let components: [Bootstrapping] = [
             CrashReportBootstrapping(),
             ApplicationBootstrapping()
