@@ -24,6 +24,10 @@
 		315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */; };
 		315D38381C79194D0012CA1A /* NSBundle+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38371C79194D0012CA1A /* NSBundle+PCH.swift */; };
 		315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */; };
+		315D383C1C7A637C0012CA1A /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D383B1C7A637C0012CA1A /* StatusItemView.swift */; };
+		315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D383D1C7A69A80012CA1A /* RightClickMenu.swift */; };
+		315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */; };
+		315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38411C7BC3630012CA1A /* NSImage+PCH.swift */; };
 		315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */; };
 		315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */; };
 		315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */; };
@@ -108,6 +112,10 @@
 		315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleInstanceAlert.swift; sourceTree = "<group>"; };
 		315D38371C79194D0012CA1A /* NSBundle+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+PCH.swift"; sourceTree = "<group>"; };
 		315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRunningApplication+PCH.swift"; sourceTree = "<group>"; };
+		315D383B1C7A637C0012CA1A /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
+		315D383D1C7A69A80012CA1A /* RightClickMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightClickMenu.swift; sourceTree = "<group>"; };
+		315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
+		315D38411C7BC3630012CA1A /* NSImage+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SBApplication+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesLibrary.swift; sourceTree = "<group>"; };
 		315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+PCH.swift"; sourceTree = "<group>"; };
@@ -237,8 +245,8 @@
 				31A4686F1C66451D004858F5 /* UI */,
 				31A468681C654D8D004858F5 /* Utilities */,
 				31A468611C651F51004858F5 /* Info.plist */,
-				31A4687B1C664D8F004858F5 /* Cartfile */,
 				31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */,
+				31A4687B1C664D8F004858F5 /* Cartfile */,
 			);
 			path = PodcastChapters;
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 			children = (
 				314195221C71031000268AFC /* ChapterCell.swift */,
 				314195241C71032100268AFC /* ChapterCell.xib */,
+				315D383B1C7A637C0012CA1A /* StatusItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +336,8 @@
 				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
 				315D38371C79194D0012CA1A /* NSBundle+PCH.swift */,
 				31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */,
+				315D38411C7BC3630012CA1A /* NSImage+PCH.swift */,
+				315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */,
 				315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */,
 				31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */,
 				315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */,
@@ -345,6 +356,7 @@
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
 				315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */,
 				315D38311C790E650012CA1A /* PasteBoard.swift */,
+				315D383D1C7A69A80012CA1A /* RightClickMenu.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
 				31C430631C6A8101000E77BA /* Timer.swift */,
 			);
@@ -446,7 +458,9 @@
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
 				315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */,
 				315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */,
+				315D383C1C7A637C0012CA1A /* StatusItemView.swift in Sources */,
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
+				315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
 				31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */,
 				3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */,
@@ -475,6 +489,8 @@
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
 				314195231C71031000268AFC /* ChapterCell.swift in Sources */,
+				315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */,
+				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,
 				319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */,
 				315D382E1C78EFBE0012CA1A /* Notification.swift in Sources */,
 				314195531C766D5900268AFC /* ChapterHeightCalculator.swift in Sources */,

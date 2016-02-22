@@ -13,21 +13,23 @@ class StatusBarCoordinator {
 
     private let popover: Popover
     private let statusBarItem: StatusBarItem
-    private let contentCoordinator: ContentCoordinator
     private let disposeBag = DisposeBag()
 
-    init(popover: Popover, statusBarItem: StatusBarItem, contentCoordinator: ContentCoordinator) {
+    init(popover: Popover, statusBarItem: StatusBarItem) {
         self.popover = popover
         self.statusBarItem = statusBarItem
-        self.contentCoordinator = contentCoordinator
 
         self.statusBarItem.event
             .subscribeNext { event in
                 switch event {
-                case .Open(let button):
-                    self.popover.showFromView(button)
+                case .Open(let view):
+                    self.popover.showFromView(view)
                 case .Close:
                     self.popover.dismiss()
+                case .Quit:
+                    NSApplication.sharedApplication().terminate(nil)
+                case .OpenSettings:
+                    print("Later")
                 }
             }
             .addDisposableTo(disposeBag)

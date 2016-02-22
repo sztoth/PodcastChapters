@@ -19,8 +19,8 @@ class ApplicationBootstrapping: Bootstrapping {
 
         let statusBarItem = StatusBarItem(eventMonitor: EventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]))
         let contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
-        let statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, contentCoordinator: contentCoordinator)
+        let statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem)
 
-        coordinator = AppCoordinator(podcastMonitor: podcastMonitor, statusBarCoordinator: statusBarCoordinator)
+        coordinator = AppCoordinator(podcastMonitor: podcastMonitor, statusBarCoordinator: statusBarCoordinator, contentCoordinator: contentCoordinator)
     }
 }

@@ -8,24 +8,43 @@
 
 import Cocoa
 import RxCocoa
-
-// MARK: - Convinience creation method
+import RxSwift
 
 extension NSStatusItem {
 
     class func pch_statusItem() -> NSStatusItem {
         let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
-        statusItem.button?.image = NSImage(named: "Status Bar Image")
+        let statusItemView = StatusItemView(statusItem: statusItem)
+        statusItem.view = statusItemView
 
         return statusItem
     }
+
+    var highlighted: Bool {
+        get {
+            if let view = view as? StatusItemView {
+                return view.highlight
+            }
+
+            return false
+        }
+        set(value) {
+            if let view = view as? StatusItemView {
+                view.highlight = value
+            }
+        }
+    }
 }
 
-// MARK: - RxSwift extension
+// MARK: - RxSwift
 
 extension NSStatusItem {
 
-    var rx_tap: ControlEvent<Void>? {
-        return button?.rx_controlEvent
+    var event: Observable<StatusItemViewEvent>? {
+        if let view = view as? StatusItemView {
+            return view.event
+        }
+
+        return nil
     }
 }
