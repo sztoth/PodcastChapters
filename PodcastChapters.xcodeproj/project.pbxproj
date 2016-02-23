@@ -28,6 +28,9 @@
 		315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D383D1C7A69A80012CA1A /* RightClickMenu.swift */; };
 		315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */; };
 		315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38411C7BC3630012CA1A /* NSImage+PCH.swift */; };
+		315D38451C7CDD660012CA1A /* OtherContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38431C7CDD660012CA1A /* OtherContentViewController.swift */; };
+		315D38461C7CDD660012CA1A /* OtherContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 315D38441C7CDD660012CA1A /* OtherContentViewController.xib */; };
+		315D38481C7CDDF60012CA1A /* OtherContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38471C7CDDF60012CA1A /* OtherContentViewModel.swift */; };
 		315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */; };
 		315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */; };
 		315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */; };
@@ -116,6 +119,9 @@
 		315D383D1C7A69A80012CA1A /* RightClickMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightClickMenu.swift; sourceTree = "<group>"; };
 		315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
 		315D38411C7BC3630012CA1A /* NSImage+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PCH.swift"; sourceTree = "<group>"; };
+		315D38431C7CDD660012CA1A /* OtherContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherContentViewController.swift; sourceTree = "<group>"; };
+		315D38441C7CDD660012CA1A /* OtherContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherContentViewController.xib; sourceTree = "<group>"; };
+		315D38471C7CDDF60012CA1A /* OtherContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherContentViewModel.swift; sourceTree = "<group>"; };
 		315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SBApplication+PCH.swift"; sourceTree = "<group>"; };
 		315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesLibrary.swift; sourceTree = "<group>"; };
 		315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+PCH.swift"; sourceTree = "<group>"; };
@@ -209,11 +215,11 @@
 		319AC4531C67E7EA00871B4C /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
+				315E7E2B1C6D437300C2A326 /* Chapters.swift */,
 				31C4305F1C695333000E77BA /* iTunes.swift */,
 				319AC4591C67ECF100871B4C /* iTunesApp.swift */,
 				315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */,
 				319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */,
-				315E7E2B1C6D437300C2A326 /* Chapters.swift */,
 			);
 			path = iTunes;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				31A468931C6676B7004858F5 /* ChaptersViewModel.swift */,
+				315D38471C7CDDF60012CA1A /* OtherContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,6 +323,8 @@
 			children = (
 				31A468951C6676D0004858F5 /* ChaptersViewController.swift */,
 				31A468961C6676D0004858F5 /* ChaptersViewController.xib */,
+				315D38431C7CDD660012CA1A /* OtherContentViewController.swift */,
+				315D38441C7CDD660012CA1A /* OtherContentViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -443,6 +452,7 @@
 				31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */,
 				31A468601C651F51004858F5 /* MainMenu.xib in Resources */,
 				314195251C71032100268AFC /* ChapterCell.xib in Resources */,
+				315D38461C7CDD660012CA1A /* OtherContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +472,7 @@
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
 				315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
+				315D38481C7CDDF60012CA1A /* OtherContentViewModel.swift in Sources */,
 				31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */,
 				3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */,
 				31C430601C695333000E77BA /* iTunes.swift in Sources */,
@@ -471,6 +482,7 @@
 				315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */,
 				315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */,
 				31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */,
+				315D38451C7CDD660012CA1A /* OtherContentViewController.swift in Sources */,
 				319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */,
 				3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */,
 				314195471C73AF0C00268AFC /* Popover.swift in Sources */,

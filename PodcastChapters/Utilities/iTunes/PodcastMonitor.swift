@@ -38,7 +38,7 @@ class PodcastMonitor {
         }
     }
 
-    private let _isPodcast = PublishSubject<Bool>()
+    private let _isPodcast = BehaviorSubject<Bool>(value: false)
     private let _chapterChanged = PublishSubject<Void>()
     private let iTunes: iTunesApp
     private let notificationCenter: NotificationCenter
