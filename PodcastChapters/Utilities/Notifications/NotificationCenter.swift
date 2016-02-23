@@ -14,6 +14,7 @@ class NotificationCenter: NSObject {
 
     private let userNotificationCenter: NSUserNotificationCenter
     private var notifications = [Notification]()
+    private var timer: Timer?
 
     private init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()) {
         self.userNotificationCenter = userNotificationCenter
@@ -44,6 +45,7 @@ private extension NotificationCenter {
 extension NotificationCenter {
 
     func clearAllNotifications() {
+        timer = nil
         userNotificationCenter.removeAllDeliveredNotifications()
         notifications.removeAll()
     }
@@ -54,6 +56,10 @@ extension NotificationCenter {
         let userNotification = NSUserNotificationBuilder.build(notification)
         notifications.append(notification)
         userNotificationCenter.deliverNotification(userNotification)
+
+        timer = Timer(interval: 30.0) { [weak self] _ in
+            self?.clearAllNotifications()
+        }
     }
 }
 
