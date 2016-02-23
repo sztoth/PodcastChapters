@@ -40,4 +40,11 @@ class ChapterCell: NSView, Reusable, WidthAdjustable {
             titleLabel.stringValue = value
         }
     }
+
+    var selected = false {
+        didSet {
+            let color = selected ? NSColor.grayColor() : NSColor.whiteColor()
+            layer?.backgroundColor = color.CGColor
+        }
+    }
 }

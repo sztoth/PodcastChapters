@@ -39,6 +39,14 @@ class ChaptersViewController: NSViewController {
             }
             .addDisposableTo(disposeBag)
     }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+
+        if let index = viewModel.currentChapterIndex {
+            tableView.scrollRowToVisible(index)
+        }
+    }
 }
 
 private extension ChaptersViewController {
@@ -50,6 +58,7 @@ private extension ChaptersViewController {
 
         cell.preferredWidth = Double(column.width)
         cell.title = chapterData.0
+        cell.selected = chapterData.1
     }
 }
 

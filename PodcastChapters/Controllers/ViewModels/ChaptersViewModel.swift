@@ -17,6 +17,10 @@ class ChaptersViewModel {
         return podcastMonitor.chapterChanged
     }
 
+    var currentChapterIndex: Int? {
+        return podcastMonitor.currentChapterIndex
+    }
+
     private let podcastMonitor: PodcastMonitor
 
     init(podcastMonitor: PodcastMonitor = PodcastMonitor()) {
@@ -34,7 +38,12 @@ extension ChaptersViewModel {
         if let chapters = podcastMonitor.chapters {
             let chapter = chapters.list[index]
 
-            return (chapter.title, false)
+            var selected = false
+            if let currentChapterIndex = currentChapterIndex {
+                selected = (index == currentChapterIndex)
+            }
+
+            return (chapter.title, selected)
         }
 
         return nil
