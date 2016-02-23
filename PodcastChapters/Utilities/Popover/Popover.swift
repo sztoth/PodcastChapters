@@ -80,7 +80,7 @@ private extension Popover {
             width: window.frame.width,
             height: window.frame.height
         )
-
+        
         window.setFrame(frame, display: true)
         window.appearance = NSAppearance.currentAppearance()
     }

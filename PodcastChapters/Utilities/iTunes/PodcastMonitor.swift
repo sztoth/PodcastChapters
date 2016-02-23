@@ -50,7 +50,9 @@ class PodcastMonitor {
 
         self.iTunes.playerState
             .subscribeNext { state in
-                print("State: \(state)")
+                if state == .Stopped {
+                    self.notificationCenter.clearAllNotifications()
+                }
             }
             .addDisposableTo(disposeBag)
 
@@ -92,8 +94,9 @@ class PodcastMonitor {
 
 private extension PodcastMonitor {
 
-    func updateCurrentItemForPosition(position: CDouble) {
-        guard let chapters = chapters else {
+    func updateCurrentItemForPosition(position: CDouble?) {
+        guard let chapters = chapters, position = position else {
+            currentChapterIndex = nil
             return
         }
 

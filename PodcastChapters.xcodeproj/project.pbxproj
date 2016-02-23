@@ -38,6 +38,7 @@
 		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
 		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
 		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
+		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
 		319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */; };
 		319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4591C67ECF100871B4C /* iTunesApp.swift */; };
 		319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45D1C67FE5600871B4C /* AppKit.framework */; };
@@ -130,6 +131,7 @@
 		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
+		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
 		319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitor.swift; sourceTree = "<group>"; };
 		319AC4591C67ECF100871B4C /* iTunesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesApp.swift; sourceTree = "<group>"; };
 		319AC45D1C67FE5600871B4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -346,6 +348,7 @@
 				315D38371C79194D0012CA1A /* NSBundle+PCH.swift */,
 				31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */,
 				315D38411C7BC3630012CA1A /* NSImage+PCH.swift */,
+				3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */,
 				315D383F1C7A7C390012CA1A /* NSNotificationCenter+PCH.swift */,
 				315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */,
 				31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */,
@@ -500,6 +503,7 @@
 				315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
+				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
 				314195231C71031000268AFC /* ChapterCell.swift in Sources */,
 				315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */,
 				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,

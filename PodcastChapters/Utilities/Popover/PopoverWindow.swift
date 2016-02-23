@@ -12,6 +12,7 @@ class PopoverWindow: NSPanel {
 
     private let arrowHeight = 10.0
     private let cornerRadius = 10.0
+    private let margin = 1.0
     private var windowContentView: NSView?
     private var backgroundView: PopoverBackgroundView?
 
@@ -71,19 +72,16 @@ private extension PopoverWindow {
             windowContentView.removeFromSuperview()
         }
 
-        if let view = view {
-            view.frame = contentRectForFrameRect(bounds)
-            view.autoresizingMask = [.ViewWidthSizable, .ViewHeightSizable]
-
-            if let layer = view.layer {
-                layer.frame = bounds
-                layer.cornerRadius = CGFloat(cornerRadius)
-                layer.masksToBounds = true
-                layer.edgeAntialiasingMask = [.LayerTopEdge, .LayerLeftEdge, .LayerRightEdge, .LayerBottomEdge]
-            }
-
-            backgroundView?.addSubview(view)
+        if let view = view, backgroundView = backgroundView {
+            view.pch_roundCorners(cornerRadius)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            backgroundView.addSubview(view)
             windowContentView = view
+
+            view.topAnchor.pch_equalToAnchor(backgroundView.topAnchor, constant: arrowHeight + margin)
+            view.bottomAnchor.pch_equalToAnchor(backgroundView.bottomAnchor, constant: -margin)
+            view.leadingAnchor.pch_equalToAnchor(backgroundView.leadingAnchor, constant: margin)
+            view.trailingAnchor.pch_equalToAnchor(backgroundView.trailingAnchor, constant: -margin)
         }
     }
 }

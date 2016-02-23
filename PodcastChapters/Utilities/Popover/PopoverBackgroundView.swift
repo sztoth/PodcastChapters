@@ -35,13 +35,7 @@ class PopoverBackgroundView: NSView {
 
         super.init(frame: frame)
 
-        wantsLayer = true
-        if let layer = layer {
-            layer.frame = frame
-            layer.cornerRadius = CGFloat(self.cornerRadius)
-            layer.masksToBounds = true
-            layer.edgeAntialiasingMask = [.LayerTopEdge, .LayerLeftEdge, .LayerRightEdge, .LayerBottomEdge]
-        }
+        pch_roundCorners(cornerRadius)
     }
 
     required init?(coder: NSCoder) {
@@ -59,14 +53,14 @@ class PopoverBackgroundView: NSView {
         let leftPoint = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowHalfWidth), y: bgFrame.maxY)
         arrow.moveToPoint(leftPoint)
 
-        let topPoint = NSPoint(x: bgFrameHalfWidth, y: bgFrame.maxY + CGFloat(self.arrowHeight))
+        let topPoint = NSPoint(x: bgFrameHalfWidth, y: bgFrame.maxY + CGFloat(arrowHeight))
         let topCP1 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 4.0, y: bgFrame.maxY)
         let topCP2 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 7.0, y: bgFrame.maxY + CGFloat(arrowHeight))
         arrow.curveToPoint(topPoint, controlPoint1: topCP1, controlPoint2: topCP2)
 
         let rightPoint = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowHalfWidth), y: bgFrame.maxY)
-        let rightCP1 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 7.0, y: bgFrame.maxY + CGFloat(arrowHeight))
-        let rightCP2 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 4.0, y: bgFrame.maxY)
+        let rightCP1 = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowWidth) / 7.0, y: bgFrame.maxY + CGFloat(arrowHeight))
+        let rightCP2 = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowWidth) / 4.0, y: bgFrame.maxY)
         arrow.curveToPoint(rightPoint, controlPoint1: rightCP1, controlPoint2: rightCP2)
 
         arrow.lineToPoint(leftPoint)

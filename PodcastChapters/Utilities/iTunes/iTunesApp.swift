@@ -63,7 +63,7 @@ class iTunesApp {
         return _playerState.asObservable()
     }
 
-    var playerPosition: Observable<CDouble> {
+    var playerPosition: Observable<CDouble?> {
         return _playerPosition.asObservable()
     }
 
@@ -72,7 +72,7 @@ class iTunesApp {
     }
 
     private let _playerState = Variable<iTunesPlayerState>(.Unknown)
-    private let _playerPosition = Variable<CDouble>(0.0)
+    private let _playerPosition = Variable<CDouble?>(nil)
     private let _nowPlaying = Variable<iTunesNowPlaying>(.Unknown)
     private let iTunes: iTunesApplication
     private let notificationCenter: NSDistributedNotificationCenter
@@ -107,7 +107,7 @@ private extension iTunesApp {
     func update() {
         guard let state = iTunesPlayerState.fromState(iTunes.playerState) else {
             _playerState.value = .Unknown
-            _playerPosition.value = 0.0
+            _playerPosition.value = nil
             _nowPlaying.value = .Unknown
             return
         }
@@ -146,7 +146,7 @@ private extension iTunesApp {
 
     func startTimer() {
         timer = Timer(interval: 1.0, repeats: true) { _ in
-            self._playerPosition.value = self.iTunes.playerPosition ?? 0.0
+            self._playerPosition.value = self.iTunes.playerPosition
         }
     }
 
@@ -157,7 +157,7 @@ private extension iTunesApp {
     func cancelTimer() {
         stopTimer()
 
-        _playerPosition.value = 0.0
+        _playerPosition.value = nil
     }
 }
 

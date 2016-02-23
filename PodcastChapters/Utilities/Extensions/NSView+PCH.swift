@@ -34,3 +34,13 @@ extension NSView: NibLoadable {
         return nil
     }
 }
+
+extension NSView {
+
+    func pch_roundCorners(radious: Double) {
+        wantsLayer = true
+        layer?.cornerRadius = CGFloat(radious)
+        layer?.masksToBounds = true
+        layer?.edgeAntialiasingMask = [.LayerTopEdge, .LayerLeftEdge, .LayerRightEdge, .LayerBottomEdge]
+    }
+}
