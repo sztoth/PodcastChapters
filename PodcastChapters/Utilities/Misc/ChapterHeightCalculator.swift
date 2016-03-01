@@ -12,36 +12,27 @@ typealias ChapterCellConfiguration = (ChapterCell) -> ()
 
 class ChapterHeightCalculator {
 
-    var width: Double {
-        get {
-            return prototypeCell.preferredWidth
-        }
-        set(value) {
-            prototypeCell.preferredWidth = value
-        }
-    }
-
     private let cache: NSCache
-    private let prototypeCell: ChapterCell
+    private let prototypeCellView: ChapterCellView
+    private let widthConstraint: NSLayoutConstraint
 
-    init(cache: NSCache = NSCache(), prototypeCell: ChapterCell? = ChapterCell.pch_loadFromNib()) {
+    init(cache: NSCache = NSCache()) {
         self.cache = cache
+        prototypeCellView = ChapterCellView(frame: NSRect.zero)
 
-        if let prototypeCell = prototypeCell {
-            self.prototypeCell = prototypeCell
-        }
-        else {
-            fatalError("The ChapterCell could not be loaded from the Nib file.")
-        }
+        widthConstraint = prototypeCellView.widthAnchor.constraintEqualToConstant(0.0)
+        widthConstraint.active = true
     }
 }
 
 extension ChapterHeightCalculator {
 
-    func calculateHeight(configuration: ChapterCellConfiguration) -> CGFloat {
-        configuration(prototypeCell)
-        prototypeCell.layoutSubtreeIfNeeded()
+    func calculateSizeFittingWidth(width: CGFloat, title: String) -> NSSize {
+        prototypeCellView.text = title
 
-        return prototypeCell.frame.height
+        widthConstraint.constant = width
+        prototypeCellView.layoutSubtreeIfNeeded()
+
+        return prototypeCellView.bounds.size
     }
 }

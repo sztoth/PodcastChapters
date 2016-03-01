@@ -25,15 +25,4 @@ extension Reusable {
     }
 }
 
-extension NSTableView {
-
-    func pch_registerReusableView<T: NSView where T: Reusable>(_: T.Type) {
-        if let nib = T.nib {
-            registerNib(nib, forIdentifier: T.reuseIdentifier)
-        }
-    }
-
-    func pch_makeView<T: NSView where T: Reusable>(_: T.Type) -> T? {
-        return makeViewWithIdentifier(T.reuseIdentifier, owner: nil) as? T
-    }
-}
+extension NSCollectionViewItem: Reusable {}

@@ -11,7 +11,7 @@ import RxSwift
 
 class ChaptersViewController: NSViewController {
 
-    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var collectionView: NSCollectionView!
 
     private let viewModel: ChaptersViewModel
     private let heightCalculator: ChapterHeightCalculator
@@ -31,65 +31,44 @@ class ChaptersViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.pch_registerReusableView(ChapterCell)
+        collectionView.reloadData()
 
-        self.viewModel.chapterChanged
+        viewModel.chapterChanged
             .subscribeNext { _ in
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
             .addDisposableTo(disposeBag)
     }
-
-    override func viewWillAppear() {
-        super.viewWillAppear()
-
-        if let index = viewModel.currentChapterIndex {
-            tableView.scrollRowToVisible(index)
-        }
-    }
 }
 
-private extension ChaptersViewController {
+extension ChaptersViewController: NSCollectionViewDataSource {
 
-    func configureCell(cell: ChapterCell, inColumn column: NSTableColumn?, atRow row: Int) {
-        guard let column = column, chapterData = viewModel.chapterDataForIndex(row) else {
-            return
-        }
-
-        cell.preferredWidth = Double(column.width)
-        cell.title = chapterData.0
-        cell.selected = chapterData.1
+    func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+        return 1
     }
-}
 
-extension ChaptersViewController: NSTableViewDataSource {
-
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfChapters()
     }
+
+    func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
+        return collectionView.makeItemWithIdentifier(ChapterCell.reuseIdentifier, forIndexPath: indexPath)
+    }
 }
 
-extension ChaptersViewController: NSTableViewDelegate {
+extension ChaptersViewController: NSCollectionViewDelegate {
 
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        let height = heightCalculator.calculateHeight { cell in
-            self.configureCell(cell, inColumn: tableView.tableColumns.first, atRow: row)
+    func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
+        if let chapterData = viewModel.chapterDataForIndex(indexPath.item) {
+            return heightCalculator.calculateSizeFittingWidth(collectionView.frame.width, title: chapterData.0)
         }
 
-        return height
+        return NSSize.zero
     }
 
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.pch_makeView(ChapterCell) else {
-            return nil
+    func collectionView(collectionView: NSCollectionView, willDisplayItem item: NSCollectionViewItem, forRepresentedObjectAtIndexPath indexPath: NSIndexPath) {
+        if let item = item as? ChapterCell, chapterData = viewModel.chapterDataForIndex(indexPath.item) {
+            item.text = chapterData.0
         }
-
-        configureCell(cell, inColumn: tableColumn, atRow: row)
-
-        return cell
-    }
-
-    func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
-        // This is not called with view based NSTableview
     }
 }

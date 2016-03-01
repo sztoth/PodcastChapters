@@ -10,7 +10,7 @@ import Foundation
 
 extension NSLayoutAnchor {
 
-    func pch_equalToAnchor(anchor: NSLayoutAnchor, constant: Double) {
+    func pch_equalToAnchor(anchor: NSLayoutAnchor, constant: Double = 0.0) {
         constraintEqualToAnchor(anchor, constant: CGFloat(constant)).active = true
     }
 }

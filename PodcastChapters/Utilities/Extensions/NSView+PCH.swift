@@ -10,15 +10,15 @@ import Cocoa
 
 protocol NibLoadable: class {
 
-    static func pch_loadFromNib<T>() -> T?
+    static func pch_loadFromNib<T>(owner owner: NSObject?) -> T?
 }
 
 extension NSView: NibLoadable {
 
-    static func pch_loadFromNib<T>() -> T? {
+    static func pch_loadFromNib<T>(owner owner: NSObject? = nil) -> T? {
         if let nib = NSNib(nibNamed: String(self), bundle: nil) {
             var topLevelObjects: NSArray?
-            if nib.instantiateWithOwner(nil, topLevelObjects: &topLevelObjects) == true {
+            if nib.instantiateWithOwner(owner, topLevelObjects: &topLevelObjects) == true {
                 if let objects = topLevelObjects {
                     let items = objects.filter { element in
                         element is T
