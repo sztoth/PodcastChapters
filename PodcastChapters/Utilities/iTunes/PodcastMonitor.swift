@@ -15,31 +15,42 @@ class PodcastMonitor {
         return _isPodcast.asObservable()
     }
 
-    var chapterChanged: Observable<Void> {
+    var isPlaying: Observable<Bool> {
+        return _isPlaying.asObservable()
+    }
+
+    var podcastChanged: Observable<Void> {
+        return _podcastChanged.asObservable()
+    }
+
+    var chapterChanged: Observable<(Int?, Int?)> {
         return _chapterChanged.asObservable()
     }
 
     private(set) var chapters: Chapters? {
         didSet {
-            contentChanged()
+            _chapterChanged.onNext((nil, nil))
         }
     }
+
     private(set) var currentChapterIndex: Int? {
         didSet {
+            _chapterChanged.onNext((oldValue, currentChapterIndex))
+
             if let index = currentChapterIndex, chapters = chapters {
                 let currentItem = chapters.list[index]
                 let notification = Notification(description: currentItem.title, image: currentItem.artwork) {
                     PasteBoard.copy(currentItem.title)
                 }
                 notificationCenter.deliverNotification(notification)
-
-                contentChanged()
             }
         }
     }
 
     private let _isPodcast = BehaviorSubject<Bool>(value: false)
-    private let _chapterChanged = PublishSubject<Void>()
+    private let _isPlaying = BehaviorSubject<Bool>(value: false)
+    private let _podcastChanged = PublishSubject<Void>()
+    private let _chapterChanged = PublishSubject<(Int?, Int?)>()
     private let iTunes: iTunesApp
     private let notificationCenter: NotificationCenter
     private let disposeBag = DisposeBag()
@@ -50,7 +61,13 @@ class PodcastMonitor {
 
         self.iTunes.playerState
             .subscribeNext { state in
-                if state == .Stopped {
+                switch state {
+                case .Playing:
+                    self._isPlaying.onNext(true)
+                case .Paused:
+                    self._isPlaying.onNext(false)
+                case .Stopped, .Unknown:
+                    self._isPlaying.onNext(false)
                     self.notificationCenter.clearAllNotifications()
                 }
             }
@@ -66,6 +83,7 @@ class PodcastMonitor {
             .subscribeNext { item in
                 if case .Podcast(let mediaItem) = item {
                     self._isPodcast.onNext(true)
+                    self._podcastChanged.onNext()
 
                     iTunesLibrary.fetchURLForPesistentID(mediaItem.persistentID)
                         .subscribe { event in
@@ -117,10 +135,6 @@ private extension PodcastMonitor {
         currentChapterIndex = nil
 
         _isPodcast.onNext(false)
-        contentChanged()
-    }
-
-    func contentChanged() {
-        _chapterChanged.onNext()
+        _podcastChanged.onNext()
     }
 }

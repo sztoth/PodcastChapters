@@ -6,14 +6,13 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class PopoverBackgroundView: NSView {
 
-    private let arrowHeight: Double
-    private let arrowWidth: Double
-    private let cornerRadius: Double
-    private let fillColor: NSColor
+    var arrowHeight = 10.0
+    var arrowWidth = 42.0
+    var cornerRadius = 10.0
 
     override var frame: NSRect {
         didSet {
@@ -21,25 +20,16 @@ class PopoverBackgroundView: NSView {
         }
     }
 
-    init(
-        frame: CGRect,
-        arrowHeight: Double = 11.0,
-        arrowWidth: Double = 42.0,
-        cornerRadius: Double = 5.0,
-        fillColor: NSColor = NSColor.windowBackgroundColor()
-    ){
-        self.arrowHeight = arrowHeight
-        self.arrowWidth = arrowWidth
-        self.cornerRadius = cornerRadius
-        self.fillColor = fillColor
-
+    override init(frame: CGRect){
         super.init(frame: frame)
 
-        pch_roundCorners(cornerRadius)
+        internalSetup()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+
+        internalSetup()
     }
 
     override func drawRect(dirtyRect: NSRect) {
@@ -72,7 +62,14 @@ class PopoverBackgroundView: NSView {
         window.appendBezierPath(arrow)
         window.appendBezierPath(background)
 
-        fillColor.setFill()
+        ColorSettings.mainBackgroundColor.setFill()
         window.fill()
+    }
+}
+
+private extension PopoverBackgroundView {
+
+    func internalSetup() {
+        pch_roundCorners(cornerRadius)
     }
 }

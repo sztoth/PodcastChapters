@@ -19,7 +19,19 @@ class ChapterCell: NSCollectionViewItem {
         }
     }
 
+    var makeHighlighted: Bool = false {
+        didSet {
+            makeHighlighted ? contentView?.highlight() : contentView?.reset()
+        }
+    }
+
     private var contentView: ChapterCellView? {
         return view as? ChapterCellView
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        makeHighlighted = false
     }
 }

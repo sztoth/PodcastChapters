@@ -28,8 +28,8 @@ class iTunesLibrary {
                     let predicate = NSPredicate(format: "persistentID == %@", persistentNumber)
                     let filtered = items.filteredArrayUsingPredicate(predicate)
 
-                    if let item = filtered.first as? ITLibMediaItem {
-                        observer.onNext(item.location)
+                    if let item = filtered.first as? ITLibMediaItem, location = item.location {
+                        observer.onNext(location)
                         observer.onCompleted()
                     }
                     else {

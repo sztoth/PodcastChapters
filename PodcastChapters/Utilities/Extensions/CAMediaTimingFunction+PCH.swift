@@ -11,4 +11,6 @@ import Foundation
 extension CAMediaTimingFunction {
 
     @nonobjc static let EaseInEaseOut = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    @nonobjc static let EaseIn = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+    @nonobjc static let EaseOut = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 }

@@ -3,53 +3,121 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChaptersViewController" customModule="PodcastChapters" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="pjx-RD-NQU" id="VM5-P4-2Cu"/>
+                <outlet property="copyButton" destination="zWh-OA-nBu" id="9Tk-Xo-mUy"/>
+                <outlet property="coverImageView" destination="qiT-35-5OI" id="MJ5-XN-ZS6"/>
+                <outlet property="playbackIndicator" destination="0XB-hI-sTZ" id="K9W-J4-hs3"/>
+                <outlet property="titleLabel" destination="I8Q-ph-1Bh" id="k9d-hK-KR4"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2A-u0-hx4">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
-                    <clipView key="contentView" id="ixI-hA-qPR">
-                        <rect key="frame" x="1" y="1" width="298" height="498"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView id="pjx-RD-NQU">
-                                <rect key="frame" x="0.0" y="0.0" width="298" height="498"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="VvG-9v-HF9" userLabel="Container View">
+                    <rect key="frame" x="5" y="5" width="290" height="590"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qiT-35-5OI" userLabel="Cover Image View">
+                            <rect key="frame" x="0.0" y="300" width="290" height="290"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="290" id="haH-Lc-OZz"/>
+                                <constraint firstAttribute="height" constant="290" id="ucb-jK-7l7"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="sge-gz-egj"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I8Q-ph-1Bh" userLabel="Title Label">
+                            <rect key="frame" x="21" y="266" width="237" height="19"/>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Here comes the title" id="TFx-r6-rH0">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="00G-Rs-gHl" userLabel="Separator View" customClass="LineView" customModule="PodcastChapters" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="250" width="290" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="bRA-8w-bzQ"/>
+                            </constraints>
+                        </customView>
+                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2A-u0-hx4">
+                            <rect key="frame" x="10" y="5" width="270" height="235"/>
+                            <clipView key="contentView" copiesOnScroll="NO" id="ixI-hA-qPR">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="235"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <collectionViewLayout key="collectionViewLayout" id="0aa-VO-aIx" customClass="FlowLayout" customModule="PodcastChapters" customModuleProvider="target"/>
-                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="-2" id="5Ef-Q7-EgK"/>
-                                    <outlet property="delegate" destination="-2" id="Ecu-Qg-7fD"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="O3C-oP-oen">
-                        <rect key="frame" x="1" y="144" width="233" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FvP-oE-vgU">
-                        <rect key="frame" x="234" y="1" width="15" height="143"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
+                                <subviews>
+                                    <collectionView id="pjx-RD-NQU" customClass="CollectionView" customModule="PodcastChapters" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="235"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <collectionViewLayout key="collectionViewLayout" id="0aa-VO-aIx" customClass="FlowLayout" customModule="PodcastChapters" customModuleProvider="target"/>
+                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="-2" id="5Ef-Q7-EgK"/>
+                                            <outlet property="delegate" destination="-2" id="Ecu-Qg-7fD"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                            </clipView>
+                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="O3C-oP-oen">
+                                <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FvP-oE-vgU">
+                                <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="zWh-OA-nBu" customClass="CopyButton" customModule="PodcastChapters" customModuleProvider="target">
+                            <rect key="frame" x="261" y="264" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="Shz-L9-fLh"/>
+                                <constraint firstAttribute="width" secondItem="zWh-OA-nBu" secondAttribute="height" multiplier="1:1" id="zhu-KH-yoN"/>
+                            </constraints>
+                            <connections>
+                                <action selector="copyCurrentTitleToClipboard:" target="-2" id="PEr-ld-645"/>
+                            </connections>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="0XB-hI-sTZ" customClass="PlaybackIndicatorView" customModule="PodcastChapters" customModuleProvider="target">
+                            <rect key="frame" x="5" y="270" width="13" height="12"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="13" placeholder="YES" id="UcL-if-fva"/>
+                                <constraint firstAttribute="height" constant="12" placeholder="YES" id="YF4-Nq-bp2"/>
+                            </constraints>
+                        </customView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="zWh-OA-nBu" firstAttribute="centerY" secondItem="I8Q-ph-1Bh" secondAttribute="centerY" id="6AX-uV-gSd"/>
+                        <constraint firstAttribute="trailing" secondItem="00G-Rs-gHl" secondAttribute="trailing" id="6NK-Mt-fU1"/>
+                        <constraint firstItem="n2A-u0-hx4" firstAttribute="top" secondItem="00G-Rs-gHl" secondAttribute="bottom" constant="10" id="FKL-H4-uLO"/>
+                        <constraint firstItem="0XB-hI-sTZ" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="5" id="Jwp-c8-3cc"/>
+                        <constraint firstAttribute="trailing" secondItem="zWh-OA-nBu" secondAttribute="trailing" constant="5" id="K6t-is-D22"/>
+                        <constraint firstItem="qiT-35-5OI" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="RZ8-ks-RrE"/>
+                        <constraint firstItem="n2A-u0-hx4" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="10" id="XtD-0g-8xJ"/>
+                        <constraint firstAttribute="trailing" secondItem="qiT-35-5OI" secondAttribute="trailing" id="bxk-PC-1iA"/>
+                        <constraint firstAttribute="bottom" secondItem="n2A-u0-hx4" secondAttribute="bottom" constant="5" id="djh-DD-FIQ"/>
+                        <constraint firstItem="00G-Rs-gHl" firstAttribute="top" secondItem="I8Q-ph-1Bh" secondAttribute="bottom" constant="15" id="hbQ-tK-gv7"/>
+                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="top" secondItem="qiT-35-5OI" secondAttribute="bottom" constant="15" id="hv4-Fe-Trt"/>
+                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="centerY" secondItem="0XB-hI-sTZ" secondAttribute="centerY" id="kBw-um-8Ep"/>
+                        <constraint firstItem="00G-Rs-gHl" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="nz9-vY-NCN"/>
+                        <constraint firstItem="zWh-OA-nBu" firstAttribute="leading" secondItem="I8Q-ph-1Bh" secondAttribute="trailing" constant="5" id="q2E-oq-brh"/>
+                        <constraint firstItem="qiT-35-5OI" firstAttribute="top" secondItem="VvG-9v-HF9" secondAttribute="top" id="vht-IG-9Wy"/>
+                        <constraint firstAttribute="trailing" secondItem="n2A-u0-hx4" secondAttribute="trailing" constant="10" id="xM0-JN-XNp"/>
+                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="leading" secondItem="0XB-hI-sTZ" secondAttribute="trailing" constant="5" id="yJR-UC-y6C"/>
+                    </constraints>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="n2A-u0-hx4" secondAttribute="trailing" id="AY0-m0-eAt"/>
-                <constraint firstAttribute="bottom" secondItem="n2A-u0-hx4" secondAttribute="bottom" id="YN6-Bs-VMK"/>
-                <constraint firstItem="n2A-u0-hx4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="hi2-FN-Aja"/>
-                <constraint firstItem="n2A-u0-hx4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="jtm-CF-Edz"/>
+                <constraint firstItem="VvG-9v-HF9" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="5" id="292-nJ-04L"/>
+                <constraint firstAttribute="bottom" secondItem="VvG-9v-HF9" secondAttribute="bottom" constant="5" id="BVN-9C-Dx9"/>
+                <constraint firstItem="VvG-9v-HF9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="CAp-3Y-hAZ"/>
+                <constraint firstAttribute="trailing" secondItem="VvG-9v-HF9" secondAttribute="trailing" constant="5" id="GHI-Qf-nCh"/>
             </constraints>
         </customView>
     </objects>

@@ -7,19 +7,24 @@
 //
 
 import Cocoa
+import RxCocoa
 import RxSwift
 
 class ChaptersViewController: NSViewController {
 
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var coverImageView: NSImageView!
+    @IBOutlet weak var playbackIndicator: PlaybackIndicatorView!
+    @IBOutlet weak var titleLabel: NSTextField!
+    @IBOutlet weak var copyButton: CopyButton!
+    @IBOutlet weak var collectionView: CollectionView!
 
     private let viewModel: ChaptersViewModel
-    private let heightCalculator: ChapterHeightCalculator
+    private let sizeCalculator: ChapterSizeCalculator
     private let disposeBag = DisposeBag()
 
-    init?(viewModel: ChaptersViewModel, heightCalculator: ChapterHeightCalculator = ChapterHeightCalculator()) {
+    init?(viewModel: ChaptersViewModel, sizeCalculator: ChapterSizeCalculator = ChapterSizeCalculator()) {
         self.viewModel = viewModel
-        self.heightCalculator = heightCalculator
+        self.sizeCalculator = sizeCalculator
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,13 +36,80 @@ class ChaptersViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.reloadData()
+        titleLabel.textColor = ColorSettings.textColor
 
-        viewModel.chapterChanged
-            .subscribeNext { _ in
-                self.collectionView.reloadData()
+        viewModel.artwork.asObservable()
+            .observeOn(MainScheduler.instance)
+            .bindTo(coverImageView.rx_image)
+            .addDisposableTo(disposeBag)
+
+        viewModel.title.asObservable()
+            .observeOn(MainScheduler.instance)
+            .bindTo(titleLabel.rx_text)
+            .addDisposableTo(disposeBag)
+
+        viewModel.isPlaying
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { isPlaying in
+                self.playbackIndicator.state = isPlaying ? .Playing : .Stopped
             }
             .addDisposableTo(disposeBag)
+
+        viewModel.podcastChanged
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { _ in
+                self.updateCollectionView()
+            }
+            .addDisposableTo(disposeBag)
+
+        viewModel.chapterChanged
+            .observeOn(MainScheduler.instance)
+            .subscribeNext { indexes in
+                var array = [NSIndexPath]()
+                var scrollToPath: NSIndexPath?
+
+                switch indexes {
+                case let (.Some(old), .Some(new)):
+                    array.append(NSIndexPath(forItem: old, inSection: 0))
+
+                    let indexPath = NSIndexPath(forItem: new, inSection: 0)
+                    scrollToPath = indexPath
+                    array.append(indexPath)
+                case let (.Some(old), .None):
+                    array.append(NSIndexPath(forItem: old, inSection: 0))
+                case let (.None, .Some(new)):
+                    let indexPath = NSIndexPath(forItem: new, inSection: 0)
+                    scrollToPath = indexPath
+                    array.append(indexPath)
+                default:
+                    break
+                }
+
+                if 0 < array.count {
+                    self.collectionView.reloadItemsAtIndexPaths(Set(array))
+                }
+                else {
+                    self.updateCollectionView()
+                }
+
+                if let indexPath = scrollToPath {
+                    self.collectionView.scrollToItemsAtIndexPaths(Set([indexPath]), scrollPosition: .CenteredVertically)
+                }
+            }
+            .addDisposableTo(disposeBag)
+    }
+
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
+        view.layoutSubtreeIfNeeded()
+    }
+}
+
+extension ChaptersViewController {
+
+    @IBAction func copyCurrentTitleToClipboard(sender: CopyButton) {
+        viewModel.copyCurrentChapterTitleToClipboard()
     }
 }
 
@@ -60,7 +132,7 @@ extension ChaptersViewController: NSCollectionViewDelegate {
 
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
         if let chapterData = viewModel.chapterDataForIndex(indexPath.item) {
-            return heightCalculator.calculateSizeFittingWidth(collectionView.frame.width, title: chapterData.0)
+            return sizeCalculator.sizeForIndex(indexPath.item, availableWidth: collectionView.frame.width, chapterTitle: chapterData.0)
         }
 
         return NSSize.zero
@@ -68,7 +140,16 @@ extension ChaptersViewController: NSCollectionViewDelegate {
 
     func collectionView(collectionView: NSCollectionView, willDisplayItem item: NSCollectionViewItem, forRepresentedObjectAtIndexPath indexPath: NSIndexPath) {
         if let item = item as? ChapterCell, chapterData = viewModel.chapterDataForIndex(indexPath.item) {
-            item.text = chapterData.0
+            item.text = chapterData.title
+            item.makeHighlighted = chapterData.playing
         }
+    }
+}
+
+private extension ChaptersViewController {
+
+    func updateCollectionView() {
+        self.sizeCalculator.reset()
+        self.collectionView.reloadData()
     }
 }

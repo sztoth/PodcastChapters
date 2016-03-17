@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
 class OtherContentViewModel {
 
+    var title = Variable<String>("Sorry, but the current item in iTunes is not a podcast.")
 }

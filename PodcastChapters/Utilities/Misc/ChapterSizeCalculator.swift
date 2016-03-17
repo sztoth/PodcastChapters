@@ -10,7 +10,7 @@ import Cocoa
 
 typealias ChapterCellConfiguration = (ChapterCell) -> ()
 
-class ChapterHeightCalculator {
+class ChapterSizeCalculator {
 
     private let cache: NSCache
     private let prototypeCellView: ChapterCellView
@@ -25,14 +25,31 @@ class ChapterHeightCalculator {
     }
 }
 
-extension ChapterHeightCalculator {
+extension ChapterSizeCalculator {
 
-    func calculateSizeFittingWidth(width: CGFloat, title: String) -> NSSize {
+    func sizeForIndex(index: Int, availableWidth width: CGFloat, chapterTitle title: String) -> NSSize {
+        let key = "\(index)"
+        if let sizeValue = cache.objectForKey(key) as? NSValue {
+            return sizeValue.sizeValue
+        }
+
         prototypeCellView.text = title
 
         widthConstraint.constant = width
         prototypeCellView.layoutSubtreeIfNeeded()
 
-        return prototypeCellView.bounds.size
+        let size = prototypeCellView.bounds.size
+        cache.setObject(NSValue(size: size), forKey: key)
+
+        return size
+    }
+
+    func reset() {
+        cache.removeAllObjects()
+    }
+
+    func resetItemAtIndex(index: Int) {
+        let key = "\(index)"
+        cache.removeObjectForKey(key)
     }
 }

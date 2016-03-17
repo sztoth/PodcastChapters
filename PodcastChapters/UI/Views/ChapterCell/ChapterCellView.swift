@@ -12,6 +12,12 @@ import Cocoa
 
     @IBOutlet weak var titleLabel: NSTextField!
 
+    var backgroundColor = ColorSettings.subBackgroundColor {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
     var text: String {
         get {
             return titleLabel.stringValue
@@ -42,6 +48,24 @@ import Cocoa
         titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
         super.resizeSubviewsWithOldSize(oldSize)
     }
+
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+
+        backgroundColor.setFill()
+        NSRectFill(dirtyRect)
+    }
+}
+
+extension ChapterCellView {
+
+    func reset() {
+        backgroundColor = ColorSettings.subBackgroundColor
+    }
+
+    func highlight() {
+        backgroundColor = ColorSettings.cellSelectionColor
+    }
 }
 
 private extension ChapterCellView {
@@ -58,6 +82,7 @@ private extension ChapterCellView {
             contentView.leadingAnchor.pch_equalToAnchor(self.leadingAnchor)
             contentView.trailingAnchor.pch_equalToAnchor(self.trailingAnchor)
 
+            titleLabel.textColor = ColorSettings.textColor
         }
         else {
             fatalError("The contentView could not be created")

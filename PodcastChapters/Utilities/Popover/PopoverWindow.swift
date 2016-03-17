@@ -10,11 +10,13 @@ import Cocoa
 
 class PopoverWindow: NSPanel {
 
-    private let arrowHeight = 10.0
-    private let cornerRadius = 10.0
-    private let margin = 1.0
-    private var windowContentView: NSView?
-    private var backgroundView: PopoverBackgroundView?
+    var arrowHeight: Double {
+        return backgroundView?.arrowHeight ?? 0.0
+    }
+
+    var cornerRadius: Double {
+        return backgroundView?.cornerRadius ?? 0.0
+    }
 
     override var canBecomeKeyWindow: Bool {
         return true
@@ -29,19 +31,18 @@ class PopoverWindow: NSPanel {
         }
     }
 
-    class func window() -> PopoverWindow {
-        return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .Buffered, `defer`: true)
-    }
+    private var windowContentView: NSView?
+    private var backgroundView: PopoverBackgroundView?
 
     override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, `defer`: flag)
 
-        self.opaque = false
-        self.hasShadow = true
-        self.level = Int(CGWindowLevelForKey(.StatusWindowLevelKey))
-        self.backgroundColor = NSColor.clearColor()
-        self.collectionBehavior = [.CanJoinAllSpaces, .IgnoresCycle]
-        self.appearance = NSAppearance.currentAppearance()
+        opaque = false
+        hasShadow = true
+        level = Int(CGWindowLevelForKey(.StatusWindowLevelKey))
+        backgroundColor = NSColor.clearColor()
+        collectionBehavior = [.CanJoinAllSpaces, .IgnoresCycle]
+        appearance = NSAppearance.currentAppearance()
     }
 
     required init?(coder: NSCoder) {
@@ -49,7 +50,15 @@ class PopoverWindow: NSPanel {
     }
 
     override func frameRectForContentRect(contentRect: NSRect) -> NSRect {
-        return NSRect(x: contentRect.minX, y: contentRect.minY, width: contentRect.width, height: contentRect.height + CGFloat(arrowHeight))
+        let height = contentRect.height + CGFloat(arrowHeight)
+        return NSRect(x: contentRect.minX, y: contentRect.minY, width: contentRect.width, height: height)
+    }
+}
+
+extension PopoverWindow {
+
+    class func window() -> PopoverWindow {
+        return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .Buffered, `defer`: true)
     }
 }
 
@@ -63,9 +72,8 @@ private extension PopoverWindow {
         let bounds = windowContentView?.bounds ?? NSRect.zero
 
         if !(super.contentView is PopoverBackgroundView) {
-            let bgView = PopoverBackgroundView(frame: bounds, arrowHeight: arrowHeight, cornerRadius: cornerRadius)
-            super.contentView = bgView
-            backgroundView = bgView
+            backgroundView = PopoverBackgroundView(frame: bounds)
+            super.contentView = backgroundView
         }
 
         if let windowContentView = windowContentView {
@@ -77,6 +85,8 @@ private extension PopoverWindow {
             view.translatesAutoresizingMaskIntoConstraints = false
             backgroundView.addSubview(view)
             windowContentView = view
+
+            let margin = 1.0
 
             view.topAnchor.pch_equalToAnchor(backgroundView.topAnchor, constant: arrowHeight + margin)
             view.bottomAnchor.pch_equalToAnchor(backgroundView.bottomAnchor, constant: -margin)

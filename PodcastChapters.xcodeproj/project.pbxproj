@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3112B33E1C7FA26600CE6438 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112B33C1C7FA26600CE6438 /* ChapterCell.swift */; };
-		3112B33F1C7FA26600CE6438 /* ChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3112B33D1C7FA26600CE6438 /* ChapterCell.xib */; };
 		3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112B3401C7FA60600CE6438 /* FlowLayout.swift */; };
+		312A107D1C862B6400805059 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107C1C862B6400805059 /* CollectionView.swift */; };
+		312A107F1C864DEC00805059 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107E1C864DEC00805059 /* LineView.swift */; };
+		312A10811C8B292400805059 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A10801C8B292400805059 /* CopyButton.swift */; };
 		314195471C73AF0C00268AFC /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195461C73AF0C00268AFC /* Popover.swift */; };
 		314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195481C73AF1500268AFC /* PopoverWindow.swift */; };
 		3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */; };
 		3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954C1C73DB7300268AFC /* PopoverAnimator.swift */; };
 		3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */; };
-		314195531C766D5900268AFC /* ChapterHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195521C766D5900268AFC /* ChapterHeightCalculator.swift */; };
+		314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195521C766D5900268AFC /* ChapterSizeCalculator.swift */; };
 		315D38271C77841D0012CA1A /* NSView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38261C77841D0012CA1A /* NSView+PCH.swift */; };
 		315D38291C778DD60012CA1A /* NSCollectionViewItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */; };
 		315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382B1C78EFA90012CA1A /* NotificationCenter.swift */; };
@@ -39,9 +40,17 @@
 		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
 		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
 		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
-		317659D91C83990C001D30D3 /* ChapterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317659D81C83990C001D30D3 /* ChapterCellView.swift */; };
-		317659DB1C83991F001D30D3 /* ChapterCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 317659DA1C83991F001D30D3 /* ChapterCellView.xib */; };
 		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
+		317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DB1C8CC806001695F0 /* SharedSettings.swift */; };
+		317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */; };
+		317A61E51C8E1BC9001695F0 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61E01C8E1BC9001695F0 /* ChapterCell.swift */; };
+		317A61E61C8E1BC9001695F0 /* ChapterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 317A61E11C8E1BC9001695F0 /* ChapterCell.xib */; };
+		317A61E71C8E1BC9001695F0 /* ChapterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61E21C8E1BC9001695F0 /* ChapterCellView.swift */; };
+		317A61E81C8E1BC9001695F0 /* ChapterCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 317A61E31C8E1BC9001695F0 /* ChapterCellView.xib */; };
+		317A61EA1C8E1BE8001695F0 /* PlaybackIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61E91C8E1BE8001695F0 /* PlaybackIndicatorView.swift */; };
+		317A61EC1C8E1BFD001695F0 /* PlaybackIndicatorBarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61EB1C8E1BFD001695F0 /* PlaybackIndicatorBarLayer.swift */; };
+		317A61EE1C8E40A9001695F0 /* PlaybackAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61ED1C8E40A9001695F0 /* PlaybackAnimations.swift */; };
+		317A61F01C8F61C8001695F0 /* Int+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61EF1C8F61C8001695F0 /* Int+PCH.swift */; };
 		319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */; };
 		319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC4591C67ECF100871B4C /* iTunesApp.swift */; };
 		319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45D1C67FE5600871B4C /* AppKit.framework */; };
@@ -68,6 +77,7 @@
 		31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4689B1C67A47E004858F5 /* EventMonitor.swift */; };
 		31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4689D1C67A96E004858F5 /* StatusBarItem.swift */; };
 		31A468A41C67E32E004858F5 /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468A31C67E32E004858F5 /* iTunesLibrary.framework */; };
+		31B2C7F81C95DEC200C874C7 /* NSTextField+PCH.m in Sources */ = {isa = PBXBuildFile; fileRef = 31B2C7F71C95DEC200C874C7 /* NSTextField+PCH.m */; };
 		31C430601C695333000E77BA /* iTunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4305F1C695333000E77BA /* iTunes.swift */; };
 		31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */; };
 		31C430641C6A8101000E77BA /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430631C6A8101000E77BA /* Timer.swift */; };
@@ -102,15 +112,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3112B33C1C7FA26600CE6438 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
-		3112B33D1C7FA26600CE6438 /* ChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCell.xib; sourceTree = "<group>"; };
 		3112B3401C7FA60600CE6438 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		312A107C1C862B6400805059 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		312A107E1C864DEC00805059 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		312A10801C8B292400805059 /* CopyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
 		314195461C73AF0C00268AFC /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		314195481C73AF1500268AFC /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 		3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverBackgroundView.swift; sourceTree = "<group>"; };
 		3141954C1C73DB7300268AFC /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+PCH.swift"; sourceTree = "<group>"; };
-		314195521C766D5900268AFC /* ChapterHeightCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterHeightCalculator.swift; sourceTree = "<group>"; };
+		314195521C766D5900268AFC /* ChapterSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSizeCalculator.swift; sourceTree = "<group>"; };
 		315D38261C77841D0012CA1A /* NSView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+PCH.swift"; sourceTree = "<group>"; };
 		315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCollectionViewItem+PCH.swift"; sourceTree = "<group>"; };
 		315D382B1C78EFA90012CA1A /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
@@ -135,9 +146,17 @@
 		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
-		317659D81C83990C001D30D3 /* ChapterCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCellView.swift; sourceTree = "<group>"; };
-		317659DA1C83991F001D30D3 /* ChapterCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCellView.xib; sourceTree = "<group>"; };
 		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
+		317A61DB1C8CC806001695F0 /* SharedSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
+		317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+PCH.swift"; sourceTree = "<group>"; };
+		317A61E01C8E1BC9001695F0 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		317A61E11C8E1BC9001695F0 /* ChapterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCell.xib; sourceTree = "<group>"; };
+		317A61E21C8E1BC9001695F0 /* ChapterCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCellView.swift; sourceTree = "<group>"; };
+		317A61E31C8E1BC9001695F0 /* ChapterCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCellView.xib; sourceTree = "<group>"; };
+		317A61E91C8E1BE8001695F0 /* PlaybackIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackIndicatorView.swift; sourceTree = "<group>"; };
+		317A61EB1C8E1BFD001695F0 /* PlaybackIndicatorBarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackIndicatorBarLayer.swift; sourceTree = "<group>"; };
+		317A61ED1C8E40A9001695F0 /* PlaybackAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackAnimations.swift; sourceTree = "<group>"; };
+		317A61EF1C8F61C8001695F0 /* Int+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+PCH.swift"; sourceTree = "<group>"; };
 		319AC4551C67E7EA00871B4C /* PodcastMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitor.swift; sourceTree = "<group>"; };
 		319AC4591C67ECF100871B4C /* iTunesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesApp.swift; sourceTree = "<group>"; };
 		319AC45D1C67FE5600871B4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -166,6 +185,8 @@
 		31A4689D1C67A96E004858F5 /* StatusBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarItem.swift; sourceTree = "<group>"; };
 		31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PodcastChapters-Bridging-Header.h"; sourceTree = "<group>"; };
 		31A468A31C67E32E004858F5 /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = ../../../../../../../../Library/Frameworks/iTunesLibrary.framework; sourceTree = "<group>"; };
+		31B2C7F61C95DEC200C874C7 /* NSTextField+PCH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+PCH.h"; sourceTree = "<group>"; };
+		31B2C7F71C95DEC200C874C7 /* NSTextField+PCH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+PCH.m"; sourceTree = "<group>"; };
 		31C4305F1C695333000E77BA /* iTunes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunes.swift; sourceTree = "<group>"; };
 		31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDistributedNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
 		31C430631C6A8101000E77BA /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -218,6 +239,27 @@
 				315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */,
 			);
 			path = MNAVChapters;
+			sourceTree = "<group>";
+		};
+		317A61DF1C8E1BC9001695F0 /* ChapterCell */ = {
+			isa = PBXGroup;
+			children = (
+				317A61E01C8E1BC9001695F0 /* ChapterCell.swift */,
+				317A61E11C8E1BC9001695F0 /* ChapterCell.xib */,
+				317A61E21C8E1BC9001695F0 /* ChapterCellView.swift */,
+				317A61E31C8E1BC9001695F0 /* ChapterCellView.xib */,
+			);
+			path = ChapterCell;
+			sourceTree = "<group>";
+		};
+		317A61E41C8E1BC9001695F0 /* PlaybackIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				317A61ED1C8E40A9001695F0 /* PlaybackAnimations.swift */,
+				317A61EB1C8E1BFD001695F0 /* PlaybackIndicatorBarLayer.swift */,
+				317A61E91C8E1BE8001695F0 /* PlaybackIndicatorView.swift */,
+			);
+			path = PlaybackIndicator;
 			sourceTree = "<group>";
 		};
 		319AC4531C67E7EA00871B4C /* iTunes */ = {
@@ -340,10 +382,11 @@
 		31A468711C66451D004858F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3112B33C1C7FA26600CE6438 /* ChapterCell.swift */,
-				3112B33D1C7FA26600CE6438 /* ChapterCell.xib */,
-				317659D81C83990C001D30D3 /* ChapterCellView.swift */,
-				317659DA1C83991F001D30D3 /* ChapterCellView.xib */,
+				317A61DF1C8E1BC9001695F0 /* ChapterCell */,
+				317A61E41C8E1BC9001695F0 /* PlaybackIndicator */,
+				312A107C1C862B6400805059 /* CollectionView.swift */,
+				312A10801C8B292400805059 /* CopyButton.swift */,
+				312A107E1C864DEC00805059 /* LineView.swift */,
 				315D383B1C7A637C0012CA1A /* StatusItemView.swift */,
 			);
 			path = Views;
@@ -353,8 +396,10 @@
 			isa = PBXGroup;
 			children = (
 				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
+				317A61EF1C8F61C8001695F0 /* Int+PCH.swift */,
 				315D38371C79194D0012CA1A /* NSBundle+PCH.swift */,
 				315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */,
+				317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */,
 				31C430611C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift */,
 				315D38411C7BC3630012CA1A /* NSImage+PCH.swift */,
 				3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */,
@@ -362,6 +407,8 @@
 				315E7E211C6D327500C2A326 /* NSNumber+PCH.swift */,
 				31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */,
 				315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */,
+				31B2C7F61C95DEC200C874C7 /* NSTextField+PCH.h */,
+				31B2C7F71C95DEC200C874C7 /* NSTextField+PCH.m */,
 				31C430651C6A9447000E77BA /* NSTimer+PCH.swift */,
 				315D38261C77841D0012CA1A /* NSView+PCH.swift */,
 				315E7E1C1C6AA20A00C2A326 /* SBApplication+PCH.swift */,
@@ -372,12 +419,13 @@
 		31A468771C6645AF004858F5 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				314195521C766D5900268AFC /* ChapterHeightCalculator.swift */,
+				314195521C766D5900268AFC /* ChapterSizeCalculator.swift */,
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
 				3112B3401C7FA60600CE6438 /* FlowLayout.swift */,
 				315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */,
 				315D38311C790E650012CA1A /* PasteBoard.swift */,
 				315D383D1C7A69A80012CA1A /* RightClickMenu.swift */,
+				317A61DB1C8CC806001695F0 /* SharedSettings.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
 				31C430631C6A8101000E77BA /* Timer.swift */,
 			);
@@ -464,8 +512,8 @@
 				31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */,
 				31A468601C651F51004858F5 /* MainMenu.xib in Resources */,
 				315D38461C7CDD660012CA1A /* OtherContentViewController.xib in Resources */,
-				317659DB1C83991F001D30D3 /* ChapterCellView.xib in Resources */,
-				3112B33F1C7FA26600CE6438 /* ChapterCell.xib in Resources */,
+				317A61E81C8E1BC9001695F0 /* ChapterCellView.xib in Resources */,
+				317A61E61C8E1BC9001695F0 /* ChapterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,10 +528,12 @@
 				315E7E261C6D403F00C2A326 /* MNAVChapterReader.m in Sources */,
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
 				315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */,
+				312A10811C8B292400805059 /* CopyButton.swift in Sources */,
 				315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */,
 				315D383C1C7A637C0012CA1A /* StatusItemView.swift in Sources */,
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
 				315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */,
+				317A61F01C8F61C8001695F0 /* Int+PCH.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
 				315D38481C7CDDF60012CA1A /* OtherContentViewModel.swift in Sources */,
 				31C430621C6A7644000E77BA /* NSDistributedNotificationCenter+PCH.swift in Sources */,
@@ -494,6 +544,7 @@
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */,
 				315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */,
+				317A61EC1C8E1BFD001695F0 /* PlaybackIndicatorBarLayer.swift in Sources */,
 				31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */,
 				315D38451C7CDD660012CA1A /* OtherContentViewController.swift in Sources */,
 				319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */,
@@ -503,27 +554,34 @@
 				31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */,
 				314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */,
 				31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */,
-				3112B33E1C7FA26600CE6438 /* ChapterCell.swift in Sources */,
+				317A61E71C8E1BC9001695F0 /* ChapterCellView.swift in Sources */,
 				31A468901C667491004858F5 /* CrashReportBootstrapping.swift in Sources */,
 				31A4688E1C666FC5004858F5 /* ApplicationBootstrapping.swift in Sources */,
 				31A468791C6645FF004858F5 /* NSStatusItem+PCH.swift in Sources */,
 				31A468971C6676D0004858F5 /* ChaptersViewController.swift in Sources */,
 				315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */,
 				31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */,
-				317659D91C83990C001D30D3 /* ChapterCellView.swift in Sources */,
 				315D38381C79194D0012CA1A /* NSBundle+PCH.swift in Sources */,
 				315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */,
+				312A107D1C862B6400805059 /* CollectionView.swift in Sources */,
+				317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */,
+				312A107F1C864DEC00805059 /* LineView.swift in Sources */,
+				31B2C7F81C95DEC200C874C7 /* NSTextField+PCH.m in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
 				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
+				317A61EA1C8E1BE8001695F0 /* PlaybackIndicatorView.swift in Sources */,
 				315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */,
 				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,
 				319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */,
 				3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */,
 				315D382E1C78EFBE0012CA1A /* Notification.swift in Sources */,
-				314195531C766D5900268AFC /* ChapterHeightCalculator.swift in Sources */,
+				317A61E51C8E1BC9001695F0 /* ChapterCell.swift in Sources */,
+				314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
+				317A61EE1C8E40A9001695F0 /* PlaybackAnimations.swift in Sources */,
 				31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */,
+				317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

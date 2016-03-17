@@ -11,8 +11,15 @@ import Foundation
 class PasteBoard {
 
     class func copy(content: String) {
+        var processed = content.stringByReplacingOccurrencesOfString("\"", withString: "")
+
+        if let regex = try? NSRegularExpression(pattern: "\\[.*\\]", options: .CaseInsensitive) {
+            let range = NSRange(location: 0, length: processed.characters.count)
+            processed = regex.stringByReplacingMatchesInString(processed, options: .WithTransparentBounds, range: range, withTemplate: "")
+        }
+
         let pasteBoard = NSPasteboard.generalPasteboard()
         pasteBoard.clearContents()
-        pasteBoard.setString(content, forType: NSPasteboardTypeString)
+        pasteBoard.setString(processed, forType: NSPasteboardTypeString)
     }
 }

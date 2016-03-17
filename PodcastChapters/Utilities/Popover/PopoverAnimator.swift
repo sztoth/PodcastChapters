@@ -18,10 +18,6 @@ enum PopoverAnimationDirection {
 class PopoverAnimator {
 
     private(set) var animating = false
-
-    private let duration = 0.21
-    private let distance = 8.0
-    private let timingFunction = CAMediaTimingFunction.EaseInEaseOut
 }
 
 extension PopoverAnimator {
@@ -34,7 +30,7 @@ extension PopoverAnimator {
         animating = true
 
         var calculatedFrame = window.frame
-        calculatedFrame.origin.y += CGFloat(distance)
+        calculatedFrame.origin.y += CGFloat(AnimationSettings.distance)
 
         let alpha: Double
         let startFrame, endFrame: NSRect
@@ -52,8 +48,8 @@ extension PopoverAnimator {
         window.setFrame(startFrame, display: true)
 
         NSAnimationContext.runAnimationGroup({ context in
-            context.duration = self.duration
-            context.timingFunction = self.timingFunction
+            context.duration = AnimationSettings.duration
+            context.timingFunction = AnimationSettings.timing
 
             let animator = window.animator()
             animator.setFrame(endFrame, display: false)

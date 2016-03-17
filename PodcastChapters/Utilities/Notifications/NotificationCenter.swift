@@ -27,7 +27,7 @@ class NotificationCenter: NSObject {
 
 private extension NotificationCenter {
 
-    func performActionWithIdentif(identifier: String?) {
+    func performActionWithIdentifier(identifier: String?) {
         if let identifier = identifier, notification = notifications.filter({ $0.identifier == identifier }).first {
             notification.actionHandler()
 
@@ -57,7 +57,7 @@ extension NotificationCenter {
         notifications.append(notification)
         userNotificationCenter.deliverNotification(userNotification)
 
-        timer = Timer(interval: 30.0) { [weak self] _ in
+        timer = Timer(interval: 90.0) { [weak self] _ in
             self?.clearAllNotifications()
         }
     }
@@ -71,7 +71,7 @@ extension NotificationCenter: NSUserNotificationCenterDelegate {
 
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
         if notification.activationType == .ActionButtonClicked {
-            performActionWithIdentif(notification.identifier)
+            performActionWithIdentifier(notification.identifier)
         }
     }
 }

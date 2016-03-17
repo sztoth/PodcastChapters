@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OtherContentViewController" customModule="PodcastChapters" customModuleProvider="target">
             <connections>
+                <outlet property="messageLabel" destination="6EJ-RW-g9X" id="72K-mr-1eU"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -17,8 +18,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-RW-g9X">
-                    <rect key="frame" x="76" y="128" width="329" height="17"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Sorry, but the current item in iTunes is not a podcast." id="qB6-k0-tLn">
+                    <rect key="frame" x="183" y="128" width="115" height="17"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="This the message" id="qB6-k0-tLn">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
