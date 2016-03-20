@@ -40,6 +40,7 @@
 		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
 		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
 		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
+		315FD1671C9F5991001BF6E2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1661C9F5991001BF6E2 /* main.swift */; };
 		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
 		317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DB1C8CC806001695F0 /* SharedSettings.swift */; };
 		317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */; };
@@ -57,7 +58,6 @@
 		319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */; };
 		31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4685A1C651F51004858F5 /* AppDelegate.swift */; };
 		31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685C1C651F51004858F5 /* Assets.xcassets */; };
-		31A468601C651F51004858F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685E1C651F51004858F5 /* MainMenu.xib */; };
 		31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468721C66455C004858F5 /* AppCoordinator.swift */; };
 		31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468741C664568004858F5 /* StatusBarCoordinator.swift */; };
 		31A468791C6645FF004858F5 /* NSStatusItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */; };
@@ -146,6 +146,7 @@
 		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
+		315FD1661C9F5991001BF6E2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
 		317A61DB1C8CC806001695F0 /* SharedSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
 		317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+PCH.swift"; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 		31A468571C651F51004858F5 /* PodcastChapters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastChapters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A4685A1C651F51004858F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A4685C1C651F51004858F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		31A4685F1C651F51004858F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		31A468611C651F51004858F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A468721C66455C004858F5 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		31A468741C664568004858F5 /* StatusBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarCoordinator.swift; sourceTree = "<group>"; };
@@ -296,11 +296,11 @@
 			children = (
 				31A4685A1C651F51004858F5 /* AppDelegate.swift */,
 				31A4685C1C651F51004858F5 /* Assets.xcassets */,
-				31A4685E1C651F51004858F5 /* MainMenu.xib */,
 				31A4686B1C654E5E004858F5 /* Controllers */,
 				31A4686F1C66451D004858F5 /* UI */,
 				31A468681C654D8D004858F5 /* Utilities */,
 				31A468611C651F51004858F5 /* Info.plist */,
+				315FD1661C9F5991001BF6E2 /* main.swift */,
 				31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */,
 				31A4687B1C664D8F004858F5 /* Cartfile */,
 			);
@@ -510,7 +510,6 @@
 			files = (
 				31A468981C6676D0004858F5 /* ChaptersViewController.xib in Resources */,
 				31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */,
-				31A468601C651F51004858F5 /* MainMenu.xib in Resources */,
 				315D38461C7CDD660012CA1A /* OtherContentViewController.xib in Resources */,
 				317A61E81C8E1BC9001695F0 /* ChapterCellView.xib in Resources */,
 				317A61E61C8E1BC9001695F0 /* ChapterCell.xib in Resources */,
@@ -541,6 +540,7 @@
 				31C430601C695333000E77BA /* iTunes.swift in Sources */,
 				315D38291C778DD60012CA1A /* NSCollectionViewItem+PCH.swift in Sources */,
 				31A4688C1C666C95004858F5 /* Bootstrapping.swift in Sources */,
+				315FD1671C9F5991001BF6E2 /* main.swift in Sources */,
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */,
 				315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */,
@@ -586,17 +586,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		31A4685E1C651F51004858F5 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				31A4685F1C651F51004858F5 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		31A468621C651F51004858F5 /* Debug */ = {
