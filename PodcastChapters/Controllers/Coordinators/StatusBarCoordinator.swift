@@ -13,11 +13,13 @@ class StatusBarCoordinator {
 
     private let popover: Popover
     private let statusBarItem: StatusBarItem
+    private let application: NSApplicationProtocol
     private let disposeBag = DisposeBag()
 
-    init(popover: Popover, statusBarItem: StatusBarItem) {
+    init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplicationProtocol = NSApplication.sharedApplication()) {
         self.popover = popover
         self.statusBarItem = statusBarItem
+        self.application = application
 
         self.statusBarItem.event
             .subscribeNext { event in
@@ -27,7 +29,7 @@ class StatusBarCoordinator {
                 case .Close:
                     self.popover.dismiss()
                 case .Quit:
-                    NSApplication.sharedApplication().terminate(nil)
+                    self.application.terminate(nil)
                 case .OpenSettings:
                     print("Later")
                 }
