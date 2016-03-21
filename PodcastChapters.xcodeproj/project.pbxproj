@@ -997,6 +997,7 @@
 				315FD1751C9F6153001BF6E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31A468521C651F51004858F5 /* Build configuration list for PBXProject "PodcastChapters" */ = {
 			isa = XCConfigurationList;

@@ -17,17 +17,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.4.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016. Szabolcs Toth. All rights reserved.</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2016. Szabolcs Toth. All rights reserved.</string>
 	<key>NSUserNotificationAlertStyle</key>
 	<string>alert</string>
 </dict>
