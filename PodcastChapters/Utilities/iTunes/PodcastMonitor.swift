@@ -40,7 +40,7 @@ class PodcastMonitor {
             if let index = currentChapterIndex, chapters = chapters {
                 let currentItem = chapters.list[index]
                 let notification = Notification(description: currentItem.title, image: currentItem.artwork) {
-                    PasteBoard.copy(currentItem.title)
+                    self.pasteBoard.copy(currentItem.title)
                 }
                 notificationCenter.deliverNotification(notification)
             }
@@ -53,11 +53,13 @@ class PodcastMonitor {
     private let _chapterChanged = PublishSubject<(Int?, Int?)>()
     private let iTunes: iTunesApp
     private let notificationCenter: NotificationCenter
+    private let pasteBoard: PasteBoard
     private let disposeBag = DisposeBag()
 
-    init(iTunes: iTunesApp = iTunesApp(), notificationCenter: NotificationCenter = NotificationCenter.sharedInstance) {
+    init(iTunes: iTunesApp = iTunesApp(), notificationCenter: NotificationCenter = NotificationCenter.sharedInstance, pasteBoard: PasteBoard = PasteBoard()) {
         self.iTunes = iTunes
         self.notificationCenter = notificationCenter
+        self.pasteBoard = pasteBoard
 
         self.iTunes.playerState
             .subscribeNext { state in

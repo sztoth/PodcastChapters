@@ -29,10 +29,12 @@ class ChaptersViewModel {
     }
 
     private let podcastMonitor: PodcastMonitor
+    private let pasteBoard: PasteBoard
     private let disposeBag = DisposeBag()
 
-    init(podcastMonitor: PodcastMonitor = PodcastMonitor()) {
+    init(podcastMonitor: PodcastMonitor = PodcastMonitor(), pasteBoard: PasteBoard = PasteBoard()) {
         self.podcastMonitor = podcastMonitor
+        self.pasteBoard = pasteBoard
 
         self.podcastMonitor.chapterChanged
             .subscribeNext { [unowned self] _ in
@@ -49,7 +51,7 @@ class ChaptersViewModel {
 extension ChaptersViewModel {
 
     func copyCurrentChapterTitleToClipboard() {
-        PasteBoard.copy(title.value)
+        pasteBoard.copy(title.value)
     }
 }
 

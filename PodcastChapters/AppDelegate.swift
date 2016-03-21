@@ -8,10 +8,7 @@
 
 import Cocoa
 
-@NSApplicationMain
 class AppDelegate: NSObject {
-
-    @IBOutlet weak var window: NSWindow!
 
     private var coordinator: AppCoordinator?
 }

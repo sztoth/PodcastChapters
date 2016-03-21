@@ -22,7 +22,6 @@
 		315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382B1C78EFA90012CA1A /* NotificationCenter.swift */; };
 		315D382E1C78EFBE0012CA1A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382D1C78EFBE0012CA1A /* Notification.swift */; };
 		315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382F1C7906A20012CA1A /* NSUserNotificationBuilder.swift */; };
-		315D38321C790E650012CA1A /* PasteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38311C790E650012CA1A /* PasteBoard.swift */; };
 		315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */; };
 		315D38381C79194D0012CA1A /* NSBundle+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38371C79194D0012CA1A /* NSBundle+PCH.swift */; };
 		315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */; };
@@ -40,6 +39,19 @@
 		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
 		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
 		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
+		315FD1671C9F5991001BF6E2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1661C9F5991001BF6E2 /* main.swift */; };
+		315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468871C665486004858F5 /* RxCocoa.framework */; };
+		315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468831C665481004858F5 /* RxSwift.framework */; };
+		315FD1901C9F61DF001BF6E2 /* ContentCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */; };
+		315FD1911C9F61DF001BF6E2 /* PodcastMonitorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */; };
+		315FD1921C9F61DF001BF6E2 /* PopoverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */; };
+		315FD1941C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */; };
+		315FD1961C9F6BE8001BF6E2 /* StatusBarItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */; };
+		315FD1981C9F6C6E001BF6E2 /* NSApplicationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */; };
+		315FD19A1CA08DA6001BF6E2 /* NSApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */; };
+		315FD19C1CA09034001BF6E2 /* ChaptersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */; };
+		315FD1A01CA09470001BF6E2 /* PasteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19E1CA09470001BF6E2 /* PasteBoard.swift */; };
+		315FD1A11CA09470001BF6E2 /* PasteBoardContentStripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19F1CA09470001BF6E2 /* PasteBoardContentStripper.swift */; };
 		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
 		317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DB1C8CC806001695F0 /* SharedSettings.swift */; };
 		317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */; };
@@ -57,7 +69,6 @@
 		319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */; };
 		31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4685A1C651F51004858F5 /* AppDelegate.swift */; };
 		31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685C1C651F51004858F5 /* Assets.xcassets */; };
-		31A468601C651F51004858F5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31A4685E1C651F51004858F5 /* MainMenu.xib */; };
 		31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468721C66455C004858F5 /* AppCoordinator.swift */; };
 		31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468741C664568004858F5 /* StatusBarCoordinator.swift */; };
 		31A468791C6645FF004858F5 /* NSStatusItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A468781C6645FF004858F5 /* NSStatusItem+PCH.swift */; };
@@ -83,6 +94,16 @@
 		31C430641C6A8101000E77BA /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430631C6A8101000E77BA /* Timer.swift */; };
 		31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C430651C6A9447000E77BA /* NSTimer+PCH.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		315FD1711C9F6153001BF6E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31A4684F1C651F51004858F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31A468561C651F51004858F5;
+			remoteInfo = PodcastChapters;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		31A4687E1C665418004858F5 /* Carthage Copy dSYM Files */ = {
@@ -127,7 +148,6 @@
 		315D382B1C78EFA90012CA1A /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		315D382D1C78EFBE0012CA1A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		315D382F1C7906A20012CA1A /* NSUserNotificationBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserNotificationBuilder.swift; sourceTree = "<group>"; };
-		315D38311C790E650012CA1A /* PasteBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoard.swift; sourceTree = "<group>"; };
 		315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleInstanceAlert.swift; sourceTree = "<group>"; };
 		315D38371C79194D0012CA1A /* NSBundle+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+PCH.swift"; sourceTree = "<group>"; };
 		315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRunningApplication+PCH.swift"; sourceTree = "<group>"; };
@@ -146,6 +166,20 @@
 		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
+		315FD1661C9F5991001BF6E2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		315FD16C1C9F6153001BF6E2 /* PodcastChaptersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastChaptersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		315FD1761C9F6176001BF6E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCoordinatorTests.swift; sourceTree = "<group>"; };
+		315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitorMock.swift; sourceTree = "<group>"; };
+		315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMock.swift; sourceTree = "<group>"; };
+		315FD1841C9F61DF001BF6E2 /* PodcastChaptersTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PodcastChaptersTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarCoordinatorTests.swift; sourceTree = "<group>"; };
+		315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarItemMock.swift; sourceTree = "<group>"; };
+		315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSApplicationMock.swift; sourceTree = "<group>"; };
+		315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+PCH.swift"; sourceTree = "<group>"; };
+		315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersViewModelTests.swift; sourceTree = "<group>"; };
+		315FD19E1CA09470001BF6E2 /* PasteBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoard.swift; sourceTree = "<group>"; };
+		315FD19F1CA09470001BF6E2 /* PasteBoardContentStripper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoardContentStripper.swift; sourceTree = "<group>"; };
 		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
 		317A61DB1C8CC806001695F0 /* SharedSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
 		317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+PCH.swift"; sourceTree = "<group>"; };
@@ -164,7 +198,6 @@
 		31A468571C651F51004858F5 /* PodcastChapters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastChapters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A4685A1C651F51004858F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31A4685C1C651F51004858F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		31A4685F1C651F51004858F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		31A468611C651F51004858F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31A468721C66455C004858F5 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		31A468741C664568004858F5 /* StatusBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarCoordinator.swift; sourceTree = "<group>"; };
@@ -194,6 +227,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		315FD1691C9F6153001BF6E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */,
+				315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31A468541C651F51004858F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +283,152 @@
 			path = MNAVChapters;
 			sourceTree = "<group>";
 		};
+		315FD16D1C9F6153001BF6E2 /* PodcastChaptersTests */ = {
+			isa = PBXGroup;
+			children = (
+				315FD17D1C9F61DF001BF6E2 /* Controllers */,
+				315FD1811C9F61DF001BF6E2 /* Mocks */,
+				315FD1851C9F61DF001BF6E2 /* UI */,
+				315FD1881C9F61DF001BF6E2 /* Utilities */,
+				315FD1761C9F6176001BF6E2 /* Info.plist */,
+				315FD1841C9F61DF001BF6E2 /* PodcastChaptersTests-Bridging-Header.h */,
+			);
+			path = PodcastChaptersTests;
+			sourceTree = "<group>";
+		};
+		315FD17D1C9F61DF001BF6E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				315FD17E1C9F61DF001BF6E2 /* Coordinators */,
+				315FD1801C9F61DF001BF6E2 /* ViewModels */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		315FD17E1C9F61DF001BF6E2 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */,
+				315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		315FD1801C9F61DF001BF6E2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		315FD1811C9F61DF001BF6E2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */,
+				315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */,
+				315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */,
+				315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		315FD1851C9F61DF001BF6E2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				315FD1861C9F61DF001BF6E2 /* ViewControllers */,
+				315FD1871C9F61DF001BF6E2 /* Views */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		315FD1861C9F61DF001BF6E2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		315FD1871C9F61DF001BF6E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		315FD1881C9F61DF001BF6E2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				315FD1891C9F61DF001BF6E2 /* Bootstrapping */,
+				315FD18A1C9F61DF001BF6E2 /* Extensions */,
+				315FD18B1C9F61DF001BF6E2 /* iTunes */,
+				315FD18C1C9F61DF001BF6E2 /* Misc */,
+				315FD18D1C9F61DF001BF6E2 /* MNAVChapters */,
+				315FD18E1C9F61DF001BF6E2 /* Notifications */,
+				315FD18F1C9F61DF001BF6E2 /* Popover */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		315FD1891C9F61DF001BF6E2 /* Bootstrapping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bootstrapping;
+			sourceTree = "<group>";
+		};
+		315FD18A1C9F61DF001BF6E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		315FD18B1C9F61DF001BF6E2 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = iTunes;
+			sourceTree = "<group>";
+		};
+		315FD18C1C9F61DF001BF6E2 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		315FD18D1C9F61DF001BF6E2 /* MNAVChapters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MNAVChapters;
+			sourceTree = "<group>";
+		};
+		315FD18E1C9F61DF001BF6E2 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		315FD18F1C9F61DF001BF6E2 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		315FD19D1CA09470001BF6E2 /* Pasteboard */ = {
+			isa = PBXGroup;
+			children = (
+				315FD19E1CA09470001BF6E2 /* PasteBoard.swift */,
+				315FD19F1CA09470001BF6E2 /* PasteBoardContentStripper.swift */,
+			);
+			name = Pasteboard;
+			path = PodcastChapters/Utilities/Pasteboard;
+			sourceTree = SOURCE_ROOT;
+		};
 		317A61DF1C8E1BC9001695F0 /* ChapterCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +467,7 @@
 			children = (
 				31A4688A1C66548E004858F5 /* Frameworks */,
 				31A468591C651F51004858F5 /* PodcastChapters */,
+				315FD16D1C9F6153001BF6E2 /* PodcastChaptersTests */,
 				31A468581C651F51004858F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -287,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				31A468571C651F51004858F5 /* PodcastChapters.app */,
+				315FD16C1C9F6153001BF6E2 /* PodcastChaptersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,11 +486,11 @@
 			children = (
 				31A4685A1C651F51004858F5 /* AppDelegate.swift */,
 				31A4685C1C651F51004858F5 /* Assets.xcassets */,
-				31A4685E1C651F51004858F5 /* MainMenu.xib */,
 				31A4686B1C654E5E004858F5 /* Controllers */,
 				31A4686F1C66451D004858F5 /* UI */,
 				31A468681C654D8D004858F5 /* Utilities */,
 				31A468611C651F51004858F5 /* Info.plist */,
+				315FD1661C9F5991001BF6E2 /* main.swift */,
 				31A468A21C67DD2F004858F5 /* PodcastChapters-Bridging-Header.h */,
 				31A4687B1C664D8F004858F5 /* Cartfile */,
 			);
@@ -316,6 +506,7 @@
 				31A468771C6645AF004858F5 /* Misc */,
 				315E7E231C6D403F00C2A326 /* MNAVChapters */,
 				315D382A1C78EFA90012CA1A /* Notifications */,
+				315FD19D1CA09470001BF6E2 /* Pasteboard */,
 				314195451C73AEEE00268AFC /* Popover */,
 			);
 			path = Utilities;
@@ -397,6 +588,7 @@
 			children = (
 				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
 				317A61EF1C8F61C8001695F0 /* Int+PCH.swift */,
+				315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */,
 				315D38371C79194D0012CA1A /* NSBundle+PCH.swift */,
 				315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */,
 				317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */,
@@ -423,7 +615,6 @@
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
 				3112B3401C7FA60600CE6438 /* FlowLayout.swift */,
 				315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */,
-				315D38311C790E650012CA1A /* PasteBoard.swift */,
 				315D383D1C7A69A80012CA1A /* RightClickMenu.swift */,
 				317A61DB1C8CC806001695F0 /* SharedSettings.swift */,
 				31A4689D1C67A96E004858F5 /* StatusBarItem.swift */,
@@ -451,6 +642,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		315FD16B1C9F6153001BF6E2 /* PodcastChaptersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 315FD1731C9F6153001BF6E2 /* Build configuration list for PBXNativeTarget "PodcastChaptersTests" */;
+			buildPhases = (
+				315FD1681C9F6153001BF6E2 /* Sources */,
+				315FD1691C9F6153001BF6E2 /* Frameworks */,
+				315FD16A1C9F6153001BF6E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				315FD1721C9F6153001BF6E2 /* PBXTargetDependency */,
+			);
+			name = PodcastChaptersTests;
+			productName = PodcastChaptersTests;
+			productReference = 315FD16C1C9F6153001BF6E2 /* PodcastChaptersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		31A468561C651F51004858F5 /* PodcastChapters */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31A468641C651F51004858F5 /* Build configuration list for PBXNativeTarget "PodcastChapters" */;
@@ -480,6 +689,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Szabolcs Toth";
 				TargetAttributes = {
+					315FD16B1C9F6153001BF6E2 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 31A468561C651F51004858F5;
+					};
 					31A468561C651F51004858F5 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -499,18 +712,25 @@
 			projectRoot = "";
 			targets = (
 				31A468561C651F51004858F5 /* PodcastChapters */,
+				315FD16B1C9F6153001BF6E2 /* PodcastChaptersTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		315FD16A1C9F6153001BF6E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31A468551C651F51004858F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				31A468981C6676D0004858F5 /* ChaptersViewController.xib in Resources */,
 				31A4685D1C651F51004858F5 /* Assets.xcassets in Resources */,
-				31A468601C651F51004858F5 /* MainMenu.xib in Resources */,
 				315D38461C7CDD660012CA1A /* OtherContentViewController.xib in Resources */,
 				317A61E81C8E1BC9001695F0 /* ChapterCellView.xib in Resources */,
 				317A61E61C8E1BC9001695F0 /* ChapterCell.xib in Resources */,
@@ -520,6 +740,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		315FD1681C9F6153001BF6E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				315FD1901C9F61DF001BF6E2 /* ContentCoordinatorTests.swift in Sources */,
+				315FD1981C9F6C6E001BF6E2 /* NSApplicationMock.swift in Sources */,
+				315FD1911C9F61DF001BF6E2 /* PodcastMonitorMock.swift in Sources */,
+				315FD19C1CA09034001BF6E2 /* ChaptersViewModelTests.swift in Sources */,
+				315FD1941C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift in Sources */,
+				315FD1961C9F6BE8001BF6E2 /* StatusBarItemMock.swift in Sources */,
+				315FD1921C9F61DF001BF6E2 /* PopoverMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31A468531C651F51004858F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,6 +767,7 @@
 				315D383C1C7A637C0012CA1A /* StatusItemView.swift in Sources */,
 				315E7E221C6D327500C2A326 /* NSNumber+PCH.swift in Sources */,
 				315D383E1C7A69A80012CA1A /* RightClickMenu.swift in Sources */,
+				315FD1A11CA09470001BF6E2 /* PasteBoardContentStripper.swift in Sources */,
 				317A61F01C8F61C8001695F0 /* Int+PCH.swift in Sources */,
 				315E7E1D1C6AA20A00C2A326 /* SBApplication+PCH.swift in Sources */,
 				315D38481C7CDDF60012CA1A /* OtherContentViewModel.swift in Sources */,
@@ -541,6 +776,7 @@
 				31C430601C695333000E77BA /* iTunes.swift in Sources */,
 				315D38291C778DD60012CA1A /* NSCollectionViewItem+PCH.swift in Sources */,
 				31A4688C1C666C95004858F5 /* Bootstrapping.swift in Sources */,
+				315FD1671C9F5991001BF6E2 /* main.swift in Sources */,
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */,
 				315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */,
@@ -550,7 +786,6 @@
 				319AC45A1C67ECF100871B4C /* iTunesApp.swift in Sources */,
 				3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */,
 				314195471C73AF0C00268AFC /* Popover.swift in Sources */,
-				315D38321C790E650012CA1A /* PasteBoard.swift in Sources */,
 				31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */,
 				314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */,
 				31A4689C1C67A47E004858F5 /* EventMonitor.swift in Sources */,
@@ -568,6 +803,7 @@
 				312A107F1C864DEC00805059 /* LineView.swift in Sources */,
 				31B2C7F81C95DEC200C874C7 /* NSTextField+PCH.m in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
+				315FD19A1CA08DA6001BF6E2 /* NSApplication+PCH.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
 				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
 				317A61EA1C8E1BE8001695F0 /* PlaybackIndicatorView.swift in Sources */,
@@ -579,6 +815,7 @@
 				317A61E51C8E1BC9001695F0 /* ChapterCell.swift in Sources */,
 				314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
+				315FD1A01CA09470001BF6E2 /* PasteBoard.swift in Sources */,
 				317A61EE1C8E40A9001695F0 /* PlaybackAnimations.swift in Sources */,
 				31C430661C6A9447000E77BA /* NSTimer+PCH.swift in Sources */,
 				317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */,
@@ -587,18 +824,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		31A4685E1C651F51004858F5 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				31A4685F1C651F51004858F5 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		315FD1721C9F6153001BF6E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31A468561C651F51004858F5 /* PodcastChapters */;
+			targetProxy = 315FD1711C9F6153001BF6E2 /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		315FD1741C9F6153001BF6E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = PodcastChaptersTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.iszabi.PodcastChaptersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PodcastChaptersTests/PodcastChaptersTests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PodcastChapters.app/Contents/MacOS/PodcastChapters";
+			};
+			name = Debug;
+		};
+		315FD1751C9F6153001BF6E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = PodcastChaptersTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.iszabi.PodcastChaptersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PodcastChaptersTests/PodcastChaptersTests-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PodcastChapters.app/Contents/MacOS/PodcastChapters";
+			};
+			name = Release;
+		};
 		31A468621C651F51004858F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -720,6 +990,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		315FD1731C9F6153001BF6E2 /* Build configuration list for PBXNativeTarget "PodcastChaptersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				315FD1741C9F6153001BF6E2 /* Debug */,
+				315FD1751C9F6153001BF6E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		31A468521C651F51004858F5 /* Build configuration list for PBXProject "PodcastChapters" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
