@@ -11,6 +11,7 @@
 		312A107D1C862B6400805059 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107C1C862B6400805059 /* CollectionView.swift */; };
 		312A107F1C864DEC00805059 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107E1C864DEC00805059 /* LineView.swift */; };
 		312A10811C8B292400805059 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A10801C8B292400805059 /* CopyButton.swift */; };
+		312DFF701CA1F632000EC5EB /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312DFF6F1CA1F632000EC5EB /* Chapter.swift */; };
 		314195471C73AF0C00268AFC /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195461C73AF0C00268AFC /* Popover.swift */; };
 		314195491C73AF1500268AFC /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195481C73AF1500268AFC /* PopoverWindow.swift */; };
 		3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */; };
@@ -38,7 +39,7 @@
 		315E7E261C6D403F00C2A326 /* MNAVChapterReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */; };
 		315E7E281C6D40A700C2A326 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E271C6D40A700C2A326 /* AVFoundation.framework */; };
 		315E7E2A1C6D40BC00C2A326 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315E7E291C6D40BC00C2A326 /* CoreMedia.framework */; };
-		315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* Chapters.swift */; };
+		315E7E2C1C6D437300C2A326 /* ChapterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315E7E2B1C6D437300C2A326 /* ChapterParser.swift */; };
 		315FD1671C9F5991001BF6E2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1661C9F5991001BF6E2 /* main.swift */; };
 		315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468871C665486004858F5 /* RxCocoa.framework */; };
 		315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468831C665481004858F5 /* RxSwift.framework */; };
@@ -137,6 +138,7 @@
 		312A107C1C862B6400805059 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		312A107E1C864DEC00805059 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		312A10801C8B292400805059 /* CopyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
+		312DFF6F1CA1F632000EC5EB /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		314195461C73AF0C00268AFC /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		314195481C73AF1500268AFC /* PopoverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 		3141954A1C73AF3400268AFC /* PopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverBackgroundView.swift; sourceTree = "<group>"; };
@@ -165,7 +167,7 @@
 		315E7E251C6D403F00C2A326 /* MNAVChapterReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNAVChapterReader.m; sourceTree = "<group>"; };
 		315E7E271C6D40A700C2A326 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		315E7E291C6D40BC00C2A326 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		315E7E2B1C6D437300C2A326 /* Chapters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
+		315E7E2B1C6D437300C2A326 /* ChapterParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterParser.swift; sourceTree = "<group>"; };
 		315FD1661C9F5991001BF6E2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		315FD16C1C9F6153001BF6E2 /* PodcastChaptersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastChaptersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		315FD1761C9F6176001BF6E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -453,7 +455,8 @@
 		319AC4531C67E7EA00871B4C /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
-				315E7E2B1C6D437300C2A326 /* Chapters.swift */,
+				312DFF6F1CA1F632000EC5EB /* Chapter.swift */,
+				315E7E2B1C6D437300C2A326 /* ChapterParser.swift */,
 				31C4305F1C695333000E77BA /* iTunes.swift */,
 				319AC4591C67ECF100871B4C /* iTunesApp.swift */,
 				315E7E1E1C6D1F5F00C2A326 /* iTunesLibrary.swift */,
@@ -797,7 +800,7 @@
 				315E7E1F1C6D1F5F00C2A326 /* iTunesLibrary.swift in Sources */,
 				31A4689E1C67A96E004858F5 /* StatusBarItem.swift in Sources */,
 				315D38381C79194D0012CA1A /* NSBundle+PCH.swift in Sources */,
-				315E7E2C1C6D437300C2A326 /* Chapters.swift in Sources */,
+				315E7E2C1C6D437300C2A326 /* ChapterParser.swift in Sources */,
 				312A107D1C862B6400805059 /* CollectionView.swift in Sources */,
 				317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */,
 				312A107F1C864DEC00805059 /* LineView.swift in Sources */,
@@ -808,6 +811,7 @@
 				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
 				317A61EA1C8E1BE8001695F0 /* PlaybackIndicatorView.swift in Sources */,
 				315D38401C7A7C390012CA1A /* NSNotificationCenter+PCH.swift in Sources */,
+				312DFF701CA1F632000EC5EB /* Chapter.swift in Sources */,
 				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,
 				319AC4561C67E7EA00871B4C /* PodcastMonitor.swift in Sources */,
 				3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */,
@@ -997,6 +1001,7 @@
 				315FD1751C9F6153001BF6E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31A468521C651F51004858F5 /* Build configuration list for PBXProject "PodcastChapters" */ = {
 			isa = XCConfigurationList;

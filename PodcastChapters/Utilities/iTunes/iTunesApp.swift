@@ -47,11 +47,13 @@ struct iTunesMediaItem {
     let persistentID: String
     let artist: String
     let name: String
+    let artwork: NSImage?
 
-    init(persistentID: NSString, artist: NSString, name: NSString) {
+    init(persistentID: NSString, artist: NSString, name: NSString, artwork: NSImage?) {
         self.persistentID = persistentID as String
         self.artist = artist as String
         self.name = name as String
+        self.artwork = artwork
     }
 }
 
@@ -96,10 +98,6 @@ class iTunesApp {
     deinit {
         notificationCenter.removeObserver(self)
     }
-
-    @objc func testMethod() {
-        print("It is alive")
-    }
 }
 
 private extension iTunesApp {
@@ -132,7 +130,12 @@ private extension iTunesApp {
             name = iTunes.currentTrack?.name,
             podcast = iTunes.currentTrack?.podcast
         {
-            let mediaItem = iTunesMediaItem(persistentID: persistentID, artist: artist, name: name)
+            var artwork: NSImage? = nil
+            if let cover = iTunes.currentTrack?.artworks?().first {
+                artwork = cover.data
+            }
+
+            let mediaItem = iTunesMediaItem(persistentID: persistentID, artist: artist, name: name, artwork: artwork)
             nowPlaying = podcast ? iTunesNowPlaying.Podcast(mediaItem) : iTunesNowPlaying.Other(mediaItem)
         }
 

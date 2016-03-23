@@ -33,7 +33,7 @@ class RightClickMenu: NSMenu {
 //        let separator = NSMenuItem.separatorItem()
 //        addItem(separator)
 
-        let quitItem = NSMenuItem(title: "Quit", action: "quitSelected", keyEquivalent: "")
+        let quitItem = NSMenuItem(title: "Quit", action: #selector(quitSelected), keyEquivalent: "")
         quitItem.target = self
         addItem(quitItem)
     }

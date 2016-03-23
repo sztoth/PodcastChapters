@@ -16,7 +16,7 @@ extension NSTimer {
         let timer = NSTimer(
             timeInterval: timeInterval,
             target: self,
-            selector: "pch_timerFired:",
+            selector: #selector(pch_timerFired(_:)),
             userInfo: TimerData(repeats: repeats, action: action),
             repeats: repeats)
 

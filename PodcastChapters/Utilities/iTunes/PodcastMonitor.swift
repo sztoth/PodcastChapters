@@ -19,15 +19,11 @@ class PodcastMonitor {
         return _isPlaying.asObservable()
     }
 
-    var podcastChanged: Observable<Void> {
-        return _podcastChanged.asObservable()
-    }
-
     var chapterChanged: Observable<(Int?, Int?)> {
         return _chapterChanged.asObservable()
     }
 
-    private(set) var chapters: Chapters? {
+    private(set) var chapters: [Chapter]? {
         didSet {
             _chapterChanged.onNext((nil, nil))
         }
@@ -35,12 +31,12 @@ class PodcastMonitor {
 
     private(set) var currentChapterIndex: Int? {
         didSet {
-            _chapterChanged.onNext((oldValue, currentChapterIndex))
+            if let index = currentChapterIndex, chapters = chapters where oldValue != index {
+                _chapterChanged.onNext((oldValue, index))
 
-            if let index = currentChapterIndex, chapters = chapters {
-                let currentItem = chapters.list[index]
-                let notification = Notification(description: currentItem.title, image: currentItem.artwork) {
-                    self.pasteBoard.copy(currentItem.title)
+                let chapter = chapters[index]
+                let notification = Notification(description: chapter.title, image: chapter.cover) {
+                    self.pasteBoard.copy(chapter.title)
                 }
                 notificationCenter.deliverNotification(notification)
             }
@@ -85,27 +81,33 @@ class PodcastMonitor {
             .subscribeNext { item in
                 if case .Podcast(let mediaItem) = item {
                     self._isPodcast.onNext(true)
-                    self._podcastChanged.onNext()
 
                     iTunesLibrary.fetchURLForPesistentID(mediaItem.persistentID)
                         .subscribe { event in
-                            switch event {
-                            case .Next(let URL):
-                                Chapters.chaptersFromAsset(AVAsset(URL: URL))
+                            if case .Next(let URL) = event {
+                                ChapterParser.chaptersFromAsset(AVAsset(URL: URL))
                                     .subscribeNext { chapters in
-                                        self.chapters = chapters
+                                        if let chapters = chapters where 0 < chapters.count {
+                                            self.chapters = chapters.map { chapter in
+                                                let cover = chapter.artwork != nil ? chapter.artwork : mediaItem.artwork
+                                                return Chapter(cover: cover, title: chapter.title, start: chapter.time, duration: chapter.duration)
+                                            }
+                                        }
+                                        else {
+                                            let chapter = Chapter(cover: mediaItem.artwork, title: mediaItem.name, start: nil, duration: nil)
+                                            self.chapters = [chapter]
+                                        }
                                     }
                                     .addDisposableTo(self.disposeBag)
-                            case .Error(let error):
-                                print("Error: \(error)")
-                            default:
-                                print("Default")
+                            }
+                            else if case .Error = event {
+                                self.reset()
                             }
                         }
                         .addDisposableTo(self.disposeBag)
                 }
                 else {
-                    self.resetChapters()
+                    self.reset()
                 }
             }
             .addDisposableTo(disposeBag)
@@ -120,23 +122,23 @@ private extension PodcastMonitor {
             return
         }
 
-        if let index = chapters.chapterIndexForPosition(position) {
-            if let currentIndex = currentChapterIndex {
-                if currentIndex != index {
-                    currentChapterIndex = index
-                }
-            }
-            else {
-                currentChapterIndex = index
-            }
-        }
+        currentChapterIndex = findChapterIndexForPosition(position, inChapterList: chapters)
     }
 
-    func resetChapters() {
-        chapters = nil
+    func findChapterIndexForPosition(position: CDouble, inChapterList chapters: [Chapter]) -> Int? {
+        for (index, chapter) in chapters.enumerate() {
+            if chapter.containsPosition(position) {
+                return index
+            }
+        }
+
+        return nil
+    }
+
+    func reset() {
         currentChapterIndex = nil
+        chapters = nil
 
         _isPodcast.onNext(false)
-        _podcastChanged.onNext()
     }
 }

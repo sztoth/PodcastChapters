@@ -20,10 +20,6 @@ class ChaptersViewModel {
         return podcastMonitor.isPlaying
     }
 
-    var podcastChanged: Observable<Void> {
-        return podcastMonitor.podcastChanged
-    }
-
     var chapterChanged: Observable<(Int?, Int?)> {
         return podcastMonitor.chapterChanged
     }
@@ -39,8 +35,8 @@ class ChaptersViewModel {
         self.podcastMonitor.chapterChanged
             .subscribeNext { [unowned self] _ in
                 if let chapters = self.podcastMonitor.chapters, index = self.podcastMonitor.currentChapterIndex {
-                    let chapter = chapters.list[index]
-                    self.artwork.value = chapter.artwork
+                    let chapter = chapters[index]
+                    self.artwork.value = chapter.cover
                     self.title.value = chapter.title
                 }
             }
@@ -58,12 +54,12 @@ extension ChaptersViewModel {
 extension ChaptersViewModel {
 
     func numberOfChapters() -> Int {
-        return podcastMonitor.chapters?.list.count ?? 0
+        return podcastMonitor.chapters?.count ?? 0
     }
 
     func chapterDataForIndex(index: Int) -> ChapterData? {
         if let chapters = podcastMonitor.chapters {
-            let chapter = chapters.list[index]
+            let chapter = chapters[index]
 
             var selected = false
             if let currentChapterIndex = podcastMonitor.currentChapterIndex {

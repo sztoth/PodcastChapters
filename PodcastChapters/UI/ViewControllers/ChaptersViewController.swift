@@ -55,13 +55,6 @@ class ChaptersViewController: NSViewController {
             }
             .addDisposableTo(disposeBag)
 
-        viewModel.podcastChanged
-            .observeOn(MainScheduler.instance)
-            .subscribeNext { _ in
-                self.updateCollectionView()
-            }
-            .addDisposableTo(disposeBag)
-
         viewModel.chapterChanged
             .observeOn(MainScheduler.instance)
             .subscribeNext { indexes in

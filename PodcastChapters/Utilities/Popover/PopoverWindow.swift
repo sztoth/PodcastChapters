@@ -35,7 +35,7 @@ class PopoverWindow: NSPanel {
     private var backgroundView: PopoverBackgroundView?
 
     override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
-        super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, `defer`: flag)
+        super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
 
         opaque = false
         hasShadow = true
@@ -58,7 +58,7 @@ class PopoverWindow: NSPanel {
 extension PopoverWindow {
 
     class func window() -> PopoverWindow {
-        return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .Buffered, `defer`: true)
+        return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .Buffered, defer: true)
     }
 }
 
