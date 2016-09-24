@@ -6,6 +6,7 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 import RxSwift
 
@@ -24,17 +25,17 @@ class ChaptersViewModel {
         return podcastMonitor.chapterChanged
     }
 
-    private let podcastMonitor: PodcastMonitor
-    private let pasteBoard: PasteBoard
-    private let disposeBag = DisposeBag()
+    fileprivate let podcastMonitor: PodcastMonitor
+    fileprivate let pasteBoard: PasteBoard
+    fileprivate let disposeBag = DisposeBag()
 
     init(podcastMonitor: PodcastMonitor = PodcastMonitor(), pasteBoard: PasteBoard = PasteBoard()) {
         self.podcastMonitor = podcastMonitor
         self.pasteBoard = pasteBoard
 
         self.podcastMonitor.chapterChanged
-            .subscribeNext { [unowned self] _ in
-                if let chapters = self.podcastMonitor.chapters, index = self.podcastMonitor.currentChapterIndex {
+            .subscribe { [unowned self] _ in
+                if let chapters = self.podcastMonitor.chapters, let index = self.podcastMonitor.currentChapterIndex {
                     let chapter = chapters[index]
                     self.artwork.value = chapter.cover
                     self.title.value = chapter.title
@@ -57,7 +58,7 @@ extension ChaptersViewModel {
         return podcastMonitor.chapters?.count ?? 0
     }
 
-    func chapterDataForIndex(index: Int) -> ChapterData? {
+    func chapterDataForIndex(_ index: Int) -> ChapterData? {
         if let chapters = podcastMonitor.chapters {
             let chapter = chapters[index]
 

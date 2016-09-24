@@ -11,15 +11,15 @@ import RxSwift
 
 class ChapterParser {
 
-    class func chaptersFromAsset(asset: AVAsset) -> Observable<[MNAVChapter]?> {
+    class func chaptersFromAsset(_ asset: AVAsset) -> Observable<[MNAVChapter]?> {
         return Observable.create { observer in
             let reader = MNAVChapterReader()
-            let chapters = reader.chaptersFromAsset(asset) as? [MNAVChapter]
+            let chapters = reader.chapters(from: asset) as? [MNAVChapter]
 
             observer.onNext(chapters)
             observer.onCompleted()
 
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
 }

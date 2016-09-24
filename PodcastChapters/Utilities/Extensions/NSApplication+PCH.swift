@@ -6,10 +6,11 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 
 protocol NSApplicationProtocol {
-    func terminate(sender: AnyObject?)
+    func terminate(_ sender: AnyObject?)
 }
 
-extension NSApplication: NSApplicationProtocol {}
+//extension NSApplication: NSApplicationProtocol {}

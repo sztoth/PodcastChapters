@@ -10,7 +10,7 @@ import Foundation
 
 extension Int {
 
-    func times(@noescape closure: (Int) -> Void) {
+    func times(_ closure: (Int) -> Void) {
         for index in 0..<self {
             closure(index)
         }

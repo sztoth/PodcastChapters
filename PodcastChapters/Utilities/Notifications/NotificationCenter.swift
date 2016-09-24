@@ -12,11 +12,11 @@ class NotificationCenter: NSObject {
 
     static let sharedInstance = NotificationCenter()
 
-    private let userNotificationCenter: NSUserNotificationCenter
-    private var notifications = [Notification]()
-    private var timer: Timer?
+    fileprivate let userNotificationCenter: NSUserNotificationCenter
+    fileprivate var notifications = [Notification]()
+    fileprivate var timer: Timer?
 
-    private init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()) {
+    fileprivate init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.default) {
         self.userNotificationCenter = userNotificationCenter
 
         super.init()
@@ -27,17 +27,17 @@ class NotificationCenter: NSObject {
 
 private extension NotificationCenter {
 
-    func performActionWithIdentifier(identifier: String?) {
-        if let identifier = identifier, notification = notifications.filter({ $0.identifier == identifier }).first {
+    func performActionWithIdentifier(_ identifier: String?) {
+        if let identifier = identifier, let notification = notifications.filter({ $0.identifier == identifier }).first {
             notification.actionHandler()
 
             clearNotificationWithIdentifier(identifier)
         }
     }
 
-    func clearNotificationWithIdentifier(identifier: String) {
-        if let index = notifications.indexOf({ $0.identifier == identifier }) {
-            notifications.removeAtIndex(index)
+    func clearNotificationWithIdentifier(_ identifier: String) {
+        if let index = notifications.index(where: { $0.identifier == identifier }) {
+            notifications.remove(at: index)
         }
     }
 }
@@ -50,12 +50,12 @@ extension NotificationCenter {
         notifications.removeAll()
     }
 
-    func deliverNotification(notification: Notification) {
+    func deliverNotification(_ notification: Notification) {
         clearAllNotifications()
 
         let userNotification = NSUserNotificationBuilder.build(notification)
         notifications.append(notification)
-        userNotificationCenter.deliverNotification(userNotification)
+        userNotificationCenter.deliver(userNotification)
 
         timer = Timer(interval: 90.0) { [weak self] _ in
             self?.clearAllNotifications()
@@ -65,12 +65,12 @@ extension NotificationCenter {
 
 extension NotificationCenter: NSUserNotificationCenterDelegate {
 
-    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 
-    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
-        if notification.activationType == .ActionButtonClicked {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        if notification.activationType == .actionButtonClicked {
             performActionWithIdentifier(notification.identifier)
         }
     }

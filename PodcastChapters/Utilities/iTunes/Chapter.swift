@@ -6,6 +6,7 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 
 struct Chapter {
@@ -18,8 +19,8 @@ struct Chapter {
 
 extension Chapter {
 
-    func containsPosition(position: CDouble) -> Bool {
-        guard let start = start, duration = duration else {
+    func containsPosition(_ position: CDouble) -> Bool {
+        guard let start = start, let duration = duration else {
             return true
         }
 

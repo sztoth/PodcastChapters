@@ -9,18 +9,18 @@
 import Cocoa
 
 enum PlaybackIndicatorState {
-    case Stopped
-    case Playing
+    case stopped
+    case playing
 }
 
 class PlaybackIndicatorView: NSView {
 
-    var state = PlaybackIndicatorState.Stopped {
+    var state = PlaybackIndicatorState.stopped {
         didSet {
             switch state {
-            case .Stopped:
+            case .stopped:
                 stopAnimation()
-            case .Playing:
+            case .playing:
                 startAnimation()
             }
         }
@@ -29,14 +29,14 @@ class PlaybackIndicatorView: NSView {
     override var intrinsicContentSize: NSSize {
         var tmpFrame = CGRect.zero
         bars.forEach { bar in
-            tmpFrame = CGRectUnion(tmpFrame, bar.frame)
+            tmpFrame = tmpFrame.union(bar.frame)
         }
 
         return tmpFrame.size
     }
 
-    private var bars = [PlaybackIndicatorBarLayer]()
-    private var installedConstraints = false
+    fileprivate var bars = [PlaybackIndicatorBarLayer]()
+    fileprivate var installedConstraints = false
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -57,8 +57,8 @@ class PlaybackIndicatorView: NSView {
     override func updateConstraints() {
         if !installedConstraints {
             let size = intrinsicContentSize
-            widthAnchor.constraintEqualToConstant(size.width).active = true
-            heightAnchor.constraintEqualToConstant(size.height).active = true
+            widthAnchor.constraint(equalToConstant: size.width).isActive = true
+            heightAnchor.constraint(equalToConstant: size.height).isActive = true
 
             installedConstraints = true
         }
@@ -70,11 +70,11 @@ class PlaybackIndicatorView: NSView {
 private extension PlaybackIndicatorView {
 
     func setupLayoutPriorities() {
-        setContentHuggingPriority(NSLayoutPriorityDefaultHigh, forOrientation: .Horizontal)
-        setContentHuggingPriority(NSLayoutPriorityDefaultHigh, forOrientation: .Vertical)
+        setContentHuggingPriority(NSLayoutPriorityDefaultHigh, for: .horizontal)
+        setContentHuggingPriority(NSLayoutPriorityDefaultHigh, for: .vertical)
 
-        setContentCompressionResistancePriority(NSLayoutPriorityDefaultHigh, forOrientation: .Horizontal)
-        setContentCompressionResistancePriority(NSLayoutPriorityDefaultHigh, forOrientation: .Vertical)
+        setContentCompressionResistancePriority(NSLayoutPriorityDefaultHigh, for: .horizontal)
+        setContentCompressionResistancePriority(NSLayoutPriorityDefaultHigh, for: .vertical)
     }
 
     func createBars() {

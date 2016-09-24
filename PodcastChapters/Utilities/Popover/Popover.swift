@@ -22,9 +22,9 @@ class Popover: NSWindowController {
         }
     }
 
-    private let animator: PopoverAnimator
-    private let topMargin = 2.0
-    private var presentedFrom: NSRect?
+    fileprivate let animator: PopoverAnimator
+    fileprivate let topMargin = 2.0
+    fileprivate var presentedFrom: NSRect?
 
     init(popoverWindow: PopoverWindow = PopoverWindow.window(), animator: PopoverAnimator = PopoverAnimator()) {
         self.animator = animator
@@ -39,8 +39,8 @@ class Popover: NSWindowController {
 
 extension Popover {
 
-    func showFromView(view: NSView) {
-        guard let window = window, frame = view.window?.frame else {
+    func showFromView(_ view: NSView) {
+        guard let window = window, let frame = view.window?.frame else {
             return
         }
 
@@ -48,10 +48,10 @@ extension Popover {
         updateWindowFrame()
 
         window.alphaValue = 0.0
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
         showWindow(nil)
 
-        animator.animateWindow(window, direction: .In) { direction in
+        animator.animateWindow(window, direction: .in) { direction in
             self.animationDidFinishInDirection(direction, forWindow: window)
         }
     }
@@ -61,7 +61,7 @@ extension Popover {
             return
         }
 
-        animator.animateWindow(window, direction: .Out) { direction in
+        animator.animateWindow(window, direction: .out) { direction in
             self.animationDidFinishInDirection(direction, forWindow: window)
         }
     }
@@ -70,7 +70,7 @@ extension Popover {
 private extension Popover {
 
     func updateWindowFrame() {
-        guard let window = window, anchorFrame = presentedFrom else {
+        guard let window = window, let anchorFrame = presentedFrom else {
             return
         }
 
@@ -82,14 +82,14 @@ private extension Popover {
         )
         
         window.setFrame(frame, display: true)
-        window.appearance = NSAppearance.currentAppearance()
+        window.appearance = NSAppearance.current()
     }
 
-    func animationDidFinishInDirection(direction: PopoverAnimationDirection, forWindow window: NSWindow) {
+    func animationDidFinishInDirection(_ direction: PopoverAnimationDirection, forWindow window: NSWindow) {
         switch direction {
-        case .In:
-            window.makeKeyWindow()
-        case .Out:
+        case .in:
+            window.makeKey()
+        case .out:
             window.orderOut(self)
             window.close()
         }

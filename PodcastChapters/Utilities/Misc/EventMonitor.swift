@@ -15,9 +15,9 @@ class EventMonitor {
         return eventSignal.asObservable()
     }
 
-    private let eventSignal = PublishSubject<AnyObject>()
-    private var monitor: AnyObject?
-    private let mask: NSEventMask
+    fileprivate let eventSignal = PublishSubject<AnyObject>()
+    fileprivate var monitor: AnyObject?
+    fileprivate let mask: NSEventMask
 
     init(mask: NSEventMask) {
         self.mask = mask
@@ -32,9 +32,9 @@ class EventMonitor {
             return
         }
 
-        monitor = NSEvent.addGlobalMonitorForEventsMatchingMask(mask) { [unowned self] event in
+        monitor = NSEvent.addGlobalMonitorForEvents(matching: mask) { [unowned self] event in
             self.eventSignal.onNext(event)
-        }
+        } as AnyObject?
     }
 
     func stop() {

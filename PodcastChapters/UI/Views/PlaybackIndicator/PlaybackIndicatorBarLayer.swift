@@ -21,11 +21,11 @@ class PlaybackIndicatorBarLayer: CALayer {
     }
 
     var isAnimating: Bool {
-        let animation = animationForKey(Settings.MovingAnimationKey)
+        let animation = self.animation(forKey: Settings.MovingAnimationKey)
         return animation != nil
     }
 
-    private struct Settings {
+    fileprivate struct Settings {
         static let MovingAnimationKey = "MovingAnimation"
         static let DecayAnimationKey = "DecayAnimation"
         static let MinHeight = 3.0
@@ -33,7 +33,7 @@ class PlaybackIndicatorBarLayer: CALayer {
         static let Width = 3.0
     }
 
-    override init(layer: AnyObject) {
+    override init(layer: Any) {
         super.init(layer: layer)
 
         if let layer = layer as? CALayer {
@@ -86,7 +86,7 @@ private extension PlaybackIndicatorBarLayer {
     func internalSetup() {
         anchorPoint = CGPoint(x: 0.0, y: 1.0)
         bounds = CGRect(x: 0.0, y: 0.0, width: Settings.Width, height: Settings.MinHeight)
-        backgroundColor = ColorSettings.equalizerColor.CGColor
+        backgroundColor = ColorSettings.equalizerColor.cgColor
     }
 
     func addMovingAnimation() {
@@ -106,24 +106,24 @@ private extension PlaybackIndicatorBarLayer {
         animation.fromCGRect = bounds
         animation.toCGRect = toValue
 
-        addAnimation(animation.build(), forKey: Settings.MovingAnimationKey)
+        add(animation.build(), forKey: Settings.MovingAnimationKey)
     }
 
     func addDecayAnimation() {
-        let fromValue = (presentationLayer() as? CALayer)?.bounds ?? CGRect.zero
+        let fromValue = (presentation() as? CALayer)?.bounds ?? CGRect.zero
 
         let animation = PlaybackDecayAnimation()
         animation.fromCGRect = fromValue
         animation.toCGRect = bounds
 
-        addAnimation(animation.build(), forKey: Settings.DecayAnimationKey)
+        add(animation.build(), forKey: Settings.DecayAnimationKey)
     }
 
-    func stopAnimationForKey(key: String) {
-        if let animation = animationForKey(key) {
+    func stopAnimationForKey(_ key: String) {
+        if let animation = animation(forKey: key) {
             animation.cancel()
         }
 
-        removeAnimationForKey(key)
+        removeAnimation(forKey: key)
     }
 }

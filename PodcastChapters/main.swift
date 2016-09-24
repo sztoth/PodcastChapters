@@ -14,6 +14,6 @@ private func delegateInstance() -> NSApplicationDelegate? {
 
 let delegate = delegateInstance()
 
-let app = NSApplication.sharedApplication()
+let app = NSApplication.shared()
 app.delegate = delegate
 app.run()

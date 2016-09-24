@@ -10,9 +10,9 @@ import Foundation
 
 class AppCoordinator {
 
-    private let podcastMonitor: PodcastMonitor
-    private let statusBarCoordinator: StatusBarCoordinator
-    private let contentCoordinator: ContentCoordinator
+    fileprivate let podcastMonitor: PodcastMonitor
+    fileprivate let statusBarCoordinator: StatusBarCoordinator
+    fileprivate let contentCoordinator: ContentCoordinator
 
     init(podcastMonitor: PodcastMonitor, statusBarCoordinator: StatusBarCoordinator, contentCoordinator: ContentCoordinator) {
         self.podcastMonitor = podcastMonitor

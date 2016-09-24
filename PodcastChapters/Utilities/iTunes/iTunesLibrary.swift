@@ -10,41 +10,41 @@ import iTunesLibrary
 import Foundation
 import RxSwift
 
-enum iTunesLibraryError: ErrorType {
-    case LibraryNotAccessible(NSError)
-    case ItemNotFound
-    case PersistentIDTooLarge
+enum iTunesLibraryError: Error {
+    case libraryNotAccessible(NSError)
+    case itemNotFound
+    case persistentIDTooLarge
 }
 
 class iTunesLibrary {
 
-    static func fetchURLForPesistentID(identifier: String) -> Observable<NSURL> {
+    static func fetchURLForPesistentID(_ identifier: String) -> Observable<URL> {
         return Observable.create { observer in
             if let persistentNumber = NSNumber.pch_numberFromHex(identifier) {
                 do {
-                    let library = try ITLibrary(APIVersion: "1.0")
+                    let library = try ITLibrary(apiVersion: "1.0")
                     let items = library.allMediaItems as NSArray
 
                     let predicate = NSPredicate(format: "persistentID == %@", persistentNumber)
-                    let filtered = items.filteredArrayUsingPredicate(predicate)
+                    let filtered = items.filtered(using: predicate)
 
-                    if let item = filtered.first as? ITLibMediaItem, location = item.location {
+                    if let item = filtered.first as? ITLibMediaItem, let location = item.location {
                         observer.onNext(location)
                         observer.onCompleted()
                     }
                     else {
-                        observer.on(.Error(iTunesLibraryError.ItemNotFound))
+                        observer.on(.error(iTunesLibraryError.itemNotFound))
                     }
                 }
                 catch let error as NSError {
-                    observer.on(.Error(iTunesLibraryError.LibraryNotAccessible(error)))
+                    observer.on(.error(iTunesLibraryError.libraryNotAccessible(error)))
                 }
             }
             else {
-                observer.on(.Error(iTunesLibraryError.PersistentIDTooLarge))
+                observer.on(.error(iTunesLibraryError.persistentIDTooLarge))
             }
 
-            return NopDisposable.instance
+            return Disposables.create()
         }
     }
 }

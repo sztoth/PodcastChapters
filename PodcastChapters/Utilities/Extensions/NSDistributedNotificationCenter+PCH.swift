@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension NSDistributedNotificationCenter {
+extension DistributedNotificationCenter {
 
-    func pch_addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?) {
-        addObserver(observer, selector: aSelector, name: aName, object: nil)
+    func pch_addObserver(_ observer: AnyObject, selector aSelector: Selector, name aName: String?) {
+        addObserver(observer, selector: aSelector, name: aName.map { NSNotification.Name(rawValue: $0) }, object: nil)
     }
 }

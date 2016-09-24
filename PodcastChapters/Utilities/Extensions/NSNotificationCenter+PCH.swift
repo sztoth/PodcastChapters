@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension NSNotificationCenter {
+extension Foundation.NotificationCenter {
 
-    class func pch_addObserverForName(name: String, object: AnyObject? = nil, usingBlock: (NSNotification) -> Void) {
-        self.defaultCenter().addObserverForName(name, object: object, queue: nil, usingBlock: usingBlock)
+    class func pch_addObserverForName(_ name: String, object: AnyObject? = nil, usingBlock: @escaping (Foundation.Notification) -> Void) {
+        self.default.addObserver(forName: NSNotification.Name(rawValue: name), object: object, queue: nil, using: usingBlock)
     }
 
-    class func pch_removeObserver(observer: AnyObject, name: String, object: AnyObject? = nil) {
-        self.defaultCenter().removeObserver(observer, name: name, object: object)
+    class func pch_removeObserver(_ observer: AnyObject, name: String, object: AnyObject? = nil) {
+        self.default.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
 }

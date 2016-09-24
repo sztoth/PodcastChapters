@@ -11,11 +11,11 @@ import RxSwift
 
 class ContentCoordinator {
 
-    private let popover: Popover
-    private let podcastMonitor: PodcastMonitor
-    private let chaptersController: ChaptersViewController
-    private let otherContentController: OtherContentViewController
-    private let disposeBag = DisposeBag()
+    fileprivate let popover: Popover
+    fileprivate let podcastMonitor: PodcastMonitor
+    fileprivate let chaptersController: ChaptersViewController
+    fileprivate let otherContentController: OtherContentViewController
+    fileprivate let disposeBag = DisposeBag()
 
     init(popover: Popover, podcastMonitor: PodcastMonitor) {
         self.popover = popover
@@ -27,15 +27,15 @@ class ContentCoordinator {
         
         self.otherContentController = OtherContentViewController()!
 
-        self.podcastMonitor.isPodcast
-            .subscribeNext { isPodcast in
+        podcastMonitor.isPodcast
+            .subscribe(onNext: { isPodcast in
                 if isPodcast {
                     self.popover.content = self.chaptersController
                 }
                 else {
                     self.popover.content = self.otherContentController
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
 }

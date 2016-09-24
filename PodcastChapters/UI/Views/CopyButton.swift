@@ -10,7 +10,7 @@ import Cocoa
 
 class CopyButton: NSButton {
 
-    private let icon = NSImage(named: "Copy Button Image")
+    fileprivate let icon = NSImage(named: "Copy Button Image")
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -24,7 +24,7 @@ class CopyButton: NSButton {
         internalSetup()
     }
 
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         let mouseDownFlags = cell?.mouseDownFlags ?? 0
         let bgColor = mouseDownFlags == 0 ? ColorSettings.normalActionColor : ColorSettings.highlightedActionColor
         bgColor.set()
@@ -41,10 +41,10 @@ class CopyButton: NSButton {
             let xOffset = floor((dirtyRect.width - width) / 2.0) + 1.0
             let yOffset = floor((dirtyRect.height - width) / 2.0) - 1.0
             let imageRect = NSRect(x: xOffset, y: yOffset, width: width, height: height)
-            icon.drawInRect(
-                imageRect,
-                fromRect: .zero,
-                operation: .CompositeSourceOver,
+            icon.draw(
+                in: imageRect,
+                from: .zero,
+                operation: .sourceOver,
                 fraction: 1.0,
                 respectFlipped: true,
                 hints: nil
@@ -56,6 +56,6 @@ class CopyButton: NSButton {
 private extension CopyButton {
 
     func internalSetup() {
-        setButtonType(.MomentaryLightButton)
+        setButtonType(.momentaryLight)
     }
 }

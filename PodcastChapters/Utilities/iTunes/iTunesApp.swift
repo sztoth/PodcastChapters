@@ -6,6 +6,7 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 import RxSwift
 import ScriptingBridge
@@ -16,7 +17,7 @@ enum iTunesPlayerState: String {
     case Stopped = "Stopped"
     case Unknown = "Unknown"
 
-    private static func fromState(state: iTunesEPlS?) -> iTunesPlayerState? {
+    fileprivate static func fromState(_ state: iTunesEPlS?) -> iTunesPlayerState? {
         guard let state = state else {
             return nil
         }
@@ -38,9 +39,9 @@ enum iTunesPlayerState: String {
 }
 
 enum iTunesNowPlaying {
-    case Podcast(iTunesMediaItem)
-    case Other(iTunesMediaItem)
-    case Unknown
+    case podcast(iTunesMediaItem)
+    case other(iTunesMediaItem)
+    case unknown
 }
 
 struct iTunesMediaItem {
@@ -73,22 +74,22 @@ class iTunesApp {
         return _nowPlaying.asObservable()
     }
 
-    private let _playerState = Variable<iTunesPlayerState>(.Unknown)
-    private let _playerPosition = Variable<CDouble?>(nil)
-    private let _nowPlaying = Variable<iTunesNowPlaying>(.Unknown)
-    private let iTunes: iTunesApplication
-    private let notificationCenter: NSDistributedNotificationCenter
-    private var timer: Timer?
+    fileprivate let _playerState = Variable<iTunesPlayerState>(.Unknown)
+    fileprivate let _playerPosition = Variable<CDouble?>(nil)
+    fileprivate let _nowPlaying = Variable<iTunesNowPlaying>(.unknown)
+    fileprivate let iTunes: iTunesApplication
+    fileprivate let notificationCenter: DistributedNotificationCenter
+    fileprivate var timer: Timer?
 
     init(
         iTunes: iTunesApplication = SBApplication.pch_iTunes(),
-        notificationCenter: NSDistributedNotificationCenter = NSDistributedNotificationCenter.defaultCenter())
+        notificationCenter: DistributedNotificationCenter = DistributedNotificationCenter.default())
     {
         self.iTunes = iTunes
         self.notificationCenter = notificationCenter
 
         let notificationName = iTunesApp.BundleIdentifier + ".playerInfo"
-        self.notificationCenter.addObserverForName(notificationName, object: nil, queue: nil) { [weak self] notification in
+        self.notificationCenter.addObserver(forName: NSNotification.Name(rawValue: notificationName), object: nil, queue: nil) { [weak self] notification in
             self?.update()
         }
 
@@ -106,7 +107,7 @@ private extension iTunesApp {
         guard let state = iTunesPlayerState.fromState(iTunes.playerState) else {
             _playerState.value = .Unknown
             _playerPosition.value = nil
-            _nowPlaying.value = .Unknown
+            _nowPlaying.value = .unknown
             return
         }
 
@@ -123,12 +124,12 @@ private extension iTunesApp {
             }
         }
 
-        var nowPlaying = iTunesNowPlaying.Unknown
+        var nowPlaying = iTunesNowPlaying.unknown
         if let
             persistentID = iTunes.currentTrack?.persistentID,
-            artist = iTunes.currentTrack?.artist,
-            name = iTunes.currentTrack?.name,
-            podcast = iTunes.currentTrack?.podcast
+            let artist = iTunes.currentTrack?.artist,
+            let name = iTunes.currentTrack?.name,
+            let podcast = iTunes.currentTrack?.podcast
         {
             var artwork: NSImage? = nil
             if let cover = iTunes.currentTrack?.artworks?().first {
@@ -136,7 +137,7 @@ private extension iTunesApp {
             }
 
             let mediaItem = iTunesMediaItem(persistentID: persistentID, artist: artist, name: name, artwork: artwork)
-            nowPlaying = podcast ? iTunesNowPlaying.Podcast(mediaItem) : iTunesNowPlaying.Other(mediaItem)
+            nowPlaying = podcast ? iTunesNowPlaying.podcast(mediaItem) : iTunesNowPlaying.other(mediaItem)
         }
 
         if _nowPlaying.value != nowPlaying {
@@ -168,10 +169,10 @@ extension iTunesNowPlaying: CustomStringConvertible {
 
     var description: String {
         switch self {
-        case let .Podcast(item):
+        case let .podcast(item):
             return "Podcast(\(item.persistentID), \(item.artist), \(item.name))"
 
-        case let .Other(item):
+        case let .other(item):
             return "Other(\(item.persistentID), \(item.artist), \(item.name))"
 
         default:
@@ -184,10 +185,10 @@ extension iTunesNowPlaying: Equatable {}
 
 func ==(lhs: iTunesNowPlaying, rhs: iTunesNowPlaying) -> Bool {
     switch (lhs, rhs) {
-    case (let .Podcast(itemA), let .Podcast(itemB)):
+    case (let .podcast(itemA), let .podcast(itemB)):
         return itemA.persistentID == itemB.persistentID
 
-    case (let .Other(itemA), let .Other(itemB)):
+    case (let .other(itemA), let .other(itemB)):
         return itemA.persistentID == itemB.persistentID
 
     default:

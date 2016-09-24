@@ -10,9 +10,9 @@ import Cocoa
 import RxSwift
 
 enum StatusItemViewEvent {
-    case ToggleMainView(NSView)
-    case OpenSettings
-    case Quit
+    case toggleMainView(NSView)
+    case openSettings
+    case quit
 }
 
 class StatusItemView: NSControl {
@@ -27,31 +27,31 @@ class StatusItemView: NSControl {
         }
     }
 
-    private let _event = PublishSubject<StatusItemViewEvent>()
-    private let disposeBag = DisposeBag()
-    private let statusItem: NSStatusItem
-    private let rightClickMenu: RightClickMenu
-    private let image: NSImage
-    private var mouseDown = false
-    private var menuVisible = false
+    fileprivate let _event = PublishSubject<StatusItemViewEvent>()
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate let statusItem: NSStatusItem
+    fileprivate let rightClickMenu: RightClickMenu
+    fileprivate let image: NSImage
+    fileprivate var mouseDown = false
+    fileprivate var menuVisible = false
 
     init(statusItem: NSStatusItem, rightClickMenu: RightClickMenu = RightClickMenu()) {
         self.statusItem = statusItem
         self.rightClickMenu = rightClickMenu
-        image = NSImage(named: "Status Bar Image")!.imageApplyingTintColor(NSColor.whiteColor())!
+        image = NSImage(named: "Status Bar Image")!.imageApplyingTintColor(NSColor.white)!
         highlight = false
 
-        let height = NSStatusBar.systemStatusBar().thickness
+        let height = NSStatusBar.system().thickness
         let frame = NSRect(x: 0.0, y: 0.0, width: 30.0, height: height)
         super.init(frame: frame)
 
         self.rightClickMenu.itemSelected
             .map { (option) -> StatusItemViewEvent in
                 switch option {
-                case .Settings:
-                    return .OpenSettings
-                case .Quit:
-                    return .Quit
+                case .settings:
+                    return .openSettings
+                case .quit:
+                    return .quit
                 }
             }
             .bindTo(_event)
@@ -62,7 +62,7 @@ class StatusItemView: NSControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         let highlighted = mouseDown || menuVisible || highlight
 
         let yOffset = CGFloat(2.0)
@@ -70,8 +70,8 @@ class StatusItemView: NSControl {
         let xOffset = round((bounds.width - height) / CGFloat(2.0))
         let imageRect = NSRect(x: xOffset, y: yOffset, width: height, height: height)
 
-        statusItem.drawStatusBarBackgroundInRect(bounds, withHighlight: highlighted)
-        image.drawInRect(imageRect, fromRect: NSRect.zero, operation: .CompositeSourceOver, fraction: 1)
+        statusItem.drawStatusBarBackground(in: bounds, withHighlight: highlighted)
+        image.draw(in: imageRect, from: NSRect.zero, operation: .sourceOver, fraction: 1)
     }
 }
 
@@ -79,22 +79,22 @@ class StatusItemView: NSControl {
 
 private extension StatusItemView {
 
-    func mouseStatusChanged(started started: Bool) {
+    func mouseStatusChanged(started: Bool) {
         mouseDown = started
         setNeedsDisplay()
     }
 
-    func menuVisibilityChanged(visible visible: Bool) {
+    func menuVisibilityChanged(visible: Bool) {
         menuVisible = visible
         setNeedsDisplay()
     }
 
     func showMainView() {
-        _event.onNext(.ToggleMainView(self))
+        _event.onNext(.toggleMainView(self))
     }
 
-    func unregisterFromNotification(notification: NSNotification) {
-        NSNotificationCenter.pch_removeObserver(self, name: notification.name, object: notification.object)
+    func unregisterFromNotification(_ notification: Foundation.Notification) {
+        Foundation.NotificationCenter.pch_removeObserver(self, name: notification.name.rawValue, object: notification.object as AnyObject?)
     }
 }
 
@@ -102,16 +102,16 @@ private extension StatusItemView {
 
 extension StatusItemView {
 
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         mouseStatusChanged(started: true)
     }
 
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         guard mouseDown == true else {
             return
         }
 
-        if theEvent.modifierFlags.contains(.ControlKeyMask) {
+        if theEvent.modifierFlags.contains(.control) {
             showMenu()
         }
         else {
@@ -121,11 +121,11 @@ extension StatusItemView {
         mouseStatusChanged(started: false)
     }
 
-    override func rightMouseDown(theEvent: NSEvent) {
+    override func rightMouseDown(with theEvent: NSEvent) {
         mouseStatusChanged(started: true)
     }
 
-    override func rightMouseUp(theEvent: NSEvent) {
+    override func rightMouseUp(with theEvent: NSEvent) {
         guard mouseDown == true else {
             return
         }
@@ -140,16 +140,16 @@ extension StatusItemView {
 private extension StatusItemView {
 
     func showMenu() {
-        NSNotificationCenter.pch_addObserverForName(NSMenuDidBeginTrackingNotification, object: rightClickMenu) { [weak self] notification in
+        Foundation.NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidBeginTracking.rawValue, object: rightClickMenu) { [weak self] notification in
             self?.menuVisibilityChanged(visible: true)
             self?.unregisterFromNotification(notification)
         }
 
-        NSNotificationCenter.pch_addObserverForName(NSMenuDidEndTrackingNotification, object: rightClickMenu) { [weak self] notification in
+        Foundation.NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidEndTracking.rawValue, object: rightClickMenu) { [weak self] notification in
             self?.menuVisibilityChanged(visible: false)
             self?.unregisterFromNotification(notification)
         }
 
-        statusItem.popUpStatusItemMenu(rightClickMenu)
+        statusItem.popUpMenu(rightClickMenu)
     }
 }

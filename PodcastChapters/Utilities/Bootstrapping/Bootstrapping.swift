@@ -8,18 +8,18 @@
 
 import Foundation
 
-enum BootstrappingError: ErrorType {
-    case ExpectedComponentNotFound(String)
+enum BootstrappingError: Error {
+    case expectedComponentNotFound(String)
 }
 
 protocol Bootstrapping {
 
-    func bootstrap(bootstrapped: Bootstrapped) throws
+    func bootstrap(_ bootstrapped: Bootstrapped) throws
 }
 
 struct Bootstrapped {
 
-    private let bootstrappedComponents: [Bootstrapping]
+    fileprivate let bootstrappedComponents: [Bootstrapping]
 
     init() {
         self.init(components: [])
@@ -29,14 +29,14 @@ struct Bootstrapped {
         self.bootstrappedComponents = components
     }
 
-    func bootstrap(component: Bootstrapping) throws -> Bootstrapped {
+    func bootstrap(_ component: Bootstrapping) throws -> Bootstrapped {
         try component.bootstrap(self)
         return Bootstrapped(components: bootstrappedComponents + component)
     }
 
-    func component<T: Bootstrapping>(componentType: T.Type) throws -> T {
+    func component<T: Bootstrapping>(_ componentType: T.Type) throws -> T {
         guard let found = bootstrappedComponents.filter({ $0 is T }).first as? T else {
-            throw BootstrappingError.ExpectedComponentNotFound("\(T.self)")
+            throw BootstrappingError.expectedComponentNotFound("\(T.self)")
         }
 
         return found
@@ -45,7 +45,7 @@ struct Bootstrapped {
 
 struct Bootstrapper {
 
-    static func bootstrap(components: [Bootstrapping]) throws -> Bootstrapped {
+    static func bootstrap(_ components: [Bootstrapping]) throws -> Bootstrapped {
         return try components.reduce(Bootstrapped()) { bootstrapped, next in
             return try bootstrapped.bootstrap(next)
         }

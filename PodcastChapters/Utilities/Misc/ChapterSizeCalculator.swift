@@ -12,24 +12,24 @@ typealias ChapterCellConfiguration = (ChapterCell) -> ()
 
 class ChapterSizeCalculator {
 
-    private let cache: NSCache
-    private let prototypeCellView: ChapterCellView
-    private let widthConstraint: NSLayoutConstraint
+    fileprivate let cache: NSCache<AnyObject, AnyObject>
+    fileprivate let prototypeCellView: ChapterCellView
+    fileprivate let widthConstraint: NSLayoutConstraint
 
-    init(cache: NSCache = NSCache()) {
+    init(cache: NSCache<AnyObject, AnyObject> = NSCache()) {
         self.cache = cache
         prototypeCellView = ChapterCellView(frame: NSRect.zero)
 
-        widthConstraint = prototypeCellView.widthAnchor.constraintEqualToConstant(0.0)
-        widthConstraint.active = true
+        widthConstraint = prototypeCellView.widthAnchor.constraint(equalToConstant: 0.0)
+        widthConstraint.isActive = true
     }
 }
 
 extension ChapterSizeCalculator {
 
-    func sizeForIndex(index: Int, availableWidth width: CGFloat, chapterTitle title: String) -> NSSize {
+    func sizeForIndex(_ index: Int, availableWidth width: CGFloat, chapterTitle title: String) -> NSSize {
         let key = "\(index)"
-        if let sizeValue = cache.objectForKey(key) as? NSValue {
+        if let sizeValue = cache.object(forKey: key as AnyObject) as? NSValue {
             return sizeValue.sizeValue
         }
 
@@ -39,7 +39,7 @@ extension ChapterSizeCalculator {
         prototypeCellView.layoutSubtreeIfNeeded()
 
         let size = prototypeCellView.bounds.size
-        cache.setObject(NSValue(size: size), forKey: key)
+        cache.setObject(NSValue(size: size), forKey: key as AnyObject)
 
         return size
     }
@@ -48,8 +48,8 @@ extension ChapterSizeCalculator {
         cache.removeAllObjects()
     }
 
-    func resetItemAtIndex(index: Int) {
+    func resetItemAtIndex(_ index: Int) {
         let key = "\(index)"
-        cache.removeObjectForKey(key)
+        cache.removeObject(forKey: key as AnyObject)
     }
 }

@@ -13,8 +13,8 @@ class OtherContentViewController: NSViewController {
 
     @IBOutlet weak var messageLabel: NSTextField!
 
-    private let viewModel: OtherContentViewModel
-    private let disposeBag = DisposeBag()
+    fileprivate let viewModel: OtherContentViewModel
+    fileprivate let disposeBag = DisposeBag()
 
     init?(viewModel: OtherContentViewModel = OtherContentViewModel()) {
         self.viewModel = viewModel
@@ -33,7 +33,7 @@ class OtherContentViewController: NSViewController {
 
         viewModel.title.asObservable()
             .observeOn(MainScheduler.instance)
-            .bindTo(messageLabel.rx_text)
+            .bindTo(messageLabel.rx.textInput.text)
             .addDisposableTo(disposeBag)
     }
 }

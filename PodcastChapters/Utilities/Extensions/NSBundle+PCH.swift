@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension NSBundle {
+extension Bundle {
 
     class func pch_appName() -> String {
-        let name = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) as? String
+        let name = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
         return name ?? "Unknown app"
     }
 
     class func pch_bundleIdentifier() -> String {
-        let identifier = NSBundle.mainBundle().bundleIdentifier
+        let identifier = Bundle.main.bundleIdentifier
         return identifier ?? "Unknown identifier"
     }
 }

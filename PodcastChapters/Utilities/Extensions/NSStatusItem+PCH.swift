@@ -13,7 +13,7 @@ import RxSwift
 extension NSStatusItem {
 
     class func pch_statusItem() -> NSStatusItem {
-        let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+        let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
         let statusItemView = StatusItemView(statusItem: statusItem)
         statusItem.view = statusItemView
 

@@ -10,7 +10,7 @@ import Cocoa
 
 class NSUserNotificationBuilder {
 
-    class func build(source: Notification) -> NSUserNotification {
+    class func build(_ source: Notification) -> NSUserNotification {
         let notification = NSUserNotification()
         notification.identifier = source.identifier
         notification.title = source.title

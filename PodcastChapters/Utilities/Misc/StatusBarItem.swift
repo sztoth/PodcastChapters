@@ -11,10 +11,10 @@ import RxCocoa
 import RxSwift
 
 enum StatusBarEvent {
-    case Open(NSView)
-    case Close
-    case OpenSettings
-    case Quit
+    case open(NSView)
+    case close
+    case openSettings
+    case quit
 }
 
 class StatusBarItem {
@@ -23,11 +23,11 @@ class StatusBarItem {
         return _event.asObservable()
     }
 
-    private let _event = PublishSubject<StatusBarEvent>()
-    private let statusItem: NSStatusItem
-    private let eventMonitor: EventMonitor
-    private let disposeBag = DisposeBag()
-    private var visible = false
+    fileprivate let _event = PublishSubject<StatusBarEvent>()
+    fileprivate let statusItem: NSStatusItem
+    fileprivate let eventMonitor: EventMonitor
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate var visible = false
 
     init(statusItem: NSStatusItem = NSStatusItem.pch_statusItem(), eventMonitor: EventMonitor) {
         self.statusItem = statusItem
@@ -36,12 +36,12 @@ class StatusBarItem {
         self.statusItem.event?
             .map { [unowned self] event -> StatusBarEvent in
                 switch event {
-                case .ToggleMainView(let view):
+                case .toggleMainView(let view):
                     return self.toggleFromView(view)
-                case .OpenSettings:
-                    return .OpenSettings
-                case .Quit:
-                    return .Quit
+                case .openSettings:
+                    return .openSettings
+                case .quit:
+                    return .quit
                 }
             }
             .bindTo(_event)
@@ -50,7 +50,7 @@ class StatusBarItem {
         self.eventMonitor.event
             .map({ [unowned self] _ -> StatusBarEvent in
                 self.mainViewWillHide()
-                return .Close
+                return .close
             })
             .bindTo(_event)
             .addDisposableTo(disposeBag)
@@ -61,14 +61,14 @@ class StatusBarItem {
 
 private extension StatusBarItem {
 
-    func toggleFromView(view: NSView) -> StatusBarEvent {
+    func toggleFromView(_ view: NSView) -> StatusBarEvent {
         if visible {
             mainViewWillHide()
-            return .Close
+            return .close
         }
         else {
             mainViewWillShow()
-            return .Open(view)
+            return .open(view)
         }
     }
 

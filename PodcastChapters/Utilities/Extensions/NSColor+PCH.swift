@@ -6,20 +6,21 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 
-enum NSColorHexConversionError: ErrorType {
-    case ParameterNotScannable
-    case InvalidCharacterCount
+enum NSColorHexConversionError: Error {
+    case parameterNotScannable
+    case invalidCharacterCount
 }
 
 extension NSColor {
 
     convenience init(hexString: String) throws {
-        let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
+        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
-        if !NSScanner(string: hex).scanHexInt(&int) {
-            throw NSColorHexConversionError.ParameterNotScannable
+        if !Scanner(string: hex).scanHexInt32(&int) {
+            throw NSColorHexConversionError.parameterNotScannable
         }
 
         let a, r, g, b: UInt32
@@ -32,7 +33,7 @@ extension NSColor {
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
-            throw NSColorHexConversionError.InvalidCharacterCount
+            throw NSColorHexConversionError.invalidCharacterCount
         }
 
         let divider: CGFloat = 255.0

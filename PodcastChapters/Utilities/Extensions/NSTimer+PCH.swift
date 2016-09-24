@@ -10,30 +10,30 @@ import Foundation
 
 typealias TimerAction = () -> ()
 
-extension NSTimer {
+extension Foundation.Timer {
 
-    class func pch_scheduledTimerWithTimeInterval(timeInterval: NSTimeInterval, repeats: Bool, action: TimerAction) -> NSTimer {
-        let timer = NSTimer(
+    class func pch_scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
+        let timer = Foundation.Timer(
             timeInterval: timeInterval,
             target: self,
             selector: #selector(pch_timerFired(_:)),
             userInfo: TimerData(repeats: repeats, action: action),
             repeats: repeats)
 
-        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
 
         return timer
     }
 }
 
-private extension NSTimer {
+private extension Foundation.Timer {
 
     class TimerData: NSObject {
         
-        private let repeats: Bool
-        private let action: TimerAction
+        fileprivate let repeats: Bool
+        fileprivate let action: TimerAction
 
-        init(repeats: Bool, action: TimerAction) {
+        init(repeats: Bool, action: @escaping TimerAction) {
             self.repeats = repeats
             self.action = action
 
@@ -41,7 +41,7 @@ private extension NSTimer {
         }
     }
 
-    @objc class func pch_timerFired(timer: NSTimer) {
+    @objc class func pch_timerFired(_ timer: Foundation.Timer) {
         if let container = timer.userInfo as? TimerData {
             container.action()
 

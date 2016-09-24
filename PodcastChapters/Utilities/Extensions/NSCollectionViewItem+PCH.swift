@@ -17,7 +17,7 @@ protocol Reusable: class {
 extension Reusable {
 
     static var reuseIdentifier: String {
-        return String(Self)
+        return String(describing: Self.self)
     }
 
     static var nib: NSNib? {

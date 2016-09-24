@@ -10,8 +10,8 @@ import Cocoa
 
 class LineView: NSView {
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         ColorSettings.textColor.setFill()
         NSRectFill(dirtyRect)

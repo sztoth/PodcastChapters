@@ -20,7 +20,7 @@ class PlaybackMovingAnimation {
     var fromCGRect = CGRect.zero
     var toCGRect = CGRect.zero
 
-    private var animation: CABasicAnimation
+    fileprivate var animation: CABasicAnimation
 
     init(completion: PlaybackAnimationCompletion?) {
         animation = CABasicAnimation(keyPath: "bounds")
@@ -30,7 +30,9 @@ class PlaybackMovingAnimation {
 
         let animationDelegate = AnimationDelegate()
         animationDelegate.completion = completion
-        animation.delegate = animationDelegate
+
+        // TODO:
+        //animation.delegate = animationDelegate
     }
 }
 
@@ -50,7 +52,7 @@ class PlaybackDecayAnimation {
     var fromCGRect = CGRect.zero
     var toCGRect = CGRect.zero
 
-    private var animation: CABasicAnimation
+    fileprivate var animation: CABasicAnimation
 
     init() {
         animation = CABasicAnimation(keyPath: "bounds")
@@ -73,11 +75,12 @@ private class AnimationDelegate: NSObject {
     var completion: PlaybackAnimationCompletion?
     var active = true
 
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        if active {
-            completion?()
-        }
-    }
+    // TODO:
+//    override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+//        if active {
+//            completion?()
+//        }
+//    }
 }
 
 extension CAAnimation {

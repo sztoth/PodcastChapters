@@ -10,12 +10,12 @@ import Cocoa
 
 class AppDelegate: NSObject {
 
-    private var coordinator: AppCoordinator?
+    fileprivate var coordinator: AppCoordinator?
 }
 
 extension AppDelegate: NSApplicationDelegate {
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    private func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSRunningApplication.pch_ensureThereIsOnlyOneRunnningInstance()
 
         let components: [Bootstrapping] = [
@@ -26,20 +26,20 @@ extension AppDelegate: NSApplicationDelegate {
         setup(components)
     }
 
-    func applicationWillTerminate(notification: NSNotification) {
+    private func applicationWillTerminate(_ notification: Notification) {
         NotificationCenter.sharedInstance.clearAllNotifications()
     }
 }
 
 private extension AppDelegate {
 
-    func setup(components: [Bootstrapping]) {
+    func setup(_ components: [Bootstrapping]) {
         do {
             let bootstrapped = try Bootstrapper.bootstrap(components)
             let application = try bootstrapped.component(ApplicationBootstrapping.self)
             coordinator = application.coordinator
         }
-        catch BootstrappingError.ExpectedComponentNotFound(let componentName) {
+        catch BootstrappingError.expectedComponentNotFound(let componentName) {
             fatalError("\(componentName) was not bootstrapped. Terminating.")
         }
         catch let error as NSError {

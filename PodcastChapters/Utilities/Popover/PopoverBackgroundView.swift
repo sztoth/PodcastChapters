@@ -32,7 +32,7 @@ class PopoverBackgroundView: NSView {
         internalSetup()
     }
 
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         var bgFrame = bounds
         bgFrame.size.height -= CGFloat(arrowHeight)
         let bgFrameHalfWidth = bgFrame.width / 2.0
@@ -41,26 +41,26 @@ class PopoverBackgroundView: NSView {
         let arrow = NSBezierPath()
 
         let leftPoint = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowHalfWidth), y: bgFrame.maxY)
-        arrow.moveToPoint(leftPoint)
+        arrow.move(to: leftPoint)
 
         let topPoint = NSPoint(x: bgFrameHalfWidth, y: bgFrame.maxY + CGFloat(arrowHeight))
         let topCP1 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 4.0, y: bgFrame.maxY)
         let topCP2 = NSPoint(x: bgFrameHalfWidth - CGFloat(arrowWidth) / 7.0, y: bgFrame.maxY + CGFloat(arrowHeight))
-        arrow.curveToPoint(topPoint, controlPoint1: topCP1, controlPoint2: topCP2)
+        arrow.curve(to: topPoint, controlPoint1: topCP1, controlPoint2: topCP2)
 
         let rightPoint = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowHalfWidth), y: bgFrame.maxY)
         let rightCP1 = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowWidth) / 7.0, y: bgFrame.maxY + CGFloat(arrowHeight))
         let rightCP2 = NSPoint(x: bgFrameHalfWidth + CGFloat(arrowWidth) / 4.0, y: bgFrame.maxY)
-        arrow.curveToPoint(rightPoint, controlPoint1: rightCP1, controlPoint2: rightCP2)
+        arrow.curve(to: rightPoint, controlPoint1: rightCP1, controlPoint2: rightCP2)
 
-        arrow.lineToPoint(leftPoint)
-        arrow.closePath()
+        arrow.line(to: leftPoint)
+        arrow.close()
 
         let background = NSBezierPath(roundedRect: bgFrame, xRadius: CGFloat(cornerRadius), yRadius: CGFloat(cornerRadius))
 
         let window = NSBezierPath()
-        window.appendBezierPath(arrow)
-        window.appendBezierPath(background)
+        window.append(arrow)
+        window.append(background)
 
         ColorSettings.mainBackgroundColor.setFill()
         window.fill()
