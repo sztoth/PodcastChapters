@@ -26,7 +26,7 @@ class StatusBarCoordinator {
             .subscribe(onNext: { event in
                 switch event {
                 case .open(let view):
-                    self.popover.showFromView(view)
+                    self.popover.showFrom(view: view)
                 case .close:
                     self.popover.dismiss()
                 case .quit:

@@ -23,11 +23,11 @@ class ContentCoordinator {
 
         // TODO: - Rethink the force unwrap
         let chaptersViewModel = ChaptersViewModel(podcastMonitor: self.podcastMonitor)
-        self.chaptersController = ChaptersViewController(viewModel: chaptersViewModel)!
+        chaptersController = ChaptersViewController(viewModel: chaptersViewModel)!
         
-        self.otherContentController = OtherContentViewController()!
+        otherContentController = OtherContentViewController()!
 
-        podcastMonitor.isPodcast
+        podcastMonitor.podcast
             .subscribe(onNext: { isPodcast in
                 if isPodcast {
                     self.popover.content = self.chaptersController

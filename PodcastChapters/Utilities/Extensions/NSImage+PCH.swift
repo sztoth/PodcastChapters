@@ -10,7 +10,6 @@ import AppKit
 import Foundation
 
 extension NSImage {
-
     func imageApplyingTintColor(_ color: NSColor) -> NSImage? {
         if let copy = copy() as? NSImage {
             copy.lockFocus()

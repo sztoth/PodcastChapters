@@ -9,8 +9,8 @@
 import AppKit
 import Foundation
 
-protocol NSApplicationProtocol {
-    func terminate(_ sender: AnyObject?)
+protocol NSApplicationType {
+    func terminate(_ sender: Any?)
 }
 
-//extension NSApplication: NSApplicationProtocol {}
+extension NSApplication: NSApplicationType {}

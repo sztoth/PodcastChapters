@@ -6,129 +6,132 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import AVFoundation
+import RxOptional
 import RxSwift
 
 class PodcastMonitor {
-
-    var isPodcast: Observable<Bool> {
-        return _isPodcast.asObservable()
+    var podcast: Observable<Bool> {
+        return itunes.nowPlaying.map({ $0?.isPodcast ?? false })
+    }
+    var playing: Observable<Bool> {
+        return itunes.playerState.map({ $0 == .playing ? true : false })
+    }
+    var chapters: Observable<[Chapter]?> {
+        return _chapters.asObservable()
+    }
+    var playingChapterIndex: Observable<Int?> {
+        return _playingChapterIndex.asObservable()
     }
 
-    var isPlaying: Observable<Bool> {
-        return _isPlaying.asObservable()
-    }
-
-    var chapterChanged: Observable<(Int?, Int?)> {
-        return _chapterChanged.asObservable()
-    }
-
-    fileprivate(set) var chapters: [Chapter]? {
-        didSet {
-            _chapterChanged.onNext((nil, nil))
-        }
-    }
-
-    fileprivate(set) var currentChapterIndex: Int? {
-        didSet {
-            if let index = currentChapterIndex, let chapters = chapters , oldValue != index {
-                _chapterChanged.onNext((oldValue, index))
-
-                let chapter = chapters[index]
-                let notification = Notification(description: chapter.title, image: chapter.cover) {
-                    self.pasteBoard.copy(chapter.title)
-                }
-                notificationCenter.deliverNotification(notification)
-            }
-        }
-    }
-
-    fileprivate let _isPodcast = BehaviorSubject<Bool>(value: false)
-    fileprivate let _isPlaying = BehaviorSubject<Bool>(value: false)
-    fileprivate let _podcastChanged = PublishSubject<Void>()
-    fileprivate let _chapterChanged = PublishSubject<(Int?, Int?)>()
-    fileprivate let iTunes: iTunesApp
+    fileprivate let _chapters = Variable<[Chapter]?>(nil)
+    fileprivate let _playingChapterIndex = Variable<Int?>(nil)
+    fileprivate let itunes: iTunes
+    fileprivate let mediaLoader: MediaLoader
     fileprivate let notificationCenter: NotificationCenter
     fileprivate let pasteBoard: PasteBoard
     fileprivate let disposeBag = DisposeBag()
 
-    init(iTunes: iTunesApp = iTunesApp(), notificationCenter: NotificationCenter = NotificationCenter.sharedInstance, pasteBoard: PasteBoard = PasteBoard()) {
-        self.iTunes = iTunes
+    init(
+        itunes: iTunes = iTunes(),
+        mediaLoader: MediaLoader,
+        notificationCenter: NotificationCenter = NotificationCenter.sharedInstance,
+        pasteBoard: PasteBoard = PasteBoard()
+    ) {
+        self.itunes = itunes
+        self.mediaLoader = mediaLoader
         self.notificationCenter = notificationCenter
         self.pasteBoard = pasteBoard
 
-        self.iTunes.playerState
-            .subscribe(onNext: { state in
-                switch state {
-                case .Playing:
-                    self._isPlaying.onNext(true)
-                case .Paused:
-                    self._isPlaying.onNext(false)
-                case .Stopped, .Unknown:
-                    self._isPlaying.onNext(false)
-                    self.notificationCenter.clearAllNotifications()
-                }
-            })
-            .addDisposableTo(disposeBag)
-
-        self.iTunes.playerPosition
-            .subscribe(onNext: { position in
-                self.updateCurrentItemForPosition(position)
-            })
-            .addDisposableTo(disposeBag)
-
-        // TODO:
-//        self.iTunes.nowPlaying
-//            .subscribe(onNext: { item in
-//                if case .podcast(let mediaItem) = item {
-//                    self._isPodcast.onNext(true)
-//
-//                    iTunesLibrary.fetchURLForPesistentID(mediaItem.persistentID)
-//                        .subscribe { event in
-//                            if case .next(let URL) = event {
-//                                ChapterParser.chaptersFromAsset(AVAsset(url: URL))
-//                                    .subscribe { chapters in
-//                                        if let chapters = chapters , 0 < chapters.count {
-//                                            self.chapters = chapters.map { chapter in
-//                                                let cover = chapter.artwork != nil ? chapter.artwork : mediaItem.artwork
-//                                                return Chapter(cover: cover, title: chapter.title, start: chapter.time, duration: chapter.duration)
-//                                            }
-//                                        }
-//                                        else {
-//                                            let chapter = Chapter(cover: mediaItem.artwork, title: mediaItem.name, start: nil, duration: nil)
-//                                            self.chapters = [chapter]
-//                                        }
-//                                    }
-//                                    .addDisposableTo(self.disposeBag)
-//                            }
-//                            else if case .Error = event {
-//                                self.reset()
-//                            }
-//                        }
-//                        .addDisposableTo(self.disposeBag)
-//                }
-//                else {
-//                    self.reset()
-//                }
-//            })
-//            .addDisposableTo(disposeBag)
+        setupBindings()
     }
 }
 
-private extension PodcastMonitor {
+fileprivate extension PodcastMonitor {
+    func setupBindings() {
+        itunes.playerState
+            .filter({ $0 == .stopped || $0 == .unknown})
+            .mapToVoid()
+            .subscribe(onNext: (self.notificationCenter.clearAllNotifications))
+            .addDisposableTo(disposeBag)
 
-    func updateCurrentItemForPosition(_ position: CDouble?) {
-        guard let chapters = chapters, let position = position else {
-            currentChapterIndex = nil
-            return
-        }
+        let podcastItemSignal = itunes.nowPlaying
+            .filterNil()
+            .filter({ $0.isPodcast == true })
 
-        currentChapterIndex = findChapterIndexForPosition(position, inChapterList: chapters)
+        let chaptersSignal = podcastItemSignal
+            .map({ $0.identifier })
+            .flatMap(mediaLoader.URLFor)
+            .map({ AVAsset(url: $0) })
+            .flatMap(ChapterLoader.chaptersFrom)
+            .catchError({ _ in
+                self.reset()
+                return Observable.empty()
+            })
+
+        let processedChapterSignal = Observable.zip(
+            podcastItemSignal,
+            chaptersSignal,
+            resultSelector: processChapterWithDefaultArtwork
+        )
+        processedChapterSignal
+            .map({ Optional($0) })
+            .bindTo(_chapters)
+            .addDisposableTo(disposeBag)
+
+        let updateIndexSignal = Observable.combineLatest(
+            processedChapterSignal,
+            itunes.playerPosition,
+            resultSelector: findCurrentChapterIndex
+        )
+        updateIndexSignal
+            .bindTo(_playingChapterIndex)
+            .addDisposableTo(disposeBag)
+
+        itunes.nowPlaying
+            .filter({ $0 == nil || $0?.isPodcast == false })
+            .mapToVoid()
+            .subscribe(onNext: self.reset)
+            .addDisposableTo(disposeBag)
+
+        let nonNilChapterSignal = chapters.filterNil()
+        let nonNilCurrentIndexSignal = playingChapterIndex.distinctUntilChanged().filterNil()
+
+        let notificationSignal = Observable.combineLatest(
+            nonNilChapterSignal,
+            nonNilCurrentIndexSignal,
+            resultSelector: ({ $0[$1] })
+        )
+        notificationSignal
+            .subscribe(onNext: sendNotification(withChapter:))
+            .addDisposableTo(disposeBag)
+    }
+}
+
+// MARK: - Reactive processing functions
+fileprivate extension PodcastMonitor {
+    func reset() {
+        _chapters.value = nil
+        _playingChapterIndex.value = nil
     }
 
-    func findChapterIndexForPosition(_ position: CDouble, inChapterList chapters: [Chapter]) -> Int? {
-        for (index, chapter) in chapters.enumerated() {
-            if chapter.containsPosition(position) {
+    func processChapterWithDefaultArtwork(_ input: (track: iTunesTrackWrapper, chapters: [MNAVChapter]?)) -> [Chapter] {
+        guard let chapters = input.chapters, !chapters.isEmpty else {
+            return [Chapter(cover: input.track.artwork, title: input.track.title, start: nil, duration: nil)]
+        }
+
+        return chapters.map { chapter in
+            let cover = chapter.artwork != nil ? chapter.artwork : input.track.artwork
+            return Chapter(cover: cover, title: chapter.title, start: chapter.time, duration: chapter.duration)
+        }
+    }
+
+    func findCurrentChapterIndex(_ input: (chapters: [Chapter], position: CDouble?)) -> Int? {
+        guard let position = input.position else { return nil }
+
+        for (index, chapter) in input.chapters.enumerated() {
+            if chapter.contains(position) {
                 return index
             }
         }
@@ -136,10 +139,11 @@ private extension PodcastMonitor {
         return nil
     }
 
-    func reset() {
-        currentChapterIndex = nil
-        chapters = nil
+    func sendNotification(withChapter chapter: Chapter) {
+        let notification = Notification(description: chapter.title, image: chapter.cover) {
+            self.pasteBoard.copy(chapter.title)
+        }
+        notificationCenter.deliverNotification(notification)
 
-        _isPodcast.onNext(false)
     }
 }

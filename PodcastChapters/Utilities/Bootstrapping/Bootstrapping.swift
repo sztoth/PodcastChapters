@@ -53,8 +53,5 @@ struct Bootstrapper {
 }
 
 private func +(left: [Bootstrapping], right: Bootstrapping) -> [Bootstrapping] {
-    var result = Array<Bootstrapping>(left)
-    result.append(right)
-
-    return result
+    return left + [right]
 }

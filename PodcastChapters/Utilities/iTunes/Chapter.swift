@@ -10,7 +10,6 @@ import AppKit
 import Foundation
 
 struct Chapter {
-
     let cover: NSImage?
     let title: String
     let start: CMTime?
@@ -18,8 +17,7 @@ struct Chapter {
 }
 
 extension Chapter {
-
-    func containsPosition(_ position: CDouble) -> Bool {
+    func contains(_ position: CDouble) -> Bool {
         guard let start = start, let duration = duration else {
             return true
         }

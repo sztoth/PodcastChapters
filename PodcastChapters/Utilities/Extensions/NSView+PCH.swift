@@ -9,15 +9,13 @@
 import Cocoa
 
 protocol NibLoadable: class {
-
     static func pch_loadFromNib<T>(owner: NSObject?) -> T?
 }
 
 extension NSView: NibLoadable {
-
     static func pch_loadFromNib<T>(owner: NSObject? = nil) -> T? {
         if let nib = NSNib(nibNamed: String(describing: self), bundle: nil) {
-            var topLevelObjects: NSArray?
+            var topLevelObjects: NSArray? = []
             if nib.instantiate(withOwner: owner, topLevelObjects: &topLevelObjects!) == true {
                 if let objects = topLevelObjects {
                     let items = objects.filter { element in
@@ -36,7 +34,6 @@ extension NSView: NibLoadable {
 }
 
 extension NSView {
-
     func pch_roundCorners(_ radious: Double) {
         wantsLayer = true
         layer?.cornerRadius = CGFloat(radious)

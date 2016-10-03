@@ -32,6 +32,7 @@ class StatusItemView: NSControl {
     fileprivate let statusItem: NSStatusItem
     fileprivate let rightClickMenu: RightClickMenu
     fileprivate let image: NSImage
+    
     fileprivate var mouseDown = false
     fileprivate var menuVisible = false
 

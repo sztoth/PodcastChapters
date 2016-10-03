@@ -11,8 +11,7 @@ import Foundation
 typealias TimerAction = () -> ()
 
 extension Foundation.Timer {
-
-    class func pch_scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
+    static func pch_scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
         let timer = Foundation.Timer(
             timeInterval: timeInterval,
             target: self,
@@ -26,21 +25,7 @@ extension Foundation.Timer {
     }
 }
 
-private extension Foundation.Timer {
-
-    class TimerData: NSObject {
-        
-        fileprivate let repeats: Bool
-        fileprivate let action: TimerAction
-
-        init(repeats: Bool, action: @escaping TimerAction) {
-            self.repeats = repeats
-            self.action = action
-
-            super.init()
-        }
-    }
-
+fileprivate extension Foundation.Timer {
     @objc class func pch_timerFired(_ timer: Foundation.Timer) {
         if let container = timer.userInfo as? TimerData {
             container.action()
@@ -49,5 +34,17 @@ private extension Foundation.Timer {
                 timer.invalidate()
             }
         }
+    }
+}
+
+fileprivate class TimerData: NSObject {
+    fileprivate let repeats: Bool
+    fileprivate let action: TimerAction
+
+    init(repeats: Bool, action: @escaping TimerAction) {
+        self.repeats = repeats
+        self.action = action
+
+        super.init()
     }
 }

@@ -10,14 +10,14 @@ import Cocoa
 import RxSwift
 
 class EventMonitor {
-
     var event: Observable<AnyObject> {
-        return eventSignal.asObservable()
+        return _event.asObservable()
     }
 
-    fileprivate let eventSignal = PublishSubject<AnyObject>()
-    fileprivate var monitor: AnyObject?
+    fileprivate let _event = PublishSubject<AnyObject>()
     fileprivate let mask: NSEventMask
+
+    fileprivate var monitor: Any?
 
     init(mask: NSEventMask) {
         self.mask = mask
@@ -28,19 +28,15 @@ class EventMonitor {
     }
 
     func start() {
-        guard monitor == nil else {
-            return
-        }
+        guard monitor == nil else { return }
 
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask) { [unowned self] event in
-            self.eventSignal.onNext(event)
-        } as AnyObject?
+            self._event.onNext(event)
+        }
     }
 
     func stop() {
-        guard let monitor = monitor else {
-            return
-        }
+        guard let monitor = monitor else { return }
 
         NSEvent.removeMonitor(monitor)
         self.monitor = nil

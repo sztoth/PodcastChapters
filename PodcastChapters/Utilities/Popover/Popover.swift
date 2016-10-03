@@ -11,9 +11,7 @@ import Cocoa
 class Popover: NSWindowController {
 
     var content: NSViewController? {
-        get {
-            return contentViewController
-        }
+        get { return contentViewController }
         set(viewController) {
             contentViewController = nil
             contentViewController = viewController
@@ -38,8 +36,7 @@ class Popover: NSWindowController {
 }
 
 extension Popover {
-
-    func showFromView(_ view: NSView) {
+    func showFrom(view: NSView) {
         guard let window = window, let frame = view.window?.frame else {
             return
         }
@@ -67,8 +64,7 @@ extension Popover {
     }
 }
 
-private extension Popover {
-
+fileprivate extension Popover {
     func updateWindowFrame() {
         guard let window = window, let anchorFrame = presentedFrom else {
             return

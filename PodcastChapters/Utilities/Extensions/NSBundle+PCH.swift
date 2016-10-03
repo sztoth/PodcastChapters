@@ -9,13 +9,12 @@
 import Foundation
 
 extension Bundle {
-
-    class func pch_appName() -> String {
+    static func pch_appName() -> String {
         let name = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
         return name ?? "Unknown app"
     }
 
-    class func pch_bundleIdentifier() -> String {
+    static func pch_bundleIdentifier() -> String {
         let identifier = Bundle.main.bundleIdentifier
         return identifier ?? "Unknown identifier"
     }

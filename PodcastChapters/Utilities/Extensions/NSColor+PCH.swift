@@ -15,7 +15,6 @@ enum NSColorHexConversionError: Error {
 }
 
 extension NSColor {
-
     convenience init(hexString: String) throws {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()

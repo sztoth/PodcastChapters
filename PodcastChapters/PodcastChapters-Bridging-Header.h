@@ -6,4 +6,6 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+#import "iTunesApplicationWrapper.h"
 #import "MNAVChapterReader.h"
+#import "SBApplication+PCH.h"

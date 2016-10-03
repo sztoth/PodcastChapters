@@ -67,8 +67,7 @@ class PopoverBackgroundView: NSView {
     }
 }
 
-private extension PopoverBackgroundView {
-
+fileprivate extension PopoverBackgroundView {
     func internalSetup() {
         pch_roundCorners(cornerRadius)
     }

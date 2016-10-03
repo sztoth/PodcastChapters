@@ -9,13 +9,16 @@
 import Cocoa
 
 class AppDelegate: NSObject {
-
     fileprivate var coordinator: AppCoordinator?
 }
 
 extension AppDelegate: NSApplicationDelegate {
 
-    private func applicationDidFinishLaunching(_ aNotification: Notification) {
+    // The following is a workaround for a nasty bug. The big rename broke the optional protocols.
+    // For now the optional protocols have to be marked with an objective-c attribute.
+    // Also the Notification has to be an NSNotification.
+    @objc(applicationDidFinishLaunching:)
+    func applicationDidFinishLaunching(_ notification: NSNotification) {
         NSRunningApplication.pch_ensureThereIsOnlyOneRunnningInstance()
 
         let components: [Bootstrapping] = [
@@ -26,12 +29,13 @@ extension AppDelegate: NSApplicationDelegate {
         setup(components)
     }
 
-    private func applicationWillTerminate(_ notification: Notification) {
+    @objc(applicationWillTerminate:)
+    func applicationWillTerminate(_ notification: NSNotification) {
         NotificationCenter.sharedInstance.clearAllNotifications()
     }
 }
 
-private extension AppDelegate {
+fileprivate extension AppDelegate {
 
     func setup(_ components: [Bootstrapping]) {
         do {

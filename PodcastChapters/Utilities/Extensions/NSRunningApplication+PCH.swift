@@ -10,9 +10,8 @@ import AppKit
 import Foundation
 
 extension NSRunningApplication {
-
-    class func pch_ensureThereIsOnlyOneRunnningInstance(_ identifier: String = Bundle.pch_bundleIdentifier()) {
-        let applications = self.runningApplications(withBundleIdentifier: identifier)
+    static func pch_ensureThereIsOnlyOneRunnningInstance(_ identifier: String = Bundle.pch_bundleIdentifier()) {
+        let applications = runningApplications(withBundleIdentifier: identifier)
         if 1 < applications.count {
             let alert = MultipleInstanceAlert()
             alert.runModal()

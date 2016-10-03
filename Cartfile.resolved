@@ -1,1 +1,2 @@
 github "ReactiveX/RxSwift" "3.0.0-beta.1"
+github "RxSwiftCommunity/RxOptional" "68e893aaa849c585ab2dbae3116cb41104091397"

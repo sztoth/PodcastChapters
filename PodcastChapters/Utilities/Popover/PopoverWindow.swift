@@ -23,18 +23,14 @@ class PopoverWindow: NSPanel {
     }
 
     override var contentView: NSView? {
-        get {
-            return windowContentView
-        }
-        set(view) {
-            setWindowContentView(view)
-        }
+        get { return windowContentView }
+        set(view) { setWindowContentView(view) }
     }
 
     fileprivate var windowContentView: NSView?
     fileprivate var backgroundView: PopoverBackgroundView?
 
-    override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    fileprivate override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
 
         isOpaque = false
@@ -52,14 +48,12 @@ class PopoverWindow: NSPanel {
 }
 
 extension PopoverWindow {
-
     class func window() -> PopoverWindow {
         return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .buffered, defer: true)
     }
 }
 
-private extension PopoverWindow {
-
+fileprivate extension PopoverWindow {
     func setWindowContentView(_ view: NSView?) {
         if windowController == view {
             return

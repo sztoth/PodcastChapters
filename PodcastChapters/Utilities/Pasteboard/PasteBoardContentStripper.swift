@@ -33,7 +33,6 @@ class PasteBoardContentStripper {
 }
 
 extension PasteBoardContentStripper {
-
     func strip(_ content: String) -> String {
         var strippedContent = content
         rules.forEach { rule in

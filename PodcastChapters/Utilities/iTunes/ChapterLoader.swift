@@ -1,5 +1,5 @@
 //
-//  ChapterParser.swift
+//  ChapterLoader.swift
 //  PodcastChapters
 //
 //  Created by Szabolcs Toth on 2016. 02. 11..
@@ -9,9 +9,8 @@
 import AVFoundation
 import RxSwift
 
-class ChapterParser {
-
-    class func chaptersFromAsset(_ asset: AVAsset) -> Observable<[MNAVChapter]?> {
+class ChapterLoader {
+    static func chaptersFrom(asset: AVAsset) -> Observable<[MNAVChapter]?> {
         return Observable.create { observer in
             let reader = MNAVChapterReader()
             let chapters = reader.chapters(from: asset) as? [MNAVChapter]
