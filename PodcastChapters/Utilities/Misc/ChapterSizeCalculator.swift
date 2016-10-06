@@ -11,7 +11,6 @@ import Cocoa
 typealias ChapterCellConfiguration = (ChapterCell) -> ()
 
 class ChapterSizeCalculator {
-
     fileprivate let cache: NSCache<AnyObject, AnyObject>
     fileprivate let prototypeCellView: ChapterCellView
     fileprivate let widthConstraint: NSLayoutConstraint

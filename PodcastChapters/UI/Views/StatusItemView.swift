@@ -16,15 +16,11 @@ enum StatusItemViewEvent {
 }
 
 class StatusItemView: NSControl {
-
     var event: Observable<StatusItemViewEvent> {
         return _event.asObservable()
     }
-
     var highlight: Bool {
-        didSet {
-            setNeedsDisplay()
-        }
+        didSet { setNeedsDisplay() }
     }
 
     fileprivate let _event = PublishSubject<StatusItemViewEvent>()
@@ -78,8 +74,7 @@ class StatusItemView: NSControl {
 
 // MARK: - Private
 
-private extension StatusItemView {
-
+fileprivate extension StatusItemView {
     func mouseStatusChanged(started: Bool) {
         mouseDown = started
         setNeedsDisplay()
@@ -102,7 +97,6 @@ private extension StatusItemView {
 // MARK: - Click handling
 
 extension StatusItemView {
-
     override func mouseDown(with theEvent: NSEvent) {
         mouseStatusChanged(started: true)
     }
@@ -138,8 +132,7 @@ extension StatusItemView {
 
 // MARK: - Menu handling
 
-private extension StatusItemView {
-
+fileprivate extension StatusItemView {
     func showMenu() {
         Foundation.NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidBeginTracking.rawValue, object: rightClickMenu) { [weak self] notification in
             self?.menuVisibilityChanged(visible: true)

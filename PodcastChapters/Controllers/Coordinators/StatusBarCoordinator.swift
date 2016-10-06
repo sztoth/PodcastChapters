@@ -10,14 +10,13 @@ import Cocoa
 import RxSwift
 
 class StatusBarCoordinator {
-
     fileprivate let popover: Popover
     fileprivate let statusBarItem: StatusBarItem
-    fileprivate let application: NSApplication
+    fileprivate let application: NSApplicationType
     fileprivate let disposeBag = DisposeBag()
 
     // TODO: Fix the nsapplicationprotocol
-    init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplication = NSApplication.shared()) {
+    init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplicationType = NSApplication.shared()) {
         self.popover = popover
         self.statusBarItem = statusBarItem
         self.application = application

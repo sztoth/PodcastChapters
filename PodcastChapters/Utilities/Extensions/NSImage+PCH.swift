@@ -11,19 +11,17 @@ import Foundation
 
 extension NSImage {
     func imageApplyingTintColor(_ color: NSColor) -> NSImage? {
-        if let copy = copy() as? NSImage {
-            copy.lockFocus()
+        guard let imageCopy = copy() as? NSImage else { return nil }
 
-            color.set()
+        imageCopy.lockFocus()
 
-            let rect = NSRect(origin: NSPoint.zero, size: copy.size)
-            NSRectFillUsingOperation(rect, .sourceAtop)
+        color.set()
 
-            copy.unlockFocus()
+        let rect = NSRect(origin: NSPoint.zero, size: imageCopy.size)
+        NSRectFillUsingOperation(rect, .sourceAtop)
 
-            return copy
-        }
+        imageCopy.unlockFocus()
 
-        return nil
+        return imageCopy
     }
 }

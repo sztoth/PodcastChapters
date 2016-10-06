@@ -9,7 +9,6 @@
 import Foundation
 
 class AppCoordinator {
-
     fileprivate let podcastMonitor: PodcastMonitor
     fileprivate let statusBarCoordinator: StatusBarCoordinator
     fileprivate let contentCoordinator: ContentCoordinator

@@ -26,13 +26,13 @@ extension Foundation.Timer {
 }
 
 fileprivate extension Foundation.Timer {
-    @objc class func pch_timerFired(_ timer: Foundation.Timer) {
-        if let container = timer.userInfo as? TimerData {
-            container.action()
+    @objc static func pch_timerFired(_ timer: Foundation.Timer) {
+        guard let container = timer.userInfo as? TimerData else { return }
 
-            if !container.repeats {
-                timer.invalidate()
-            }
+        container.action()
+
+        if !container.repeats {
+            timer.invalidate()
         }
     }
 }

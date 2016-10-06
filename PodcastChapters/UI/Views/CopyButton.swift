@@ -9,7 +9,6 @@
 import Cocoa
 
 class CopyButton: NSButton {
-
     fileprivate let icon = NSImage(named: "Copy Button Image")
 
     override init(frame frameRect: NSRect) {
@@ -54,7 +53,6 @@ class CopyButton: NSButton {
 }
 
 private extension CopyButton {
-
     func internalSetup() {
         setButtonType(.momentaryLight)
     }

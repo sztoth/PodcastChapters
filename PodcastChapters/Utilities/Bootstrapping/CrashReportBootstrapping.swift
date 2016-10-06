@@ -9,7 +9,6 @@
 import Foundation
 
 struct CrashReportBootstrapping: Bootstrapping {
-
     func bootstrap(_ bootstrapped: Bootstrapped) throws {
 
     }

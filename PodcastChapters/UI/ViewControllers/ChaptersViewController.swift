@@ -90,9 +90,12 @@ fileprivate extension ChaptersViewController {
             .drive(coverImageView.rx.image)
             .addDisposableTo(disposeBag)
 
-        /*viewModel.title
-         .drive(titleLabel.rx.text)
-         .addDisposableTo(disposeBag)*/
+        // It is a workaround because it did not want to drive the textfield
+        viewModel.title
+            .drive(onNext: { title in
+                self.titleLabel.stringValue = title ?? "Üres"
+            })
+         .addDisposableTo(disposeBag)
 
         viewModel.chapterChanged
             .drive(onNext: reload(indexes:))

@@ -9,13 +9,11 @@
 import Cocoa
 
 protocol Reusable: class {
-
     static var reuseIdentifier: String { get }
     static var nib: NSNib? { get }
 }
 
 extension Reusable {
-
     static var reuseIdentifier: String {
         return String(describing: Self.self)
     }

@@ -10,7 +10,6 @@ import AppKit
 import Foundation
 
 class MultipleInstanceAlert: NSAlert {
-
     init(appName: String = Bundle.pch_appName()) {
         super.init()
 

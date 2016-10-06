@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 class ChaptersViewModel {
-
     var artwork: Driver<NSImage?> {
         return _artwork.asDriver()
     }

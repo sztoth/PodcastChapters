@@ -11,7 +11,6 @@ import Cocoa
 typealias NotificationAction = () -> ()
 
 class Notification {
-
     let identifier: String
     let title: String
     let description: String

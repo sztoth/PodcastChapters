@@ -35,6 +35,7 @@ extension NSStatusItem {
 }
 
 // MARK: - RxSwift
+
 extension NSStatusItem {
     var event: Observable<StatusItemViewEvent>? {
         guard let view = view as? StatusItemView else { return nil }

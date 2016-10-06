@@ -45,7 +45,6 @@ class RightClickMenu: NSMenu {
 }
 
 extension RightClickMenu {
-
     func settingsSelected() {
         _itemSelected.onNext(.settings)
     }

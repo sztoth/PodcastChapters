@@ -9,17 +9,12 @@
 import AppKit
 import Foundation
 
-enum NSColorHexConversionError: Error {
-    case parameterNotScannable
-    case invalidCharacterCount
-}
-
 extension NSColor {
     convenience init(hexString: String) throws {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         if !Scanner(string: hex).scanHexInt32(&int) {
-            throw NSColorHexConversionError.parameterNotScannable
+            throw HexConversionError.parameterNotScannable
         }
 
         let a, r, g, b: UInt32
@@ -32,7 +27,7 @@ extension NSColor {
         case 8: // ARGB (32-bit)
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
-            throw NSColorHexConversionError.invalidCharacterCount
+            throw HexConversionError.invalidCharacterCount
         }
 
         let divider: CGFloat = 255.0
@@ -42,5 +37,12 @@ extension NSColor {
         let alpha = CGFloat(a) / divider
         
         self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
+}
+
+extension NSColor {
+    enum HexConversionError: Error {
+        case parameterNotScannable
+        case invalidCharacterCount
     }
 }

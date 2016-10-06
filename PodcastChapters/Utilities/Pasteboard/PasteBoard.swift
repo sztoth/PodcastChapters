@@ -10,22 +10,23 @@ import AppKit
 import Foundation
 
 class PasteBoard {
-
     fileprivate let pasteBoard: NSPasteboard
     fileprivate let contentStripper: PasteBoardContentStripper
 
-    init(pasteBoard: NSPasteboard = NSPasteboard.general(), contentStripper: PasteBoardContentStripper = PasteBoardContentStripper()) {
+    init(
+        pasteBoard: NSPasteboard = NSPasteboard.general(),
+        contentStripper: PasteBoardContentStripper = PasteBoardContentStripper()
+    ) {
         self.pasteBoard = pasteBoard
         self.contentStripper = contentStripper
     }
 }
 
 extension PasteBoard {
-
     func copy(_ content: String) {
-        let processedContent = contentStripper.strip(content)
-
         pasteBoard.clearContents()
+
+        let processedContent = contentStripper.strip(content)
         pasteBoard.setString(processedContent, forType: NSPasteboardTypeString)
     }
 }

@@ -9,10 +9,11 @@
 import Cocoa
 import iTunesLibrary
 
-class ApplicationBootstrapping: Bootstrapping {
-
+class ApplicationBootstrapping {
     var coordinator: AppCoordinator?
+}
 
+extension ApplicationBootstrapping: Bootstrapping {
     func bootstrap(_ bootstrapped: Bootstrapped) throws {
         let popover = Popover()
 

@@ -10,7 +10,6 @@ import Cocoa
 import RxSwift
 
 class ContentCoordinator {
-
     fileprivate let popover: Popover
     fileprivate let podcastMonitor: PodcastMonitor
     fileprivate let chaptersController: ChaptersViewController

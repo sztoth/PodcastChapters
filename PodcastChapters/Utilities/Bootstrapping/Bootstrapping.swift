@@ -13,12 +13,10 @@ enum BootstrappingError: Error {
 }
 
 protocol Bootstrapping {
-
     func bootstrap(_ bootstrapped: Bootstrapped) throws
 }
 
 struct Bootstrapped {
-
     fileprivate let bootstrappedComponents: [Bootstrapping]
 
     init() {
@@ -28,7 +26,9 @@ struct Bootstrapped {
     init(components: [Bootstrapping]) {
         self.bootstrappedComponents = components
     }
+}
 
+extension Bootstrapped {
     func bootstrap(_ component: Bootstrapping) throws -> Bootstrapped {
         try component.bootstrap(self)
         return Bootstrapped(components: bootstrappedComponents + component)
@@ -44,7 +44,6 @@ struct Bootstrapped {
 }
 
 struct Bootstrapper {
-
     static func bootstrap(_ components: [Bootstrapping]) throws -> Bootstrapped {
         return try components.reduce(Bootstrapped()) { bootstrapped, next in
             return try bootstrapped.bootstrap(next)
@@ -52,6 +51,6 @@ struct Bootstrapper {
     }
 }
 
-private func +(left: [Bootstrapping], right: Bootstrapping) -> [Bootstrapping] {
+fileprivate func +(left: [Bootstrapping], right: Bootstrapping) -> [Bootstrapping] {
     return left + [right]
 }
