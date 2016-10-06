@@ -13,16 +13,16 @@ import Foundation
 class PopoverMock: Popover {
 
     enum ExecutedMethod {
-        case Nothing, ShowFromView(NSView), Dismiss
+        case nothing, showFromView(NSView), dismiss
     }
 
-    private(set) var executedMethod = ExecutedMethod.Nothing
+    fileprivate(set) var executedMethod = ExecutedMethod.nothing
 
-    override func showFromView(view: NSView) {
-        executedMethod = .ShowFromView(view)
+    override func showFromView(_ view: NSView) {
+        executedMethod = .showFromView(view)
     }
 
     override func dismiss() {
-        executedMethod = .Dismiss
+        executedMethod = .dismiss
     }
 }

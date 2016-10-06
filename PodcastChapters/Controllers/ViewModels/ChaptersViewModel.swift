@@ -6,69 +6,92 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
-import Foundation
+import AppKit
+import RxCocoa
 import RxSwift
 
-typealias ChapterData = (title: String, playing: Bool)
-
 class ChaptersViewModel {
-
-    var artwork = Variable<NSImage?>(nil)
-    var title = Variable<String>("This is the title")
-
-    var isPlaying: Observable<Bool> {
-        return podcastMonitor.isPlaying
+    var artwork: Driver<NSImage?> {
+        return _artwork.asDriver()
+    }
+    var title: Driver<String?> {
+        return _title.asDriver()
+    }
+    var playing: Driver<Bool> {
+        return podcastMonitor.playing.asDriver(onErrorJustReturn: false)
+    }
+    var chapterChanged: Driver<(Int?, Int?)> {
+        return _chapterChanged.asDriver(onErrorJustReturn: (nil, nil))
     }
 
-    var chapterChanged: Observable<(Int?, Int?)> {
-        return podcastMonitor.chapterChanged
-    }
+    fileprivate let _artwork = Variable<NSImage?>(nil)
+    fileprivate let _title = Variable<String?>(nil)
+    fileprivate let _chapterChanged = PublishSubject<(Int?, Int?)>()
+    fileprivate let chapters = Variable<[Chapter]?>(nil)
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate let podcastMonitor: PodcastMonitor
+    fileprivate let pasteBoard: PasteBoard
 
-    private let podcastMonitor: PodcastMonitor
-    private let pasteBoard: PasteBoard
-    private let disposeBag = DisposeBag()
-
-    init(podcastMonitor: PodcastMonitor = PodcastMonitor(), pasteBoard: PasteBoard = PasteBoard()) {
+    init(podcastMonitor: PodcastMonitor, pasteBoard: PasteBoard = PasteBoard()) {
         self.podcastMonitor = podcastMonitor
         self.pasteBoard = pasteBoard
 
-        self.podcastMonitor.chapterChanged
-            .subscribeNext { [unowned self] _ in
-                if let chapters = self.podcastMonitor.chapters, index = self.podcastMonitor.currentChapterIndex {
-                    let chapter = chapters[index]
-                    self.artwork.value = chapter.cover
-                    self.title.value = chapter.title
-                }
+        setupBindings()
+    }
+}
+
+fileprivate extension ChaptersViewModel {
+    func setupBindings() {
+        podcastMonitor.chapters
+            .bindTo(chapters)
+            .addDisposableTo(disposeBag)
+
+        let defaultValue: [Int?] = [nil]
+        podcastMonitor.playingChapterIndex
+            .scan(defaultValue, accumulator: { (previous, current) in
+                return Array(Array(previous + [current]).suffix(2))
+            })
+            .map({ ($0[0], $0[1]) })
+            .bindTo(_chapterChanged)
+            .addDisposableTo(disposeBag)
+
+        let playing = Observable.combineLatest(
+            chapters.asObservable(),
+            podcastMonitor.playingChapterIndex) { (chapters, index) -> Chapter? in
+                guard let chapters = chapters, let index = index else { return nil }
+                return chapters[index]
             }
+
+        playing
+            .map { $0?.cover }
+            .bindTo(_artwork)
+            .addDisposableTo(disposeBag)
+
+        playing
+            .map { $0?.title }
+            .bindTo(_title)
             .addDisposableTo(disposeBag)
     }
 }
 
+// MARK: - Comment
 extension ChaptersViewModel {
-
     func copyCurrentChapterTitleToClipboard() {
-        pasteBoard.copy(title.value)
+        guard let title = _title.value else { return }
+        pasteBoard.copy(title)
     }
 }
 
 extension ChaptersViewModel {
-
     func numberOfChapters() -> Int {
-        return podcastMonitor.chapters?.count ?? 0
+        return chapters.value?.count ?? 0
     }
 
-    func chapterDataForIndex(index: Int) -> ChapterData? {
-        if let chapters = podcastMonitor.chapters {
-            let chapter = chapters[index]
+    func chapterDataFor(index: Int) -> String? {
+        guard let chapters = chapters.value else { return nil }
+        
+        let chapter = chapters[index]
 
-            var selected = false
-            if let currentChapterIndex = podcastMonitor.currentChapterIndex {
-                selected = (index == currentChapterIndex)
-            }
-
-            return (chapter.title, selected)
-        }
-
-        return nil
+        return chapter.title
     }
 }

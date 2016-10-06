@@ -6,24 +6,22 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 
 extension NSImage {
+    func imageApplyingTintColor(_ color: NSColor) -> NSImage? {
+        guard let imageCopy = copy() as? NSImage else { return nil }
 
-    func imageApplyingTintColor(color: NSColor) -> NSImage? {
-        if let copy = copy() as? NSImage {
-            copy.lockFocus()
+        imageCopy.lockFocus()
 
-            color.set()
+        color.set()
 
-            let rect = NSRect(origin: NSPoint.zero, size: copy.size)
-            NSRectFillUsingOperation(rect, .CompositeSourceAtop)
+        let rect = NSRect(origin: NSPoint.zero, size: imageCopy.size)
+        NSRectFillUsingOperation(rect, .sourceAtop)
 
-            copy.unlockFocus()
+        imageCopy.unlockFocus()
 
-            return copy
-        }
-
-        return nil
+        return imageCopy
     }
 }

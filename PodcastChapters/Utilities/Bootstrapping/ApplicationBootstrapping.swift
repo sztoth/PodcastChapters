@@ -7,20 +7,28 @@
 //
 
 import Cocoa
+import iTunesLibrary
 
-class ApplicationBootstrapping: Bootstrapping {
-
+class ApplicationBootstrapping {
     var coordinator: AppCoordinator?
+}
 
-    func bootstrap(bootstrapped: Bootstrapped) throws {
+extension ApplicationBootstrapping: Bootstrapping {
+    func bootstrap(_ bootstrapped: Bootstrapped) throws {
         let popover = Popover()
 
-        let podcastMonitor = PodcastMonitor()
+        let itLibrary = try ITLibrary(apiVersion: "1.0")
+        let mediaLoader = MediaLoader(library: itLibrary)
+        let podcastMonitor = PodcastMonitor(mediaLoader: mediaLoader)
 
-        let statusBarItem = StatusBarItem(eventMonitor: EventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]))
+        let statusBarItem = StatusBarItem(eventMonitor: EventMonitor(mask: [.leftMouseDown, .rightMouseDown]))
         let contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
         let statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem)
 
-        coordinator = AppCoordinator(podcastMonitor: podcastMonitor, statusBarCoordinator: statusBarCoordinator, contentCoordinator: contentCoordinator)
+        coordinator = AppCoordinator(
+            podcastMonitor: podcastMonitor,
+            statusBarCoordinator: statusBarCoordinator,
+            contentCoordinator: contentCoordinator
+        )
     }
 }

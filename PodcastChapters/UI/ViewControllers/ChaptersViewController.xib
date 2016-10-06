@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -11,7 +11,6 @@
                 <outlet property="collectionView" destination="pjx-RD-NQU" id="VM5-P4-2Cu"/>
                 <outlet property="copyButton" destination="zWh-OA-nBu" id="9Tk-Xo-mUy"/>
                 <outlet property="coverImageView" destination="qiT-35-5OI" id="MJ5-XN-ZS6"/>
-                <outlet property="playbackIndicator" destination="0XB-hI-sTZ" id="K9W-J4-hs3"/>
                 <outlet property="titleLabel" destination="I8Q-ph-1Bh" id="k9d-hK-KR4"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -34,7 +33,7 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="sge-gz-egj"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I8Q-ph-1Bh" userLabel="Title Label">
-                            <rect key="frame" x="21" y="266" width="237" height="19"/>
+                            <rect key="frame" x="8" y="266" width="250" height="19"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Here comes the title" id="TFx-r6-rH0">
                                 <font key="font" metaFont="system" size="16"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -49,7 +48,7 @@
                         </customView>
                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2A-u0-hx4">
                             <rect key="frame" x="10" y="5" width="270" height="235"/>
-                            <clipView key="contentView" copiesOnScroll="NO" id="ixI-hA-qPR">
+                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ixI-hA-qPR">
                                 <rect key="frame" x="0.0" y="0.0" width="270" height="235"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -84,19 +83,12 @@
                                 <action selector="copyCurrentTitleToClipboard:" target="-2" id="PEr-ld-645"/>
                             </connections>
                         </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="0XB-hI-sTZ" customClass="PlaybackIndicatorView" customModule="PodcastChapters" customModuleProvider="target">
-                            <rect key="frame" x="5" y="270" width="13" height="12"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="13" placeholder="YES" id="UcL-if-fva"/>
-                                <constraint firstAttribute="height" constant="12" placeholder="YES" id="YF4-Nq-bp2"/>
-                            </constraints>
-                        </customView>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="10" id="2hP-Jt-mQ4"/>
                         <constraint firstItem="zWh-OA-nBu" firstAttribute="centerY" secondItem="I8Q-ph-1Bh" secondAttribute="centerY" id="6AX-uV-gSd"/>
                         <constraint firstAttribute="trailing" secondItem="00G-Rs-gHl" secondAttribute="trailing" id="6NK-Mt-fU1"/>
                         <constraint firstItem="n2A-u0-hx4" firstAttribute="top" secondItem="00G-Rs-gHl" secondAttribute="bottom" constant="10" id="FKL-H4-uLO"/>
-                        <constraint firstItem="0XB-hI-sTZ" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="5" id="Jwp-c8-3cc"/>
                         <constraint firstAttribute="trailing" secondItem="zWh-OA-nBu" secondAttribute="trailing" constant="5" id="K6t-is-D22"/>
                         <constraint firstItem="qiT-35-5OI" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="RZ8-ks-RrE"/>
                         <constraint firstItem="n2A-u0-hx4" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="10" id="XtD-0g-8xJ"/>
@@ -104,12 +96,10 @@
                         <constraint firstAttribute="bottom" secondItem="n2A-u0-hx4" secondAttribute="bottom" constant="5" id="djh-DD-FIQ"/>
                         <constraint firstItem="00G-Rs-gHl" firstAttribute="top" secondItem="I8Q-ph-1Bh" secondAttribute="bottom" constant="15" id="hbQ-tK-gv7"/>
                         <constraint firstItem="I8Q-ph-1Bh" firstAttribute="top" secondItem="qiT-35-5OI" secondAttribute="bottom" constant="15" id="hv4-Fe-Trt"/>
-                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="centerY" secondItem="0XB-hI-sTZ" secondAttribute="centerY" id="kBw-um-8Ep"/>
                         <constraint firstItem="00G-Rs-gHl" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="nz9-vY-NCN"/>
                         <constraint firstItem="zWh-OA-nBu" firstAttribute="leading" secondItem="I8Q-ph-1Bh" secondAttribute="trailing" constant="5" id="q2E-oq-brh"/>
                         <constraint firstItem="qiT-35-5OI" firstAttribute="top" secondItem="VvG-9v-HF9" secondAttribute="top" id="vht-IG-9Wy"/>
                         <constraint firstAttribute="trailing" secondItem="n2A-u0-hx4" secondAttribute="trailing" constant="10" id="xM0-JN-XNp"/>
-                        <constraint firstItem="I8Q-ph-1Bh" firstAttribute="leading" secondItem="0XB-hI-sTZ" secondAttribute="trailing" constant="5" id="yJR-UC-y6C"/>
                     </constraints>
                 </customView>
             </subviews>

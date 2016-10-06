@@ -8,14 +8,7 @@
 
 import Cocoa
 
-struct ColorSettings {
-
-    static let darkBackgroundColor = try! NSColor(hexString: "#222831")
-    static let lightBackgroundColor = try! NSColor(hexString: "#393E46")
-    static let greenishColor = try! NSColor(hexString: "#00ADB5")
-    static let whiteColor = try! NSColor(hexString: "#EEEEEE")
-    static let pinkColor = try! NSColor(hexString: "#EA526F")
-
+enum ColorSettings {
     static var mainBackgroundColor: NSColor {
         return darkBackgroundColor
     }
@@ -45,8 +38,15 @@ struct ColorSettings {
     }
 }
 
-struct AnimationSettings {
+fileprivate extension ColorSettings {
+    static let darkBackgroundColor = try! NSColor(hexString: "#222831")
+    static let lightBackgroundColor = try! NSColor(hexString: "#393E46")
+    static let greenishColor = try! NSColor(hexString: "#00ADB5")
+    static let whiteColor = try! NSColor(hexString: "#EEEEEE")
+    static let pinkColor = try! NSColor(hexString: "#EA526F")
+}
 
+enum AnimationSettings {
     static let duration = 0.21
     static let distance = 8.0
     static let timing = CAMediaTimingFunction.EaseInEaseOut

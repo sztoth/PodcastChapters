@@ -10,44 +10,41 @@ import Foundation
 
 typealias TimerAction = () -> ()
 
-extension NSTimer {
-
-    class func pch_scheduledTimerWithTimeInterval(timeInterval: NSTimeInterval, repeats: Bool, action: TimerAction) -> NSTimer {
-        let timer = NSTimer(
+extension Foundation.Timer {
+    static func pch_scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
+        let timer = Foundation.Timer(
             timeInterval: timeInterval,
             target: self,
             selector: #selector(pch_timerFired(_:)),
             userInfo: TimerData(repeats: repeats, action: action),
             repeats: repeats)
 
-        NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
 
         return timer
     }
 }
 
-private extension NSTimer {
+fileprivate extension Foundation.Timer {
+    @objc static func pch_timerFired(_ timer: Foundation.Timer) {
+        guard let container = timer.userInfo as? TimerData else { return }
 
-    class TimerData: NSObject {
-        
-        private let repeats: Bool
-        private let action: TimerAction
+        container.action()
 
-        init(repeats: Bool, action: TimerAction) {
-            self.repeats = repeats
-            self.action = action
-
-            super.init()
+        if !container.repeats {
+            timer.invalidate()
         }
     }
+}
 
-    @objc class func pch_timerFired(timer: NSTimer) {
-        if let container = timer.userInfo as? TimerData {
-            container.action()
+fileprivate class TimerData: NSObject {
+    fileprivate let repeats: Bool
+    fileprivate let action: TimerAction
 
-            if !container.repeats {
-                timer.invalidate()
-            }
-        }
+    init(repeats: Bool, action: @escaping TimerAction) {
+        self.repeats = repeats
+        self.action = action
+
+        super.init()
     }
 }

@@ -6,23 +6,24 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 
 typealias PopoverAnimationCompletion = (PopoverAnimationDirection) -> ()
 
 enum PopoverAnimationDirection {
-    case In
-    case Out
+    case `in`
+    case out
 }
 
 class PopoverAnimator {
 
-    private(set) var animating = false
+    fileprivate(set) var animating = false
 }
 
 extension PopoverAnimator {
 
-    func animateWindow(window: NSWindow, direction: PopoverAnimationDirection, completion: PopoverAnimationCompletion) {
+    func animateWindow(_ window: NSWindow, direction: PopoverAnimationDirection, completion: @escaping PopoverAnimationCompletion) {
         guard !animating else {
             return
         }
@@ -35,11 +36,11 @@ extension PopoverAnimator {
         let alpha: Double
         let startFrame, endFrame: NSRect
         switch direction {
-        case .In:
+        case .in:
             alpha = 1.0
             startFrame = calculatedFrame
             endFrame = window.frame
-        case .Out:
+        case .out:
             alpha = 0.0
             startFrame = window.frame
             endFrame = calculatedFrame

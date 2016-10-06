@@ -11,22 +11,20 @@ import RxCocoa
 import RxSwift
 
 extension NSStatusItem {
-
-    class func pch_statusItem() -> NSStatusItem {
-        let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    static func pch_statusItem() -> NSStatusItem {
+        let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
         let statusItemView = StatusItemView(statusItem: statusItem)
         statusItem.view = statusItemView
 
         return statusItem
     }
+}
 
+extension NSStatusItem {
     var highlighted: Bool {
         get {
-            if let view = view as? StatusItemView {
-                return view.highlight
-            }
-
-            return false
+            guard let view = view as? StatusItemView else { return false }
+            return view.highlight
         }
         set(value) {
             if let view = view as? StatusItemView {
@@ -39,12 +37,8 @@ extension NSStatusItem {
 // MARK: - RxSwift
 
 extension NSStatusItem {
-
     var event: Observable<StatusItemViewEvent>? {
-        if let view = view as? StatusItemView {
-            return view.event
-        }
-
-        return nil
+        guard let view = view as? StatusItemView else { return nil }
+        return view.event
     }
 }

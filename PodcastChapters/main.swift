@@ -8,12 +8,12 @@
 
 import Cocoa
 
-private func delegateInstance() -> NSApplicationDelegate? {
+fileprivate func delegateInstance() -> NSApplicationDelegate? {
     return NSClassFromString("XCTestCase") == nil ? AppDelegate() : nil
 }
 
-let delegate = delegateInstance()
+let delegate = AppDelegate()
 
-let app = NSApplication.sharedApplication()
+let app = NSApplication.shared()
 app.delegate = delegate
 app.run()

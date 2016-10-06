@@ -9,13 +9,16 @@
 import Cocoa
 
 class AppDelegate: NSObject {
-
-    private var coordinator: AppCoordinator?
+    fileprivate var coordinator: AppCoordinator?
 }
 
 extension AppDelegate: NSApplicationDelegate {
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    // The following is a workaround for a nasty bug. The big rename broke the optional protocols.
+    // For now the optional protocols have to be marked with an objective-c attribute.
+    // Also the Notification has to be an NSNotification.
+    @objc(applicationDidFinishLaunching:)
+    func applicationDidFinishLaunching(_ notification: NSNotification) {
         NSRunningApplication.pch_ensureThereIsOnlyOneRunnningInstance()
 
         let components: [Bootstrapping] = [
@@ -26,20 +29,21 @@ extension AppDelegate: NSApplicationDelegate {
         setup(components)
     }
 
-    func applicationWillTerminate(notification: NSNotification) {
+    @objc(applicationWillTerminate:)
+    func applicationWillTerminate(_ notification: NSNotification) {
         NotificationCenter.sharedInstance.clearAllNotifications()
     }
 }
 
-private extension AppDelegate {
+fileprivate extension AppDelegate {
 
-    func setup(components: [Bootstrapping]) {
+    func setup(_ components: [Bootstrapping]) {
         do {
             let bootstrapped = try Bootstrapper.bootstrap(components)
             let application = try bootstrapped.component(ApplicationBootstrapping.self)
             coordinator = application.coordinator
         }
-        catch BootstrappingError.ExpectedComponentNotFound(let componentName) {
+        catch BootstrappingError.expectedComponentNotFound(let componentName) {
             fatalError("\(componentName) was not bootstrapped. Terminating.")
         }
         catch let error as NSError {

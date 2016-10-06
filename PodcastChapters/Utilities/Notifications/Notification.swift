@@ -11,7 +11,6 @@ import Cocoa
 typealias NotificationAction = () -> ()
 
 class Notification {
-
     let identifier: String
     let title: String
     let description: String
@@ -20,7 +19,7 @@ class Notification {
     let otherButtonTitle: String
     let actionHandler: NotificationAction
 
-    init(description: String, image: NSImage? = nil, actionHandler: NotificationAction) {
+    init(description: String, image: NSImage? = nil, actionHandler: @escaping NotificationAction) {
         identifier = ""
         title = "Now playing"
         self.description = description

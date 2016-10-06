@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Michael Nisi. All rights reserved.
 //
 
+#import <AppKit/AppKit.h>
+
 #import "MNAVChapterReader.h"
 
 # pragma mark - MNAVChapterReader

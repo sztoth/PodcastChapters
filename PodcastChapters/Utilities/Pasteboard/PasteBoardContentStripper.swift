@@ -12,18 +12,18 @@ private typealias Rule = (String) -> (String)
 
 class PasteBoardContentStripper {
 
-    private let rules: [Rule]
+    fileprivate let rules: [Rule]
 
     init() {
         rules = [
             { content in
-                content.stringByReplacingOccurrencesOfString("\"", withString: "")
+                content.replacingOccurrences(of: "\"", with: "")
             },
             { content in
                 var processedContent = content
-                if let regex = try? NSRegularExpression(pattern: "\\[.*\\]", options: .CaseInsensitive) {
+                if let regex = try? NSRegularExpression(pattern: "\\[.*\\]", options: .caseInsensitive) {
                     let range = NSRange(location: 0, length: processedContent.characters.count)
-                    processedContent = regex.stringByReplacingMatchesInString(processedContent, options: .WithTransparentBounds, range: range, withTemplate: "")
+                    processedContent = regex.stringByReplacingMatches(in: processedContent, options: .withTransparentBounds, range: range, withTemplate: "")
                 }
 
                 return processedContent
@@ -33,8 +33,7 @@ class PasteBoardContentStripper {
 }
 
 extension PasteBoardContentStripper {
-
-    func strip(content: String) -> String {
+    func strip(_ content: String) -> String {
         var strippedContent = content
         rules.forEach { rule in
             strippedContent = rule(strippedContent)

@@ -6,12 +6,13 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
+import AppKit
 import Foundation
 import RxSwift
 
 enum RightClickMenuOption {
-    case Settings
-    case Quit
+    case settings
+    case quit
 }
 
 class RightClickMenu: NSMenu {
@@ -20,7 +21,7 @@ class RightClickMenu: NSMenu {
         return _itemSelected.asObserver()
     }
 
-    private let _itemSelected = PublishSubject<RightClickMenuOption>()
+    fileprivate let _itemSelected = PublishSubject<RightClickMenuOption>()
 
     init() {
         super.init(title: "")
@@ -37,19 +38,18 @@ class RightClickMenu: NSMenu {
         quitItem.target = self
         addItem(quitItem)
     }
-
-    required init?(coder aDecoder: NSCoder) {
+    
+    required init(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension RightClickMenu {
-
     func settingsSelected() {
-        _itemSelected.onNext(.Settings)
+        _itemSelected.onNext(.settings)
     }
 
     func quitSelected() {
-        _itemSelected.onNext(.Quit)
+        _itemSelected.onNext(.quit)
     }
 }

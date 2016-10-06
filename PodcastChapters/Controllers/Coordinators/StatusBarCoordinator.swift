@@ -10,30 +10,30 @@ import Cocoa
 import RxSwift
 
 class StatusBarCoordinator {
+    fileprivate let popover: Popover
+    fileprivate let statusBarItem: StatusBarItem
+    fileprivate let application: NSApplicationType
+    fileprivate let disposeBag = DisposeBag()
 
-    private let popover: Popover
-    private let statusBarItem: StatusBarItem
-    private let application: NSApplicationProtocol
-    private let disposeBag = DisposeBag()
-
-    init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplicationProtocol = NSApplication.sharedApplication()) {
+    // TODO: Fix the nsapplicationprotocol
+    init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplicationType = NSApplication.shared()) {
         self.popover = popover
         self.statusBarItem = statusBarItem
         self.application = application
 
         self.statusBarItem.event
-            .subscribeNext { event in
+            .subscribe(onNext: { event in
                 switch event {
-                case .Open(let view):
-                    self.popover.showFromView(view)
-                case .Close:
+                case .open(let view):
+                    self.popover.showFrom(view: view)
+                case .close:
                     self.popover.dismiss()
-                case .Quit:
+                case .quit:
                     self.application.terminate(nil)
-                case .OpenSettings:
+                case .openSettings:
                     print("Later")
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
 }

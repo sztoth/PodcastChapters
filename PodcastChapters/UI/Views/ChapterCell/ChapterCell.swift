@@ -25,7 +25,7 @@ class ChapterCell: NSCollectionViewItem {
         }
     }
 
-    private var contentView: ChapterCellView? {
+    fileprivate var contentView: ChapterCellView? {
         return view as? ChapterCellView
     }
 

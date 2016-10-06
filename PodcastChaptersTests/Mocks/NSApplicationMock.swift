@@ -13,12 +13,12 @@ import Foundation
 class NSApplicationMock: NSApplicationProtocol {
 
     enum ExecutedMethod {
-        case Nothing, Terminate
+        case nothing, terminate
     }
 
-    private(set) var executedMethod = ExecutedMethod.Nothing
+    fileprivate(set) var executedMethod = ExecutedMethod.nothing
 
-    func terminate(sender: AnyObject?) {
-        executedMethod = .Terminate
+    func terminate(_ sender: AnyObject?) {
+        executedMethod = .terminate
     }
 }

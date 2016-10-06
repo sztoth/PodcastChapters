@@ -29,7 +29,7 @@ import Cocoa
 
     // The force unwrap is allowed because a fatalError will happen if the contentView
     // cannot be created. It is on purpose here.
-    private var contentView: NSView!
+    fileprivate var contentView: NSView!
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -43,14 +43,14 @@ import Cocoa
         setupContentView()
     }
 
-    override func resizeSubviewsWithOldSize(oldSize: NSSize) {
-        super.resizeSubviewsWithOldSize(oldSize)
+    override func resizeSubviews(withOldSize oldSize: NSSize) {
+        super.resizeSubviews(withOldSize: oldSize)
         titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
-        super.resizeSubviewsWithOldSize(oldSize)
+        super.resizeSubviews(withOldSize: oldSize)
     }
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         backgroundColor.setFill()
         NSRectFill(dirtyRect)

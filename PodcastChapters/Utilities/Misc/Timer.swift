@@ -11,10 +11,10 @@ import Foundation
 
 class Timer {
 
-    private var timer: NSTimer?
+    fileprivate var timer: Foundation.Timer?
 
-    init(interval: NSTimeInterval, repeats: Bool = false, action: TimerAction) {
-        timer = NSTimer.pch_scheduledTimerWithTimeInterval(interval, repeats: repeats, action: action)
+    init(interval: TimeInterval, repeats: Bool = false, action: @escaping TimerAction) {
+        timer = Foundation.Timer.pch_scheduledTimerWithTimeInterval(interval, repeats: repeats, action: action)
     }
 
     deinit {

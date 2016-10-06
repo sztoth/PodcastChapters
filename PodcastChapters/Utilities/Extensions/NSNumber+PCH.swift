@@ -9,13 +9,12 @@
 import Foundation
 
 extension NSNumber {
-
-    class func pch_numberFromHex(hex: String) -> NSNumber? {
-        let scanner = NSScanner(string: hex)
+    static func pch_numberFromHex(_ hex: String) -> NSNumber? {
+        let scanner = Scanner(string: hex)
 
         var value: UInt64 = 0
-        if scanner.scanHexLongLong(&value) {
-            return NSNumber(unsignedLongLong: value)
+        if scanner.scanHexInt64(&value) {
+            return NSNumber(value: value as UInt64)
         }
 
         return nil
