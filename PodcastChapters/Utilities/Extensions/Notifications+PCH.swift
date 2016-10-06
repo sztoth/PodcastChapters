@@ -10,10 +10,10 @@ import Foundation
 
 extension Foundation.NotificationCenter {
     static func pch_addObserverForName(_ name: String, object: AnyObject? = nil, usingBlock: @escaping (Foundation.Notification) -> Void) {
-        self.default.addObserver(forName: NSNotification.Name(rawValue: name), object: object, queue: nil, using: usingBlock)
+        default.addObserver(forName: NSNotification.Name(rawValue: name), object: object, queue: nil, using: usingBlock)
     }
 
     static func pch_removeObserver(_ observer: AnyObject, name: String, object: AnyObject? = nil) {
-        self.default.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
+        default.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
 }
