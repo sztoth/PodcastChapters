@@ -36,7 +36,7 @@ extension MediaLoader {
                 }
             }
             else {
-                observer.on(.error(LibraryError.persistentIDTooLarge))
+                observer.on(.error(LibraryError.persistentIDInvalid))
             }
 
             return Disposables.create()
@@ -48,6 +48,6 @@ extension MediaLoader {
     enum LibraryError: Error {
         case libraryNotReloaded
         case itemNotFound
-        case persistentIDTooLarge
+        case persistentIDInvalid
     }
 }

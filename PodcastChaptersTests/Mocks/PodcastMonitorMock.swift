@@ -12,25 +12,21 @@ import RxSwift
 @testable import PodcastChapters
 
 class PodcastMonitorMock: PodcastMonitor {
-
-    override var isPodcast: Observable<Bool> {
-        return isPodcastSignal.asObservable()
+    override var podcast: Observable<Bool> {
+        return podcastSignal.asObservable()
+    }
+    override var playing: Observable<Bool> {
+        return playingSignal.asObservable()
+    }
+    override var chapters: Observable<[Chapter]?> {
+        return chaptersSignal.asObservable()
+    }
+    override var playingChapterIndex: Observable<Int?> {
+        return playingChapterIndexSignal.asObservable()
     }
 
-    override var isPlaying: Observable<Bool> {
-        return isPodcastSignal.asObservable()
-    }
-
-    override var podcastChanged: Observable<Void> {
-        return podcastChangedSignal.asObservable()
-    }
-
-    override var chapterChanged: Observable<(Int?, Int?)> {
-        return chapterChangedSignal.asObservable()
-    }
-
-    let isPodcastSignal = BehaviorSubject<Bool>(value: false)
-    let isPlayingSignal = BehaviorSubject<Bool>(value: false)
-    let podcastChangedSignal = PublishSubject<Void>()
-    let chapterChangedSignal = PublishSubject<(Int?, Int?)>()
+    let podcastSignal = BehaviorSubject<Bool>(value: false)
+    let playingSignal = BehaviorSubject<Bool>(value: false)
+    let chaptersSignal = PublishSubject<[Chapter]?>()
+    let playingChapterIndexSignal = PublishSubject<Int?>()
 }

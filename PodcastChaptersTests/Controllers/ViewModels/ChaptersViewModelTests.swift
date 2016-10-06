@@ -11,14 +11,13 @@ import XCTest
 @testable import PodcastChapters
 
 class ChaptersViewModelTests: XCTestCase {
-
     var chaptersViewModel: ChaptersViewModel!
     var podcastMonitor: PodcastMonitorMock!
 
     override func setUp() {
         super.setUp()
 
-        podcastMonitor = PodcastMonitorMock()
+        podcastMonitor = PodcastMonitorMock(mediaLoader: MediaLoaderMock())
         chaptersViewModel = ChaptersViewModel(podcastMonitor: podcastMonitor)
     }
 

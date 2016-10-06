@@ -21,14 +21,14 @@ class StatusBarCoordinatorTests: XCTestCase {
         super.setUp()
 
         popover = PopoverMock()
-        statusBarItem = StatusBarItemMock(eventMonitor: EventMonitor(mask: [.LeftMouseDownMask, .RightMouseDownMask]))
+        statusBarItem = StatusBarItemMock(eventMonitor: EventMonitor(mask: [.leftMouseDown, .rightMouseDown]))
         application = NSApplicationMock()
         statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, application: application)
     }
 
     func testOpenMainViewIsTriggered() {
         let fromView = NSView(frame: NSRect.zero)
-        statusBarItem.eventSignal.onNext(.Open(fromView))
+        statusBarItem.eventSignal.onNext(.open(fromView))
 
         if case PopoverMock.ExecutedMethod.showFromView(let view) = popover.executedMethod {
             XCTAssert(view === fromView)
@@ -39,7 +39,7 @@ class StatusBarCoordinatorTests: XCTestCase {
     }
 
     func testDismissIsTriggered() {
-        statusBarItem.eventSignal.onNext(.Close)
+        statusBarItem.eventSignal.onNext(.close)
 
         if case PopoverMock.ExecutedMethod.dismiss = popover.executedMethod {
             XCTAssertTrue(true)
@@ -50,7 +50,7 @@ class StatusBarCoordinatorTests: XCTestCase {
     }
 
     func testQuitIsTriggered() {
-        statusBarItem.eventSignal.onNext(.Quit)
+        statusBarItem.eventSignal.onNext(.quit)
 
         if case NSApplicationMock.ExecutedMethod.terminate = application.executedMethod {
             XCTAssertTrue(true)

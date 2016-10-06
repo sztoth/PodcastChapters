@@ -10,15 +10,17 @@ import Foundation
 
 @testable import PodcastChapters
 
-class NSApplicationMock: NSApplicationProtocol {
-
-    enum ExecutedMethod {
-        case nothing, terminate
-    }
-
+class NSApplicationMock: NSApplicationType {
     fileprivate(set) var executedMethod = ExecutedMethod.nothing
 
-    func terminate(_ sender: AnyObject?) {
+    func terminate(_ sender: Any?) {
         executedMethod = .terminate
+    }
+}
+
+extension NSApplicationMock {
+    enum ExecutedMethod {
+        case nothing
+        case terminate
     }
 }

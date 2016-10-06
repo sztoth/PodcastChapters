@@ -11,18 +11,23 @@ import Foundation
 @testable import PodcastChapters
 
 class PopoverMock: Popover {
-
-    enum ExecutedMethod {
-        case nothing, showFromView(NSView), dismiss
-    }
-
     fileprivate(set) var executedMethod = ExecutedMethod.nothing
+}
 
-    override func showFromView(_ view: NSView) {
+extension PopoverMock {
+    override func showFrom(view: NSView) {
         executedMethod = .showFromView(view)
     }
 
     override func dismiss() {
         executedMethod = .dismiss
+    }
+}
+
+extension PopoverMock {
+    enum ExecutedMethod {
+        case nothing
+        case showFromView(NSView)
+        case dismiss
     }
 }
