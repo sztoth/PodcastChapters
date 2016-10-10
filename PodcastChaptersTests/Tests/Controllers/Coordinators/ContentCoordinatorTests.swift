@@ -20,17 +20,17 @@ class ContentCoordinatorTests: XCTestCase {
         super.setUp()
 
         popover = Popover()
-        podcastMonitor = PodcastMonitorMock(mediaLoader: MediaLoaderMock())
+        podcastMonitor = PodcastMonitorMock()
         contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
     }
 
-    func testContentIsChaptersView() {
+    func test_ContentIsChaptersView() {
         podcastMonitor.podcastSignal.onNext(true)
 
         XCTAssert(popover.content is ChaptersViewController)
     }
 
-    func testContentIsOtherView() {
+    func test_ContentIsOtherView() {
         podcastMonitor.podcastSignal.onNext(false)
 
         XCTAssert(popover.content is OtherContentViewController)

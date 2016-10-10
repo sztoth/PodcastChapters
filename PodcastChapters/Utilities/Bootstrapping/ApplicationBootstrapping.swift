@@ -11,6 +11,7 @@ import iTunesLibrary
 
 class ApplicationBootstrapping {
     var coordinator: AppCoordinator?
+    var notificationCenter: NotificationCenter?
 }
 
 extension ApplicationBootstrapping: Bootstrapping {
@@ -19,7 +20,8 @@ extension ApplicationBootstrapping: Bootstrapping {
 
         let itLibrary = try ITLibrary(apiVersion: "1.0")
         let mediaLoader = MediaLoader(library: itLibrary)
-        let podcastMonitor = PodcastMonitor(mediaLoader: mediaLoader)
+        let notificationCenter = NotificationCenter()
+        let podcastMonitor = PodcastMonitor(mediaLoader: mediaLoader, notificationCenter: notificationCenter)
 
         let statusBarItem = StatusBarItem(eventMonitor: EventMonitor(mask: [.leftMouseDown, .rightMouseDown]))
         let contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
@@ -30,5 +32,6 @@ extension ApplicationBootstrapping: Bootstrapping {
             statusBarCoordinator: statusBarCoordinator,
             contentCoordinator: contentCoordinator
         )
+        self.notificationCenter = notificationCenter
     }
 }

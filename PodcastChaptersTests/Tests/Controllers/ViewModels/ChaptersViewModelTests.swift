@@ -17,11 +17,11 @@ class ChaptersViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        podcastMonitor = PodcastMonitorMock(mediaLoader: MediaLoaderMock())
+        podcastMonitor = PodcastMonitorMock()
         chaptersViewModel = ChaptersViewModel(podcastMonitor: podcastMonitor)
     }
 
-    func testObservablesGivingProperValues() {
+    func test_ObservablesGivingProperValues() {
         
     }
 }

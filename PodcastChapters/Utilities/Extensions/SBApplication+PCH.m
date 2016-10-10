@@ -11,7 +11,7 @@
 
 @implementation SBApplication (PCH)
 
-+ (iTunesApplicationWrapper *)pch_iTunes
++ (id<iTunesApplicationWrapperType>)pch_iTunes
 {
     iTunesApplication *app = (iTunesApplication *)[SBApplication applicationWithBundleIdentifier:iTunesBundleIdentifier];
     return [[iTunesApplicationWrapper alloc] initWithItunesApplication:app];

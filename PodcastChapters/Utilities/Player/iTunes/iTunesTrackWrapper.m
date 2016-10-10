@@ -10,21 +10,21 @@
 
 @interface iTunesTrackWrapper ()
 
-@property (strong, nonatomic, readwrite, nonnull) NSString *identifier;
-@property (strong, nonatomic, readwrite, nullable) NSImage *artwork;
-@property (strong, nonatomic, readwrite, nonnull) NSString *artist;
-@property (strong, nonatomic, readwrite, nonnull) NSString *title;
-@property (assign, nonatomic, readwrite, getter=isPodcast) Boolean podcast;
+@property (strong, nonatomic, readwrite) NSString *identifier;
+@property (strong, nonatomic, readwrite) NSImage *artwork;
+@property (strong, nonatomic, readwrite) NSString *artist;
+@property (strong, nonatomic, readwrite) NSString *title;
+@property (assign, nonatomic, readwrite, getter=isPodcast) BOOL podcast;
 
 @end
 
 @implementation iTunesTrackWrapper
 
 - (instancetype)initWithIdentifier:(NSString *)identifier
-                           artwork:(NSImage * _Nullable)artwork
+                           artwork:(NSImage *)artwork
                             artist:(NSString *)artist
                              title:(NSString *)title
-                           podcast:(Boolean)podcast
+                           podcast:(BOOL)podcast
 {
     self = [super init];
     if (self) {

@@ -6,7 +6,7 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 @testable import PodcastChapters
 

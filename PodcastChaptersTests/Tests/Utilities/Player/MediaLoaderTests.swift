@@ -24,7 +24,11 @@ class MediaLoaderTests: XCTestCase {
         mediaLibrary = MediaLibraryMock()
         sut = MediaLoader(library: mediaLibrary)
     }
+}
 
+// MARK: - Successfull case
+
+extension MediaLoaderTests {
     func test_ReturnsAnURL() {
         let testURL = URL(string: "http://test")!
         let array: [(Int, URL?)] = [(1, nil), (2, testURL), (3, nil)]
@@ -36,7 +40,11 @@ class MediaLoaderTests: XCTestCase {
             })
             .addDisposableTo(disposeBag)
     }
+}
 
+// MARK: - All the error cases
+
+extension MediaLoaderTests {
     func test_CannotFindTheItem() {
         sut.URLFor(identifier: "0")
             .subscribe(onError: { error in
@@ -74,5 +82,4 @@ class MediaLoaderTests: XCTestCase {
             })
             .addDisposableTo(disposeBag)
     }
-
 }

@@ -14,15 +14,14 @@ NSString * const iTunesBundleIdentifier = @"com.apple.iTunes";
 
 @property (assign, nonatomic, readwrite) PlayerState playerState;
 @property (assign, nonatomic, readwrite) double playerPosition;
-
-@property (strong, nonatomic, nullable, readwrite) iTunesTrackWrapper *currentTrack;
-@property (strong, nonatomic, nonnull) iTunesApplication *application;
+@property (strong, nonatomic, readwrite) id<iTunesTrackWrapperType> currentTrack;
+@property (strong, nonatomic) id<iTunesApplicationType> application;
 
 @end
 
 @implementation iTunesApplicationWrapper
 
-- (instancetype)initWithItunesApplication:(iTunesApplication *)application
+- (instancetype)initWithItunesApplication:(id<iTunesApplicationType>)application
 {
     self = [super init];
     if (self) {
@@ -48,7 +47,7 @@ NSString * const iTunesBundleIdentifier = @"com.apple.iTunes";
     return self.application.playerPosition;
 }
 
-- (iTunesTrackWrapper *)currentTrack
+- (id<iTunesTrackWrapperType>)currentTrack
 {
     NSString *identifier = self.application.currentTrack.persistentID;
     NSString *artist = self.application.currentTrack.artist;

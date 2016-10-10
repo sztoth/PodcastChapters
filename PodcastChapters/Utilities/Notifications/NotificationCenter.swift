@@ -8,15 +8,17 @@
 
 import Foundation
 
+protocol NotificationCenterType {
+    func clearAllNotifications()
+    func deliverNotification(_ notification: Notification)
+}
+
 class NotificationCenter: NSObject {
-
-    static let sharedInstance = NotificationCenter()
-
     fileprivate let userNotificationCenter: NSUserNotificationCenter
     fileprivate var notifications = [Notification]()
     fileprivate var timer: Timer?
 
-    fileprivate init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.default) {
+    init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.default) {
         self.userNotificationCenter = userNotificationCenter
 
         super.init()
@@ -25,25 +27,7 @@ class NotificationCenter: NSObject {
     }
 }
 
-private extension NotificationCenter {
-
-    func performActionWithIdentifier(_ identifier: String?) {
-        if let identifier = identifier, let notification = notifications.filter({ $0.identifier == identifier }).first {
-            notification.actionHandler()
-
-            clearNotificationWithIdentifier(identifier)
-        }
-    }
-
-    func clearNotificationWithIdentifier(_ identifier: String) {
-        if let index = notifications.index(where: { $0.identifier == identifier }) {
-            notifications.remove(at: index)
-        }
-    }
-}
-
-extension NotificationCenter {
-
+extension NotificationCenter: NotificationCenterType {
     func clearAllNotifications() {
         timer = nil
         userNotificationCenter.removeAllDeliveredNotifications()
@@ -63,8 +47,23 @@ extension NotificationCenter {
     }
 }
 
-extension NotificationCenter: NSUserNotificationCenterDelegate {
+fileprivate extension NotificationCenter {
+    func performActionWithIdentifier(_ identifier: String?) {
+        if let identifier = identifier, let notification = notifications.filter({ $0.identifier == identifier }).first {
+            notification.actionHandler()
 
+            clearNotificationWithIdentifier(identifier)
+        }
+    }
+
+    func clearNotificationWithIdentifier(_ identifier: String) {
+        if let index = notifications.index(where: { $0.identifier == identifier }) {
+            notifications.remove(at: index)
+        }
+    }
+}
+
+extension NotificationCenter: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }

@@ -9,6 +9,10 @@
 import Foundation
 import RxSwift
 
+protocol MediaLoaderType {
+    func URLFor(identifier: String) -> Observable<URL>
+}
+
 class MediaLoader {
     fileprivate let library: MediaLibraryType
 
@@ -17,7 +21,7 @@ class MediaLoader {
     }
 }
 
-extension MediaLoader {
+extension MediaLoader: MediaLoaderType {
     func URLFor(identifier: String) -> Observable<URL> {
         return Observable.create { observer in
             if let identifierNumber = NSNumber.pch_numberFromHex(identifier) {

@@ -11,12 +11,12 @@ import RxSwift
 
 class ContentCoordinator {
     fileprivate let popover: Popover
-    fileprivate let podcastMonitor: PodcastMonitor
+    fileprivate let podcastMonitor: PodcastMonitorType
     fileprivate let chaptersController: ChaptersViewController
     fileprivate let otherContentController: OtherContentViewController
     fileprivate let disposeBag = DisposeBag()
 
-    init(popover: Popover, podcastMonitor: PodcastMonitor) {
+    init(popover: Popover, podcastMonitor: PodcastMonitorType) {
         self.popover = popover
         self.podcastMonitor = podcastMonitor
 

@@ -7,11 +7,24 @@
 //
 
 import Cocoa
+import RxSwift
 
 @testable import PodcastChapters
 
-class MediaLoaderMock: MediaLoader {
-    override init(library: MediaLibraryType = MediaLibraryMock()) {
-        super.init(library: library)
+class MediaLoaderMock {
+    var sendError: MediaLoader.LibraryError?
+    var sendURL: URL?
+}
+
+extension MediaLoaderMock: MediaLoaderType {
+    func URLFor(identifier: String) -> Observable<URL> {
+        if let error = sendError {
+            return Observable.error(error)
+        }
+        else if let URL = sendURL {
+            return Observable.just(URL)
+        }
+
+        fatalError("You forgot to specify an error or a URL")
     }
 }

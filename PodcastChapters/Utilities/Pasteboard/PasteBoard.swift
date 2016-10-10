@@ -9,6 +9,10 @@
 import AppKit
 import Foundation
 
+protocol PasteBoardType {
+    func copy(_ content: String)
+}
+
 class PasteBoard {
     fileprivate let pasteBoard: NSPasteboard
     fileprivate let contentStripper: PasteBoardContentStripper
@@ -22,7 +26,7 @@ class PasteBoard {
     }
 }
 
-extension PasteBoard {
+extension PasteBoard: PasteBoardType {
     func copy(_ content: String) {
         pasteBoard.clearContents()
 

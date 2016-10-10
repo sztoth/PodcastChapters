@@ -8,18 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface iTunesTrackWrapper : NSObject
+@protocol iTunesTrackWrapperType <NSObject>
 
 @property (strong, nonatomic, readonly, nonnull) NSString *identifier;
 @property (strong, nonatomic, readonly, nullable) NSImage *artwork;
 @property (strong, nonatomic, readonly, nonnull) NSString *artist;
 @property (strong, nonatomic, readonly, nonnull) NSString *title;
-@property (assign, nonatomic, readonly, getter=isPodcast) Boolean podcast;
+@property (assign, nonatomic, readonly, getter=isPodcast) BOOL podcast;
 
-- (instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier
-                                    artwork:(NSImage * _Nullable)artwork
-                                     artist:(NSString * _Nonnull)artist
-                                      title:(NSString * _Nonnull)title
-                                    podcast:(Boolean)podcast;
+@end
+
+@interface iTunesTrackWrapper : NSObject <iTunesTrackWrapperType>
+
+@property (strong, nonatomic, readonly, nonnull) NSString *identifier;
+@property (strong, nonatomic, readonly, nullable) NSImage *artwork;
+@property (strong, nonatomic, readonly, nonnull) NSString *artist;
+@property (strong, nonatomic, readonly, nonnull) NSString *title;
+@property (assign, nonatomic, readonly, getter=isPodcast) BOOL podcast;
+
+- (nonnull instancetype)initWithIdentifier:(nonnull NSString *)identifier
+                                   artwork:(nullable NSImage *)artwork
+                                    artist:(nonnull NSString *)artist
+                                     title:(nonnull NSString *)title
+                                   podcast:(BOOL)podcast;
 
 @end

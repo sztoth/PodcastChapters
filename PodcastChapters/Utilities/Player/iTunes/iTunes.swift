@@ -10,27 +10,33 @@ import AppKit
 import RxSwift
 import ScriptingBridge
 
-class iTunes {
+protocol iTunesType {
+    var playerState: Observable<PlayerState> { get }
+    var playerPosition: Observable<Double?> { get }
+    var nowPlaying: Observable<iTunesTrackWrapperType?> { get }
+}
+
+class iTunes: iTunesType {
     var playerState: Observable<PlayerState> {
         return _playerState.asObservable().distinctUntilChanged()
     }
     var playerPosition: Observable<Double?> {
         return _playerPosition.asObservable()
     }
-    var nowPlaying: Observable<iTunesTrackWrapper?> {
-        return _nowPlaying.asObservable().distinctUntilChanged()
+    var nowPlaying: Observable<iTunesTrackWrapperType?> {
+        return _nowPlaying.asObservable().distinctUntilChanged { $0?.identifier == $1?.identifier }
     }
 
     fileprivate let _playerState = Variable<PlayerState>(.unknown)
     fileprivate let _playerPosition = Variable<Double?>(nil)
-    fileprivate let _nowPlaying = Variable<iTunesTrackWrapper?>(nil)
-    fileprivate let itunesApplication: iTunesApplicationWrapper
+    fileprivate let _nowPlaying = Variable<iTunesTrackWrapperType?>(nil)
+    fileprivate let itunesApplication: iTunesApplicationWrapperType
     fileprivate let notificationCenter: DistributedNotificationCenter
 
     fileprivate var timer: Timer?
 
     init(
-        itunesApplication: iTunesApplicationWrapper = SBApplication.pch_iTunes(),
+        itunesApplication: iTunesApplicationWrapperType = SBApplication.pch_iTunes(),
         notificationCenter: DistributedNotificationCenter = DistributedNotificationCenter.default()
     ) {
         self.itunesApplication = itunesApplication
@@ -46,6 +52,7 @@ class iTunes {
 }
 
 // MARK: - Private stuff
+
 fileprivate extension iTunes {
     func setupNotificationObserver() {
         let notificationName = NSNotification.Name(rawValue: "\(iTunesBundleIdentifier).playerInfo")
@@ -69,6 +76,7 @@ fileprivate extension iTunes {
 }
 
 // MARK: - Timer related stuffs
+
 fileprivate extension iTunes {
     func changeTimerIfNeededFor(state: PlayerState) {
         _playerState.value = state
@@ -103,6 +111,7 @@ fileprivate extension iTunes {
 }
 
 // MARK: - Constants
+
 fileprivate extension iTunes {
     enum Constant {
         static let UpdateInterval = 1.0

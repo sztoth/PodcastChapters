@@ -26,7 +26,7 @@ class StatusBarCoordinatorTests: XCTestCase {
         statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, application: application)
     }
 
-    func testOpenMainViewIsTriggered() {
+    func test_OpenMainViewIsTriggered() {
         let fromView = NSView(frame: NSRect.zero)
         statusBarItem.eventSignal.onNext(.open(fromView))
 
@@ -38,7 +38,7 @@ class StatusBarCoordinatorTests: XCTestCase {
         }
     }
 
-    func testDismissIsTriggered() {
+    func test_DismissIsTriggered() {
         statusBarItem.eventSignal.onNext(.close)
 
         if case PopoverMock.ExecutedMethod.dismiss = popover.executedMethod {
@@ -49,7 +49,7 @@ class StatusBarCoordinatorTests: XCTestCase {
         }
     }
 
-    func testQuitIsTriggered() {
+    func test_QuitIsTriggered() {
         statusBarItem.eventSignal.onNext(.quit)
 
         if case NSApplicationMock.ExecutedMethod.terminate = application.executedMethod {

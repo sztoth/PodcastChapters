@@ -11,7 +11,14 @@ import AVFoundation
 import RxOptional
 import RxSwift
 
-class PodcastMonitor {
+protocol PodcastMonitorType {
+    var podcast: Observable<Bool> { get }
+    var playing: Observable<Bool> { get }
+    var chapters: Observable<[Chapter]?> { get }
+    var playingChapterIndex: Observable<Int?> { get }
+}
+
+class PodcastMonitor: PodcastMonitorType {
     var podcast: Observable<Bool> {
         return itunes.nowPlaying.map({ $0?.isPodcast ?? false })
     }
@@ -27,22 +34,22 @@ class PodcastMonitor {
 
     fileprivate let _chapters = Variable<[Chapter]?>(nil)
     fileprivate let _playingChapterIndex = Variable<Int?>(nil)
-    fileprivate let itunes: iTunes
-    fileprivate let mediaLoader: MediaLoader
-    fileprivate let notificationCenter: NotificationCenter
-    fileprivate let pasteBoard: PasteBoard
+    fileprivate let itunes: iTunesType
+    fileprivate let pasteBoard: PasteBoardType
+    fileprivate let mediaLoader: MediaLoaderType
+    fileprivate let notificationCenter: NotificationCenterType
     fileprivate let disposeBag = DisposeBag()
 
     init(
-        itunes: iTunes = iTunes(),
-        mediaLoader: MediaLoader,
-        notificationCenter: NotificationCenter = NotificationCenter.sharedInstance,
-        pasteBoard: PasteBoard = PasteBoard()
+        itunes: iTunesType = iTunes(),
+        pasteBoard: PasteBoardType = PasteBoard(),
+        mediaLoader: MediaLoaderType,
+        notificationCenter: NotificationCenterType
     ) {
         self.itunes = itunes
+        self.pasteBoard = pasteBoard
         self.mediaLoader = mediaLoader
         self.notificationCenter = notificationCenter
-        self.pasteBoard = pasteBoard
 
         setupBindings()
     }
@@ -51,7 +58,6 @@ class PodcastMonitor {
 fileprivate extension PodcastMonitor {
     func setupBindings() {
         itunes.nowPlaying
-            .distinctUntilChanged()
             .mapToVoid()
             .debug("PodcastMonitor | track changed")
             .subscribe(onNext: self.reset)
@@ -114,7 +120,7 @@ fileprivate extension PodcastMonitor {
         _playingChapterIndex.value = nil
     }
 
-    func processChapterWithDefaultArtwork(_ input: (track: iTunesTrackWrapper, chapters: [MNAVChapter]?)) -> [Chapter] {
+    func processChapterWithDefaultArtwork(_ input: (track: iTunesTrackWrapperType, chapters: [MNAVChapter]?)) -> [Chapter] {
         guard let chapters = input.chapters, !chapters.isEmpty else {
             return [Chapter(cover: input.track.artwork, title: input.track.title, start: nil, duration: nil)]
         }

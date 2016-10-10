@@ -11,8 +11,12 @@ import XCTest
 
 @testable import PodcastChapters
 
-class ChapterTests: XCTestCase {
-    func testChapterPosition_Contains() {
+class ChapterTests: XCTestCase {}
+
+// MARK: - Position tests
+
+extension ChapterTests {
+    func test_ChapterPosition_Contains() {
         let sut = chapter()
 
         var testPosition = 6.0
@@ -25,7 +29,7 @@ class ChapterTests: XCTestCase {
         XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
     }
 
-    func testChapterPosition_OutOfBounds() {
+    func test_ChapterPosition_OutOfBounds() {
         let sut = chapter()
 
         var testPosition = 0.5
@@ -46,22 +50,26 @@ class ChapterTests: XCTestCase {
         testPosition = -3.0
         XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
     }
+}
 
-    func testMissingStartCase() {
+// MARK: - Missing property tests
+
+extension ChapterTests {
+    func test_MissingStartCase() {
         let sut = chapter(start: nil)
 
         let testPosition = 999.0
         XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
     }
 
-    func testMissingDurationCase() {
+    func test_MissingDurationCase() {
         let sut = chapter(duration: nil)
 
         let testPosition = 34.0
         XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
     }
 
-    func testMissingStartAndDurationCase() {
+    func test_MissingStartAndDurationCase() {
         let sut = chapter(start: nil, duration: nil)
 
         let testPosition = 34.0
@@ -69,8 +77,14 @@ class ChapterTests: XCTestCase {
     }
 }
 
+// MARK: - Helper
+
 fileprivate extension ChapterTests {
-    func chapter(title: String = "Test title", start: CMTime? = CMTime.oneSecond, duration: CMTime? = CMTime.tenSecond) -> Chapter {
+    func chapter(
+        title: String = "Test title",
+        start: CMTime? = CMTime.oneSecond,
+        duration: CMTime? = CMTime.tenSecond) -> Chapter
+    {
         return Chapter(
             cover: nil,
             title: title,
@@ -79,6 +93,8 @@ fileprivate extension ChapterTests {
         )
     }
 }
+
+// MARK: - Other
 
 fileprivate extension CMTime {
     @nonobjc static let oneSecond = CMTimeMake(1, 1)
