@@ -8,18 +8,18 @@
 
 import Cocoa
 
-typealias NotificationAction = () -> ()
+typealias AppNotificationAction = () -> ()
 
-class Notification {
+class AppNotification {
     let identifier: String
     let title: String
     let description: String
     let image: NSImage?
     let actionButtonTitle: String
     let otherButtonTitle: String
-    let actionHandler: NotificationAction
+    let actionHandler: AppNotificationAction
 
-    init(description: String, image: NSImage? = nil, actionHandler: @escaping NotificationAction) {
+    init(description: String, image: NSImage? = nil, actionHandler: @escaping AppNotificationAction) {
         identifier = ""
         title = "Now playing"
         self.description = description

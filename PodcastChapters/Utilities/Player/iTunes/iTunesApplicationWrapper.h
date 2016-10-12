@@ -13,6 +13,14 @@
 
 FOUNDATION_EXPORT NSString * const _Nonnull iTunesBundleIdentifier;
 
+@interface iTunesApplicationWrapper : NSObject
+
+- (nonnull instancetype)initWithItunesApplication:(nonnull id<iTunesApplicationType>)application;
+
+@end
+
+#pragma mark - iTunesApplicationWrapperType
+
 typedef NS_ENUM(NSInteger, PlayerState) {
     PlayerStatePlaying,
     PlayerStatePaused,
@@ -28,12 +36,12 @@ typedef NS_ENUM(NSInteger, PlayerState) {
 
 @end
 
-@interface iTunesApplicationWrapper : NSObject <iTunesApplicationWrapperType>
+#pragma mark - iTunesApplicationWrapper's iTunesApplicationWrapperType extension
+
+@interface iTunesApplicationWrapper (PCH) <iTunesApplicationWrapperType>
 
 @property (assign, nonatomic, readonly) PlayerState playerState;
 @property (assign, nonatomic, readonly) double playerPosition;
 @property (strong, nonatomic, readonly, nullable) id<iTunesTrackWrapperType> currentTrack;
-
-- (nonnull instancetype)initWithItunesApplication:(nonnull id<iTunesApplicationType>)application;
 
 @end

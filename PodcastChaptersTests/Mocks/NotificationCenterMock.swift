@@ -10,17 +10,17 @@ import Foundation
 
 @testable import PodcastChapters
 
-class NotificationCenterMock {
+class AppNotificationCenterMock {
     fileprivate(set) var clearAllNotificationCalled = false
-    fileprivate(set) var notificationToDeliver: PodcastChapters.Notification?
+    fileprivate(set) var notificationToDeliver: AppNotification?
 }
 
-extension NotificationCenterMock: NotificationCenterType {
+extension AppNotificationCenterMock: AppNotificationCenterType {
     func clearAllNotifications() {
         clearAllNotificationCalled = true
     }
 
-    func deliverNotification(_ notification: PodcastChapters.Notification) {
+    func deliverNotification(_ notification: AppNotification) {
         notificationToDeliver = notification
     }
 }

@@ -12,11 +12,11 @@
 
 @interface iTunesTrackMock : NSObject
 
-- (nullable instancetype)initWithMockPersistentID:(nullable NSString *)mockPersistentID
-                                       mockArtist:(nullable NSString *)mockArtist
-                                        mockTitle:(nullable NSString *)mockTitle
-                                    mockMediaKind:(iTunesEMdK)mockMediaKind
-                                      mockArtwork:(nullable NSArray<NSImage *> *)mockArtwork;
+- (nonnull instancetype)initWithMockPersistentID:(nullable NSString *)mockPersistentID
+                                      mockArtist:(nullable NSString *)mockArtist
+                                       mockTitle:(nullable NSString *)mockTitle
+                                   mockMediaKind:(iTunesEMdK)mockMediaKind
+                                     mockArtwork:(nullable NSArray<NSImage *> *)mockArtwork;
 
 @end
 

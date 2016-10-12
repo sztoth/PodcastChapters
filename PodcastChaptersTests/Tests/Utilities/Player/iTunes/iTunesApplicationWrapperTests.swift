@@ -58,6 +58,51 @@ extension iTunesApplicationWrapperTests {
 
 extension iTunesApplicationWrapperTests {
     func test_CurrentTrackHasCorrectData() {
+        let image = NSImage.pch_loadImage(named: "test_artwork")
+        let track = testTrack(artwork: [image])
+        itunesApplication.mockCurrentTrack = track
 
+        guard let currentTrack = sut.currentTrack else {
+            XCTFail("The current track is nil")
+            return
+        }
+
+        XCTAssertEqual(currentTrack.identifier, track.persistentID)
+        XCTAssertEqual(currentTrack.artist, track.artist)
+        XCTAssertTrue(currentTrack.isPodcast)
+        XCTAssertEqual(currentTrack.identifier, track.persistentID)
+        XCTAssertEqual(currentTrack.artwork!, image)
+    }
+
+    func test_FailsIfTheIdentifierOrArtistOrTitleIsMissing() {
+        let tracks = [
+            testTrack(withIdentifier: nil),
+            testTrack(artist: nil),
+            testTrack(title: nil)
+        ]
+
+        tracks.forEach { track in
+            itunesApplication.mockCurrentTrack = track
+            XCTAssertNil(sut.currentTrack)
+        }
+    }
+}
+
+// MARK: - Helper
+
+fileprivate extension iTunesApplicationWrapperTests {
+    func testTrack(
+        withIdentifier identifier: String? = "identifier",
+        artist: String? = "DJ Berenies",
+        title: String? = "Turn it up",
+        mediaKind: iTunesEMdK = iTunesEMdKPodcast,
+        artwork: [NSImage]? = nil) -> iTunesTrackMock
+    {
+        return iTunesTrackMock(
+            mockPersistentID: identifier,
+            mockArtist: artist,
+            mockTitle: title,
+            mockMediaKind: mediaKind,
+            mockArtwork: artwork)
     }
 }

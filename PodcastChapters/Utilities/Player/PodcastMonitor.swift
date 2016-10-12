@@ -37,19 +37,19 @@ class PodcastMonitor: PodcastMonitorType {
     fileprivate let itunes: iTunesType
     fileprivate let pasteBoard: PasteBoardType
     fileprivate let mediaLoader: MediaLoaderType
-    fileprivate let notificationCenter: NotificationCenterType
+    fileprivate let appNotificationCenter: AppNotificationCenterType
     fileprivate let disposeBag = DisposeBag()
 
     init(
         itunes: iTunesType = iTunes(),
         pasteBoard: PasteBoardType = PasteBoard(),
         mediaLoader: MediaLoaderType,
-        notificationCenter: NotificationCenterType
+        appNotificationCenter: AppNotificationCenterType
     ) {
         self.itunes = itunes
         self.pasteBoard = pasteBoard
         self.mediaLoader = mediaLoader
-        self.notificationCenter = notificationCenter
+        self.appNotificationCenter = appNotificationCenter
 
         setupBindings()
     }
@@ -67,7 +67,7 @@ fileprivate extension PodcastMonitor {
             .filter({ $0 == .stopped || $0 == .unknown})
             .mapToVoid()
             .debug("PodcastMonitor | clear notifications")
-            .subscribe(onNext: (self.notificationCenter.clearAllNotifications))
+            .subscribe(onNext: (self.appNotificationCenter.clearAllNotifications))
             .addDisposableTo(disposeBag)
 
         let podcastItemSignal = itunes.nowPlaying
@@ -144,9 +144,9 @@ fileprivate extension PodcastMonitor {
     }
 
     func sendNotification(withChapter chapter: Chapter) {
-        let notification = Notification(description: chapter.title, image: chapter.cover) {
+        let appNotification = AppNotification(description: chapter.title, image: chapter.cover) {
             self.pasteBoard.copy(chapter.title)
         }
-        notificationCenter.deliverNotification(notification)
+        appNotificationCenter.deliverNotification(appNotification)
     }
 }

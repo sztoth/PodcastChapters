@@ -69,7 +69,7 @@
         [artworks addObject:artwork];
     }
 
-    return [[SBElementArray alloc] initWithArray:[NSArray arrayWithArray:artworks]];
+    return (SBElementArray *)artworks;
 }
 
 #pragma mark - Setters we do not care about

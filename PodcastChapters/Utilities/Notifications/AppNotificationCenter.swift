@@ -1,5 +1,5 @@
 //
-//  NotificationCenter.swift
+//  AppNotificationCenter.swift
 //  PodcastChapters
 //
 //  Created by Szabolcs Toth on 2016. 02. 13..
@@ -8,14 +8,15 @@
 
 import Foundation
 
-protocol NotificationCenterType {
+protocol AppNotificationCenterType {
     func clearAllNotifications()
-    func deliverNotification(_ notification: Notification)
+    func deliverNotification(_ notification: AppNotification)
 }
 
-class NotificationCenter: NSObject {
+class AppNotificationCenter: NSObject {
     fileprivate let userNotificationCenter: NSUserNotificationCenter
-    fileprivate var notifications = [Notification]()
+
+    fileprivate var notifications = [AppNotification]()
     fileprivate var timer: Timer?
 
     init(userNotificationCenter: NSUserNotificationCenter = NSUserNotificationCenter.default) {
@@ -27,18 +28,19 @@ class NotificationCenter: NSObject {
     }
 }
 
-extension NotificationCenter: NotificationCenterType {
+extension AppNotificationCenter: AppNotificationCenterType {
     func clearAllNotifications() {
         timer = nil
         userNotificationCenter.removeAllDeliveredNotifications()
         notifications.removeAll()
     }
 
-    func deliverNotification(_ notification: Notification) {
+    func deliverNotification(_ notification: AppNotification) {
         clearAllNotifications()
 
-        let userNotification = NSUserNotificationBuilder.build(notification)
         notifications.append(notification)
+
+        let userNotification = NSUserNotification(appNotification: notification)
         userNotificationCenter.deliver(userNotification)
 
         timer = Timer(interval: 90.0) { [weak self] _ in
@@ -47,30 +49,30 @@ extension NotificationCenter: NotificationCenterType {
     }
 }
 
-fileprivate extension NotificationCenter {
-    func performActionWithIdentifier(_ identifier: String?) {
-        if let identifier = identifier, let notification = notifications.filter({ $0.identifier == identifier }).first {
-            notification.actionHandler()
+fileprivate extension AppNotificationCenter {
+    func performActionWithIdentifier(_ identifier: String) {
+        guard let notification = notifications.filter({ $0.identifier == identifier }).first else { return }
 
-            clearNotificationWithIdentifier(identifier)
-        }
+        notification.actionHandler()
+        clearNotificationWithIdentifier(identifier)
     }
 
     func clearNotificationWithIdentifier(_ identifier: String) {
-        if let index = notifications.index(where: { $0.identifier == identifier }) {
-            notifications.remove(at: index)
-        }
+        guard let index = notifications.index(where: { $0.identifier == identifier }) else { return }
+        notifications.remove(at: index)
     }
 }
 
-extension NotificationCenter: NSUserNotificationCenterDelegate {
+extension AppNotificationCenter: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        guard let identifier = notification.identifier else { return }
+
         if notification.activationType == .actionButtonClicked {
-            performActionWithIdentifier(notification.identifier)
+            performActionWithIdentifier(identifier)
         }
     }
 }

@@ -10,7 +10,7 @@ import Cocoa
 
 class AppDelegate: NSObject {
     fileprivate var coordinator: AppCoordinator?
-    fileprivate var notificationCenter: NotificationCenter?
+    fileprivate var appNotificationCenter: AppNotificationCenter?
 }
 
 extension AppDelegate: NSApplicationDelegate {
@@ -32,7 +32,7 @@ extension AppDelegate: NSApplicationDelegate {
 
     @objc(applicationWillTerminate:)
     func applicationWillTerminate(_ notification: NSNotification) {
-        notificationCenter?.clearAllNotifications()
+        appNotificationCenter?.clearAllNotifications()
     }
 }
 

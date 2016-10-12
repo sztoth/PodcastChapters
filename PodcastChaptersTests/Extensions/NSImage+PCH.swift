@@ -7,21 +7,15 @@
 //
 
 import AppKit
+import Foundation
 
 extension NSImage {
-    static func pch_loadImage(named name: String, ofType type: String = "png") -> NSImage? {
-        //let bundle = Bundle(for: type(of: self))
+    static func pch_loadImage(named name: String, ofType type: String = "png") -> NSImage {
+        let bundle = Bundle(for: iTunesMock.self)
+        guard let path = bundle.path(forResource: name, ofType: type) else {
+            fatalError("Could not find the \(name).\(type) in the test bundle")
+        }
 
-        /*let bundle = Bundle(for: type(of: self))
-        bundle.
-        guard let path = bundle. else { return nil }
-
-        do {
-            let ressourceData = try Data(contentsOf: ressourceURL)
-        } catch let error {
-            // some error occurred when reading the file
-        }*/
-
-        return nil
+        return NSImage(contentsOfFile: path)!
     }
 }

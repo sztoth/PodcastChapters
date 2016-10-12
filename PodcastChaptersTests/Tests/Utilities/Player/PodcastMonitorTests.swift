@@ -16,7 +16,7 @@ class PodcastMonitorTests: XCTestCase {
     fileprivate let itunes = iTunesMock()
     fileprivate let pasteBoard = PasteBoardMock()
     fileprivate let mediaLoader = MediaLoaderMock()
-    fileprivate let notificationCenter = NotificationCenterMock()
+    fileprivate let appNotificationCenter = AppNotificationCenterMock()
 
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class PodcastMonitorTests: XCTestCase {
             itunes: itunes,
             pasteBoard: pasteBoard,
             mediaLoader: mediaLoader,
-            notificationCenter: notificationCenter
+            appNotificationCenter: appNotificationCenter
         )
     }
 }

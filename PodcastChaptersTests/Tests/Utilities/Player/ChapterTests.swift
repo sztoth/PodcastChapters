@@ -18,37 +18,20 @@ class ChapterTests: XCTestCase {}
 extension ChapterTests {
     func test_ChapterPosition_Contains() {
         let sut = chapter()
+        let positions = [6.0, 1.0, 10.0]
 
-        var testPosition = 6.0
-        XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
-
-        testPosition = 1.0
-        XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
-
-        testPosition = 10.0
-        XCTAssertTrue(sut.contains(testPosition), "The \(testPosition) second position is not in bounds")
+        positions.forEach { position in
+            XCTAssertTrue(sut.contains(position), "The \(position) second position is not in bounds")
+        }
     }
 
     func test_ChapterPosition_OutOfBounds() {
         let sut = chapter()
+        let positions = [0.5, 0.99, 11.3, 100.0, 0.0, -3.0]
 
-        var testPosition = 0.5
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
-
-        testPosition = 0.99
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
-
-        testPosition = 11.3
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
-
-        testPosition = 100.0
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
-
-        testPosition = 0.0
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
-
-        testPosition = -3.0
-        XCTAssertFalse(sut.contains(testPosition), "The \(testPosition) second position is in bounds")
+        positions.forEach { position in
+            XCTAssertFalse(sut.contains(position), "The \(position) second position is in bounds")
+        }
     }
 }
 
