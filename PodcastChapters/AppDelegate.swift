@@ -10,6 +10,7 @@ import Cocoa
 
 class AppDelegate: NSObject {
     fileprivate var coordinator: AppCoordinator?
+    fileprivate var appNotificationCenter: AppNotificationCenter?
 }
 
 extension AppDelegate: NSApplicationDelegate {
@@ -31,12 +32,11 @@ extension AppDelegate: NSApplicationDelegate {
 
     @objc(applicationWillTerminate:)
     func applicationWillTerminate(_ notification: NSNotification) {
-        NotificationCenter.sharedInstance.clearAllNotifications()
+        appNotificationCenter?.clearAllNotifications()
     }
 }
 
 fileprivate extension AppDelegate {
-
     func setup(_ components: [Bootstrapping]) {
         do {
             let bootstrapped = try Bootstrapper.bootstrap(components)

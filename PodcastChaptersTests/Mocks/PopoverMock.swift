@@ -6,23 +6,28 @@
 //  Copyright © 2016. Szabolcs Toth. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 @testable import PodcastChapters
 
 class PopoverMock: Popover {
-
-    enum ExecutedMethod {
-        case nothing, showFromView(NSView), dismiss
-    }
-
     fileprivate(set) var executedMethod = ExecutedMethod.nothing
+}
 
-    override func showFromView(_ view: NSView) {
+extension PopoverMock {
+    override func showFrom(view: NSView) {
         executedMethod = .showFromView(view)
     }
 
     override func dismiss() {
         executedMethod = .dismiss
+    }
+}
+
+extension PopoverMock {
+    enum ExecutedMethod {
+        case nothing
+        case showFromView(NSView)
+        case dismiss
     }
 }

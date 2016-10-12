@@ -7,7 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310F74141DA6F70B00DE254D /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468A31C67E32E004858F5 /* iTunesLibrary.framework */; };
+		310F74191DA7079E00DE254D /* ITLibMediaItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */; };
 		3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112B3401C7FA60600CE6438 /* FlowLayout.swift */; };
+		3129FBE01DAAD92200F7C169 /* iTunesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */; };
+		3129FBE21DAAD93700F7C169 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */; };
+		3129FBE41DAAD94F00F7C169 /* PasteBoardMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */; };
+		3129FBED1DAAF0F600F7C169 /* iTunesApplicationMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBEC1DAAF0F600F7C169 /* iTunesApplicationMock.m */; };
+		3129FBF01DAAF37800F7C169 /* iTunesTrackMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBEF1DAAF37800F7C169 /* iTunesTrackMock.m */; };
+		3129FBF31DAC2AE200F7C169 /* test_artwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 3129FBF21DAC2AE200F7C169 /* test_artwork.png */; };
+		3129FC091DAC2B9D00F7C169 /* ContentCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBF71DAC2B9D00F7C169 /* ContentCoordinatorTests.swift */; };
+		3129FC0A1DAC2B9D00F7C169 /* StatusBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBF81DAC2B9D00F7C169 /* StatusBarCoordinatorTests.swift */; };
+		3129FC0B1DAC2B9D00F7C169 /* ChaptersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBFA1DAC2B9D00F7C169 /* ChaptersViewModelTests.swift */; };
+		3129FC0C1DAC2B9D00F7C169 /* ChapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC011DAC2B9D00F7C169 /* ChapterTests.swift */; };
+		3129FC0D1DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC031DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift */; };
+		3129FC0E1DAC2B9D00F7C169 /* iTunesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC041DAC2B9D00F7C169 /* iTunesTests.swift */; };
+		3129FC0F1DAC2B9D00F7C169 /* iTunesTrackWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC051DAC2B9D00F7C169 /* iTunesTrackWrapperTests.swift */; };
+		3129FC101DAC2B9D00F7C169 /* MediaLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC061DAC2B9D00F7C169 /* MediaLoaderTests.swift */; };
+		3129FC111DAC2B9D00F7C169 /* PodcastMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC071DAC2B9D00F7C169 /* PodcastMonitorTests.swift */; };
+		3129FC141DAC2BBC00F7C169 /* NSImage+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC131DAC2BBC00F7C169 /* NSImage+PCH.swift */; };
+		3129FC271DAC45AD00F7C169 /* iTunesArtworkMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC261DAC45AD00F7C169 /* iTunesArtworkMock.m */; };
+		3129FC2D1DAED6AF00F7C169 /* NSUserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC2C1DAED6AF00F7C169 /* NSUserNotification.swift */; };
+		3129FC2F1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */; };
+		3129FC311DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */; };
+		3129FC331DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC321DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift */; };
+		3129FC351DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */; };
 		312A107D1C862B6400805059 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107C1C862B6400805059 /* CollectionView.swift */; };
 		312A107F1C864DEC00805059 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A107E1C864DEC00805059 /* LineView.swift */; };
 		312A10811C8B292400805059 /* CopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312A10801C8B292400805059 /* CopyButton.swift */; };
@@ -23,9 +47,8 @@
 		314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195521C766D5900268AFC /* ChapterSizeCalculator.swift */; };
 		315D38271C77841D0012CA1A /* NSView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38261C77841D0012CA1A /* NSView+PCH.swift */; };
 		315D38291C778DD60012CA1A /* NSCollectionViewItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */; };
-		315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382B1C78EFA90012CA1A /* NotificationCenter.swift */; };
-		315D382E1C78EFBE0012CA1A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382D1C78EFBE0012CA1A /* Notification.swift */; };
-		315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382F1C7906A20012CA1A /* NSUserNotificationBuilder.swift */; };
+		315D382C1C78EFA90012CA1A /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382B1C78EFA90012CA1A /* AppNotificationCenter.swift */; };
+		315D382E1C78EFBE0012CA1A /* AppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382D1C78EFBE0012CA1A /* AppNotification.swift */; };
 		315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */; };
 		315D38381C79194D0012CA1A /* NSBundle+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38371C79194D0012CA1A /* NSBundle+PCH.swift */; };
 		315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */; };
@@ -43,14 +66,11 @@
 		315FD1671C9F5991001BF6E2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1661C9F5991001BF6E2 /* main.swift */; };
 		315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468871C665486004858F5 /* RxCocoa.framework */; };
 		315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468831C665481004858F5 /* RxSwift.framework */; };
-		315FD1901C9F61DF001BF6E2 /* ContentCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */; };
 		315FD1911C9F61DF001BF6E2 /* PodcastMonitorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */; };
 		315FD1921C9F61DF001BF6E2 /* PopoverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */; };
-		315FD1941C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */; };
 		315FD1961C9F6BE8001BF6E2 /* StatusBarItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */; };
 		315FD1981C9F6C6E001BF6E2 /* NSApplicationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */; };
 		315FD19A1CA08DA6001BF6E2 /* NSApplication+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */; };
-		315FD19C1CA09034001BF6E2 /* ChaptersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */; };
 		315FD1A01CA09470001BF6E2 /* PasteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19E1CA09470001BF6E2 /* PasteBoard.swift */; };
 		315FD1A11CA09470001BF6E2 /* PasteBoardContentStripper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FD19F1CA09470001BF6E2 /* PasteBoardContentStripper.swift */; };
 		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
@@ -94,6 +114,9 @@
 		31DA65DB1DA6CDB300B0A16A /* iTunesTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DA65D41DA6CDB300B0A16A /* iTunesTrackWrapper.m */; };
 		31DA65DC1DA6CDB300B0A16A /* MediaLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA65D51DA6CDB300B0A16A /* MediaLoader.swift */; };
 		31DA65DD1DA6CDB300B0A16A /* PodcastMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA65D61DA6CDB300B0A16A /* PodcastMonitor.swift */; };
+		31DA65EB1DA6ED4E00B0A16A /* MediaLibraryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA65EA1DA6ED4E00B0A16A /* MediaLibraryMock.swift */; };
+		31DA65ED1DA6EFB800B0A16A /* MediaLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA65EC1DA6EFB800B0A16A /* MediaLoaderMock.swift */; };
+		31FB50771DA71712005343AB /* Assertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FB50761DA71712005343AB /* Assertion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +159,36 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITLibMediaItemMock.swift; sourceTree = "<group>"; };
 		3112B3401C7FA60600CE6438 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMock.swift; sourceTree = "<group>"; };
+		3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
+		3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoardMock.swift; sourceTree = "<group>"; };
+		3129FBEB1DAAF0F600F7C169 /* iTunesApplicationMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesApplicationMock.h; sourceTree = "<group>"; };
+		3129FBEC1DAAF0F600F7C169 /* iTunesApplicationMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesApplicationMock.m; sourceTree = "<group>"; };
+		3129FBEE1DAAF37800F7C169 /* iTunesTrackMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesTrackMock.h; sourceTree = "<group>"; };
+		3129FBEF1DAAF37800F7C169 /* iTunesTrackMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesTrackMock.m; sourceTree = "<group>"; };
+		3129FBF21DAC2AE200F7C169 /* test_artwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_artwork.png; sourceTree = "<group>"; };
+		3129FBF71DAC2B9D00F7C169 /* ContentCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCoordinatorTests.swift; sourceTree = "<group>"; };
+		3129FBF81DAC2B9D00F7C169 /* StatusBarCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarCoordinatorTests.swift; sourceTree = "<group>"; };
+		3129FBFA1DAC2B9D00F7C169 /* ChaptersViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersViewModelTests.swift; sourceTree = "<group>"; };
+		3129FC011DAC2B9D00F7C169 /* ChapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterTests.swift; sourceTree = "<group>"; };
+		3129FC031DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesApplicationWrapperTests.swift; sourceTree = "<group>"; };
+		3129FC041DAC2B9D00F7C169 /* iTunesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesTests.swift; sourceTree = "<group>"; };
+		3129FC051DAC2B9D00F7C169 /* iTunesTrackWrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesTrackWrapperTests.swift; sourceTree = "<group>"; };
+		3129FC061DAC2B9D00F7C169 /* MediaLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLoaderTests.swift; sourceTree = "<group>"; };
+		3129FC071DAC2B9D00F7C169 /* PodcastMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitorTests.swift; sourceTree = "<group>"; };
+		3129FC131DAC2BBC00F7C169 /* NSImage+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PCH.swift"; sourceTree = "<group>"; };
+		3129FC251DAC45AD00F7C169 /* iTunesArtworkMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesArtworkMock.h; sourceTree = "<group>"; };
+		3129FC261DAC45AD00F7C169 /* iTunesArtworkMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesArtworkMock.m; sourceTree = "<group>"; };
+		3129FC291DAC4B3500F7C169 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		3129FC2A1DAC4B3500F7C169 /* iTunesEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesEnums.h; sourceTree = "<group>"; };
+		3129FC2B1DAC4B3500F7C169 /* iTunesTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesTypes.h; sourceTree = "<group>"; };
+		3129FC2C1DAED6AF00F7C169 /* NSUserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserNotification.swift; sourceTree = "<group>"; };
+		3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DistributedNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
+		3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedNotificationCenterMock.swift; sourceTree = "<group>"; };
+		3129FC321DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTuneApplicationWrapperMock.swift; sourceTree = "<group>"; };
+		3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesTrackWrapperMock.swift; sourceTree = "<group>"; };
 		312A107C1C862B6400805059 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		312A107E1C864DEC00805059 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		312A10801C8B292400805059 /* CopyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyButton.swift; sourceTree = "<group>"; };
@@ -152,9 +204,8 @@
 		314195521C766D5900268AFC /* ChapterSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSizeCalculator.swift; sourceTree = "<group>"; };
 		315D38261C77841D0012CA1A /* NSView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+PCH.swift"; sourceTree = "<group>"; };
 		315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCollectionViewItem+PCH.swift"; sourceTree = "<group>"; };
-		315D382B1C78EFA90012CA1A /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
-		315D382D1C78EFBE0012CA1A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		315D382F1C7906A20012CA1A /* NSUserNotificationBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserNotificationBuilder.swift; sourceTree = "<group>"; };
+		315D382B1C78EFA90012CA1A /* AppNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
+		315D382D1C78EFBE0012CA1A /* AppNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotification.swift; sourceTree = "<group>"; };
 		315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleInstanceAlert.swift; sourceTree = "<group>"; };
 		315D38371C79194D0012CA1A /* NSBundle+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBundle+PCH.swift"; sourceTree = "<group>"; };
 		315D38391C791A5A0012CA1A /* NSRunningApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRunningApplication+PCH.swift"; sourceTree = "<group>"; };
@@ -173,15 +224,12 @@
 		315FD1661C9F5991001BF6E2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		315FD16C1C9F6153001BF6E2 /* PodcastChaptersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastChaptersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		315FD1761C9F6176001BF6E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCoordinatorTests.swift; sourceTree = "<group>"; };
 		315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitorMock.swift; sourceTree = "<group>"; };
 		315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMock.swift; sourceTree = "<group>"; };
 		315FD1841C9F61DF001BF6E2 /* PodcastChaptersTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PodcastChaptersTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarCoordinatorTests.swift; sourceTree = "<group>"; };
 		315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarItemMock.swift; sourceTree = "<group>"; };
 		315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSApplicationMock.swift; sourceTree = "<group>"; };
 		315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSApplication+PCH.swift"; sourceTree = "<group>"; };
-		315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaptersViewModelTests.swift; sourceTree = "<group>"; };
 		315FD19E1CA09470001BF6E2 /* PasteBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoard.swift; sourceTree = "<group>"; };
 		315FD19F1CA09470001BF6E2 /* PasteBoardContentStripper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoardContentStripper.swift; sourceTree = "<group>"; };
 		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
@@ -224,7 +272,6 @@
 		31DA65C61DA305DF00B0A16A /* SBApplication+PCH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBApplication+PCH.m"; sourceTree = "<group>"; };
 		31DA65CC1DA6CDB300B0A16A /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		31DA65CD1DA6CDB300B0A16A /* ChapterLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterLoader.swift; sourceTree = "<group>"; };
-		31DA65CF1DA6CDB300B0A16A /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		31DA65D01DA6CDB300B0A16A /* iTunes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunes.swift; sourceTree = "<group>"; };
 		31DA65D11DA6CDB300B0A16A /* iTunesApplicationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesApplicationWrapper.h; sourceTree = "<group>"; };
 		31DA65D21DA6CDB300B0A16A /* iTunesApplicationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesApplicationWrapper.m; sourceTree = "<group>"; };
@@ -232,6 +279,9 @@
 		31DA65D41DA6CDB300B0A16A /* iTunesTrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesTrackWrapper.m; sourceTree = "<group>"; };
 		31DA65D51DA6CDB300B0A16A /* MediaLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLoader.swift; sourceTree = "<group>"; };
 		31DA65D61DA6CDB300B0A16A /* PodcastMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastMonitor.swift; sourceTree = "<group>"; };
+		31DA65EA1DA6ED4E00B0A16A /* MediaLibraryMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryMock.swift; sourceTree = "<group>"; };
+		31DA65EC1DA6EFB800B0A16A /* MediaLoaderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLoaderMock.swift; sourceTree = "<group>"; };
+		31FB50761DA71712005343AB /* Assertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assertion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				310F74141DA6F70B00DE254D /* iTunesLibrary.framework in Frameworks */,
 				315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */,
 				315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */,
 			);
@@ -261,6 +312,136 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3129FBF11DAC2AE200F7C169 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBF21DAC2AE200F7C169 /* test_artwork.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3129FBF41DAC2B9D00F7C169 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBF51DAC2B9D00F7C169 /* Controllers */,
+				3129FBFB1DAC2B9D00F7C169 /* Utilities */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		3129FBF51DAC2B9D00F7C169 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBF61DAC2B9D00F7C169 /* Coordinators */,
+				3129FBF91DAC2B9D00F7C169 /* ViewModels */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3129FBF61DAC2B9D00F7C169 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBF71DAC2B9D00F7C169 /* ContentCoordinatorTests.swift */,
+				3129FBF81DAC2B9D00F7C169 /* StatusBarCoordinatorTests.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		3129FBF91DAC2B9D00F7C169 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBFA1DAC2B9D00F7C169 /* ChaptersViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3129FBFB1DAC2B9D00F7C169 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3129FBFC1DAC2B9D00F7C169 /* Misc */,
+				3129FBFD1DAC2B9D00F7C169 /* MNAVChapters */,
+				3129FBFE1DAC2B9D00F7C169 /* Notifications */,
+				3129FBFF1DAC2B9D00F7C169 /* Pasteboard */,
+				3129FC001DAC2B9D00F7C169 /* Player */,
+				3129FC081DAC2B9D00F7C169 /* Popover */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3129FBFC1DAC2B9D00F7C169 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		3129FBFD1DAC2B9D00F7C169 /* MNAVChapters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MNAVChapters;
+			sourceTree = "<group>";
+		};
+		3129FBFE1DAC2B9D00F7C169 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		3129FBFF1DAC2B9D00F7C169 /* Pasteboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pasteboard;
+			sourceTree = "<group>";
+		};
+		3129FC001DAC2B9D00F7C169 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				3129FC021DAC2B9D00F7C169 /* iTunes */,
+				3129FC011DAC2B9D00F7C169 /* ChapterTests.swift */,
+				3129FC061DAC2B9D00F7C169 /* MediaLoaderTests.swift */,
+				3129FC071DAC2B9D00F7C169 /* PodcastMonitorTests.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		3129FC021DAC2B9D00F7C169 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				3129FC031DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift */,
+				3129FC041DAC2B9D00F7C169 /* iTunesTests.swift */,
+				3129FC051DAC2B9D00F7C169 /* iTunesTrackWrapperTests.swift */,
+			);
+			path = iTunes;
+			sourceTree = "<group>";
+		};
+		3129FC081DAC2B9D00F7C169 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		3129FC121DAC2BAD00F7C169 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3129FC131DAC2BBC00F7C169 /* NSImage+PCH.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3129FC281DAC4B3500F7C169 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3129FC291DAC4B3500F7C169 /* iTunes.h */,
+				3129FC2A1DAC4B3500F7C169 /* iTunesEnums.h */,
+				3129FC2B1DAC4B3500F7C169 /* iTunesTypes.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		314195451C73AEEE00268AFC /* Popover */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,9 +456,8 @@
 		315D382A1C78EFA90012CA1A /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				315D382B1C78EFA90012CA1A /* NotificationCenter.swift */,
-				315D382D1C78EFBE0012CA1A /* Notification.swift */,
-				315D382F1C7906A20012CA1A /* NSUserNotificationBuilder.swift */,
+				315D382B1C78EFA90012CA1A /* AppNotificationCenter.swift */,
+				315D382D1C78EFBE0012CA1A /* AppNotification.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -294,137 +474,41 @@
 		315FD16D1C9F6153001BF6E2 /* PodcastChaptersTests */ = {
 			isa = PBXGroup;
 			children = (
-				315FD17D1C9F61DF001BF6E2 /* Controllers */,
+				31FB50751DA71701005343AB /* Common */,
+				3129FC121DAC2BAD00F7C169 /* Extensions */,
 				315FD1811C9F61DF001BF6E2 /* Mocks */,
-				315FD1851C9F61DF001BF6E2 /* UI */,
-				315FD1881C9F61DF001BF6E2 /* Utilities */,
+				3129FBF11DAC2AE200F7C169 /* Resources */,
+				3129FBF41DAC2B9D00F7C169 /* Tests */,
 				315FD1761C9F6176001BF6E2 /* Info.plist */,
 				315FD1841C9F61DF001BF6E2 /* PodcastChaptersTests-Bridging-Header.h */,
 			);
 			path = PodcastChaptersTests;
 			sourceTree = "<group>";
 		};
-		315FD17D1C9F61DF001BF6E2 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				315FD17E1C9F61DF001BF6E2 /* Coordinators */,
-				315FD1801C9F61DF001BF6E2 /* ViewModels */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		315FD17E1C9F61DF001BF6E2 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				315FD17F1C9F61DF001BF6E2 /* ContentCoordinatorTests.swift */,
-				315FD1931C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		315FD1801C9F61DF001BF6E2 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				315FD19B1CA09034001BF6E2 /* ChaptersViewModelTests.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		315FD1811C9F61DF001BF6E2 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */,
+				310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */,
+				3129FBEB1DAAF0F600F7C169 /* iTunesApplicationMock.h */,
+				3129FBEC1DAAF0F600F7C169 /* iTunesApplicationMock.m */,
+				3129FC321DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift */,
+				3129FC251DAC45AD00F7C169 /* iTunesArtworkMock.h */,
+				3129FC261DAC45AD00F7C169 /* iTunesArtworkMock.m */,
+				3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */,
+				3129FBEE1DAAF37800F7C169 /* iTunesTrackMock.h */,
+				3129FBEF1DAAF37800F7C169 /* iTunesTrackMock.m */,
+				3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */,
+				31DA65EA1DA6ED4E00B0A16A /* MediaLibraryMock.swift */,
+				31DA65EC1DA6EFB800B0A16A /* MediaLoaderMock.swift */,
+				3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */,
 				315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */,
+				3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */,
 				315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */,
 				315FD1831C9F61DF001BF6E2 /* PopoverMock.swift */,
 				315FD1951C9F6BE8001BF6E2 /* StatusBarItemMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		315FD1851C9F61DF001BF6E2 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				315FD1861C9F61DF001BF6E2 /* ViewControllers */,
-				315FD1871C9F61DF001BF6E2 /* Views */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		315FD1861C9F61DF001BF6E2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		315FD1871C9F61DF001BF6E2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		315FD1881C9F61DF001BF6E2 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				315FD1891C9F61DF001BF6E2 /* Bootstrapping */,
-				315FD18A1C9F61DF001BF6E2 /* Extensions */,
-				315FD18B1C9F61DF001BF6E2 /* iTunes */,
-				315FD18C1C9F61DF001BF6E2 /* Misc */,
-				315FD18D1C9F61DF001BF6E2 /* MNAVChapters */,
-				315FD18E1C9F61DF001BF6E2 /* Notifications */,
-				315FD18F1C9F61DF001BF6E2 /* Popover */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		315FD1891C9F61DF001BF6E2 /* Bootstrapping */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Bootstrapping;
-			sourceTree = "<group>";
-		};
-		315FD18A1C9F61DF001BF6E2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		315FD18B1C9F61DF001BF6E2 /* iTunes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = iTunes;
-			sourceTree = "<group>";
-		};
-		315FD18C1C9F61DF001BF6E2 /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Misc;
-			sourceTree = "<group>";
-		};
-		315FD18D1C9F61DF001BF6E2 /* MNAVChapters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MNAVChapters;
-			sourceTree = "<group>";
-		};
-		315FD18E1C9F61DF001BF6E2 /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Notifications;
-			sourceTree = "<group>";
-		};
-		315FD18F1C9F61DF001BF6E2 /* Popover */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Popover;
 			sourceTree = "<group>";
 		};
 		315FD19D1CA09470001BF6E2 /* Pasteboard */ = {
@@ -572,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
+				3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */,
 				313B657F1D98368A002A90E7 /* ITLibrary+PCH.swift */,
 				315D383F1C7A7C390012CA1A /* Notifications+PCH.swift */,
 				315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */,
@@ -586,6 +671,7 @@
 				31B2C7F61C95DEC200C874C7 /* NSTextField+PCH.h */,
 				31B2C7F71C95DEC200C874C7 /* NSTextField+PCH.m */,
 				31C430651C6A9447000E77BA /* NSTimer+PCH.swift */,
+				3129FC2C1DAED6AF00F7C169 /* NSUserNotification.swift */,
 				315D38261C77841D0012CA1A /* NSView+PCH.swift */,
 				313B65871D99A669002A90E7 /* ObservableType+PCH.swift */,
 				31DA65C51DA305DF00B0A16A /* SBApplication+PCH.h */,
@@ -642,7 +728,7 @@
 		31DA65CE1DA6CDB300B0A16A /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
-				31DA65CF1DA6CDB300B0A16A /* iTunes.h */,
+				3129FC281DAC4B3500F7C169 /* Headers */,
 				31DA65D01DA6CDB300B0A16A /* iTunes.swift */,
 				31DA65D11DA6CDB300B0A16A /* iTunesApplicationWrapper.h */,
 				31DA65D21DA6CDB300B0A16A /* iTunesApplicationWrapper.m */,
@@ -650,6 +736,14 @@
 				31DA65D41DA6CDB300B0A16A /* iTunesTrackWrapper.m */,
 			);
 			path = iTunes;
+			sourceTree = "<group>";
+		};
+		31FB50751DA71701005343AB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				31FB50761DA71712005343AB /* Assertion.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,7 +803,9 @@
 					};
 					31A468561C651F51004858F5 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = Q4WE9YHXDQ;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -737,6 +833,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3129FBF31DAC2AE200F7C169 /* test_artwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,13 +856,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				315FD1901C9F61DF001BF6E2 /* ContentCoordinatorTests.swift in Sources */,
+				3129FC0B1DAC2B9D00F7C169 /* ChaptersViewModelTests.swift in Sources */,
+				3129FC111DAC2B9D00F7C169 /* PodcastMonitorTests.swift in Sources */,
+				3129FC271DAC45AD00F7C169 /* iTunesArtworkMock.m in Sources */,
+				3129FBED1DAAF0F600F7C169 /* iTunesApplicationMock.m in Sources */,
+				3129FC101DAC2B9D00F7C169 /* MediaLoaderTests.swift in Sources */,
 				315FD1981C9F6C6E001BF6E2 /* NSApplicationMock.swift in Sources */,
+				3129FC311DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift in Sources */,
 				315FD1911C9F61DF001BF6E2 /* PodcastMonitorMock.swift in Sources */,
-				315FD19C1CA09034001BF6E2 /* ChaptersViewModelTests.swift in Sources */,
-				315FD1941C9F6734001BF6E2 /* StatusBarCoordinatorTests.swift in Sources */,
+				310F74191DA7079E00DE254D /* ITLibMediaItemMock.swift in Sources */,
+				3129FC141DAC2BBC00F7C169 /* NSImage+PCH.swift in Sources */,
+				3129FC0F1DAC2B9D00F7C169 /* iTunesTrackWrapperTests.swift in Sources */,
+				3129FC091DAC2B9D00F7C169 /* ContentCoordinatorTests.swift in Sources */,
+				3129FC351DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift in Sources */,
+				3129FC0E1DAC2B9D00F7C169 /* iTunesTests.swift in Sources */,
+				31DA65ED1DA6EFB800B0A16A /* MediaLoaderMock.swift in Sources */,
+				3129FC331DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift in Sources */,
+				3129FC0C1DAC2B9D00F7C169 /* ChapterTests.swift in Sources */,
+				3129FBE01DAAD92200F7C169 /* iTunesMock.swift in Sources */,
+				3129FBE41DAAD94F00F7C169 /* PasteBoardMock.swift in Sources */,
+				3129FC0D1DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift in Sources */,
+				3129FBE21DAAD93700F7C169 /* NotificationCenterMock.swift in Sources */,
+				31DA65EB1DA6ED4E00B0A16A /* MediaLibraryMock.swift in Sources */,
 				315FD1961C9F6BE8001BF6E2 /* StatusBarItemMock.swift in Sources */,
 				315FD1921C9F61DF001BF6E2 /* PopoverMock.swift in Sources */,
+				3129FBF01DAAF37800F7C169 /* iTunesTrackMock.m in Sources */,
+				3129FC0A1DAC2B9D00F7C169 /* StatusBarCoordinatorTests.swift in Sources */,
+				31FB50771DA71712005343AB /* Assertion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +896,7 @@
 				31A468731C66455C004858F5 /* AppCoordinator.swift in Sources */,
 				31DA65DA1DA6CDB300B0A16A /* iTunesApplicationWrapper.m in Sources */,
 				31DA65C71DA305DF00B0A16A /* SBApplication+PCH.m in Sources */,
-				315D382C1C78EFA90012CA1A /* NotificationCenter.swift in Sources */,
+				315D382C1C78EFA90012CA1A /* AppNotificationCenter.swift in Sources */,
 				312A10811C8B292400805059 /* CopyButton.swift in Sources */,
 				315D38361C7918240012CA1A /* MultipleInstanceAlert.swift in Sources */,
 				315D383C1C7A637C0012CA1A /* StatusItemView.swift in Sources */,
@@ -795,7 +912,6 @@
 				315FD1671C9F5991001BF6E2 /* main.swift in Sources */,
 				31A468921C66769D004858F5 /* ContentCoordinator.swift in Sources */,
 				315D383A1C791A5A0012CA1A /* NSRunningApplication+PCH.swift in Sources */,
-				315D38301C7906A20012CA1A /* NSUserNotificationBuilder.swift in Sources */,
 				31A468941C6676B7004858F5 /* ChaptersViewModel.swift in Sources */,
 				315D38451C7CDD660012CA1A /* OtherContentViewController.swift in Sources */,
 				3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */,
@@ -819,13 +935,15 @@
 				31B2C7F81C95DEC200C874C7 /* NSTextField+PCH.m in Sources */,
 				31DA65D71DA6CDB300B0A16A /* Chapter.swift in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
+				3129FC2F1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift in Sources */,
 				315FD19A1CA08DA6001BF6E2 /* NSApplication+PCH.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
+				3129FC2D1DAED6AF00F7C169 /* NSUserNotification.swift in Sources */,
 				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
 				315D38401C7A7C390012CA1A /* Notifications+PCH.swift in Sources */,
 				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,
 				3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */,
-				315D382E1C78EFBE0012CA1A /* Notification.swift in Sources */,
+				315D382E1C78EFBE0012CA1A /* AppNotification.swift in Sources */,
 				317A61E51C8E1BC9001695F0 /* ChapterCell.swift in Sources */,
 				314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */,
 				31DA65D81DA6CDB300B0A16A /* ChapterLoader.swift in Sources */,
@@ -855,6 +973,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = PodcastChaptersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -874,6 +993,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = PodcastChaptersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -974,7 +1094,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q4WE9YHXDQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -994,7 +1116,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Q4WE9YHXDQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",

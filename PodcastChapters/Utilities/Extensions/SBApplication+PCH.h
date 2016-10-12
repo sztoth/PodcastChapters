@@ -12,6 +12,6 @@
 
 @interface SBApplication (PCH)
 
-+ (iTunesApplicationWrapper * _Nonnull)pch_iTunes;
++ (nonnull id<iTunesApplicationWrapperType>)pch_iTunes;
 
 @end

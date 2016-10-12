@@ -11,7 +11,6 @@ import XCTest
 @testable import PodcastChapters
 
 class ChaptersViewModelTests: XCTestCase {
-
     var chaptersViewModel: ChaptersViewModel!
     var podcastMonitor: PodcastMonitorMock!
 
@@ -22,7 +21,7 @@ class ChaptersViewModelTests: XCTestCase {
         chaptersViewModel = ChaptersViewModel(podcastMonitor: podcastMonitor)
     }
 
-    func testObservablesGivingProperValues() {
+    func test_ObservablesGivingProperValues() {
         
     }
 }

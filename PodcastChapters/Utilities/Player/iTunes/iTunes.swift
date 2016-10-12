@@ -10,28 +10,35 @@ import AppKit
 import RxSwift
 import ScriptingBridge
 
-class iTunes {
+protocol iTunesType {
+    var playerState: Observable<PlayerState> { get }
+    var playerPosition: Observable<Double?> { get }
+    var nowPlaying: Observable<iTunesTrackWrapperType?> { get }
+}
+
+class iTunes: iTunesType {
     var playerState: Observable<PlayerState> {
         return _playerState.asObservable().distinctUntilChanged()
     }
     var playerPosition: Observable<Double?> {
         return _playerPosition.asObservable()
     }
-    var nowPlaying: Observable<iTunesTrackWrapper?> {
-        return _nowPlaying.asObservable().distinctUntilChanged()
+    var nowPlaying: Observable<iTunesTrackWrapperType?> {
+        return _nowPlaying.asObservable().distinctUntilChanged { $0?.identifier == $1?.identifier }
     }
 
     fileprivate let _playerState = Variable<PlayerState>(.unknown)
     fileprivate let _playerPosition = Variable<Double?>(nil)
-    fileprivate let _nowPlaying = Variable<iTunesTrackWrapper?>(nil)
-    fileprivate let itunesApplication: iTunesApplicationWrapper
-    fileprivate let notificationCenter: DistributedNotificationCenter
+    fileprivate let _nowPlaying = Variable<iTunesTrackWrapperType?>(nil)
+    fileprivate let itunesApplication: iTunesApplicationWrapperType
+    fileprivate let notificationCenter: DistributedNotificationCenterType
 
     fileprivate var timer: Timer?
+    fileprivate var observer: NSObjectProtocol?
 
     init(
-        itunesApplication: iTunesApplicationWrapper = SBApplication.pch_iTunes(),
-        notificationCenter: DistributedNotificationCenter = DistributedNotificationCenter.default()
+        itunesApplication: iTunesApplicationWrapperType = SBApplication.pch_iTunes(),
+        notificationCenter: DistributedNotificationCenterType = DistributedNotificationCenter.default()
     ) {
         self.itunesApplication = itunesApplication
         self.notificationCenter = notificationCenter
@@ -41,15 +48,15 @@ class iTunes {
     }
 
     deinit {
-        notificationCenter.removeObserver(self)
+        notificationCenter.remove(observer: observer)
     }
 }
 
 // MARK: - Private stuff
+
 fileprivate extension iTunes {
     func setupNotificationObserver() {
-        let notificationName = NSNotification.Name(rawValue: "\(iTunesBundleIdentifier).playerInfo")
-        self.notificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { [weak self] _ in
+        observer = notificationCenter.addObserver(forName: "\(iTunesBundleIdentifier).playerInfo") { [weak self] in
             self?.updatePlayer()
         }
     }
@@ -69,6 +76,7 @@ fileprivate extension iTunes {
 }
 
 // MARK: - Timer related stuffs
+
 fileprivate extension iTunes {
     func changeTimerIfNeededFor(state: PlayerState) {
         _playerState.value = state
@@ -103,6 +111,7 @@ fileprivate extension iTunes {
 }
 
 // MARK: - Constants
+
 fileprivate extension iTunes {
     enum Constant {
         static let UpdateInterval = 1.0

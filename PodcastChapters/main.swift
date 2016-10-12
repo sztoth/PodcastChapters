@@ -12,7 +12,7 @@ fileprivate func delegateInstance() -> NSApplicationDelegate? {
     return NSClassFromString("XCTestCase") == nil ? AppDelegate() : nil
 }
 
-let delegate = AppDelegate()
+let delegate = delegateInstance()
 
 let app = NSApplication.shared()
 app.delegate = delegate

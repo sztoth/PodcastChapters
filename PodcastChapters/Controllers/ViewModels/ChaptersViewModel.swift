@@ -29,10 +29,10 @@ class ChaptersViewModel {
     fileprivate let _chapterChanged = PublishSubject<(Int?, Int?)>()
     fileprivate let chapters = Variable<[Chapter]?>(nil)
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let podcastMonitor: PodcastMonitor
-    fileprivate let pasteBoard: PasteBoard
+    fileprivate let podcastMonitor: PodcastMonitorType
+    fileprivate let pasteBoard: PasteBoardType
 
-    init(podcastMonitor: PodcastMonitor, pasteBoard: PasteBoard = PasteBoard()) {
+    init(podcastMonitor: PodcastMonitorType, pasteBoard: PasteBoardType = PasteBoard()) {
         self.podcastMonitor = podcastMonitor
         self.pasteBoard = pasteBoard
 
