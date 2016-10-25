@@ -29,11 +29,19 @@ class OtherContentViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        messageLabel.textColor = ColorSettings.textColor
+        setupBindings()
+        setupColors()
+    }
+}
 
-        viewModel.title.asObservable()
-            .observeOn(MainScheduler.instance)
-            .bindTo(messageLabel.rx.textInput.text)
+fileprivate extension OtherContentViewController {
+    func setupBindings() {
+        viewModel.title
+            .drive(messageLabel.rx.textInput.text)
             .addDisposableTo(disposeBag)
+    }
+
+    func setupColors() {
+        messageLabel.textColor = ColorSettings.textColor
     }
 }

@@ -19,7 +19,7 @@ class StatusItemView: NSControl {
     var event: Observable<StatusItemViewEvent> {
         return _event.asObservable()
     }
-    var highlight: Bool {
+    var highlight: Bool = false {
         didSet { setNeedsDisplay() }
     }
 
@@ -36,7 +36,6 @@ class StatusItemView: NSControl {
         self.statusItem = statusItem
         self.rightClickMenu = rightClickMenu
         image = NSImage(named: "Status Bar Image")!.imageApplyingTintColor(NSColor.white)!
-        highlight = false
 
         let height = NSStatusBar.system().thickness
         let frame = NSRect(x: 0.0, y: 0.0, width: 30.0, height: height)
@@ -102,9 +101,7 @@ extension StatusItemView {
     }
 
     override func mouseUp(with theEvent: NSEvent) {
-        guard mouseDown == true else {
-            return
-        }
+        guard mouseDown == true else { return }
 
         if theEvent.modifierFlags.contains(.control) {
             showMenu()

@@ -8,18 +8,17 @@
 
 import Cocoa
 
-typealias ChapterCellConfiguration = (ChapterCell) -> ()
-
 class ChapterSizeCalculator {
     fileprivate let cache: NSCache<AnyObject, AnyObject>
-    fileprivate let prototypeCellView: ChapterCellView
+    fileprivate let prototypeCellView: ChapterViewItemView
     fileprivate let widthConstraint: NSLayoutConstraint
 
     init(cache: NSCache<AnyObject, AnyObject> = NSCache()) {
         self.cache = cache
-        prototypeCellView = ChapterCellView(frame: NSRect.zero)
+        prototypeCellView = ChapterViewItemView.pch_loadFromNib()!
 
         widthConstraint = prototypeCellView.widthAnchor.constraint(equalToConstant: 0.0)
+        widthConstraint.priority = NSLayoutPriorityRequired
         widthConstraint.isActive = true
     }
 }

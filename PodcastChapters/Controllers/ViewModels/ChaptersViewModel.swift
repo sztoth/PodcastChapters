@@ -28,6 +28,7 @@ class ChaptersViewModel {
     fileprivate let _title = Variable<String?>(nil)
     fileprivate let _chapterChanged = PublishSubject<(Int?, Int?)>()
     fileprivate let chapters = Variable<[Chapter]?>(nil)
+    fileprivate let currentChapterIndex = Variable<Int?>(nil)
     fileprivate let disposeBag = DisposeBag()
     fileprivate let podcastMonitor: PodcastMonitorType
     fileprivate let pasteBoard: PasteBoardType
@@ -46,6 +47,10 @@ fileprivate extension ChaptersViewModel {
             .bindTo(chapters)
             .addDisposableTo(disposeBag)
 
+        podcastMonitor.playingChapterIndex
+            .bindTo(currentChapterIndex)
+            .addDisposableTo(disposeBag)
+
         let defaultValue: [Int?] = [nil]
         podcastMonitor.playingChapterIndex
             .scan(defaultValue, accumulator: { (previous, current) in
@@ -55,19 +60,19 @@ fileprivate extension ChaptersViewModel {
             .bindTo(_chapterChanged)
             .addDisposableTo(disposeBag)
 
-        let playing = Observable.combineLatest(
+        let currentChapter = Observable.combineLatest(
             chapters.asObservable(),
             podcastMonitor.playingChapterIndex) { (chapters, index) -> Chapter? in
                 guard let chapters = chapters, let index = index else { return nil }
                 return chapters[index]
             }
 
-        playing
+        currentChapter
             .map { $0?.cover }
             .bindTo(_artwork)
             .addDisposableTo(disposeBag)
 
-        playing
+        currentChapter
             .map { $0?.title }
             .bindTo(_title)
             .addDisposableTo(disposeBag)
@@ -87,11 +92,8 @@ extension ChaptersViewModel {
         return chapters.value?.count ?? 0
     }
 
-    func chapterDataFor(index: Int) -> String? {
-        guard let chapters = chapters.value else { return nil }
-        
-        let chapter = chapters[index]
-
-        return chapter.title
+    func chapterData(for index: Int) -> (String, Bool)? {
+        guard let chapter = chapters.value?[index], let currentIndex = currentChapterIndex.value else { return nil }
+        return (chapter.title, currentIndex == index)
     }
 }
