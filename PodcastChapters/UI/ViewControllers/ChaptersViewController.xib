@@ -46,14 +46,24 @@
                                 <constraint firstAttribute="height" constant="1" id="bRA-8w-bzQ"/>
                             </constraints>
                         </customView>
-                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2A-u0-hx4">
-                            <rect key="frame" x="10" y="5" width="270" height="235"/>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="zWh-OA-nBu" customClass="CopyButton" customModule="PodcastChapters" customModuleProvider="target">
+                            <rect key="frame" x="261" y="264" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="Shz-L9-fLh"/>
+                                <constraint firstAttribute="width" secondItem="zWh-OA-nBu" secondAttribute="height" multiplier="1:1" id="zhu-KH-yoN"/>
+                            </constraints>
+                            <connections>
+                                <action selector="copyCurrentTitleToClipboard:" target="-2" id="PEr-ld-645"/>
+                            </connections>
+                        </customView>
+                        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="n2A-u0-hx4">
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="240"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ixI-hA-qPR">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <collectionView id="pjx-RD-NQU" customClass="CollectionView" customModule="PodcastChapters" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="235"/>
+                                    <collectionView id="pjx-RD-NQU">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="240"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <collectionViewLayout key="collectionViewLayout" id="0aa-VO-aIx" customClass="FlowLayout" customModule="PodcastChapters" customModuleProvider="target"/>
                                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -73,16 +83,6 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="zWh-OA-nBu" customClass="CopyButton" customModule="PodcastChapters" customModuleProvider="target">
-                            <rect key="frame" x="261" y="264" width="24" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="24" id="Shz-L9-fLh"/>
-                                <constraint firstAttribute="width" secondItem="zWh-OA-nBu" secondAttribute="height" multiplier="1:1" id="zhu-KH-yoN"/>
-                            </constraints>
-                            <connections>
-                                <action selector="copyCurrentTitleToClipboard:" target="-2" id="PEr-ld-645"/>
-                            </connections>
-                        </customView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="I8Q-ph-1Bh" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="10" id="2hP-Jt-mQ4"/>
@@ -91,15 +91,15 @@
                         <constraint firstItem="n2A-u0-hx4" firstAttribute="top" secondItem="00G-Rs-gHl" secondAttribute="bottom" constant="10" id="FKL-H4-uLO"/>
                         <constraint firstAttribute="trailing" secondItem="zWh-OA-nBu" secondAttribute="trailing" constant="5" id="K6t-is-D22"/>
                         <constraint firstItem="qiT-35-5OI" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="RZ8-ks-RrE"/>
-                        <constraint firstItem="n2A-u0-hx4" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" constant="10" id="XtD-0g-8xJ"/>
+                        <constraint firstItem="n2A-u0-hx4" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="XtD-0g-8xJ"/>
                         <constraint firstAttribute="trailing" secondItem="qiT-35-5OI" secondAttribute="trailing" id="bxk-PC-1iA"/>
-                        <constraint firstAttribute="bottom" secondItem="n2A-u0-hx4" secondAttribute="bottom" constant="5" id="djh-DD-FIQ"/>
+                        <constraint firstAttribute="bottom" secondItem="n2A-u0-hx4" secondAttribute="bottom" id="djh-DD-FIQ"/>
                         <constraint firstItem="00G-Rs-gHl" firstAttribute="top" secondItem="I8Q-ph-1Bh" secondAttribute="bottom" constant="15" id="hbQ-tK-gv7"/>
                         <constraint firstItem="I8Q-ph-1Bh" firstAttribute="top" secondItem="qiT-35-5OI" secondAttribute="bottom" constant="15" id="hv4-Fe-Trt"/>
                         <constraint firstItem="00G-Rs-gHl" firstAttribute="leading" secondItem="VvG-9v-HF9" secondAttribute="leading" id="nz9-vY-NCN"/>
                         <constraint firstItem="zWh-OA-nBu" firstAttribute="leading" secondItem="I8Q-ph-1Bh" secondAttribute="trailing" constant="5" id="q2E-oq-brh"/>
                         <constraint firstItem="qiT-35-5OI" firstAttribute="top" secondItem="VvG-9v-HF9" secondAttribute="top" id="vht-IG-9Wy"/>
-                        <constraint firstAttribute="trailing" secondItem="n2A-u0-hx4" secondAttribute="trailing" constant="10" id="xM0-JN-XNp"/>
+                        <constraint firstAttribute="trailing" secondItem="n2A-u0-hx4" secondAttribute="trailing" id="xM0-JN-XNp"/>
                     </constraints>
                 </customView>
             </subviews>

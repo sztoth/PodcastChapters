@@ -111,8 +111,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import ObjectiveC;
-@import Foundation;
 @import AppKit;
+@import Foundation;
 #endif
 
 #import <RxCocoa/RxCocoa.h>
@@ -160,7 +160,8 @@ SWIFT_CLASS("_TtC7RxCocoa13DelegateProxy")
 
 */
 - (nonnull instancetype)initWithParentObject:(id _Nonnull)parentObject OBJC_DESIGNATED_INITIALIZER;
-- (void)interceptedSelector:(SEL _Nonnull)selector withArguments:(NSArray * _Nonnull)arguments;
+- (void)_sentMessage:(SEL _Nonnull)selector withArguments:(NSArray * _Nonnull)arguments;
+- (void)_methodInvoked:(SEL _Nonnull)selector withArguments:(NSArray * _Nonnull)arguments;
 /**
   Returns tag used to identify associated object.
 
@@ -230,16 +231,7 @@ SWIFT_CLASS("_TtC7RxCocoa13DelegateProxy")
 @end
 
 
-SWIFT_CLASS("_TtC7RxCocoa11KVOObserver")
-@interface KVOObserver : _RXKVOObserver
-@property (nonatomic, strong) KVOObserver * _Nullable retainSelf;
-- (void)dispose;
-- (null_unspecified instancetype)initWithTarget:(id _Null_unspecified)target retainTarget:(BOOL)retainTarget keyPath:(NSString * _Null_unspecified)keyPath options:(NSKeyValueObservingOptions)options callback:(void (^ _Null_unspecified)(id _Nullable))callback SWIFT_UNAVAILABLE;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
-
-
-@interface NSObject (SWIFT_EXTENSION(RxCocoa))
+@interface NSTextField (SWIFT_EXTENSION(RxCocoa)) <NSTextInput>
 @end
 
 @class RxTextFieldDelegateProxy;
@@ -256,10 +248,6 @@ SWIFT_CLASS("_TtC7RxCocoa11KVOObserver")
   \endcode.
 */
 - (RxTextFieldDelegateProxy * _Nonnull)createRxDelegateProxy;
-@end
-
-
-@interface NSTextField (SWIFT_EXTENSION(RxCocoa))
 @end
 
 

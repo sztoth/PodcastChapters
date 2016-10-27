@@ -26,10 +26,9 @@ extension NSStatusItem {
             guard let view = view as? StatusItemView else { return false }
             return view.highlight
         }
-        set(value) {
-            if let view = view as? StatusItemView {
-                view.highlight = value
-            }
+        set {
+            guard let view = view as? StatusItemView else { return }
+            view.highlight = newValue
         }
     }
 }
@@ -37,7 +36,7 @@ extension NSStatusItem {
 // MARK: - RxSwift
 
 extension NSStatusItem {
-    var event: Observable<StatusItemViewEvent>? {
+    var event: Observable<StatusItemView.Event>? {
         guard let view = view as? StatusItemView else { return nil }
         return view.event
     }

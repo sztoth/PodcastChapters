@@ -9,12 +9,11 @@
 import Cocoa
 
 class Popover: NSWindowController {
-
     var content: NSViewController? {
         get { return contentViewController }
-        set(viewController) {
+        set {
             contentViewController = nil
-            contentViewController = viewController
+            contentViewController = newValue
 
             updateWindowFrame()
         }
@@ -22,6 +21,7 @@ class Popover: NSWindowController {
 
     fileprivate let animator: PopoverAnimator
     fileprivate let topMargin = 2.0
+
     fileprivate var presentedFrom: NSRect?
 
     init(popoverWindow: PopoverWindow = PopoverWindow.window(), animator: PopoverAnimator = PopoverAnimator()) {
@@ -35,11 +35,11 @@ class Popover: NSWindowController {
     }
 }
 
+// MARK: - Show / hide
+
 extension Popover {
-    func showFrom(view: NSView) {
-        guard let window = window, let frame = view.window?.frame else {
-            return
-        }
+    func show(from view: NSView) {
+        guard let window = window, let frame = view.window?.frame else { return }
 
         presentedFrom = frame
         updateWindowFrame()
@@ -48,27 +48,25 @@ extension Popover {
         NSApp.activate(ignoringOtherApps: true)
         showWindow(nil)
 
-        animator.animateWindow(window, direction: .in) { direction in
-            self.animationDidFinishInDirection(direction, forWindow: window)
+        animator.animate(window, direction: .in) { direction in
+            self.animationDidFinish(in: direction, forWindow: window)
         }
     }
 
-    func dismiss() {
-        guard let window = window else {
-            return
-        }
+    func hide() {
+        guard let window = window else { return }
 
-        animator.animateWindow(window, direction: .out) { direction in
-            self.animationDidFinishInDirection(direction, forWindow: window)
+        animator.animate(window, direction: .out) { direction in
+            self.animationDidFinish(in: direction, forWindow: window)
         }
     }
 }
 
+// MARK: - Private
+
 fileprivate extension Popover {
     func updateWindowFrame() {
-        guard let window = window, let anchorFrame = presentedFrom else {
-            return
-        }
+        guard let window = window, let anchorFrame = presentedFrom else { return }
 
         let frame = NSRect(
             x: anchorFrame.midX - window.frame.width / 2.0,
@@ -81,7 +79,7 @@ fileprivate extension Popover {
         window.appearance = NSAppearance.current()
     }
 
-    func animationDidFinishInDirection(_ direction: PopoverAnimationDirection, forWindow window: NSWindow) {
+    func animationDidFinish(in direction: PopoverAnimator.AnimationDirection, forWindow window: NSWindow) {
         switch direction {
         case .in:
             window.makeKey()

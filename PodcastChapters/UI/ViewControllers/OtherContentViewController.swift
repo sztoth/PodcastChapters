@@ -10,8 +10,7 @@ import Cocoa
 import RxSwift
 
 class OtherContentViewController: NSViewController {
-
-    @IBOutlet weak var messageLabel: NSTextField!
+    @IBOutlet fileprivate weak var messageLabel: NSTextField!
 
     fileprivate let viewModel: OtherContentViewModel
     fileprivate let disposeBag = DisposeBag()
@@ -29,11 +28,21 @@ class OtherContentViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        messageLabel.textColor = ColorSettings.textColor
+        setupBindings()
+        setupColors()
+    }
+}
 
-        viewModel.title.asObservable()
-            .observeOn(MainScheduler.instance)
-            .bindTo(messageLabel.rx.textInput.text)
+// MARK: - Setup
+
+fileprivate extension OtherContentViewController {
+    func setupBindings() {
+        viewModel.title
+            .drive(messageLabel.rx.textInput.text)
             .addDisposableTo(disposeBag)
+    }
+
+    func setupColors() {
+        messageLabel.textColor = ColorSettings.textColor
     }
 }

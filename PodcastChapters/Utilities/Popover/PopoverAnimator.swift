@@ -9,24 +9,17 @@
 import AppKit
 import Foundation
 
-typealias PopoverAnimationCompletion = (PopoverAnimationDirection) -> ()
-
-enum PopoverAnimationDirection {
-    case `in`
-    case out
-}
+typealias PopoverAnimationCompletion = (PopoverAnimator.AnimationDirection) -> ()
 
 class PopoverAnimator {
-
     fileprivate(set) var animating = false
 }
 
-extension PopoverAnimator {
+// MARK: - Animation
 
-    func animateWindow(_ window: NSWindow, direction: PopoverAnimationDirection, completion: @escaping PopoverAnimationCompletion) {
-        guard !animating else {
-            return
-        }
+extension PopoverAnimator {
+    func animate(_ window: NSWindow, direction: AnimationDirection, completion: @escaping PopoverAnimationCompletion) {
+        guard !animating else { return }
 
         animating = true
 
@@ -59,5 +52,14 @@ extension PopoverAnimator {
             self.animating = false
             completion(direction)
         })
+    }
+}
+
+// MARK: - AnimationDirection
+
+extension PopoverAnimator {
+    enum AnimationDirection {
+        case `in`
+        case out
     }
 }

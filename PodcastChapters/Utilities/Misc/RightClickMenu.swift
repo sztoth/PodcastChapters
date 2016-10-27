@@ -10,18 +10,12 @@ import AppKit
 import Foundation
 import RxSwift
 
-enum RightClickMenuOption {
-    case settings
-    case quit
-}
-
 class RightClickMenu: NSMenu {
-
-    var itemSelected: Observable<RightClickMenuOption> {
+    var itemSelected: Observable<Option> {
         return _itemSelected.asObserver()
     }
 
-    fileprivate let _itemSelected = PublishSubject<RightClickMenuOption>()
+    fileprivate let _itemSelected = PublishSubject<Option>()
 
     init() {
         super.init(title: "")
@@ -44,6 +38,8 @@ class RightClickMenu: NSMenu {
     }
 }
 
+// MARK: - Selection handling
+
 extension RightClickMenu {
     func settingsSelected() {
         _itemSelected.onNext(.settings)
@@ -51,5 +47,14 @@ extension RightClickMenu {
 
     func quitSelected() {
         _itemSelected.onNext(.quit)
+    }
+}
+
+// MARK: - Options
+
+extension RightClickMenu {
+    enum Option {
+        case settings
+        case quit
     }
 }

@@ -14,6 +14,8 @@ class ApplicationBootstrapping {
     var appNotificationCenter: AppNotificationCenter?
 }
 
+// MARK: - Bootstrapping
+
 extension ApplicationBootstrapping: Bootstrapping {
     func bootstrap(_ bootstrapped: Bootstrapped) throws {
         let popover = Popover()

@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 
 class OtherContentViewModel {
-
     var title: Driver<String> {
         return _title.asDriver()
     }

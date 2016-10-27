@@ -52,7 +52,9 @@ class CopyButton: NSButton {
     }
 }
 
-private extension CopyButton {
+// MARK: - Setup
+
+fileprivate extension CopyButton {
     func internalSetup() {
         setButtonType(.momentaryLight)
     }

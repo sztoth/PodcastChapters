@@ -28,6 +28,7 @@ class ChaptersViewModel {
     fileprivate let _title = Variable<String?>(nil)
     fileprivate let _chapterChanged = PublishSubject<(Int?, Int?)>()
     fileprivate let chapters = Variable<[Chapter]?>(nil)
+    fileprivate let currentChapterIndex = Variable<Int?>(nil)
     fileprivate let disposeBag = DisposeBag()
     fileprivate let podcastMonitor: PodcastMonitorType
     fileprivate let pasteBoard: PasteBoardType
@@ -40,10 +41,38 @@ class ChaptersViewModel {
     }
 }
 
+// MARK: - Copy to clipboard
+
+extension ChaptersViewModel {
+    func copyCurrentChapterTitleToClipboard() {
+        guard let title = _title.value else { return }
+        pasteBoard.copy(title)
+    }
+}
+
+// MARK: - List data
+
+extension ChaptersViewModel {
+    func numberOfChapters() -> Int {
+        return chapters.value?.count ?? 0
+    }
+
+    func chapterData(for index: Int) -> (String, Bool)? {
+        guard let chapter = chapters.value?[index], let currentIndex = currentChapterIndex.value else { return nil }
+        return (chapter.title, currentIndex == index)
+    }
+}
+
+// MARK: - Setup
+
 fileprivate extension ChaptersViewModel {
     func setupBindings() {
         podcastMonitor.chapters
             .bindTo(chapters)
+            .addDisposableTo(disposeBag)
+
+        podcastMonitor.playingChapterIndex
+            .bindTo(currentChapterIndex)
             .addDisposableTo(disposeBag)
 
         let defaultValue: [Int?] = [nil]
@@ -55,43 +84,21 @@ fileprivate extension ChaptersViewModel {
             .bindTo(_chapterChanged)
             .addDisposableTo(disposeBag)
 
-        let playing = Observable.combineLatest(
+        let currentChapter = Observable.combineLatest(
             chapters.asObservable(),
             podcastMonitor.playingChapterIndex) { (chapters, index) -> Chapter? in
                 guard let chapters = chapters, let index = index else { return nil }
                 return chapters[index]
-            }
+        }
 
-        playing
+        currentChapter
             .map { $0?.cover }
             .bindTo(_artwork)
             .addDisposableTo(disposeBag)
 
-        playing
+        currentChapter
             .map { $0?.title }
             .bindTo(_title)
             .addDisposableTo(disposeBag)
-    }
-}
-
-// MARK: - Comment
-extension ChaptersViewModel {
-    func copyCurrentChapterTitleToClipboard() {
-        guard let title = _title.value else { return }
-        pasteBoard.copy(title)
-    }
-}
-
-extension ChaptersViewModel {
-    func numberOfChapters() -> Int {
-        return chapters.value?.count ?? 0
-    }
-
-    func chapterDataFor(index: Int) -> String? {
-        guard let chapters = chapters.value else { return nil }
-        
-        let chapter = chapters[index]
-
-        return chapter.title
     }
 }

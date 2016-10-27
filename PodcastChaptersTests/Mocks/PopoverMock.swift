@@ -15,11 +15,11 @@ class PopoverMock: Popover {
 }
 
 extension PopoverMock {
-    override func showFrom(view: NSView) {
+    override func show(from view: NSView) {
         executedMethod = .showFromView(view)
     }
 
-    override func dismiss() {
+    override func hide() {
         executedMethod = .dismiss
     }
 }

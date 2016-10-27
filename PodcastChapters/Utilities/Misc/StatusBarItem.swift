@@ -10,19 +10,12 @@ import Cocoa
 import RxCocoa
 import RxSwift
 
-enum StatusBarEvent {
-    case open(NSView)
-    case close
-    case openSettings
-    case quit
-}
-
 class StatusBarItem {
-    var event: Observable<StatusBarEvent> {
+    var event: Observable<Event> {
         return _event.asObservable()
     }
 
-    fileprivate let _event = PublishSubject<StatusBarEvent>()
+    fileprivate let _event = PublishSubject<Event>()
     fileprivate let statusItem: NSStatusItem
     fileprivate let eventMonitor: EventMonitor
     fileprivate let disposeBag = DisposeBag()
@@ -39,42 +32,40 @@ class StatusBarItem {
     }
 }
 
+// MARK: - Setup
+
 fileprivate extension StatusBarItem {
     func setupBindings() {
         statusItem.event?
-            .map { [unowned self] event in
-                switch event {
-                case .toggleMainView(let view):
-                    return self.toggleFromView(view)
-                case .openSettings:
-                    return .openSettings
-                case .quit:
-                    return .quit
-                }
-            }
+            .map(statusItemEvent)
             .bindTo(_event)
             .addDisposableTo(disposeBag)
 
-        eventMonitor.event
-            .map { [unowned self] _  in
-                self.mainViewWillHide()
-                return .close
+        statusItem.event?
+            .filter(isToggleEvent)
+            .subscribe { _ in
+                self.toggle()
             }
+            .addDisposableTo(disposeBag)
+
+        eventMonitor.event
+            .subscribe { _ in
+                self.mainViewWillHide()
+            }
+            .addDisposableTo(disposeBag)
+
+        eventMonitor.event
+            .map { _ in Event.close }
             .bindTo(_event)
             .addDisposableTo(disposeBag)
     }
 }
 
+// MARK: - Visibility methods
+
 fileprivate extension StatusBarItem {
-    func toggleFromView(_ view: NSView) -> StatusBarEvent {
-        if visible {
-            mainViewWillHide()
-            return .close
-        }
-        else {
-            mainViewWillShow()
-            return .open(view)
-        }
+    func toggle() {
+        visible ? mainViewWillHide() : mainViewWillShow()
     }
 
     func mainViewWillShow() {
@@ -87,5 +78,42 @@ fileprivate extension StatusBarItem {
         visible = false
         statusItem.highlighted = false
         eventMonitor.stop()
+    }
+}
+
+// MARK: - RxSwift methods
+
+fileprivate extension StatusBarItem {
+    func isToggleEvent(_ event: StatusItemView.Event) -> Bool {
+        if case .toggleMainView(_) = event {
+            return true
+        }
+        return false
+    }
+
+    func statusItemEvent(from event: StatusItemView.Event) -> Event {
+        switch event {
+        case .toggleMainView(_) where visible:
+            return .close
+        case .toggleMainView(let view) where !visible:
+            return .open(view)
+        case .openSettings:
+            return .openSettings
+        case .quit:
+            return .quit
+        default:
+            fatalError("Should not have more options")
+        }
+    }
+}
+
+// MARK: - Event
+
+extension StatusBarItem {
+    enum Event {
+        case open(NSView)
+        case close
+        case openSettings
+        case quit
     }
 }

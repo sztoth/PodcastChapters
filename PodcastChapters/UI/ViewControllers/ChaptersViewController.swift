@@ -11,11 +11,10 @@ import RxCocoa
 import RxSwift
 
 class ChaptersViewController: NSViewController {
-
     @IBOutlet fileprivate weak var coverImageView: NSImageView!
     @IBOutlet fileprivate weak var titleLabel: NSTextField!
     @IBOutlet fileprivate weak var copyButton: CopyButton!
-    @IBOutlet fileprivate weak var collectionView: CollectionView!
+    @IBOutlet fileprivate weak var collectionView: NSCollectionView!
 
     fileprivate let viewModel: ChaptersViewModel
     fileprivate let sizeCalculator: ChapterSizeCalculator
@@ -35,73 +34,87 @@ class ChaptersViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.textColor = ColorSettings.textColor
-
         setupBindings()
+        setupColors()
     }
 
     override func viewDidLayout() {
-        super.viewDidLayout()
         titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
-        view.layoutSubtreeIfNeeded()
+
+        super.viewDidLayout()
+
+        sizeCalculator.width = collectionView.bounds.width
     }
 }
 
-// MARK: - Copy to clipboard function
+// MARK: - Copy to clipboard
+
 extension ChaptersViewController {
     @IBAction func copyCurrentTitleToClipboard(_ sender: CopyButton) {
         viewModel.copyCurrentChapterTitleToClipboard()
     }
 }
 
-// MARK: - CollectionView data source
+// MARK: - NSCollectionViewDataSource
+
 extension ChaptersViewController: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfChapters()
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        return collectionView.makeItem(withIdentifier: ChapterCell.reuseIdentifier, for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: "ChapterViewItem", for: indexPath)
+        guard let collectionViewItem = item as? ChapterViewItem else { return item }
+
+        if let data = viewModel.chapterData(for: indexPath.item) {
+            collectionViewItem.text = data.0
+            collectionViewItem.highlighted = data.1
+        }
+
+        return collectionViewItem
     }
 }
 
-// MARK: - ColectionView delegate
+// MARK: - NSCollectionViewDelegate
+
 extension ChaptersViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> NSSize {
-        if let title = viewModel.chapterDataFor(index: (indexPath as NSIndexPath).item) {
-            return sizeCalculator.sizeForIndex((indexPath as NSIndexPath).item, availableWidth: collectionView.frame.width, chapterTitle: title)
+        if let data = viewModel.chapterData(for: indexPath.item) {
+            return sizeCalculator.size(for: data.0, at: indexPath.item)
         }
 
         return NSSize.zero
     }
-
-    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        if let item = item as? ChapterCell, let title = viewModel.chapterDataFor(index: (indexPath as NSIndexPath).item) {
-            item.text = title
-            item.makeHighlighted = false
-        }
-    }
 }
 
-// MARK: - Private
+// MARK: - Setup
+
 fileprivate extension ChaptersViewController {
     func setupBindings() {
         viewModel.artwork
             .drive(coverImageView.rx.image)
             .addDisposableTo(disposeBag)
 
-        // It is a workaround because it did not want to drive the textfield
         viewModel.title
-            .drive(onNext: { title in
-                self.titleLabel.stringValue = title ?? "Üres"
-            })
-         .addDisposableTo(disposeBag)
+            .drive(titleLabel.rx.textInput.text)
+            .addDisposableTo(disposeBag)
 
         viewModel.chapterChanged
             .drive(onNext: reload(indexes:))
             .addDisposableTo(disposeBag)
     }
 
+    func setupColors() {
+        titleLabel.textColor = ColorSettings.textColor
+
+        collectionView.wantsLayer = true
+        collectionView.layer?.backgroundColor = ColorSettings.mainBackgroundColor.cgColor
+    }
+}
+
+// MARK: - Reload
+
+fileprivate extension ChaptersViewController {
     func reload(indexes: (Int?, Int?)) {
         var array = [IndexPath]()
         var scrollToPath: IndexPath?
@@ -113,30 +126,25 @@ fileprivate extension ChaptersViewController {
             let indexPath = IndexPath(item: new, section: 0)
             scrollToPath = indexPath
             array.append(indexPath)
-        case let (.some(old), .none):
-            array.append(IndexPath(item: old, section: 0))
         case let (.none, .some(new)):
             let indexPath = IndexPath(item: new, section: 0)
             scrollToPath = indexPath
             array.append(indexPath)
         default:
+            // Empty on purpose
             break
         }
 
-        if 0 < array.count {
-            self.collectionView.reloadItems(at: Set(array))
+        if !array.isEmpty {
+            collectionView.reloadItems(at: Set(array))
+
+            if let indexPath = scrollToPath {
+                collectionView.scrollToItems(at: Set([indexPath]), scrollPosition: .centeredVertically, animated: true)
+            }
         }
         else {
-            self.updateCollectionView()
+            sizeCalculator.reset()
+            collectionView.reloadData()
         }
-
-        if let indexPath = scrollToPath {
-            self.collectionView.scrollToItems(at: Set([indexPath]), scrollPosition: .centeredVertically)
-        }
-    }
-
-    func updateCollectionView() {
-        self.sizeCalculator.reset()
-        self.collectionView.reloadData()
     }
 }
