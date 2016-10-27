@@ -12,9 +12,9 @@ import RxSwift
 @testable import PodcastChapters
 
 class StatusBarItemMock: StatusBarItem {
-    override var event: Observable<StatusBarEvent> {
+    override var event: Observable<StatusBarItem.Event> {
         return eventSignal.asObservable()
     }
 
-    let eventSignal = PublishSubject<StatusBarEvent>()
+    let eventSignal = PublishSubject<StatusBarItem.Event>()
 }

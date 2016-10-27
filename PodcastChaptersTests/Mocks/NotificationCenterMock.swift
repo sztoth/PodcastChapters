@@ -20,7 +20,7 @@ extension AppNotificationCenterMock: AppNotificationCenterType {
         clearAllNotificationCalled = true
     }
 
-    func deliverNotification(_ notification: AppNotification) {
+    func deliver(_ notification: AppNotification) {
         notificationToDeliver = notification
     }
 }
