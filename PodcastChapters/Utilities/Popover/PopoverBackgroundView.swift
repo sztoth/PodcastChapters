@@ -9,15 +9,12 @@
 import Cocoa
 
 class PopoverBackgroundView: NSView {
-
     var arrowHeight = 10.0
     var arrowWidth = 42.0
     var cornerRadius = 10.0
 
     override var frame: NSRect {
-        didSet {
-            needsDisplay = true
-        }
+        didSet { needsDisplay = true }
     }
 
     override init(frame: CGRect){
@@ -66,6 +63,8 @@ class PopoverBackgroundView: NSView {
         window.fill()
     }
 }
+
+// MARK: - Setup
 
 fileprivate extension PopoverBackgroundView {
     func internalSetup() {

@@ -21,10 +21,12 @@ class MediaLoader {
     }
 }
 
+// MARK: - MediaLoaderType
+
 extension MediaLoader: MediaLoaderType {
     func URLFor(identifier: String) -> Observable<URL> {
         return Observable.create { observer in
-            if let identifierNumber = NSNumber.pch_numberFromHex(identifier) {
+            if let identifierNumber = NSNumber.pch_number(from: identifier) {
                 if self.library.reloadData() {
                     let item = self.library.allMediaItems.filter({ $0.persistentID == identifierNumber }).first
                     if let location = item?.location {
@@ -47,6 +49,8 @@ extension MediaLoader: MediaLoaderType {
         }
     }
 }
+
+// MARK: - LibraryError
 
 extension MediaLoader {
     enum LibraryError: Error {

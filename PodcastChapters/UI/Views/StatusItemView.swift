@@ -9,49 +9,35 @@
 import Cocoa
 import RxSwift
 
-enum StatusItemViewEvent {
-    case toggleMainView(NSView)
-    case openSettings
-    case quit
-}
-
 class StatusItemView: NSControl {
-    var event: Observable<StatusItemViewEvent> {
+    var event: Observable<Event> {
         return _event.asObservable()
     }
     var highlight: Bool = false {
         didSet { setNeedsDisplay() }
     }
 
-    fileprivate let _event = PublishSubject<StatusItemViewEvent>()
+    fileprivate let _event = PublishSubject<Event>()
     fileprivate let disposeBag = DisposeBag()
     fileprivate let statusItem: NSStatusItem
     fileprivate let rightClickMenu: RightClickMenu
     fileprivate let image: NSImage
     
-    fileprivate var mouseDown = false
-    fileprivate var menuVisible = false
+    fileprivate var mouseDown = false {
+        didSet { setNeedsDisplay() }
+    }
+    fileprivate var menuVisible = false {
+        didSet { setNeedsDisplay() }
+    }
 
     init(statusItem: NSStatusItem, rightClickMenu: RightClickMenu = RightClickMenu()) {
         self.statusItem = statusItem
         self.rightClickMenu = rightClickMenu
         image = NSImage(named: "Status Bar Image")!.imageApplyingTintColor(NSColor.white)!
 
-        let height = NSStatusBar.system().thickness
-        let frame = NSRect(x: 0.0, y: 0.0, width: 30.0, height: height)
-        super.init(frame: frame)
+        super.init(frame: Constant.frame)
 
-        self.rightClickMenu.itemSelected
-            .map { (option) -> StatusItemViewEvent in
-                switch option {
-                case .settings:
-                    return .openSettings
-                case .quit:
-                    return .quit
-                }
-            }
-            .bindTo(_event)
-            .addDisposableTo(disposeBag)
+        setupBindings()
     }
 
     required init?(coder: NSCoder) {
@@ -71,59 +57,31 @@ class StatusItemView: NSControl {
     }
 }
 
-// MARK: - Private
-
-fileprivate extension StatusItemView {
-    func mouseStatusChanged(started: Bool) {
-        mouseDown = started
-        setNeedsDisplay()
-    }
-
-    func menuVisibilityChanged(visible: Bool) {
-        menuVisible = visible
-        setNeedsDisplay()
-    }
-
-    func showMainView() {
-        _event.onNext(.toggleMainView(self))
-    }
-
-    func unregisterFromNotification(_ notification: Foundation.Notification) {
-        Foundation.NotificationCenter.pch_removeObserver(self, name: notification.name.rawValue, object: notification.object as AnyObject?)
-    }
-}
-
 // MARK: - Click handling
 
 extension StatusItemView {
     override func mouseDown(with theEvent: NSEvent) {
-        mouseStatusChanged(started: true)
+        mouseDown = true
     }
 
     override func mouseUp(with theEvent: NSEvent) {
         guard mouseDown == true else { return }
 
-        if theEvent.modifierFlags.contains(.control) {
-            showMenu()
-        }
-        else {
-            showMainView()
-        }
+        theEvent.modifierFlags.contains(.control) ? showMenu() : showMainView()
 
-        mouseStatusChanged(started: false)
+        mouseDown = false
     }
 
     override func rightMouseDown(with theEvent: NSEvent) {
-        mouseStatusChanged(started: true)
+        mouseDown = true
     }
 
     override func rightMouseUp(with theEvent: NSEvent) {
-        guard mouseDown == true else {
-            return
-        }
+        guard mouseDown == true else { return }
 
         showMenu()
-        mouseStatusChanged(started: false)
+
+        mouseDown = false
     }
 }
 
@@ -131,16 +89,76 @@ extension StatusItemView {
 
 fileprivate extension StatusItemView {
     func showMenu() {
-        Foundation.NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidBeginTracking.rawValue, object: rightClickMenu) { [weak self] notification in
-            self?.menuVisibilityChanged(visible: true)
-            self?.unregisterFromNotification(notification)
+        NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidBeginTracking.rawValue, object: rightClickMenu) { [weak self] notification in
+            self?.menuVisible = true
+            self?.unregister(from: notification)
         }
 
-        Foundation.NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidEndTracking.rawValue, object: rightClickMenu) { [weak self] notification in
-            self?.menuVisibilityChanged(visible: false)
-            self?.unregisterFromNotification(notification)
+        NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidEndTracking.rawValue, object: rightClickMenu) { [weak self] notification in
+            self?.menuVisible = false
+            self?.unregister(from: notification)
         }
 
         statusItem.popUpMenu(rightClickMenu)
+    }
+
+    func showMainView() {
+        _event.onNext(.toggleMainView(self))
+    }
+
+    func unregister(from notification: Notification) {
+        NotificationCenter.pch_removeObserver(self, name: notification.name.rawValue, object: notification.object)
+    }
+}
+
+
+// MARK: - Setup
+
+fileprivate extension StatusItemView {
+    func setupBindings() {
+        rightClickMenu.itemSelected
+            .map { option in
+                switch option {
+                case .settings:
+                    return .openSettings
+                case .quit:
+                    return .quit
+                }
+            }
+            .bindTo(_event)
+            .addDisposableTo(disposeBag)
+    }
+}
+
+// MARK: - Event
+
+extension StatusItemView {
+    enum Event: Equatable {
+        case toggleMainView(NSView)
+        case openSettings
+        case quit
+    }
+}
+
+extension StatusItemView.Event {
+    static func ==(lhs: StatusItemView.Event, rhs: StatusItemView.Event) -> Bool {
+        switch (lhs, rhs) {
+        case (.toggleMainView, .toggleMainView):
+            return true
+        case (.openSettings, .openSettings):
+            return true
+        case (.quit, .quit):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+// MARK: - Constant
+
+fileprivate extension StatusItemView {
+    enum Constant {
+        static let frame = NSRect(x: 0.0, y: 0.0, width: 30.0, height: NSStatusBar.system().thickness)
     }
 }

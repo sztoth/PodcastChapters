@@ -40,11 +40,14 @@ class ChaptersViewController: NSViewController {
 
     override func viewDidLayout() {
         titleLabel.preferredMaxLayoutWidth = titleLabel.frame.width
+
         super.viewDidLayout()
+
+        sizeCalculator.width = collectionView.bounds.width
     }
 }
 
-// MARK: - Copy to clipboard function
+// MARK: - Copy to clipboard
 
 extension ChaptersViewController {
     @IBAction func copyCurrentTitleToClipboard(_ sender: CopyButton) {
@@ -77,7 +80,7 @@ extension ChaptersViewController: NSCollectionViewDataSource {
 extension ChaptersViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> NSSize {
         if let data = viewModel.chapterData(for: indexPath.item) {
-            return sizeCalculator.sizeForIndex(indexPath.item, availableWidth: collectionView.frame.width, chapterTitle: data.0)
+            return sizeCalculator.size(for: data.0, at: indexPath.item)
         }
 
         return NSSize.zero
@@ -92,12 +95,9 @@ fileprivate extension ChaptersViewController {
             .drive(coverImageView.rx.image)
             .addDisposableTo(disposeBag)
 
-        // It is a workaround because it did not want to drive the textfield
         viewModel.title
-            .drive(onNext: { title in
-                self.titleLabel.stringValue = title ?? "Üres"
-            })
-         .addDisposableTo(disposeBag)
+            .drive(titleLabel.rx.textInput.text)
+            .addDisposableTo(disposeBag)
 
         viewModel.chapterChanged
             .drive(onNext: reload(indexes:))
@@ -111,6 +111,8 @@ fileprivate extension ChaptersViewController {
         collectionView.layer?.backgroundColor = ColorSettings.mainBackgroundColor.cgColor
     }
 }
+
+// MARK: - Reload
 
 fileprivate extension ChaptersViewController {
     func reload(indexes: (Int?, Int?)) {
@@ -133,20 +135,16 @@ fileprivate extension ChaptersViewController {
             break
         }
 
-        if 0 < array.count {
-            self.collectionView.reloadItems(at: Set(array))
+        if !array.isEmpty {
+            collectionView.reloadItems(at: Set(array))
+
+            if let indexPath = scrollToPath {
+                collectionView.scrollToItems(at: Set([indexPath]), scrollPosition: .centeredVertically, animated: true)
+            }
         }
         else {
-            self.updateCollectionView()
+            sizeCalculator.reset()
+            collectionView.reloadData()
         }
-
-        if let indexPath = scrollToPath {
-            self.collectionView.scrollToItems(at: Set([indexPath]), scrollPosition: .centeredVertically, animated: true)
-        }
-    }
-
-    func updateCollectionView() {
-        self.sizeCalculator.reset()
-        self.collectionView.reloadData()
     }
 }

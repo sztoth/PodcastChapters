@@ -36,6 +36,8 @@ extension AppDelegate: NSApplicationDelegate {
     }
 }
 
+// MARK: - Bootstrapping
+
 fileprivate extension AppDelegate {
     func setup(_ components: [Bootstrapping]) {
         do {

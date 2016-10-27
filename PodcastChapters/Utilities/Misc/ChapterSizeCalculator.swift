@@ -9,12 +9,20 @@
 import Cocoa
 
 class ChapterSizeCalculator {
-    fileprivate let cache: NSCache<AnyObject, AnyObject>
+    var width: CGFloat = 0.0 {
+        didSet {
+            widthConstraint.constant = width
+            reset()
+        }
+    }
+
+    fileprivate let cache: NSCache<NSString, NSValue>
     fileprivate let prototypeCellView: ChapterViewItemView
     fileprivate let widthConstraint: NSLayoutConstraint
 
-    init(cache: NSCache<AnyObject, AnyObject> = NSCache()) {
+    init(cache: NSCache<NSString, NSValue> = NSCache()) {
         self.cache = cache
+        
         prototypeCellView = ChapterViewItemView.pch_loadFromNib()!
 
         widthConstraint = prototypeCellView.widthAnchor.constraint(equalToConstant: 0.0)
@@ -23,31 +31,41 @@ class ChapterSizeCalculator {
     }
 }
 
-extension ChapterSizeCalculator {
+// MARK: - Size calculation
 
-    func sizeForIndex(_ index: Int, availableWidth width: CGFloat, chapterTitle title: String) -> NSSize {
-        let key = "\(index)"
-        if let sizeValue = cache.object(forKey: key as AnyObject) as? NSValue {
-            return sizeValue.sizeValue
+extension ChapterSizeCalculator {
+    func size(for title: String, at index: Int) -> NSSize {
+        let key = index.key
+        if let cachedValue = cache.object(forKey: key) {
+            return cachedValue.sizeValue
         }
 
         prototypeCellView.text = title
-
-        widthConstraint.constant = width
         prototypeCellView.layoutSubtreeIfNeeded()
 
         let size = prototypeCellView.bounds.size
-        cache.setObject(NSValue(size: size), forKey: key as AnyObject)
+        cache.setObject(NSValue(size: size), forKey: key)
 
         return size
     }
+}
 
+// MARK: - Reset
+
+extension ChapterSizeCalculator {
     func reset() {
         cache.removeAllObjects()
     }
 
     func resetItemAtIndex(_ index: Int) {
-        let key = "\(index)"
-        cache.removeObject(forKey: key as AnyObject)
+        cache.removeObject(forKey: index.key)
+    }
+}
+
+// MARK: - Other
+
+fileprivate extension Int {
+    var key: NSString {
+        return "\(self)" as NSString
     }
 }

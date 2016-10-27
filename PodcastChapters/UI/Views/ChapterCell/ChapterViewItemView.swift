@@ -35,11 +35,17 @@ class ChapterViewItemView: NSView {
     }
 }
 
+// MARK: - Setup
+
 extension ChapterViewItemView {
+    // After loading the ChapterViewItemView from the nib the titleLabel is nil but later it will have a value.
+    // Do not know the reason yet, this is a workaround.
     func setup() {
         titleLabel.textColor = ColorSettings.textColor
     }
 }
+
+// MARK: - Highlight state
 
 fileprivate extension ChapterViewItemView {
     func select() {

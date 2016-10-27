@@ -26,6 +26,8 @@ class PasteBoard {
     }
 }
 
+// MARK: - PasteBoardType
+
 extension PasteBoard: PasteBoardType {
     func copy(_ content: String) {
         pasteBoard.clearContents()

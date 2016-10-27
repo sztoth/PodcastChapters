@@ -15,7 +15,6 @@ class ChapterLoader {
             let reader = MNAVChapterReader()
             let chapters = reader.chapters(from: asset) as? [MNAVChapter]
 
-            print("Chapter count: \(chapters?.count ?? -1)")
             observer.onNext(chapters)
             observer.onCompleted()
 

@@ -11,7 +11,7 @@ import Foundation
 typealias TimerAction = () -> ()
 
 extension Foundation.Timer {
-    static func pch_scheduledTimerWithTimeInterval(_ timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
+    static func pch_scheduledTimer(with timeInterval: TimeInterval, repeats: Bool, action: @escaping TimerAction) -> Foundation.Timer {
         let timer = Foundation.Timer(
             timeInterval: timeInterval,
             target: self,
@@ -38,8 +38,8 @@ fileprivate extension Foundation.Timer {
 }
 
 fileprivate class TimerData: NSObject {
-    fileprivate let repeats: Bool
-    fileprivate let action: TimerAction
+    let repeats: Bool
+    let action: TimerAction
 
     init(repeats: Bool, action: @escaping TimerAction) {
         self.repeats = repeats

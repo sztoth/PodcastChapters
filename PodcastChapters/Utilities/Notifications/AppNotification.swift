@@ -20,12 +20,13 @@ class AppNotification {
     let actionHandler: AppNotificationAction
 
     init(description: String, image: NSImage? = nil, actionHandler: @escaping AppNotificationAction) {
-        identifier = ""
-        title = "Now playing"
         self.description = description
         self.image = image
+        self.actionHandler = actionHandler
+
+        identifier = ""
+        title = "Now playing"
         actionButtonTitle = "Copy"
         otherButtonTitle = "Close"
-        self.actionHandler = actionHandler
     }
 }

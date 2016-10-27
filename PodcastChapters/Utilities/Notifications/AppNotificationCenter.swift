@@ -10,7 +10,7 @@ import Foundation
 
 protocol AppNotificationCenterType {
     func clearAllNotifications()
-    func deliverNotification(_ notification: AppNotification)
+    func deliver(_ notification: AppNotification)
 }
 
 class AppNotificationCenter: NSObject {
@@ -28,6 +28,8 @@ class AppNotificationCenter: NSObject {
     }
 }
 
+// MARK: - Notification related
+
 extension AppNotificationCenter: AppNotificationCenterType {
     func clearAllNotifications() {
         timer = nil
@@ -35,7 +37,7 @@ extension AppNotificationCenter: AppNotificationCenterType {
         notifications.removeAll()
     }
 
-    func deliverNotification(_ notification: AppNotification) {
+    func deliver(_ notification: AppNotification) {
         clearAllNotifications()
 
         notifications.append(notification)
@@ -43,11 +45,13 @@ extension AppNotificationCenter: AppNotificationCenterType {
         let userNotification = NSUserNotification(appNotification: notification)
         userNotificationCenter.deliver(userNotification)
 
-        timer = Timer(interval: 90.0) { [weak self] _ in
+        timer = Timer(interval: Constant.refreshInterval) { [weak self] _ in
             self?.clearAllNotifications()
         }
     }
 }
+
+// MARK: - Private
 
 fileprivate extension AppNotificationCenter {
     func performActionWithIdentifier(_ identifier: String) {
@@ -63,6 +67,8 @@ fileprivate extension AppNotificationCenter {
     }
 }
 
+// MARK: - NSUserNotificationCenterDelegate
+
 extension AppNotificationCenter: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
@@ -74,5 +80,13 @@ extension AppNotificationCenter: NSUserNotificationCenterDelegate {
         if notification.activationType == .actionButtonClicked {
             performActionWithIdentifier(identifier)
         }
+    }
+}
+
+// MARK: - Constant
+
+fileprivate extension AppNotificationCenter {
+    enum Constant {
+        static let refreshInterval: TimeInterval = 120.0
     }
 }

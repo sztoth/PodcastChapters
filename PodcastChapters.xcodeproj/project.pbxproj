@@ -14,7 +14,6 @@
 		310CC7E01DC009C5005C6695 /* NSCollectionView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CC7DF1DC009C5005C6695 /* NSCollectionView+PCH.swift */; };
 		310F74141DA6F70B00DE254D /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468A31C67E32E004858F5 /* iTunesLibrary.framework */; };
 		310F74191DA7079E00DE254D /* ITLibMediaItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */; };
-		3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112B3401C7FA60600CE6438 /* FlowLayout.swift */; };
 		3129FBE01DAAD92200F7C169 /* iTunesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */; };
 		3129FBE21DAAD93700F7C169 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */; };
 		3129FBE41DAAD94F00F7C169 /* PasteBoardMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */; };
@@ -80,6 +79,7 @@
 		3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */; };
 		317A61DC1C8CC806001695F0 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DB1C8CC806001695F0 /* SharedSettings.swift */; };
 		317A61DE1C8CCDCB001695F0 /* NSColor+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */; };
+		319753971DC2C2F600B2E5CD /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319753961DC2C2F600B2E5CD /* FlowLayout.swift */; };
 		319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45D1C67FE5600871B4C /* AppKit.framework */; };
 		319AC4601C67FE6100871B4C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */; };
 		31A4685B1C651F51004858F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4685A1C651F51004858F5 /* AppDelegate.swift */; };
@@ -165,7 +165,6 @@
 		310CC7DD1DBFE2EA005C6695 /* ChapterViewItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterViewItemView.xib; sourceTree = "<group>"; };
 		310CC7DF1DC009C5005C6695 /* NSCollectionView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCollectionView+PCH.swift"; sourceTree = "<group>"; };
 		310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITLibMediaItemMock.swift; sourceTree = "<group>"; };
-		3112B3401C7FA60600CE6438 /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMock.swift; sourceTree = "<group>"; };
 		3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
 		3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoardMock.swift; sourceTree = "<group>"; };
@@ -239,6 +238,7 @@
 		3176D4181C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutAnchor+PCH.swift"; sourceTree = "<group>"; };
 		317A61DB1C8CC806001695F0 /* SharedSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
 		317A61DD1C8CCDCB001695F0 /* NSColor+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+PCH.swift"; sourceTree = "<group>"; };
+		319753961DC2C2F600B2E5CD /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		319AC45D1C67FE5600871B4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		319AC45F1C67FE6100871B4C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		31A468571C651F51004858F5 /* PodcastChapters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastChapters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -685,7 +685,7 @@
 			children = (
 				314195521C766D5900268AFC /* ChapterSizeCalculator.swift */,
 				31A4689B1C67A47E004858F5 /* EventMonitor.swift */,
-				3112B3401C7FA60600CE6438 /* FlowLayout.swift */,
+				319753961DC2C2F600B2E5CD /* FlowLayout.swift */,
 				315D38351C7918240012CA1A /* MultipleInstanceAlert.swift */,
 				315D383D1C7A69A80012CA1A /* RightClickMenu.swift */,
 				317A61DB1C8CC806001695F0 /* SharedSettings.swift */,
@@ -940,9 +940,9 @@
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
 				3129FC2D1DAED6AF00F7C169 /* NSUserNotification.swift in Sources */,
 				3176D4191C7D1A1200569BBF /* NSLayoutAnchor+PCH.swift in Sources */,
+				319753971DC2C2F600B2E5CD /* FlowLayout.swift in Sources */,
 				315D38401C7A7C390012CA1A /* Notifications+PCH.swift in Sources */,
 				315D38421C7BC3630012CA1A /* NSImage+PCH.swift in Sources */,
-				3112B3411C7FA60600CE6438 /* FlowLayout.swift in Sources */,
 				315D382E1C78EFBE0012CA1A /* AppNotification.swift in Sources */,
 				314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */,
 				31DA65D81DA6CDB300B0A16A /* ChapterLoader.swift in Sources */,

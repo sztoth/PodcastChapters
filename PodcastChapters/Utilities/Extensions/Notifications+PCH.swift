@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias NotificationBlock = (Foundation.Notification) -> Void
+typealias NotificationBlock = (Notification) -> Void
 
 extension DistributedNotificationCenter {
     func pch_addObserver(forName name: NSNotification.Name?, using block: @escaping NotificationBlock) -> NSObjectProtocol {
@@ -16,12 +16,12 @@ extension DistributedNotificationCenter {
     }
 }
 
-extension Foundation.NotificationCenter {
-    static func pch_addObserverForName(_ name: String, object: AnyObject? = nil, usingBlock: @escaping NotificationBlock) {
+extension NotificationCenter {
+    static func pch_addObserverForName(_ name: String, object: Any? = nil, usingBlock: @escaping NotificationBlock) {
         `default`.addObserver(forName: NSNotification.Name(rawValue: name), object: object, queue: nil, using: usingBlock)
     }
 
-    static func pch_removeObserver(_ observer: AnyObject, name: String, object: AnyObject? = nil) {
+    static func pch_removeObserver(_ observer: AnyObject, name: String, object: Any? = nil) {
         `default`.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
 }

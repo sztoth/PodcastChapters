@@ -9,7 +9,6 @@
 import Cocoa
 
 class PopoverWindow: NSPanel {
-
     var arrowHeight: Double {
         return backgroundView?.arrowHeight ?? 0.0
     }
@@ -24,7 +23,7 @@ class PopoverWindow: NSPanel {
 
     override var contentView: NSView? {
         get { return windowContentView }
-        set(view) { setWindowContentView(view) }
+        set { setWindowContentView(newValue) }
     }
 
     fileprivate var windowContentView: NSView?
@@ -47,11 +46,15 @@ class PopoverWindow: NSPanel {
     }
 }
 
+// MARK: - Default creation
+
 extension PopoverWindow {
     class func window() -> PopoverWindow {
         return PopoverWindow(contentRect: NSRect.zero, styleMask: NSNonactivatingPanelMask, backing: .buffered, defer: true)
     }
 }
+
+// MARK: - Private
 
 fileprivate extension PopoverWindow {
     func setWindowContentView(_ view: NSView?) {
@@ -78,10 +81,10 @@ fileprivate extension PopoverWindow {
 
             let margin = 1.0
 
-            view.topAnchor.pch_equalToAnchor(backgroundView.topAnchor, constant: arrowHeight + margin)
-            view.bottomAnchor.pch_equalToAnchor(backgroundView.bottomAnchor, constant: -margin)
-            view.leadingAnchor.pch_equalToAnchor(backgroundView.leadingAnchor, constant: margin)
-            view.trailingAnchor.pch_equalToAnchor(backgroundView.trailingAnchor, constant: -margin)
+            view.topAnchor.pch_equal(to: backgroundView.topAnchor, constant: arrowHeight + margin)
+            view.bottomAnchor.pch_equal(to: backgroundView.bottomAnchor, constant: -margin)
+            view.leadingAnchor.pch_equal(to: backgroundView.leadingAnchor, constant: margin)
+            view.trailingAnchor.pch_equal(to: backgroundView.trailingAnchor, constant: -margin)
         }
     }
 }

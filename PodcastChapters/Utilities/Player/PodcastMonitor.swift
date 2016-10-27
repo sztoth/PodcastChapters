@@ -55,6 +55,8 @@ class PodcastMonitor: PodcastMonitorType {
     }
 }
 
+// MARK: - Setup
+
 fileprivate extension PodcastMonitor {
     func setupBindings() {
         itunes.nowPlaying
@@ -112,7 +114,7 @@ fileprivate extension PodcastMonitor {
     }
 }
 
-// MARK: - Reactive processing functions
+// MARK: - RxSwift methods
 
 fileprivate extension PodcastMonitor {
     func reset() {
@@ -147,6 +149,6 @@ fileprivate extension PodcastMonitor {
         let appNotification = AppNotification(description: chapter.title, image: chapter.cover) {
             self.pasteBoard.copy(chapter.title)
         }
-        appNotificationCenter.deliverNotification(appNotification)
+        appNotificationCenter.deliver(appNotification)
     }
 }

@@ -41,6 +41,30 @@ class ChaptersViewModel {
     }
 }
 
+// MARK: - Copy to clipboard
+
+extension ChaptersViewModel {
+    func copyCurrentChapterTitleToClipboard() {
+        guard let title = _title.value else { return }
+        pasteBoard.copy(title)
+    }
+}
+
+// MARK: - List data
+
+extension ChaptersViewModel {
+    func numberOfChapters() -> Int {
+        return chapters.value?.count ?? 0
+    }
+
+    func chapterData(for index: Int) -> (String, Bool)? {
+        guard let chapter = chapters.value?[index], let currentIndex = currentChapterIndex.value else { return nil }
+        return (chapter.title, currentIndex == index)
+    }
+}
+
+// MARK: - Setup
+
 fileprivate extension ChaptersViewModel {
     func setupBindings() {
         podcastMonitor.chapters
@@ -65,7 +89,7 @@ fileprivate extension ChaptersViewModel {
             podcastMonitor.playingChapterIndex) { (chapters, index) -> Chapter? in
                 guard let chapters = chapters, let index = index else { return nil }
                 return chapters[index]
-            }
+        }
 
         currentChapter
             .map { $0?.cover }
@@ -76,24 +100,5 @@ fileprivate extension ChaptersViewModel {
             .map { $0?.title }
             .bindTo(_title)
             .addDisposableTo(disposeBag)
-    }
-}
-
-// MARK: - Comment
-extension ChaptersViewModel {
-    func copyCurrentChapterTitleToClipboard() {
-        guard let title = _title.value else { return }
-        pasteBoard.copy(title)
-    }
-}
-
-extension ChaptersViewModel {
-    func numberOfChapters() -> Int {
-        return chapters.value?.count ?? 0
-    }
-
-    func chapterData(for index: Int) -> (String, Bool)? {
-        guard let chapter = chapters.value?[index], let currentIndex = currentChapterIndex.value else { return nil }
-        return (chapter.title, currentIndex == index)
     }
 }

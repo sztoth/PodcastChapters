@@ -8,13 +8,11 @@
 
 import Foundation
 
-
 class Timer {
-
     fileprivate var timer: Foundation.Timer?
 
     init(interval: TimeInterval, repeats: Bool = false, action: @escaping TimerAction) {
-        timer = Foundation.Timer.pch_scheduledTimerWithTimeInterval(interval, repeats: repeats, action: action)
+        timer = Foundation.Timer.pch_scheduledTimer(with: interval, repeats: repeats, action: action)
     }
 
     deinit {
@@ -23,7 +21,6 @@ class Timer {
 }
 
 extension Timer {
-
     func cancel() {
         timer?.invalidate()
     }

@@ -15,7 +15,6 @@ class StatusBarCoordinator {
     fileprivate let application: NSApplicationType
     fileprivate let disposeBag = DisposeBag()
 
-    // TODO: Fix the nsapplicationprotocol
     init(popover: Popover, statusBarItem: StatusBarItem, application: NSApplicationType = NSApplication.shared()) {
         self.popover = popover
         self.statusBarItem = statusBarItem
@@ -25,9 +24,9 @@ class StatusBarCoordinator {
             .subscribe(onNext: { event in
                 switch event {
                 case .open(let view):
-                    self.popover.showFrom(view: view)
+                    self.popover.show(from: view)
                 case .close:
-                    self.popover.dismiss()
+                    self.popover.hide()
                 case .quit:
                     self.application.terminate(nil)
                 case .openSettings:

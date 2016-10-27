@@ -10,8 +10,7 @@ import Cocoa
 import RxSwift
 
 class OtherContentViewController: NSViewController {
-
-    @IBOutlet weak var messageLabel: NSTextField!
+    @IBOutlet fileprivate weak var messageLabel: NSTextField!
 
     fileprivate let viewModel: OtherContentViewModel
     fileprivate let disposeBag = DisposeBag()
@@ -33,6 +32,8 @@ class OtherContentViewController: NSViewController {
         setupColors()
     }
 }
+
+// MARK: - Setup
 
 fileprivate extension OtherContentViewController {
     func setupBindings() {
