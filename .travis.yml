@@ -1,3 +1,21 @@
+language: objective-c
 osx_image: xcode8
-xcode_project: PodcastChapters.xcodeproj
-xcode_scheme: PodcastChapters 
+branches:
+  only:
+  - master
+  - develop
+
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+
+before_script:
+  # It is needed because Travis does not have swift 3.0.1
+  - carthage bootstrap --platform macOS --no-use-binaries
+
+script:
+  - set -o pipefail
+  #- xcodebuild -version
+  #- xcodebuild -showsdks
+
+  - xcodebuild -project PodcastChapters.xcodeproj -scheme PodcastChapters -sdk macosx10.12 -destination arch=x86_64 -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty
