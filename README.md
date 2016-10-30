@@ -1,7 +1,10 @@
-![](.github/icon.png)
+![](Assets/Readme/icon.png)
 #PodcastChapters
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sztoth/PodcastChapters/master/LICENSE.md)
+[![codebeat badge](https://codebeat.co/badges/6ea52da2-5a26-428c-b703-2978ab4d59eb)](https://codebeat.co/projects/github-com-sztoth-podcastchapters)
+[![codecov](https://codecov.io/gh/sztoth/PodcastChapters/branch/develop/graph/badge.svg)](https://codecov.io/gh/sztoth/PodcastChapters)
 
-This small utility app helps you to track chapters in the podcast you are listening to. It hooks into iTunes and if the playing podcast has embedded chapter information then it will be shown in the dropdown window. The artwork and the title is used from the chapter metadata. 
+This is a statusbar application. It provides quick access to chapter information from your podcasts in iTunes. Just start the playback and see the chapters in the dropdown window when you click the icon in the statusbar. It also posts notifications upon chapter change. 
 
 You might wonder why this app exists. Well I am listening to podcasts made by DJs like:
 
@@ -14,7 +17,7 @@ It is not really convinient to access the chapter info in iTunes. This app helps
 
 ##Demo
 
-![](.github/demo.gif)
+![](Assets/Readme/demo.gif)
 
 ##Usage
 
