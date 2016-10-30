@@ -8,6 +8,7 @@
 
 import XCTest
 
+// codebeat:disable[ARITY]
 func XCTAssertEqual<E>(_ result: Error, _ expectedError: E, message: String = "", file: StaticString = #file, line: UInt = #line) where E: Error, E: Equatable {
     guard let error = result as? E else {
         XCTFail("\(result) is not \(E.self) type", file: file, line: line)
@@ -15,3 +16,4 @@ func XCTAssertEqual<E>(_ result: Error, _ expectedError: E, message: String = ""
     }
     XCTAssertEqual(error, expectedError, message, file: file, line: line)
 }
+// codebeat:enable[ARITY]

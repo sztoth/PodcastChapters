@@ -17,6 +17,7 @@ class iTunesTrackWrapperMock: NSObject {
     fileprivate let titleMock: String
     fileprivate let isPodcastMock: Bool
 
+    // codebeat:disable[ARITY]
     init(
         identifier: String,
         artwork: NSImage?,
@@ -32,6 +33,7 @@ class iTunesTrackWrapperMock: NSObject {
 
         super.init()
     }
+    // codebeat:enable[ARITY]
 }
 
 extension iTunesTrackWrapperMock: iTunesTrackWrapperType {

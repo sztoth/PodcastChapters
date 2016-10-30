@@ -11,28 +11,39 @@ import XCTest
 @testable import PodcastChapters
 
 class ContentCoordinatorTests: XCTestCase {
-
-    var contentCoordinator: ContentCoordinator!
-    var popover: Popover!
-    var podcastMonitor: PodcastMonitorMock!
+    fileprivate var sut: ContentCoordinator!
+    fileprivate var popover: Popover!
+    fileprivate var podcastMonitor: PodcastMonitorMock!
 
     override func setUp() {
         super.setUp()
 
         popover = Popover()
         podcastMonitor = PodcastMonitorMock()
-        contentCoordinator = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
+        sut = ContentCoordinator(popover: popover, podcastMonitor: podcastMonitor)
     }
 
+    override func tearDown() {
+        super.tearDown()
+
+        popover = nil
+        podcastMonitor = nil
+        sut = nil
+    }
+}
+
+// MARK: - Content testing
+
+extension ContentCoordinatorTests {
     func test_ContentIsChaptersView() {
         podcastMonitor.podcastSignal.onNext(true)
 
-        XCTAssert(popover.content is ChaptersViewController)
+        XCTAssertTrue(popover.content is ChaptersViewController)
     }
 
     func test_ContentIsOtherView() {
         podcastMonitor.podcastSignal.onNext(false)
 
-        XCTAssert(popover.content is OtherContentViewController)
+        XCTAssertTrue(popover.content is OtherContentViewController)
     }
 }

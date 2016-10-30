@@ -31,14 +31,14 @@ class iTunes: iTunesType {
     fileprivate let _playerPosition = Variable<Double?>(nil)
     fileprivate let _nowPlaying = Variable<iTunesTrackWrapperType?>(nil)
     fileprivate let itunesApplication: iTunesApplicationWrapperType
-    fileprivate let notificationCenter: DistributedNotificationCenterType
+    fileprivate let notificationCenter: NotificationCenterType
 
     fileprivate var timer: Timer?
     fileprivate var observer: NSObjectProtocol?
 
     init(
         itunesApplication: iTunesApplicationWrapperType = SBApplication.pch_iTunes(),
-        notificationCenter: DistributedNotificationCenterType = DistributedNotificationCenter.default()
+        notificationCenter: NotificationCenterType = DistributedNotificationCenter.default()
     ) {
         self.itunesApplication = itunesApplication
         self.notificationCenter = notificationCenter
@@ -56,7 +56,7 @@ class iTunes: iTunesType {
 
 fileprivate extension iTunes {
     func setupNotificationObserver() {
-        observer = notificationCenter.addObserver(forName: "\(iTunesBundleIdentifier).playerInfo") { [weak self] in
+        observer = notificationCenter.addObserver(forName: "\(iTunesBundleIdentifier).playerInfo") { [weak self] _ in
             self?.updatePlayer()
         }
     }

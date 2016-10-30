@@ -23,12 +23,13 @@ class PopoverWindow: NSPanel {
 
     override var contentView: NSView? {
         get { return windowContentView }
-        set { setWindowContentView(newValue) }
+        set { setWindowContent(to: newValue) }
     }
 
     fileprivate var windowContentView: NSView?
     fileprivate var backgroundView: PopoverBackgroundView?
 
+    // codebeat:disable[ARITY]
     fileprivate override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
 
@@ -39,6 +40,7 @@ class PopoverWindow: NSPanel {
         collectionBehavior = [.canJoinAllSpaces, .ignoresCycle]
         appearance = NSAppearance.current()
     }
+    // codebeat:enable[ARITY]
 
     override func frameRect(forContentRect contentRect: NSRect) -> NSRect {
         let height = contentRect.height + CGFloat(arrowHeight)
@@ -57,10 +59,8 @@ extension PopoverWindow {
 // MARK: - Private
 
 fileprivate extension PopoverWindow {
-    func setWindowContentView(_ view: NSView?) {
-        if windowController == view {
-            return
-        }
+    func setWindowContent(to view: NSView?) {
+        guard windowContentView != view else { return }
 
         let bounds = windowContentView?.bounds ?? NSRect.zero
 

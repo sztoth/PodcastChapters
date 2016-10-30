@@ -11,11 +11,10 @@ import XCTest
 @testable import PodcastChapters
 
 class StatusBarCoordinatorTests: XCTestCase {
-
-    var statusBarCoordinator: StatusBarCoordinator!
-    var popover: PopoverMock!
-    var statusBarItem: StatusBarItemMock!
-    var application: NSApplicationMock!
+    fileprivate var sut: StatusBarCoordinator!
+    fileprivate var popover: PopoverMock!
+    fileprivate var statusBarItem: StatusBarItemMock!
+    fileprivate var application: NSApplicationMock!
 
     override func setUp() {
         super.setUp()
@@ -23,9 +22,22 @@ class StatusBarCoordinatorTests: XCTestCase {
         popover = PopoverMock()
         statusBarItem = StatusBarItemMock(eventMonitor: EventMonitor(mask: [.leftMouseDown, .rightMouseDown]))
         application = NSApplicationMock()
-        statusBarCoordinator = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, application: application)
+        sut = StatusBarCoordinator(popover: popover, statusBarItem: statusBarItem, application: application)
     }
 
+    override func tearDown() {
+        super.tearDown()
+
+        popover = nil
+        statusBarItem = nil
+        application = nil
+        sut = nil
+    }
+}
+
+// MARK: - Event trigger tests
+
+extension StatusBarCoordinatorTests {
     func test_OpenMainViewIsTriggered() {
         let fromView = NSView(frame: NSRect.zero)
         statusBarItem.eventSignal.onNext(.open(fromView))

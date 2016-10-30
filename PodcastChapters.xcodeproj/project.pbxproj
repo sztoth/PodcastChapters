@@ -32,7 +32,6 @@
 		3129FC141DAC2BBC00F7C169 /* NSImage+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC131DAC2BBC00F7C169 /* NSImage+PCH.swift */; };
 		3129FC271DAC45AD00F7C169 /* iTunesArtworkMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC261DAC45AD00F7C169 /* iTunesArtworkMock.m */; };
 		3129FC2D1DAED6AF00F7C169 /* NSUserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC2C1DAED6AF00F7C169 /* NSUserNotification.swift */; };
-		3129FC2F1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */; };
 		3129FC311DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */; };
 		3129FC331DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC321DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift */; };
 		3129FC351DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */; };
@@ -189,7 +188,6 @@
 		3129FC2A1DAC4B3500F7C169 /* iTunesEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesEnums.h; sourceTree = "<group>"; };
 		3129FC2B1DAC4B3500F7C169 /* iTunesTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesTypes.h; sourceTree = "<group>"; };
 		3129FC2C1DAED6AF00F7C169 /* NSUserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserNotification.swift; sourceTree = "<group>"; };
-		3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DistributedNotificationCenter+PCH.swift"; sourceTree = "<group>"; };
 		3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributedNotificationCenterMock.swift; sourceTree = "<group>"; };
 		3129FC321DAEE65800F7C169 /* iTuneApplicationWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTuneApplicationWrapperMock.swift; sourceTree = "<group>"; };
 		3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesTrackWrapperMock.swift; sourceTree = "<group>"; };
@@ -655,7 +653,6 @@
 			isa = PBXGroup;
 			children = (
 				3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */,
-				3129FC2E1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift */,
 				313B657F1D98368A002A90E7 /* ITLibrary+PCH.swift */,
 				315D383F1C7A7C390012CA1A /* Notifications+PCH.swift */,
 				315FD1991CA08DA6001BF6E2 /* NSApplication+PCH.swift */,
@@ -935,7 +932,6 @@
 				31B2C7F81C95DEC200C874C7 /* NSTextField+PCH.m in Sources */,
 				31DA65D71DA6CDB300B0A16A /* Chapter.swift in Sources */,
 				31C430641C6A8101000E77BA /* Timer.swift in Sources */,
-				3129FC2F1DAEDAD100F7C169 /* DistributedNotificationCenter+PCH.swift in Sources */,
 				315FD19A1CA08DA6001BF6E2 /* NSApplication+PCH.swift in Sources */,
 				3141954B1C73AF3400268AFC /* PopoverBackgroundView.swift in Sources */,
 				3129FC2D1DAED6AF00F7C169 /* NSUserNotification.swift in Sources */,

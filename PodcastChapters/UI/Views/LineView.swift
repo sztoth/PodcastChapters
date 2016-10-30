@@ -15,5 +15,4 @@ class LineView: NSView {
         ColorSettings.textColor.setFill()
         NSRectFill(dirtyRect)
     }
-    
 }

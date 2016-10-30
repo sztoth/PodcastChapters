@@ -21,8 +21,10 @@ class StatusItemView: NSControl {
     fileprivate let disposeBag = DisposeBag()
     fileprivate let statusItem: NSStatusItem
     fileprivate let rightClickMenu: RightClickMenu
+    fileprivate let notificationCenter: NotificationCenterType
     fileprivate let image: NSImage
-    
+
+    fileprivate var notificationTokens: [NSObjectProtocol]?
     fileprivate var mouseDown = false {
         didSet { setNeedsDisplay() }
     }
@@ -30,9 +32,14 @@ class StatusItemView: NSControl {
         didSet { setNeedsDisplay() }
     }
 
-    init(statusItem: NSStatusItem, rightClickMenu: RightClickMenu = RightClickMenu()) {
+    init(
+        statusItem: NSStatusItem,
+        rightClickMenu: RightClickMenu = RightClickMenu(),
+        notificationCenter: NotificationCenterType = NotificationCenter.default
+    ) {
         self.statusItem = statusItem
         self.rightClickMenu = rightClickMenu
+        self.notificationCenter = notificationCenter
         image = NSImage(named: "Status Bar Image")!.imageApplyingTintColor(NSColor.white)!
 
         super.init(frame: Constant.frame)
@@ -89,15 +96,15 @@ extension StatusItemView {
 
 fileprivate extension StatusItemView {
     func showMenu() {
-        NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidBeginTracking.rawValue, object: rightClickMenu) { [weak self] notification in
-            self?.menuVisible = true
-            self?.unregister(from: notification)
+        let token1 = notificationCenter.addObserver(forName: .NSMenuDidBeginTracking, object: rightClickMenu) { [weak self] _ in
+            self?.makeMenuVisible()
         }
 
-        NotificationCenter.pch_addObserverForName(NSNotification.Name.NSMenuDidEndTracking.rawValue, object: rightClickMenu) { [weak self] notification in
-            self?.menuVisible = false
-            self?.unregister(from: notification)
+        let token2 = notificationCenter.addObserver(forName: .NSMenuDidEndTracking, object: rightClickMenu) { [weak self] _ in
+            self?.makeMenuVisible()
         }
+
+        notificationTokens = [token1, token2]
 
         statusItem.popUpMenu(rightClickMenu)
     }
@@ -106,8 +113,12 @@ fileprivate extension StatusItemView {
         _event.onNext(.toggleMainView(self))
     }
 
-    func unregister(from notification: Notification) {
-        NotificationCenter.pch_removeObserver(self, name: notification.name.rawValue, object: notification.object)
+    func makeMenuVisible() {
+        menuVisible = true
+
+        notificationTokens?.forEach { (token) in
+            self.notificationCenter.remove(observer: token)
+        }
     }
 }
 

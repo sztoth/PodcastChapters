@@ -77,7 +77,7 @@ fileprivate extension ChapterTests {
     }
 }
 
-// MARK: - Other
+// MARK: - Others
 
 fileprivate extension CMTime {
     @nonobjc static let oneSecond = CMTimeMake(1, 1)

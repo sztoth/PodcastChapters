@@ -11,15 +11,19 @@ import XCTest
 @testable import PodcastChapters
 
 class PodcastMonitorTests: XCTestCase {
-    var sut: PodcastMonitor!
-
-    fileprivate let itunes = iTunesMock()
-    fileprivate let pasteBoard = PasteBoardMock()
-    fileprivate let mediaLoader = MediaLoaderMock()
-    fileprivate let appNotificationCenter = AppNotificationCenterMock()
+    fileprivate var sut: PodcastMonitor!
+    fileprivate var itunes: iTunesMock!
+    fileprivate var pasteBoard: PasteBoardMock!
+    fileprivate var mediaLoader: MediaLoaderMock!
+    fileprivate var appNotificationCenter: AppNotificationCenterMock!
 
     override func setUp() {
         super.setUp()
+
+        itunes = iTunesMock()
+        pasteBoard = PasteBoardMock()
+        mediaLoader = MediaLoaderMock()
+        appNotificationCenter = AppNotificationCenterMock()
 
         sut = PodcastMonitor(
             itunes: itunes,
@@ -27,6 +31,16 @@ class PodcastMonitorTests: XCTestCase {
             mediaLoader: mediaLoader,
             appNotificationCenter: appNotificationCenter
         )
+    }
+
+    override func tearDown() {
+        super.tearDown()
+
+        itunes = nil
+        pasteBoard = nil
+        mediaLoader = nil
+        appNotificationCenter = nil
+        sut = nil
     }
 }
 

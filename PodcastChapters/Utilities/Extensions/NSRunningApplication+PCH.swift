@@ -12,15 +12,16 @@ import Foundation
 extension NSRunningApplication {
     static func pch_ensureThereIsOnlyOneRunnningInstance(with identifier: String = Bundle.pch_bundleIdentifier()) {
         let applications = runningApplications(withBundleIdentifier: identifier)
-        if 1 < applications.count {
-            let alert = MultipleInstanceAlert()
-            alert.runModal()
 
-            if let instance = applications.filter({ $0 != self.current() }).first {
-                instance.activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
-            }
+        guard 1 < applications.count else { return }
 
-            NSApp.terminate(nil)
+        let alert = MultipleInstanceAlert()
+        alert.runModal()
+
+        if let instance = applications.filter({ $0 != self.current() }).first {
+            instance.activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
         }
+
+        NSApp.terminate(nil)
     }
 }

@@ -11,12 +11,18 @@ import XCTest
 @testable import PodcastChapters
 
 class iTunesTrackWrapperTests: XCTestCase {
-    var sut: iTunesTrackWrapper!
+    fileprivate var sut: iTunesTrackWrapper!
 
     override func setUp() {
         super.setUp()
 
         sut = testTrack()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+
+        sut = nil
     }
 }
 

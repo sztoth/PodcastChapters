@@ -40,6 +40,7 @@ class PodcastMonitor: PodcastMonitorType {
     fileprivate let appNotificationCenter: AppNotificationCenterType
     fileprivate let disposeBag = DisposeBag()
 
+    // codebeat:disable[ARITY]
     init(
         itunes: iTunesType = iTunes(),
         pasteBoard: PasteBoardType = PasteBoard(),
@@ -53,6 +54,7 @@ class PodcastMonitor: PodcastMonitorType {
 
         setupBindings()
     }
+    // codebeat:enable[ARITY]
 }
 
 // MARK: - Setup

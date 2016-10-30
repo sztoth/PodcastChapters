@@ -11,17 +11,26 @@ import XCTest
 @testable import PodcastChapters
 
 class ChaptersViewModelTests: XCTestCase {
-    var chaptersViewModel: ChaptersViewModel!
-    var podcastMonitor: PodcastMonitorMock!
+    fileprivate var sut: ChaptersViewModel!
+    fileprivate var podcastMonitor: PodcastMonitorMock!
 
     override func setUp() {
         super.setUp()
 
         podcastMonitor = PodcastMonitorMock()
-        chaptersViewModel = ChaptersViewModel(podcastMonitor: podcastMonitor)
+        sut = ChaptersViewModel(podcastMonitor: podcastMonitor)
     }
 
+    override func tearDown() {
+        super.tearDown()
+
+        podcastMonitor = nil
+        sut = nil
+    }
+}
+
+extension ChaptersViewModelTests {
     func test_ObservablesGivingProperValues() {
-        
+
     }
 }

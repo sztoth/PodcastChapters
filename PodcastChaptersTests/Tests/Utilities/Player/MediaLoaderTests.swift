@@ -13,16 +13,24 @@ import XCTest
 @testable import PodcastChapters
 
 class MediaLoaderTests: XCTestCase {
-    var mediaLibrary: MediaLibraryMock!
-    var sut: MediaLoader!
-
-    fileprivate let disposeBag = DisposeBag()
+    fileprivate var mediaLibrary: MediaLibraryMock!
+    fileprivate var sut: MediaLoader!
+    fileprivate var disposeBag: DisposeBag!
 
     override func setUp() {
         super.setUp()
 
         mediaLibrary = MediaLibraryMock()
         sut = MediaLoader(library: mediaLibrary)
+        disposeBag = DisposeBag()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+
+        mediaLibrary = nil
+        sut = nil
+        disposeBag = nil
     }
 }
 

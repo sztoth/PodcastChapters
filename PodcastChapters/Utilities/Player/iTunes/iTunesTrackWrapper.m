@@ -20,6 +20,7 @@
 
 @implementation iTunesTrackWrapper
 
+// codebeat:disable[ARITY]
 - (instancetype)initWithIdentifier:(NSString *)identifier
                            artwork:(NSImage *)artwork
                             artist:(NSString *)artist
@@ -36,6 +37,7 @@
     }
     return self;
 }
+// codebeat:enable[ARITY]
 
 - (BOOL)isEqual:(id)object
 {

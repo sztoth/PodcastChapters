@@ -12,14 +12,14 @@ import Foundation
 
 class DistributedNotificationCenterMock {
     fileprivate(set) var notificationName: String?
-    fileprivate(set) var notificationBlock: DistributedNotificationCenterBlock?
+    fileprivate(set) var notificationBlock: NotificationBlock?
     fileprivate(set) var returnedObserver: NSObjectProtocol?
     fileprivate(set) var removedObserver: NSObjectProtocol?
 }
 
-extension DistributedNotificationCenterMock: DistributedNotificationCenterType {
-    func addObserver(forName name: String, using block: @escaping DistributedNotificationCenterBlock) -> NSObjectProtocol {
-        notificationName = name
+extension DistributedNotificationCenterMock: NotificationCenterType {
+    func addObserver(forName name: NSNotification.Name, object: Any?, using block: @escaping NotificationBlock) -> NSObjectProtocol {
+        notificationName = name.rawValue
         notificationBlock = block
 
         let observer = NSString(string: "Observer")

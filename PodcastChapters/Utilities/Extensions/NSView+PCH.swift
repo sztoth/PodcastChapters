@@ -14,22 +14,14 @@ protocol NibLoadable: class {
 
 extension NSView: NibLoadable {
     static func pch_loadFromNib<T>(owner: NSObject? = nil) -> T? {
-        if let nib = NSNib(nibNamed: String(describing: self), bundle: nil) {
-            var topLevelObjects: NSArray? = []
-            if nib.instantiate(withOwner: owner, topLevelObjects: &topLevelObjects!) == true {
-                if let objects = topLevelObjects {
-                    let items = objects.filter { element in
-                        element is T
-                    }
+        guard let nib = NSNib(nibNamed: String(describing: self), bundle: nil) else { return nil }
 
-                    if let item = items.first {
-                        return item as? T
-                    }
-                }
-            }
-        }
+        var topLevelObjects: NSArray? = []
+        guard nib.instantiate(withOwner: owner, topLevelObjects: &topLevelObjects!) == true else { return nil }
 
-        return nil
+        guard let item = topLevelObjects?.filter({ $0 is T }).first else { return nil }
+
+        return item as? T
     }
 }
 

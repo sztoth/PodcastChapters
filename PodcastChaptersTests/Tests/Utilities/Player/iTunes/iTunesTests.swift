@@ -11,18 +11,28 @@ import XCTest
 @testable import PodcastChapters
 
 class iTunesTests: XCTestCase {
-    var sut: iTunes!
-
-    let itunesApplicationWrapper = iTunesApplicationWrapperMock()
-    let notificationCenter = DistributedNotificationCenterMock()
+    fileprivate var sut: iTunes!
+    fileprivate var itunesApplicationWrapper: iTunesApplicationWrapperMock!
+    fileprivate var notificationCenter: DistributedNotificationCenterMock!
 
     override func setUp() {
         super.setUp()
+
+        itunesApplicationWrapper = iTunesApplicationWrapperMock()
+        notificationCenter = DistributedNotificationCenterMock()
 
         sut = iTunes(
             itunesApplication: itunesApplicationWrapper,
             notificationCenter: notificationCenter
         )
+    }
+
+    override func tearDown() {
+        super.tearDown()
+
+        itunesApplicationWrapper = nil
+        notificationCenter = nil
+        sut = nil
     }
 }
 
