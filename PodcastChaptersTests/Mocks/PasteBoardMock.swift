@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class PasteBoardMock {
     var copiedString: String?

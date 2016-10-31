@@ -12,7 +12,7 @@ import ScriptingBridge
 
 protocol iTunesType {
     var playerState: Observable<PlayerState> { get }
-    var playerPosition: Observable<Double?> { get }
+    var playerPosition: Observable<Double> { get }
     var nowPlaying: Observable<iTunesTrackWrapperType?> { get }
 }
 
@@ -20,7 +20,7 @@ class iTunes: iTunesType {
     var playerState: Observable<PlayerState> {
         return _playerState.asObservable().distinctUntilChanged()
     }
-    var playerPosition: Observable<Double?> {
+    var playerPosition: Observable<Double> {
         return _playerPosition.asObservable()
     }
     var nowPlaying: Observable<iTunesTrackWrapperType?> {
@@ -28,7 +28,7 @@ class iTunes: iTunesType {
     }
 
     fileprivate let _playerState = Variable<PlayerState>(.unknown)
-    fileprivate let _playerPosition = Variable<Double?>(nil)
+    fileprivate let _playerPosition = Variable<Double>(0.0)
     fileprivate let _nowPlaying = Variable<iTunesTrackWrapperType?>(nil)
     fileprivate let itunesApplication: iTunesApplicationWrapperType
     fileprivate let notificationCenter: NotificationCenterType
@@ -62,15 +62,16 @@ fileprivate extension iTunes {
     }
 
     func updatePlayer() {
+        defer { changeTimerIfNeeded() }
+
         guard itunesApplication.playerState != .unknown else {
             _playerState.value = .unknown
-            _playerPosition.value = nil
+            _playerPosition.value = 0.0
             _nowPlaying.value = nil
             return
         }
 
-        changeTimerIfNeededFor(state: itunesApplication.playerState)
-
+        _playerState.value = itunesApplication.playerState
         _nowPlaying.value = itunesApplication.currentTrack
     }
 }
@@ -78,10 +79,8 @@ fileprivate extension iTunes {
 // MARK: - Timer related stuffs
 
 fileprivate extension iTunes {
-    func changeTimerIfNeededFor(state: PlayerState) {
-        _playerState.value = state
-
-        switch state {
+    func changeTimerIfNeeded() {
+        switch _playerState.value {
         case .playing:
             startTimer()
         case .paused:
@@ -106,7 +105,7 @@ fileprivate extension iTunes {
     func cancelTimer() {
         stopTimer()
 
-        _playerPosition.value = nil
+        _playerPosition.value = 0.0
     }
 }
 

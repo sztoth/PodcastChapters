@@ -4,7 +4,7 @@
 [![Codebeat](https://codebeat.co/badges/6ea52da2-5a26-428c-b703-2978ab4d59eb)](https://codebeat.co/projects/github-com-sztoth-podcastchapters)
 [![Codecov](https://img.shields.io/codecov/c/github/sztoth/PodcastChapters.svg)](https://codecov.io/gh/sztoth/PodcastChapters)
 ![Platform](https://img.shields.io/badge/platform-OSX-lightgrey.svg) 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sztoth/PodcastChapters/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sztoth/PodcastChapters/blob/master/LICENSE)
 
 This is a statusbar application. It provides quick access to chapter information from your podcasts in iTunes. Just start the playback and see the chapters in the dropdown window when you click the icon in the statusbar. It also posts notifications upon chapter change. 
 

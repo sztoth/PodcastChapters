@@ -7,8 +7,8 @@
 //
 
 import XCTest
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class iTunesApplicationWrapperTests: XCTestCase {
     fileprivate var sut: iTunesApplicationWrapper!

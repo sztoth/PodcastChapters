@@ -7,8 +7,8 @@
 //
 
 import AppKit
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class iTunesTrackWrapperMock: NSObject {
     fileprivate let identifierMock: String

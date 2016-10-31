@@ -7,21 +7,21 @@
 //
 
 import Foundation
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class iTunesApplicationWrapperMock: NSObject {
-    var playerStateMock = PlayerState.stopped
+    var playerStateMock = PlayerState.unknown
     var playerPositionMock = 0.0
     var currentTrackMock: iTunesTrackWrapperMock?
 }
 
 extension iTunesApplicationWrapperMock: iTunesApplicationWrapperType {
     var playerState: PlayerState {
-        return .playing
+        return playerStateMock
     }
     var playerPosition: Double {
-        return 0.0
+        return playerPositionMock
     }
     var currentTrack: iTunesTrackWrapperType? {
         return currentTrackMock

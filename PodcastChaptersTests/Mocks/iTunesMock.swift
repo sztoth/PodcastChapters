@@ -8,14 +8,14 @@
 
 import Foundation
 import RxSwift
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class iTunesMock: iTunesType {
     var playerState: Observable<PlayerState> {
         return playerStateSignal.asObservable()
     }
-    var playerPosition: Observable<Double?> {
+    var playerPosition: Observable<Double> {
         return playerPositionSignal.asObservable()
     }
     var nowPlaying: Observable<iTunesTrackWrapperType?> {
@@ -23,6 +23,6 @@ class iTunesMock: iTunesType {
     }
 
     let playerStateSignal = PublishSubject<PlayerState>()
-    let playerPositionSignal = PublishSubject<Double?>()
+    let playerPositionSignal = PublishSubject<Double>()
     let nowPlayingSignal = PublishSubject<iTunesTrackWrapperType?>()
 }

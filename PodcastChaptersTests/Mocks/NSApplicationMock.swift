@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class NSApplicationMock: NSApplicationType {
     fileprivate(set) var executedMethod = ExecutedMethod.nothing

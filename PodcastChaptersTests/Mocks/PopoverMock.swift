@@ -7,8 +7,8 @@
 //
 
 import AppKit
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class PopoverMock: Popover {
     fileprivate(set) var executedMethod = ExecutedMethod.nothing

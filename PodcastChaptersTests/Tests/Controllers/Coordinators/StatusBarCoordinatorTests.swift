@@ -7,8 +7,8 @@
 //
 
 import XCTest
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class StatusBarCoordinatorTests: XCTestCase {
     fileprivate var sut: StatusBarCoordinator!

@@ -8,8 +8,8 @@
 
 import Cocoa
 import iTunesLibrary
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class MediaLibraryMock: MediaLibraryType {
     var allMediaItems: [ITLibMediaItem] {

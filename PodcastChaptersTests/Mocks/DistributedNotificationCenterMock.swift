@@ -7,20 +7,25 @@
 //
 
 import Foundation
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class DistributedNotificationCenterMock {
     fileprivate(set) var notificationName: String?
     fileprivate(set) var notificationBlock: NotificationBlock?
-    fileprivate(set) var returnedObserver: NSObjectProtocol?
     fileprivate(set) var removedObserver: NSObjectProtocol?
+
+    var returnedObserver: NSObjectProtocol?
 }
 
 extension DistributedNotificationCenterMock: NotificationCenterType {
     func addObserver(forName name: NSNotification.Name, object: Any?, using block: @escaping NotificationBlock) -> NSObjectProtocol {
         notificationName = name.rawValue
         notificationBlock = block
+
+        if let returnedObserver = returnedObserver {
+            return returnedObserver
+        }
 
         let observer = NSString(string: "Observer")
         returnedObserver = observer

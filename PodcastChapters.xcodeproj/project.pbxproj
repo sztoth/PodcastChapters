@@ -15,7 +15,7 @@
 		310F74141DA6F70B00DE254D /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A468A31C67E32E004858F5 /* iTunesLibrary.framework */; };
 		310F74191DA7079E00DE254D /* ITLibMediaItemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */; };
 		3129FBE01DAAD92200F7C169 /* iTunesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */; };
-		3129FBE21DAAD93700F7C169 /* NotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */; };
+		3129FBE21DAAD93700F7C169 /* AppNotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE11DAAD93700F7C169 /* AppNotificationCenterMock.swift */; };
 		3129FBE41DAAD94F00F7C169 /* PasteBoardMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */; };
 		3129FBED1DAAF0F600F7C169 /* iTunesApplicationMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBEC1DAAF0F600F7C169 /* iTunesApplicationMock.m */; };
 		3129FBF01DAAF37800F7C169 /* iTunesTrackMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3129FBEF1DAAF37800F7C169 /* iTunesTrackMock.m */; };
@@ -47,6 +47,10 @@
 		3141954D1C73DB7300268AFC /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954C1C73DB7300268AFC /* PopoverAnimator.swift */; };
 		3141954F1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */; };
 		314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314195521C766D5900268AFC /* ChapterSizeCalculator.swift */; };
+		315B5E041DC6B853009ABA8A /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B5E031DC6B853009ABA8A /* RxTest.framework */; };
+		315B5E071DC6BE5C009ABA8A /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B5E031DC6B853009ABA8A /* RxTest.framework */; };
+		315B5E081DC6BE5C009ABA8A /* RxTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 315B5E031DC6B853009ABA8A /* RxTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		315B5E0C1DC6C36E009ABA8A /* PlayerState+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315B5E0B1DC6C36E009ABA8A /* PlayerState+PCH.swift */; };
 		315D38271C77841D0012CA1A /* NSView+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38261C77841D0012CA1A /* NSView+PCH.swift */; };
 		315D38291C778DD60012CA1A /* NSCollectionViewItem+PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */; };
 		315D382C1C78EFA90012CA1A /* AppNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D382B1C78EFA90012CA1A /* AppNotificationCenter.swift */; };
@@ -150,6 +154,7 @@
 			files = (
 				313B65841D985C42002A90E7 /* RxOptional.framework in Embed Frameworks */,
 				31A468891C665486004858F5 /* RxCocoa.framework in Embed Frameworks */,
+				315B5E081DC6BE5C009ABA8A /* RxTest.framework in Embed Frameworks */,
 				31A468851C665481004858F5 /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -165,7 +170,7 @@
 		310CC7DF1DC009C5005C6695 /* NSCollectionView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCollectionView+PCH.swift"; sourceTree = "<group>"; };
 		310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITLibMediaItemMock.swift; sourceTree = "<group>"; };
 		3129FBDF1DAAD92200F7C169 /* iTunesMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesMock.swift; sourceTree = "<group>"; };
-		3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterMock.swift; sourceTree = "<group>"; };
+		3129FBE11DAAD93700F7C169 /* AppNotificationCenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenterMock.swift; sourceTree = "<group>"; };
 		3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteBoardMock.swift; sourceTree = "<group>"; };
 		3129FBEB1DAAF0F600F7C169 /* iTunesApplicationMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesApplicationMock.h; sourceTree = "<group>"; };
 		3129FBEC1DAAF0F600F7C169 /* iTunesApplicationMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesApplicationMock.m; sourceTree = "<group>"; };
@@ -203,6 +208,8 @@
 		3141954C1C73DB7300268AFC /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		3141954E1C73DDB400268AFC /* CAMediaTimingFunction+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+PCH.swift"; sourceTree = "<group>"; };
 		314195521C766D5900268AFC /* ChapterSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSizeCalculator.swift; sourceTree = "<group>"; };
+		315B5E031DC6B853009ABA8A /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/Mac/RxTest.framework; sourceTree = "<group>"; };
+		315B5E0B1DC6C36E009ABA8A /* PlayerState+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerState+PCH.swift"; sourceTree = "<group>"; };
 		315D38261C77841D0012CA1A /* NSView+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+PCH.swift"; sourceTree = "<group>"; };
 		315D38281C778DD60012CA1A /* NSCollectionViewItem+PCH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCollectionViewItem+PCH.swift"; sourceTree = "<group>"; };
 		315D382B1C78EFA90012CA1A /* AppNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotificationCenter.swift; sourceTree = "<group>"; };
@@ -287,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315B5E041DC6B853009ABA8A /* RxTest.framework in Frameworks */,
 				310F74141DA6F70B00DE254D /* iTunesLibrary.framework in Frameworks */,
 				315FD17A1C9F6195001BF6E2 /* RxCocoa.framework in Frameworks */,
 				315FD17B1C9F6195001BF6E2 /* RxSwift.framework in Frameworks */,
@@ -303,6 +311,7 @@
 				319AC45E1C67FE5600871B4C /* AppKit.framework in Frameworks */,
 				31A468A41C67E32E004858F5 /* iTunesLibrary.framework in Frameworks */,
 				31A468881C665486004858F5 /* RxCocoa.framework in Frameworks */,
+				315B5E071DC6BE5C009ABA8A /* RxTest.framework in Frameworks */,
 				31A468841C665481004858F5 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +495,7 @@
 		315FD1811C9F61DF001BF6E2 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				3129FBE11DAAD93700F7C169 /* AppNotificationCenterMock.swift */,
 				3129FC301DAEDEAA00F7C169 /* DistributedNotificationCenterMock.swift */,
 				310F74181DA7079E00DE254D /* ITLibMediaItemMock.swift */,
 				3129FBEB1DAAF0F600F7C169 /* iTunesApplicationMock.h */,
@@ -499,7 +509,6 @@
 				3129FC341DAEE7BA00F7C169 /* iTunesTrackWrapperMock.swift */,
 				31DA65EA1DA6ED4E00B0A16A /* MediaLibraryMock.swift */,
 				31DA65EC1DA6EFB800B0A16A /* MediaLoaderMock.swift */,
-				3129FBE11DAAD93700F7C169 /* NotificationCenterMock.swift */,
 				315FD1971C9F6C6E001BF6E2 /* NSApplicationMock.swift */,
 				3129FBE31DAAD94F00F7C169 /* PasteBoardMock.swift */,
 				315FD1821C9F61DF001BF6E2 /* PodcastMonitorMock.swift */,
@@ -673,6 +682,7 @@
 				313B65871D99A669002A90E7 /* ObservableType+PCH.swift */,
 				31DA65C51DA305DF00B0A16A /* SBApplication+PCH.h */,
 				31DA65C61DA305DF00B0A16A /* SBApplication+PCH.m */,
+				315B5E0B1DC6C36E009ABA8A /* PlayerState+PCH.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -706,6 +716,7 @@
 				313B65851D985C63002A90E7 /* RxOptional.framework.dSYM */,
 				31A468831C665481004858F5 /* RxSwift.framework */,
 				31A4687F1C665446004858F5 /* RxSwift.framework.dSYM */,
+				315B5E031DC6B853009ABA8A /* RxTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -873,7 +884,7 @@
 				3129FBE01DAAD92200F7C169 /* iTunesMock.swift in Sources */,
 				3129FBE41DAAD94F00F7C169 /* PasteBoardMock.swift in Sources */,
 				3129FC0D1DAC2B9D00F7C169 /* iTunesApplicationWrapperTests.swift in Sources */,
-				3129FBE21DAAD93700F7C169 /* NotificationCenterMock.swift in Sources */,
+				3129FBE21DAAD93700F7C169 /* AppNotificationCenterMock.swift in Sources */,
 				31DA65EB1DA6ED4E00B0A16A /* MediaLibraryMock.swift in Sources */,
 				315FD1961C9F6BE8001BF6E2 /* StatusBarItemMock.swift in Sources */,
 				315FD1921C9F61DF001BF6E2 /* PopoverMock.swift in Sources */,
@@ -942,6 +953,7 @@
 				315D382E1C78EFBE0012CA1A /* AppNotification.swift in Sources */,
 				314195531C766D5900268AFC /* ChapterSizeCalculator.swift in Sources */,
 				31DA65D81DA6CDB300B0A16A /* ChapterLoader.swift in Sources */,
+				315B5E0C1DC6C36E009ABA8A /* PlayerState+PCH.swift in Sources */,
 				31A468751C664568004858F5 /* StatusBarCoordinator.swift in Sources */,
 				315FD1A01CA09470001BF6E2 /* PasteBoard.swift in Sources */,
 				310CC7E01DC009C5005C6695 /* NSCollectionView+PCH.swift in Sources */,

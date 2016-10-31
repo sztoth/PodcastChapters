@@ -8,8 +8,8 @@
 
 import Foundation
 import RxSwift
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class PodcastMonitorMock: PodcastMonitorType {
     var podcast: Observable<Bool> {

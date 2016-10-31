@@ -8,8 +8,8 @@
 
 import CoreMedia
 import XCTest
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class ChapterTests: XCTestCase {}
 

@@ -8,8 +8,8 @@
 
 import Cocoa
 import RxSwift
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class MediaLoaderMock {
     var sendError: MediaLoader.LibraryError?

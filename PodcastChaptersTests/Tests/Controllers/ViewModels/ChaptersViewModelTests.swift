@@ -7,8 +7,8 @@
 //
 
 import XCTest
-
-@testable import PodcastChapters
+@testable
+import PodcastChapters
 
 class ChaptersViewModelTests: XCTestCase {
     fileprivate var sut: ChaptersViewModel!
