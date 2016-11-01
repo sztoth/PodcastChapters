@@ -3,6 +3,7 @@
 [![Travis](https://img.shields.io/travis/sztoth/PodcastChapters.svg)](http://travis-ci.org/sztoth/PodcastChapters)
 [![Codebeat](https://codebeat.co/badges/6ea52da2-5a26-428c-b703-2978ab4d59eb)](https://codebeat.co/projects/github-com-sztoth-podcastchapters)
 [![Codecov](https://img.shields.io/codecov/c/github/sztoth/PodcastChapters.svg)](https://codecov.io/gh/sztoth/PodcastChapters)
+[![Language](https://img.shields.io/badge/swift-3.0-orange.svg)](http://swift.org)
 ![Platform](https://img.shields.io/badge/platform-OSX-lightgrey.svg) 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sztoth/PodcastChapters/master/LICENSE)
 
